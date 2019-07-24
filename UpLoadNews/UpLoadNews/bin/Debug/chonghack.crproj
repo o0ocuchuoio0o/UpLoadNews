@@ -1,0 +1,46 @@
+<project outputDir="D:\UpLoadNews\UpLoadNews\bin\Debug\Confused" baseDir="D:\UpLoadNews\UpLoadNews\bin\Debug" xmlns="http://confuser.codeplex.com">
+  <module path="AutoUpdate.exe">
+    <rule pattern="true" inherit="false">
+      <protection id="anti ildasm" />
+      <protection id="anti tamper" />
+      <protection id="constants" />
+      <protection id="ctrl flow" />
+      <protection id="anti dump" />
+      <protection id="anti debug" />
+      <protection id="invalid metadata" />
+      <protection id="ref proxy" />
+      <protection id="resources" />
+      <protection id="rename" />
+    </rule>
+  </module>
+  <module path="DaoUploadNews.dll">
+    <rule pattern="true" inherit="false">
+      <protection id="anti ildasm" />
+      <protection id="anti tamper" />
+      <protection id="constants" />
+      <protection id="ctrl flow" />
+      <protection id="anti dump" />
+      <protection id="anti debug" />
+      <protection id="invalid metadata" />
+      <protection id="ref proxy" />
+      <protection id="resources" />
+      <protection id="rename" />
+      <protection id="ctrl flow" />
+    </rule>
+  </module>
+  <module path="UpLoadNews.exe">
+    <rule pattern="true" inherit="false">
+      <protection id="anti ildasm" />
+      <protection id="anti tamper" />
+      <protection id="constants" />
+      <protection id="ctrl flow" />
+      <protection id="anti dump" />
+      <protection id="anti debug" />
+      <protection id="invalid metadata" />
+      <protection id="ref proxy" />
+      <protection id="resources" />
+      <protection id="rename" />
+      <protection id="constants" />
+    </rule>
+  </module>
+</project>

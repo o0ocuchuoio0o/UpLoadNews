@@ -1,0 +1,28 @@
+<CAUHINH>
+  <_cbAutoFitImages>true</_cbAutoFitImages>
+  <_cbKeepAspectRatio>true</_cbKeepAspectRatio>
+  <_tbBackgroundImage>
+  </_tbBackgroundImage>
+  <_tbMovieWidth>1280</_tbMovieWidth>
+  <_tbMovieHeight>720</_tbMovieHeight>
+  <_tbAudioTrack>
+  </_tbAudioTrack>
+  <_cmbAviAudioCodecs>5</_cmbAviAudioCodecs>
+  <_cmbAviVideoCodecs>11</_cmbAviVideoCodecs>
+  <_cmbWmvAudioCodecs>2</_cmbWmvAudioCodecs>
+  <_cmbWmvAudioFormats>6</_cmbWmvAudioFormats>
+  <_cmbWmvVideoCodecs>3</_cmbWmvVideoCodecs>
+  <_tbBitrate>1000</_tbBitrate>
+  <_tbFPS>23.976</_tbFPS>
+  <_nudSlideDuration>7000</_nudSlideDuration>
+  <_cmbSlideRotation>0</_cmbSlideRotation>
+  <_cmbVisualEffect>0</_cmbVisualEffect>
+  <_cmbVisualEffectTransition>0</_cmbVisualEffectTransition>
+  <_EffectDuration>3500</_EffectDuration>
+  <_cbTransitionEffectBeforeRandom>true</_cbTransitionEffectBeforeRandom>
+  <_cmbTransitionEffectBefore>0</_cmbTransitionEffectBefore>
+  <_nudTransitionEffectBeforeDuration>6000</_nudTransitionEffectBeforeDuration>
+  <_cbTransitionEffectAfterRandom>true</_cbTransitionEffectAfterRandom>
+  <_cmbTransitionEffectAfter>0</_cmbTransitionEffectAfter>
+  <_nudTransitionEffectAfterDuration>1000</_nudTransitionEffectAfterDuration>
+</CAUHINH>

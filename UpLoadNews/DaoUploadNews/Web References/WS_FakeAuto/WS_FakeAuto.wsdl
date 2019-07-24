@@ -1,0 +1,3727 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="DangNhap">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="taikhoan" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="matkhau" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DangNhapResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DangNhapResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DanhSachKenh">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idtaikhoan" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DanhSachKenhResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DanhSachKenhResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ThongTinKenh">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idtaikhoan" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="idkenh" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ThongTinKenhResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ThongTinKenhResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DanhSachBaiViet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idkenh" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DanhSachBaiVietResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DanhSachBaiVietResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChiTietBaiViet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idbaiviet" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChiTietBaiVietResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ChiTietBaiVietResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DanhSachVoiceAMZ">
+        <s:complexType />
+      </s:element>
+      <s:element name="DanhSachVoiceAMZResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DanhSachVoiceAMZResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DanhSachBaiVietDaUp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idkenh" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DanhSachBaiVietDaUpResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DanhSachBaiVietDaUpResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertBaiVietDaUp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idkenh" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="idbaiviet" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertBaiVietDaUpResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="Vession">
+        <s:complexType />
+      </s:element>
+      <s:element name="VessionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="VessionResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DanhSachFileCapNhat">
+        <s:complexType />
+      </s:element>
+      <s:element name="DanhSachFileCapNhatResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DanhSachFileCapNhatResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateVoiceKenh">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idkenh" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="mota" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="idvoiceamz" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="idvoicegoogle" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateVoiceKenhResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DanhSachBaiVietProshowCanRender">
+        <s:complexType />
+      </s:element>
+      <s:element name="DanhSachBaiVietProshowCanRenderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DanhSachBaiVietProshowCanRenderResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DanhSachBaiVietProshowCanRenderTheoKenh">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idkenh" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DanhSachBaiVietProshowCanRenderTheoKenhResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DanhSachBaiVietProshowCanRenderTheoKenhResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DanhSachBaiVietProshowCanRenderTheoKenh_VoiceSelenium">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idkenh" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DanhSachBaiVietProshowCanRenderTheoKenh_VoiceSeleniumResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DanhSachBaiVietProshowCanRenderTheoKenh_VoiceSeleniumResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DanhSachBaiVietProshowDaRender">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idkenh" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DanhSachBaiVietProshowDaRenderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DanhSachBaiVietProshowDaRenderResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateBaiVietDangRender">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idbaiviet" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateBaiVietDangRenderResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateBaiVietDaRender">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idbaiviet" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateBaiVietDaRenderResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ThongTinMCTheoKenh">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idkenh" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ThongTinMCTheoKenhResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ThongTinMCTheoKenhResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DanhSachNgonNgu">
+        <s:complexType />
+      </s:element>
+      <s:element name="DanhSachNgonNguResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DanhSachNgonNguResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DanhSachVoiceNgonNgu">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ngonngu" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DanhSachVoiceNgonNguResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DanhSachVoiceNgonNguResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DanhSachEffect">
+        <s:complexType />
+      </s:element>
+      <s:element name="DanhSachEffectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DanhSachEffectResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DanhSachEffectLevel">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="effect" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DanhSachEffectLevelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DanhSachEffectLevelResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertCauHinhVoiceKenh">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idkenh" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ngonngu" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="voice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="effect" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="level" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertCauHinhVoiceKenhResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ThongTinCauHinhVoiceKenh">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idkenh" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ThongTinCauHinhVoiceKenhResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ThongTinCauHinhVoiceKenhResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DanhSachTinCanLayVoice">
+        <s:complexType />
+      </s:element>
+      <s:element name="DanhSachTinCanLayVoiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DanhSachTinCanLayVoiceResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DanhSachTinCanLayVoiceTheoKenh">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idkenh" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DanhSachTinCanLayVoiceTheoKenhResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DanhSachTinCanLayVoiceTheoKenhResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DanhSachTinCanLayVoiceTheoKenhTop">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idkenh" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DanhSachTinCanLayVoiceTheoKenhTopResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DanhSachTinCanLayVoiceTheoKenhTopResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateDaLayVoice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idchitiet" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="pathvoice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateDaLayVoiceResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateBaiVietDaLayVoice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idbaiviet" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateBaiVietDaLayVoiceResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="_Head">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cell" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="localFoder" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="musicbg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="_HeadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_HeadResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="_Silde">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cell" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PathSub" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PathImage" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TimeSlide" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PathVoice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TimeVoice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="_SildeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_SildeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="_SildeMC">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cell" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PathMC" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PathSub" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PathImage" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TimeSlide" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PathVoice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TimeVoice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="_SildeMCResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_SildeMCResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="_TranSlide">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cell" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="_TranSlideResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_TranSlideResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="_Footer">
+        <s:complexType />
+      </s:element>
+      <s:element name="_FooterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_FooterResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="_InTro">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cell" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Pathintro" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Timeintro" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="_InTroResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_InTroResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="_OutTro">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cell" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PathOutro" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TimeOutro" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="_OutTroResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_OutTroResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DanhSachCanSub">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mail" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DanhSachCanSubResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DanhSachCanSubResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LogSub">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mail" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="idlinksub" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LogSubResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="LogIP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ip" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pcname" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LogIPResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DanhSachMail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ipmac" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DanhSachMailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DanhSachMailResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DanhSachMailChuaGanIP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DanhSachMailChuaGanIPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DanhSachMailChuaGanIPResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SuaIP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ipmac" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="namepc" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SuaIPResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="VessionSub">
+        <s:complexType />
+      </s:element>
+      <s:element name="VessionSubResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="VessionSubResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DanhSachFileUpdate">
+        <s:complexType />
+      </s:element>
+      <s:element name="DanhSachFileUpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DanhSachFileUpdateResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DanhSachFileUpdateSub">
+        <s:complexType />
+      </s:element>
+      <s:element name="DanhSachFileUpdateSubResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DanhSachFileUpdateSubResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DataTable" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+            <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="int" type="s:int" />
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="DangNhapSoapIn">
+    <wsdl:part name="parameters" element="tns:DangNhap" />
+  </wsdl:message>
+  <wsdl:message name="DangNhapSoapOut">
+    <wsdl:part name="parameters" element="tns:DangNhapResponse" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachKenhSoapIn">
+    <wsdl:part name="parameters" element="tns:DanhSachKenh" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachKenhSoapOut">
+    <wsdl:part name="parameters" element="tns:DanhSachKenhResponse" />
+  </wsdl:message>
+  <wsdl:message name="ThongTinKenhSoapIn">
+    <wsdl:part name="parameters" element="tns:ThongTinKenh" />
+  </wsdl:message>
+  <wsdl:message name="ThongTinKenhSoapOut">
+    <wsdl:part name="parameters" element="tns:ThongTinKenhResponse" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachBaiVietSoapIn">
+    <wsdl:part name="parameters" element="tns:DanhSachBaiViet" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachBaiVietSoapOut">
+    <wsdl:part name="parameters" element="tns:DanhSachBaiVietResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChiTietBaiVietSoapIn">
+    <wsdl:part name="parameters" element="tns:ChiTietBaiViet" />
+  </wsdl:message>
+  <wsdl:message name="ChiTietBaiVietSoapOut">
+    <wsdl:part name="parameters" element="tns:ChiTietBaiVietResponse" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachVoiceAMZSoapIn">
+    <wsdl:part name="parameters" element="tns:DanhSachVoiceAMZ" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachVoiceAMZSoapOut">
+    <wsdl:part name="parameters" element="tns:DanhSachVoiceAMZResponse" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachBaiVietDaUpSoapIn">
+    <wsdl:part name="parameters" element="tns:DanhSachBaiVietDaUp" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachBaiVietDaUpSoapOut">
+    <wsdl:part name="parameters" element="tns:DanhSachBaiVietDaUpResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertBaiVietDaUpSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertBaiVietDaUp" />
+  </wsdl:message>
+  <wsdl:message name="InsertBaiVietDaUpSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertBaiVietDaUpResponse" />
+  </wsdl:message>
+  <wsdl:message name="VessionSoapIn">
+    <wsdl:part name="parameters" element="tns:Vession" />
+  </wsdl:message>
+  <wsdl:message name="VessionSoapOut">
+    <wsdl:part name="parameters" element="tns:VessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachFileCapNhatSoapIn">
+    <wsdl:part name="parameters" element="tns:DanhSachFileCapNhat" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachFileCapNhatSoapOut">
+    <wsdl:part name="parameters" element="tns:DanhSachFileCapNhatResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateVoiceKenhSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateVoiceKenh" />
+  </wsdl:message>
+  <wsdl:message name="UpdateVoiceKenhSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateVoiceKenhResponse" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachBaiVietProshowCanRenderSoapIn">
+    <wsdl:part name="parameters" element="tns:DanhSachBaiVietProshowCanRender" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachBaiVietProshowCanRenderSoapOut">
+    <wsdl:part name="parameters" element="tns:DanhSachBaiVietProshowCanRenderResponse" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachBaiVietProshowCanRenderTheoKenhSoapIn">
+    <wsdl:part name="parameters" element="tns:DanhSachBaiVietProshowCanRenderTheoKenh" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachBaiVietProshowCanRenderTheoKenhSoapOut">
+    <wsdl:part name="parameters" element="tns:DanhSachBaiVietProshowCanRenderTheoKenhResponse" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachBaiVietProshowCanRenderTheoKenh_VoiceSeleniumSoapIn">
+    <wsdl:part name="parameters" element="tns:DanhSachBaiVietProshowCanRenderTheoKenh_VoiceSelenium" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachBaiVietProshowCanRenderTheoKenh_VoiceSeleniumSoapOut">
+    <wsdl:part name="parameters" element="tns:DanhSachBaiVietProshowCanRenderTheoKenh_VoiceSeleniumResponse" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachBaiVietProshowDaRenderSoapIn">
+    <wsdl:part name="parameters" element="tns:DanhSachBaiVietProshowDaRender" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachBaiVietProshowDaRenderSoapOut">
+    <wsdl:part name="parameters" element="tns:DanhSachBaiVietProshowDaRenderResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBaiVietDangRenderSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateBaiVietDangRender" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBaiVietDangRenderSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateBaiVietDangRenderResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBaiVietDaRenderSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateBaiVietDaRender" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBaiVietDaRenderSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateBaiVietDaRenderResponse" />
+  </wsdl:message>
+  <wsdl:message name="ThongTinMCTheoKenhSoapIn">
+    <wsdl:part name="parameters" element="tns:ThongTinMCTheoKenh" />
+  </wsdl:message>
+  <wsdl:message name="ThongTinMCTheoKenhSoapOut">
+    <wsdl:part name="parameters" element="tns:ThongTinMCTheoKenhResponse" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachNgonNguSoapIn">
+    <wsdl:part name="parameters" element="tns:DanhSachNgonNgu" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachNgonNguSoapOut">
+    <wsdl:part name="parameters" element="tns:DanhSachNgonNguResponse" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachVoiceNgonNguSoapIn">
+    <wsdl:part name="parameters" element="tns:DanhSachVoiceNgonNgu" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachVoiceNgonNguSoapOut">
+    <wsdl:part name="parameters" element="tns:DanhSachVoiceNgonNguResponse" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachEffectSoapIn">
+    <wsdl:part name="parameters" element="tns:DanhSachEffect" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachEffectSoapOut">
+    <wsdl:part name="parameters" element="tns:DanhSachEffectResponse" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachEffectLevelSoapIn">
+    <wsdl:part name="parameters" element="tns:DanhSachEffectLevel" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachEffectLevelSoapOut">
+    <wsdl:part name="parameters" element="tns:DanhSachEffectLevelResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertCauHinhVoiceKenhSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertCauHinhVoiceKenh" />
+  </wsdl:message>
+  <wsdl:message name="InsertCauHinhVoiceKenhSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertCauHinhVoiceKenhResponse" />
+  </wsdl:message>
+  <wsdl:message name="ThongTinCauHinhVoiceKenhSoapIn">
+    <wsdl:part name="parameters" element="tns:ThongTinCauHinhVoiceKenh" />
+  </wsdl:message>
+  <wsdl:message name="ThongTinCauHinhVoiceKenhSoapOut">
+    <wsdl:part name="parameters" element="tns:ThongTinCauHinhVoiceKenhResponse" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachTinCanLayVoiceSoapIn">
+    <wsdl:part name="parameters" element="tns:DanhSachTinCanLayVoice" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachTinCanLayVoiceSoapOut">
+    <wsdl:part name="parameters" element="tns:DanhSachTinCanLayVoiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachTinCanLayVoiceTheoKenhSoapIn">
+    <wsdl:part name="parameters" element="tns:DanhSachTinCanLayVoiceTheoKenh" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachTinCanLayVoiceTheoKenhSoapOut">
+    <wsdl:part name="parameters" element="tns:DanhSachTinCanLayVoiceTheoKenhResponse" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachTinCanLayVoiceTheoKenhTopSoapIn">
+    <wsdl:part name="parameters" element="tns:DanhSachTinCanLayVoiceTheoKenhTop" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachTinCanLayVoiceTheoKenhTopSoapOut">
+    <wsdl:part name="parameters" element="tns:DanhSachTinCanLayVoiceTheoKenhTopResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDaLayVoiceSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateDaLayVoice" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDaLayVoiceSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateDaLayVoiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBaiVietDaLayVoiceSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateBaiVietDaLayVoice" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBaiVietDaLayVoiceSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateBaiVietDaLayVoiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="_HeadSoapIn">
+    <wsdl:part name="parameters" element="tns:_Head" />
+  </wsdl:message>
+  <wsdl:message name="_HeadSoapOut">
+    <wsdl:part name="parameters" element="tns:_HeadResponse" />
+  </wsdl:message>
+  <wsdl:message name="_SildeSoapIn">
+    <wsdl:part name="parameters" element="tns:_Silde" />
+  </wsdl:message>
+  <wsdl:message name="_SildeSoapOut">
+    <wsdl:part name="parameters" element="tns:_SildeResponse" />
+  </wsdl:message>
+  <wsdl:message name="_SildeMCSoapIn">
+    <wsdl:part name="parameters" element="tns:_SildeMC" />
+  </wsdl:message>
+  <wsdl:message name="_SildeMCSoapOut">
+    <wsdl:part name="parameters" element="tns:_SildeMCResponse" />
+  </wsdl:message>
+  <wsdl:message name="_TranSlideSoapIn">
+    <wsdl:part name="parameters" element="tns:_TranSlide" />
+  </wsdl:message>
+  <wsdl:message name="_TranSlideSoapOut">
+    <wsdl:part name="parameters" element="tns:_TranSlideResponse" />
+  </wsdl:message>
+  <wsdl:message name="_FooterSoapIn">
+    <wsdl:part name="parameters" element="tns:_Footer" />
+  </wsdl:message>
+  <wsdl:message name="_FooterSoapOut">
+    <wsdl:part name="parameters" element="tns:_FooterResponse" />
+  </wsdl:message>
+  <wsdl:message name="_InTroSoapIn">
+    <wsdl:part name="parameters" element="tns:_InTro" />
+  </wsdl:message>
+  <wsdl:message name="_InTroSoapOut">
+    <wsdl:part name="parameters" element="tns:_InTroResponse" />
+  </wsdl:message>
+  <wsdl:message name="_OutTroSoapIn">
+    <wsdl:part name="parameters" element="tns:_OutTro" />
+  </wsdl:message>
+  <wsdl:message name="_OutTroSoapOut">
+    <wsdl:part name="parameters" element="tns:_OutTroResponse" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachCanSubSoapIn">
+    <wsdl:part name="parameters" element="tns:DanhSachCanSub" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachCanSubSoapOut">
+    <wsdl:part name="parameters" element="tns:DanhSachCanSubResponse" />
+  </wsdl:message>
+  <wsdl:message name="LogSubSoapIn">
+    <wsdl:part name="parameters" element="tns:LogSub" />
+  </wsdl:message>
+  <wsdl:message name="LogSubSoapOut">
+    <wsdl:part name="parameters" element="tns:LogSubResponse" />
+  </wsdl:message>
+  <wsdl:message name="LogIPSoapIn">
+    <wsdl:part name="parameters" element="tns:LogIP" />
+  </wsdl:message>
+  <wsdl:message name="LogIPSoapOut">
+    <wsdl:part name="parameters" element="tns:LogIPResponse" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachMailSoapIn">
+    <wsdl:part name="parameters" element="tns:DanhSachMail" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachMailSoapOut">
+    <wsdl:part name="parameters" element="tns:DanhSachMailResponse" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachMailChuaGanIPSoapIn">
+    <wsdl:part name="parameters" element="tns:DanhSachMailChuaGanIP" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachMailChuaGanIPSoapOut">
+    <wsdl:part name="parameters" element="tns:DanhSachMailChuaGanIPResponse" />
+  </wsdl:message>
+  <wsdl:message name="SuaIPSoapIn">
+    <wsdl:part name="parameters" element="tns:SuaIP" />
+  </wsdl:message>
+  <wsdl:message name="SuaIPSoapOut">
+    <wsdl:part name="parameters" element="tns:SuaIPResponse" />
+  </wsdl:message>
+  <wsdl:message name="VessionSubSoapIn">
+    <wsdl:part name="parameters" element="tns:VessionSub" />
+  </wsdl:message>
+  <wsdl:message name="VessionSubSoapOut">
+    <wsdl:part name="parameters" element="tns:VessionSubResponse" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachFileUpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:DanhSachFileUpdate" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachFileUpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:DanhSachFileUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachFileUpdateSubSoapIn">
+    <wsdl:part name="parameters" element="tns:DanhSachFileUpdateSub" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachFileUpdateSubSoapOut">
+    <wsdl:part name="parameters" element="tns:DanhSachFileUpdateSubResponse" />
+  </wsdl:message>
+  <wsdl:message name="DangNhapHttpGetIn">
+    <wsdl:part name="taikhoan" type="s:string" />
+    <wsdl:part name="matkhau" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DangNhapHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachKenhHttpGetIn">
+    <wsdl:part name="idtaikhoan" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachKenhHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="ThongTinKenhHttpGetIn">
+    <wsdl:part name="idtaikhoan" type="s:string" />
+    <wsdl:part name="idkenh" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ThongTinKenhHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachBaiVietHttpGetIn">
+    <wsdl:part name="idkenh" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachBaiVietHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="ChiTietBaiVietHttpGetIn">
+    <wsdl:part name="idbaiviet" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ChiTietBaiVietHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachVoiceAMZHttpGetIn" />
+  <wsdl:message name="DanhSachVoiceAMZHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachBaiVietDaUpHttpGetIn">
+    <wsdl:part name="idkenh" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachBaiVietDaUpHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="InsertBaiVietDaUpHttpGetIn">
+    <wsdl:part name="idkenh" type="s:string" />
+    <wsdl:part name="idbaiviet" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertBaiVietDaUpHttpGetOut" />
+  <wsdl:message name="VessionHttpGetIn" />
+  <wsdl:message name="VessionHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachFileCapNhatHttpGetIn" />
+  <wsdl:message name="DanhSachFileCapNhatHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="UpdateVoiceKenhHttpGetIn">
+    <wsdl:part name="idkenh" type="s:string" />
+    <wsdl:part name="mota" type="s:string" />
+    <wsdl:part name="idvoiceamz" type="s:string" />
+    <wsdl:part name="idvoicegoogle" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateVoiceKenhHttpGetOut" />
+  <wsdl:message name="DanhSachBaiVietProshowCanRenderHttpGetIn" />
+  <wsdl:message name="DanhSachBaiVietProshowCanRenderHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachBaiVietProshowCanRenderTheoKenhHttpGetIn">
+    <wsdl:part name="idkenh" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachBaiVietProshowCanRenderTheoKenhHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachBaiVietProshowCanRenderTheoKenh_VoiceSeleniumHttpGetIn">
+    <wsdl:part name="idkenh" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachBaiVietProshowCanRenderTheoKenh_VoiceSeleniumHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachBaiVietProshowDaRenderHttpGetIn">
+    <wsdl:part name="idkenh" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachBaiVietProshowDaRenderHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBaiVietDangRenderHttpGetIn">
+    <wsdl:part name="idbaiviet" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBaiVietDangRenderHttpGetOut" />
+  <wsdl:message name="UpdateBaiVietDaRenderHttpGetIn">
+    <wsdl:part name="idbaiviet" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBaiVietDaRenderHttpGetOut" />
+  <wsdl:message name="ThongTinMCTheoKenhHttpGetIn">
+    <wsdl:part name="idkenh" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ThongTinMCTheoKenhHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachNgonNguHttpGetIn" />
+  <wsdl:message name="DanhSachNgonNguHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachVoiceNgonNguHttpGetIn">
+    <wsdl:part name="ngonngu" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachVoiceNgonNguHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachEffectHttpGetIn" />
+  <wsdl:message name="DanhSachEffectHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachEffectLevelHttpGetIn">
+    <wsdl:part name="effect" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachEffectLevelHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="InsertCauHinhVoiceKenhHttpGetIn">
+    <wsdl:part name="idkenh" type="s:string" />
+    <wsdl:part name="ngonngu" type="s:string" />
+    <wsdl:part name="voice" type="s:string" />
+    <wsdl:part name="effect" type="s:string" />
+    <wsdl:part name="level" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertCauHinhVoiceKenhHttpGetOut" />
+  <wsdl:message name="ThongTinCauHinhVoiceKenhHttpGetIn">
+    <wsdl:part name="idkenh" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ThongTinCauHinhVoiceKenhHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachTinCanLayVoiceHttpGetIn" />
+  <wsdl:message name="DanhSachTinCanLayVoiceHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachTinCanLayVoiceTheoKenhHttpGetIn">
+    <wsdl:part name="idkenh" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachTinCanLayVoiceTheoKenhHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachTinCanLayVoiceTheoKenhTopHttpGetIn">
+    <wsdl:part name="idkenh" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachTinCanLayVoiceTheoKenhTopHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDaLayVoiceHttpGetIn">
+    <wsdl:part name="idchitiet" type="s:string" />
+    <wsdl:part name="pathvoice" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDaLayVoiceHttpGetOut" />
+  <wsdl:message name="UpdateBaiVietDaLayVoiceHttpGetIn">
+    <wsdl:part name="idbaiviet" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBaiVietDaLayVoiceHttpGetOut" />
+  <wsdl:message name="_HeadHttpGetIn">
+    <wsdl:part name="cell" type="s:string" />
+    <wsdl:part name="localFoder" type="s:string" />
+    <wsdl:part name="musicbg" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="_HeadHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="_SildeHttpGetIn">
+    <wsdl:part name="cell" type="s:string" />
+    <wsdl:part name="PathSub" type="s:string" />
+    <wsdl:part name="PathImage" type="s:string" />
+    <wsdl:part name="TimeSlide" type="s:string" />
+    <wsdl:part name="PathVoice" type="s:string" />
+    <wsdl:part name="TimeVoice" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="_SildeHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="_SildeMCHttpGetIn">
+    <wsdl:part name="cell" type="s:string" />
+    <wsdl:part name="PathMC" type="s:string" />
+    <wsdl:part name="PathSub" type="s:string" />
+    <wsdl:part name="PathImage" type="s:string" />
+    <wsdl:part name="TimeSlide" type="s:string" />
+    <wsdl:part name="PathVoice" type="s:string" />
+    <wsdl:part name="TimeVoice" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="_SildeMCHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="_TranSlideHttpGetIn">
+    <wsdl:part name="cell" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="_TranSlideHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="_FooterHttpGetIn" />
+  <wsdl:message name="_FooterHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="_InTroHttpGetIn">
+    <wsdl:part name="cell" type="s:string" />
+    <wsdl:part name="Pathintro" type="s:string" />
+    <wsdl:part name="Timeintro" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="_InTroHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="_OutTroHttpGetIn">
+    <wsdl:part name="cell" type="s:string" />
+    <wsdl:part name="PathOutro" type="s:string" />
+    <wsdl:part name="TimeOutro" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="_OutTroHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachCanSubHttpGetIn">
+    <wsdl:part name="key" type="s:string" />
+    <wsdl:part name="mail" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachCanSubHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="LogSubHttpGetIn">
+    <wsdl:part name="key" type="s:string" />
+    <wsdl:part name="mail" type="s:string" />
+    <wsdl:part name="idlinksub" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LogSubHttpGetOut" />
+  <wsdl:message name="LogIPHttpGetIn">
+    <wsdl:part name="key" type="s:string" />
+    <wsdl:part name="ip" type="s:string" />
+    <wsdl:part name="pcname" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LogIPHttpGetOut" />
+  <wsdl:message name="DanhSachMailHttpGetIn">
+    <wsdl:part name="key" type="s:string" />
+    <wsdl:part name="ipmac" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachMailHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachMailChuaGanIPHttpGetIn">
+    <wsdl:part name="key" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachMailChuaGanIPHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="SuaIPHttpGetIn">
+    <wsdl:part name="key" type="s:string" />
+    <wsdl:part name="id" type="s:string" />
+    <wsdl:part name="ipmac" type="s:string" />
+    <wsdl:part name="namepc" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SuaIPHttpGetOut" />
+  <wsdl:message name="VessionSubHttpGetIn" />
+  <wsdl:message name="VessionSubHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachFileUpdateHttpGetIn" />
+  <wsdl:message name="DanhSachFileUpdateHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachFileUpdateSubHttpGetIn" />
+  <wsdl:message name="DanhSachFileUpdateSubHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="DangNhapHttpPostIn">
+    <wsdl:part name="taikhoan" type="s:string" />
+    <wsdl:part name="matkhau" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DangNhapHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachKenhHttpPostIn">
+    <wsdl:part name="idtaikhoan" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachKenhHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="ThongTinKenhHttpPostIn">
+    <wsdl:part name="idtaikhoan" type="s:string" />
+    <wsdl:part name="idkenh" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ThongTinKenhHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachBaiVietHttpPostIn">
+    <wsdl:part name="idkenh" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachBaiVietHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="ChiTietBaiVietHttpPostIn">
+    <wsdl:part name="idbaiviet" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ChiTietBaiVietHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachVoiceAMZHttpPostIn" />
+  <wsdl:message name="DanhSachVoiceAMZHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachBaiVietDaUpHttpPostIn">
+    <wsdl:part name="idkenh" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachBaiVietDaUpHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="InsertBaiVietDaUpHttpPostIn">
+    <wsdl:part name="idkenh" type="s:string" />
+    <wsdl:part name="idbaiviet" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertBaiVietDaUpHttpPostOut" />
+  <wsdl:message name="VessionHttpPostIn" />
+  <wsdl:message name="VessionHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachFileCapNhatHttpPostIn" />
+  <wsdl:message name="DanhSachFileCapNhatHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="UpdateVoiceKenhHttpPostIn">
+    <wsdl:part name="idkenh" type="s:string" />
+    <wsdl:part name="mota" type="s:string" />
+    <wsdl:part name="idvoiceamz" type="s:string" />
+    <wsdl:part name="idvoicegoogle" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateVoiceKenhHttpPostOut" />
+  <wsdl:message name="DanhSachBaiVietProshowCanRenderHttpPostIn" />
+  <wsdl:message name="DanhSachBaiVietProshowCanRenderHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachBaiVietProshowCanRenderTheoKenhHttpPostIn">
+    <wsdl:part name="idkenh" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachBaiVietProshowCanRenderTheoKenhHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachBaiVietProshowCanRenderTheoKenh_VoiceSeleniumHttpPostIn">
+    <wsdl:part name="idkenh" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachBaiVietProshowCanRenderTheoKenh_VoiceSeleniumHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachBaiVietProshowDaRenderHttpPostIn">
+    <wsdl:part name="idkenh" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachBaiVietProshowDaRenderHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBaiVietDangRenderHttpPostIn">
+    <wsdl:part name="idbaiviet" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBaiVietDangRenderHttpPostOut" />
+  <wsdl:message name="UpdateBaiVietDaRenderHttpPostIn">
+    <wsdl:part name="idbaiviet" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBaiVietDaRenderHttpPostOut" />
+  <wsdl:message name="ThongTinMCTheoKenhHttpPostIn">
+    <wsdl:part name="idkenh" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ThongTinMCTheoKenhHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachNgonNguHttpPostIn" />
+  <wsdl:message name="DanhSachNgonNguHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachVoiceNgonNguHttpPostIn">
+    <wsdl:part name="ngonngu" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachVoiceNgonNguHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachEffectHttpPostIn" />
+  <wsdl:message name="DanhSachEffectHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachEffectLevelHttpPostIn">
+    <wsdl:part name="effect" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachEffectLevelHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="InsertCauHinhVoiceKenhHttpPostIn">
+    <wsdl:part name="idkenh" type="s:string" />
+    <wsdl:part name="ngonngu" type="s:string" />
+    <wsdl:part name="voice" type="s:string" />
+    <wsdl:part name="effect" type="s:string" />
+    <wsdl:part name="level" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertCauHinhVoiceKenhHttpPostOut" />
+  <wsdl:message name="ThongTinCauHinhVoiceKenhHttpPostIn">
+    <wsdl:part name="idkenh" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ThongTinCauHinhVoiceKenhHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachTinCanLayVoiceHttpPostIn" />
+  <wsdl:message name="DanhSachTinCanLayVoiceHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachTinCanLayVoiceTheoKenhHttpPostIn">
+    <wsdl:part name="idkenh" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachTinCanLayVoiceTheoKenhHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachTinCanLayVoiceTheoKenhTopHttpPostIn">
+    <wsdl:part name="idkenh" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachTinCanLayVoiceTheoKenhTopHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDaLayVoiceHttpPostIn">
+    <wsdl:part name="idchitiet" type="s:string" />
+    <wsdl:part name="pathvoice" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDaLayVoiceHttpPostOut" />
+  <wsdl:message name="UpdateBaiVietDaLayVoiceHttpPostIn">
+    <wsdl:part name="idbaiviet" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBaiVietDaLayVoiceHttpPostOut" />
+  <wsdl:message name="_HeadHttpPostIn">
+    <wsdl:part name="cell" type="s:string" />
+    <wsdl:part name="localFoder" type="s:string" />
+    <wsdl:part name="musicbg" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="_HeadHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="_SildeHttpPostIn">
+    <wsdl:part name="cell" type="s:string" />
+    <wsdl:part name="PathSub" type="s:string" />
+    <wsdl:part name="PathImage" type="s:string" />
+    <wsdl:part name="TimeSlide" type="s:string" />
+    <wsdl:part name="PathVoice" type="s:string" />
+    <wsdl:part name="TimeVoice" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="_SildeHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="_SildeMCHttpPostIn">
+    <wsdl:part name="cell" type="s:string" />
+    <wsdl:part name="PathMC" type="s:string" />
+    <wsdl:part name="PathSub" type="s:string" />
+    <wsdl:part name="PathImage" type="s:string" />
+    <wsdl:part name="TimeSlide" type="s:string" />
+    <wsdl:part name="PathVoice" type="s:string" />
+    <wsdl:part name="TimeVoice" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="_SildeMCHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="_TranSlideHttpPostIn">
+    <wsdl:part name="cell" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="_TranSlideHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="_FooterHttpPostIn" />
+  <wsdl:message name="_FooterHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="_InTroHttpPostIn">
+    <wsdl:part name="cell" type="s:string" />
+    <wsdl:part name="Pathintro" type="s:string" />
+    <wsdl:part name="Timeintro" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="_InTroHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="_OutTroHttpPostIn">
+    <wsdl:part name="cell" type="s:string" />
+    <wsdl:part name="PathOutro" type="s:string" />
+    <wsdl:part name="TimeOutro" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="_OutTroHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachCanSubHttpPostIn">
+    <wsdl:part name="key" type="s:string" />
+    <wsdl:part name="mail" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachCanSubHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="LogSubHttpPostIn">
+    <wsdl:part name="key" type="s:string" />
+    <wsdl:part name="mail" type="s:string" />
+    <wsdl:part name="idlinksub" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LogSubHttpPostOut" />
+  <wsdl:message name="LogIPHttpPostIn">
+    <wsdl:part name="key" type="s:string" />
+    <wsdl:part name="ip" type="s:string" />
+    <wsdl:part name="pcname" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LogIPHttpPostOut" />
+  <wsdl:message name="DanhSachMailHttpPostIn">
+    <wsdl:part name="key" type="s:string" />
+    <wsdl:part name="ipmac" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachMailHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachMailChuaGanIPHttpPostIn">
+    <wsdl:part name="key" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachMailChuaGanIPHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="SuaIPHttpPostIn">
+    <wsdl:part name="key" type="s:string" />
+    <wsdl:part name="id" type="s:string" />
+    <wsdl:part name="ipmac" type="s:string" />
+    <wsdl:part name="namepc" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SuaIPHttpPostOut" />
+  <wsdl:message name="VessionSubHttpPostIn" />
+  <wsdl:message name="VessionSubHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachFileUpdateHttpPostIn" />
+  <wsdl:message name="DanhSachFileUpdateHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachFileUpdateSubHttpPostIn" />
+  <wsdl:message name="DanhSachFileUpdateSubHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:portType name="WS_FakeAutoSoap">
+    <wsdl:operation name="DangNhap">
+      <wsdl:input message="tns:DangNhapSoapIn" />
+      <wsdl:output message="tns:DangNhapSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachKenh">
+      <wsdl:input message="tns:DanhSachKenhSoapIn" />
+      <wsdl:output message="tns:DanhSachKenhSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ThongTinKenh">
+      <wsdl:input message="tns:ThongTinKenhSoapIn" />
+      <wsdl:output message="tns:ThongTinKenhSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachBaiViet">
+      <wsdl:input message="tns:DanhSachBaiVietSoapIn" />
+      <wsdl:output message="tns:DanhSachBaiVietSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChiTietBaiViet">
+      <wsdl:input message="tns:ChiTietBaiVietSoapIn" />
+      <wsdl:output message="tns:ChiTietBaiVietSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachVoiceAMZ">
+      <wsdl:input message="tns:DanhSachVoiceAMZSoapIn" />
+      <wsdl:output message="tns:DanhSachVoiceAMZSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachBaiVietDaUp">
+      <wsdl:input message="tns:DanhSachBaiVietDaUpSoapIn" />
+      <wsdl:output message="tns:DanhSachBaiVietDaUpSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertBaiVietDaUp">
+      <wsdl:input message="tns:InsertBaiVietDaUpSoapIn" />
+      <wsdl:output message="tns:InsertBaiVietDaUpSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Vession">
+      <wsdl:input message="tns:VessionSoapIn" />
+      <wsdl:output message="tns:VessionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachFileCapNhat">
+      <wsdl:input message="tns:DanhSachFileCapNhatSoapIn" />
+      <wsdl:output message="tns:DanhSachFileCapNhatSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateVoiceKenh">
+      <wsdl:input message="tns:UpdateVoiceKenhSoapIn" />
+      <wsdl:output message="tns:UpdateVoiceKenhSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachBaiVietProshowCanRender">
+      <wsdl:input message="tns:DanhSachBaiVietProshowCanRenderSoapIn" />
+      <wsdl:output message="tns:DanhSachBaiVietProshowCanRenderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachBaiVietProshowCanRenderTheoKenh">
+      <wsdl:input message="tns:DanhSachBaiVietProshowCanRenderTheoKenhSoapIn" />
+      <wsdl:output message="tns:DanhSachBaiVietProshowCanRenderTheoKenhSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachBaiVietProshowCanRenderTheoKenh_VoiceSelenium">
+      <wsdl:input message="tns:DanhSachBaiVietProshowCanRenderTheoKenh_VoiceSeleniumSoapIn" />
+      <wsdl:output message="tns:DanhSachBaiVietProshowCanRenderTheoKenh_VoiceSeleniumSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachBaiVietProshowDaRender">
+      <wsdl:input message="tns:DanhSachBaiVietProshowDaRenderSoapIn" />
+      <wsdl:output message="tns:DanhSachBaiVietProshowDaRenderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBaiVietDangRender">
+      <wsdl:input message="tns:UpdateBaiVietDangRenderSoapIn" />
+      <wsdl:output message="tns:UpdateBaiVietDangRenderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBaiVietDaRender">
+      <wsdl:input message="tns:UpdateBaiVietDaRenderSoapIn" />
+      <wsdl:output message="tns:UpdateBaiVietDaRenderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ThongTinMCTheoKenh">
+      <wsdl:input message="tns:ThongTinMCTheoKenhSoapIn" />
+      <wsdl:output message="tns:ThongTinMCTheoKenhSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachNgonNgu">
+      <wsdl:input message="tns:DanhSachNgonNguSoapIn" />
+      <wsdl:output message="tns:DanhSachNgonNguSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachVoiceNgonNgu">
+      <wsdl:input message="tns:DanhSachVoiceNgonNguSoapIn" />
+      <wsdl:output message="tns:DanhSachVoiceNgonNguSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachEffect">
+      <wsdl:input message="tns:DanhSachEffectSoapIn" />
+      <wsdl:output message="tns:DanhSachEffectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachEffectLevel">
+      <wsdl:input message="tns:DanhSachEffectLevelSoapIn" />
+      <wsdl:output message="tns:DanhSachEffectLevelSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertCauHinhVoiceKenh">
+      <wsdl:input message="tns:InsertCauHinhVoiceKenhSoapIn" />
+      <wsdl:output message="tns:InsertCauHinhVoiceKenhSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ThongTinCauHinhVoiceKenh">
+      <wsdl:input message="tns:ThongTinCauHinhVoiceKenhSoapIn" />
+      <wsdl:output message="tns:ThongTinCauHinhVoiceKenhSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachTinCanLayVoice">
+      <wsdl:input message="tns:DanhSachTinCanLayVoiceSoapIn" />
+      <wsdl:output message="tns:DanhSachTinCanLayVoiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachTinCanLayVoiceTheoKenh">
+      <wsdl:input message="tns:DanhSachTinCanLayVoiceTheoKenhSoapIn" />
+      <wsdl:output message="tns:DanhSachTinCanLayVoiceTheoKenhSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachTinCanLayVoiceTheoKenhTop">
+      <wsdl:input message="tns:DanhSachTinCanLayVoiceTheoKenhTopSoapIn" />
+      <wsdl:output message="tns:DanhSachTinCanLayVoiceTheoKenhTopSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDaLayVoice">
+      <wsdl:input message="tns:UpdateDaLayVoiceSoapIn" />
+      <wsdl:output message="tns:UpdateDaLayVoiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBaiVietDaLayVoice">
+      <wsdl:input message="tns:UpdateBaiVietDaLayVoiceSoapIn" />
+      <wsdl:output message="tns:UpdateBaiVietDaLayVoiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="_Head">
+      <wsdl:input message="tns:_HeadSoapIn" />
+      <wsdl:output message="tns:_HeadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="_Silde">
+      <wsdl:input message="tns:_SildeSoapIn" />
+      <wsdl:output message="tns:_SildeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="_SildeMC">
+      <wsdl:input message="tns:_SildeMCSoapIn" />
+      <wsdl:output message="tns:_SildeMCSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="_TranSlide">
+      <wsdl:input message="tns:_TranSlideSoapIn" />
+      <wsdl:output message="tns:_TranSlideSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="_Footer">
+      <wsdl:input message="tns:_FooterSoapIn" />
+      <wsdl:output message="tns:_FooterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="_InTro">
+      <wsdl:input message="tns:_InTroSoapIn" />
+      <wsdl:output message="tns:_InTroSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="_OutTro">
+      <wsdl:input message="tns:_OutTroSoapIn" />
+      <wsdl:output message="tns:_OutTroSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachCanSub">
+      <wsdl:input message="tns:DanhSachCanSubSoapIn" />
+      <wsdl:output message="tns:DanhSachCanSubSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LogSub">
+      <wsdl:input message="tns:LogSubSoapIn" />
+      <wsdl:output message="tns:LogSubSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LogIP">
+      <wsdl:input message="tns:LogIPSoapIn" />
+      <wsdl:output message="tns:LogIPSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachMail">
+      <wsdl:input message="tns:DanhSachMailSoapIn" />
+      <wsdl:output message="tns:DanhSachMailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachMailChuaGanIP">
+      <wsdl:input message="tns:DanhSachMailChuaGanIPSoapIn" />
+      <wsdl:output message="tns:DanhSachMailChuaGanIPSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SuaIP">
+      <wsdl:input message="tns:SuaIPSoapIn" />
+      <wsdl:output message="tns:SuaIPSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VessionSub">
+      <wsdl:input message="tns:VessionSubSoapIn" />
+      <wsdl:output message="tns:VessionSubSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachFileUpdate">
+      <wsdl:input message="tns:DanhSachFileUpdateSoapIn" />
+      <wsdl:output message="tns:DanhSachFileUpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachFileUpdateSub">
+      <wsdl:input message="tns:DanhSachFileUpdateSubSoapIn" />
+      <wsdl:output message="tns:DanhSachFileUpdateSubSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="WS_FakeAutoHttpGet">
+    <wsdl:operation name="DangNhap">
+      <wsdl:input message="tns:DangNhapHttpGetIn" />
+      <wsdl:output message="tns:DangNhapHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachKenh">
+      <wsdl:input message="tns:DanhSachKenhHttpGetIn" />
+      <wsdl:output message="tns:DanhSachKenhHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ThongTinKenh">
+      <wsdl:input message="tns:ThongTinKenhHttpGetIn" />
+      <wsdl:output message="tns:ThongTinKenhHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachBaiViet">
+      <wsdl:input message="tns:DanhSachBaiVietHttpGetIn" />
+      <wsdl:output message="tns:DanhSachBaiVietHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChiTietBaiViet">
+      <wsdl:input message="tns:ChiTietBaiVietHttpGetIn" />
+      <wsdl:output message="tns:ChiTietBaiVietHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachVoiceAMZ">
+      <wsdl:input message="tns:DanhSachVoiceAMZHttpGetIn" />
+      <wsdl:output message="tns:DanhSachVoiceAMZHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachBaiVietDaUp">
+      <wsdl:input message="tns:DanhSachBaiVietDaUpHttpGetIn" />
+      <wsdl:output message="tns:DanhSachBaiVietDaUpHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertBaiVietDaUp">
+      <wsdl:input message="tns:InsertBaiVietDaUpHttpGetIn" />
+      <wsdl:output message="tns:InsertBaiVietDaUpHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Vession">
+      <wsdl:input message="tns:VessionHttpGetIn" />
+      <wsdl:output message="tns:VessionHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachFileCapNhat">
+      <wsdl:input message="tns:DanhSachFileCapNhatHttpGetIn" />
+      <wsdl:output message="tns:DanhSachFileCapNhatHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateVoiceKenh">
+      <wsdl:input message="tns:UpdateVoiceKenhHttpGetIn" />
+      <wsdl:output message="tns:UpdateVoiceKenhHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachBaiVietProshowCanRender">
+      <wsdl:input message="tns:DanhSachBaiVietProshowCanRenderHttpGetIn" />
+      <wsdl:output message="tns:DanhSachBaiVietProshowCanRenderHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachBaiVietProshowCanRenderTheoKenh">
+      <wsdl:input message="tns:DanhSachBaiVietProshowCanRenderTheoKenhHttpGetIn" />
+      <wsdl:output message="tns:DanhSachBaiVietProshowCanRenderTheoKenhHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachBaiVietProshowCanRenderTheoKenh_VoiceSelenium">
+      <wsdl:input message="tns:DanhSachBaiVietProshowCanRenderTheoKenh_VoiceSeleniumHttpGetIn" />
+      <wsdl:output message="tns:DanhSachBaiVietProshowCanRenderTheoKenh_VoiceSeleniumHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachBaiVietProshowDaRender">
+      <wsdl:input message="tns:DanhSachBaiVietProshowDaRenderHttpGetIn" />
+      <wsdl:output message="tns:DanhSachBaiVietProshowDaRenderHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBaiVietDangRender">
+      <wsdl:input message="tns:UpdateBaiVietDangRenderHttpGetIn" />
+      <wsdl:output message="tns:UpdateBaiVietDangRenderHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBaiVietDaRender">
+      <wsdl:input message="tns:UpdateBaiVietDaRenderHttpGetIn" />
+      <wsdl:output message="tns:UpdateBaiVietDaRenderHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ThongTinMCTheoKenh">
+      <wsdl:input message="tns:ThongTinMCTheoKenhHttpGetIn" />
+      <wsdl:output message="tns:ThongTinMCTheoKenhHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachNgonNgu">
+      <wsdl:input message="tns:DanhSachNgonNguHttpGetIn" />
+      <wsdl:output message="tns:DanhSachNgonNguHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachVoiceNgonNgu">
+      <wsdl:input message="tns:DanhSachVoiceNgonNguHttpGetIn" />
+      <wsdl:output message="tns:DanhSachVoiceNgonNguHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachEffect">
+      <wsdl:input message="tns:DanhSachEffectHttpGetIn" />
+      <wsdl:output message="tns:DanhSachEffectHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachEffectLevel">
+      <wsdl:input message="tns:DanhSachEffectLevelHttpGetIn" />
+      <wsdl:output message="tns:DanhSachEffectLevelHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertCauHinhVoiceKenh">
+      <wsdl:input message="tns:InsertCauHinhVoiceKenhHttpGetIn" />
+      <wsdl:output message="tns:InsertCauHinhVoiceKenhHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ThongTinCauHinhVoiceKenh">
+      <wsdl:input message="tns:ThongTinCauHinhVoiceKenhHttpGetIn" />
+      <wsdl:output message="tns:ThongTinCauHinhVoiceKenhHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachTinCanLayVoice">
+      <wsdl:input message="tns:DanhSachTinCanLayVoiceHttpGetIn" />
+      <wsdl:output message="tns:DanhSachTinCanLayVoiceHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachTinCanLayVoiceTheoKenh">
+      <wsdl:input message="tns:DanhSachTinCanLayVoiceTheoKenhHttpGetIn" />
+      <wsdl:output message="tns:DanhSachTinCanLayVoiceTheoKenhHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachTinCanLayVoiceTheoKenhTop">
+      <wsdl:input message="tns:DanhSachTinCanLayVoiceTheoKenhTopHttpGetIn" />
+      <wsdl:output message="tns:DanhSachTinCanLayVoiceTheoKenhTopHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDaLayVoice">
+      <wsdl:input message="tns:UpdateDaLayVoiceHttpGetIn" />
+      <wsdl:output message="tns:UpdateDaLayVoiceHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBaiVietDaLayVoice">
+      <wsdl:input message="tns:UpdateBaiVietDaLayVoiceHttpGetIn" />
+      <wsdl:output message="tns:UpdateBaiVietDaLayVoiceHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="_Head">
+      <wsdl:input message="tns:_HeadHttpGetIn" />
+      <wsdl:output message="tns:_HeadHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="_Silde">
+      <wsdl:input message="tns:_SildeHttpGetIn" />
+      <wsdl:output message="tns:_SildeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="_SildeMC">
+      <wsdl:input message="tns:_SildeMCHttpGetIn" />
+      <wsdl:output message="tns:_SildeMCHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="_TranSlide">
+      <wsdl:input message="tns:_TranSlideHttpGetIn" />
+      <wsdl:output message="tns:_TranSlideHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="_Footer">
+      <wsdl:input message="tns:_FooterHttpGetIn" />
+      <wsdl:output message="tns:_FooterHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="_InTro">
+      <wsdl:input message="tns:_InTroHttpGetIn" />
+      <wsdl:output message="tns:_InTroHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="_OutTro">
+      <wsdl:input message="tns:_OutTroHttpGetIn" />
+      <wsdl:output message="tns:_OutTroHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachCanSub">
+      <wsdl:input message="tns:DanhSachCanSubHttpGetIn" />
+      <wsdl:output message="tns:DanhSachCanSubHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LogSub">
+      <wsdl:input message="tns:LogSubHttpGetIn" />
+      <wsdl:output message="tns:LogSubHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LogIP">
+      <wsdl:input message="tns:LogIPHttpGetIn" />
+      <wsdl:output message="tns:LogIPHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachMail">
+      <wsdl:input message="tns:DanhSachMailHttpGetIn" />
+      <wsdl:output message="tns:DanhSachMailHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachMailChuaGanIP">
+      <wsdl:input message="tns:DanhSachMailChuaGanIPHttpGetIn" />
+      <wsdl:output message="tns:DanhSachMailChuaGanIPHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SuaIP">
+      <wsdl:input message="tns:SuaIPHttpGetIn" />
+      <wsdl:output message="tns:SuaIPHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VessionSub">
+      <wsdl:input message="tns:VessionSubHttpGetIn" />
+      <wsdl:output message="tns:VessionSubHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachFileUpdate">
+      <wsdl:input message="tns:DanhSachFileUpdateHttpGetIn" />
+      <wsdl:output message="tns:DanhSachFileUpdateHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachFileUpdateSub">
+      <wsdl:input message="tns:DanhSachFileUpdateSubHttpGetIn" />
+      <wsdl:output message="tns:DanhSachFileUpdateSubHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="WS_FakeAutoHttpPost">
+    <wsdl:operation name="DangNhap">
+      <wsdl:input message="tns:DangNhapHttpPostIn" />
+      <wsdl:output message="tns:DangNhapHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachKenh">
+      <wsdl:input message="tns:DanhSachKenhHttpPostIn" />
+      <wsdl:output message="tns:DanhSachKenhHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ThongTinKenh">
+      <wsdl:input message="tns:ThongTinKenhHttpPostIn" />
+      <wsdl:output message="tns:ThongTinKenhHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachBaiViet">
+      <wsdl:input message="tns:DanhSachBaiVietHttpPostIn" />
+      <wsdl:output message="tns:DanhSachBaiVietHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChiTietBaiViet">
+      <wsdl:input message="tns:ChiTietBaiVietHttpPostIn" />
+      <wsdl:output message="tns:ChiTietBaiVietHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachVoiceAMZ">
+      <wsdl:input message="tns:DanhSachVoiceAMZHttpPostIn" />
+      <wsdl:output message="tns:DanhSachVoiceAMZHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachBaiVietDaUp">
+      <wsdl:input message="tns:DanhSachBaiVietDaUpHttpPostIn" />
+      <wsdl:output message="tns:DanhSachBaiVietDaUpHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertBaiVietDaUp">
+      <wsdl:input message="tns:InsertBaiVietDaUpHttpPostIn" />
+      <wsdl:output message="tns:InsertBaiVietDaUpHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Vession">
+      <wsdl:input message="tns:VessionHttpPostIn" />
+      <wsdl:output message="tns:VessionHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachFileCapNhat">
+      <wsdl:input message="tns:DanhSachFileCapNhatHttpPostIn" />
+      <wsdl:output message="tns:DanhSachFileCapNhatHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateVoiceKenh">
+      <wsdl:input message="tns:UpdateVoiceKenhHttpPostIn" />
+      <wsdl:output message="tns:UpdateVoiceKenhHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachBaiVietProshowCanRender">
+      <wsdl:input message="tns:DanhSachBaiVietProshowCanRenderHttpPostIn" />
+      <wsdl:output message="tns:DanhSachBaiVietProshowCanRenderHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachBaiVietProshowCanRenderTheoKenh">
+      <wsdl:input message="tns:DanhSachBaiVietProshowCanRenderTheoKenhHttpPostIn" />
+      <wsdl:output message="tns:DanhSachBaiVietProshowCanRenderTheoKenhHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachBaiVietProshowCanRenderTheoKenh_VoiceSelenium">
+      <wsdl:input message="tns:DanhSachBaiVietProshowCanRenderTheoKenh_VoiceSeleniumHttpPostIn" />
+      <wsdl:output message="tns:DanhSachBaiVietProshowCanRenderTheoKenh_VoiceSeleniumHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachBaiVietProshowDaRender">
+      <wsdl:input message="tns:DanhSachBaiVietProshowDaRenderHttpPostIn" />
+      <wsdl:output message="tns:DanhSachBaiVietProshowDaRenderHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBaiVietDangRender">
+      <wsdl:input message="tns:UpdateBaiVietDangRenderHttpPostIn" />
+      <wsdl:output message="tns:UpdateBaiVietDangRenderHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBaiVietDaRender">
+      <wsdl:input message="tns:UpdateBaiVietDaRenderHttpPostIn" />
+      <wsdl:output message="tns:UpdateBaiVietDaRenderHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ThongTinMCTheoKenh">
+      <wsdl:input message="tns:ThongTinMCTheoKenhHttpPostIn" />
+      <wsdl:output message="tns:ThongTinMCTheoKenhHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachNgonNgu">
+      <wsdl:input message="tns:DanhSachNgonNguHttpPostIn" />
+      <wsdl:output message="tns:DanhSachNgonNguHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachVoiceNgonNgu">
+      <wsdl:input message="tns:DanhSachVoiceNgonNguHttpPostIn" />
+      <wsdl:output message="tns:DanhSachVoiceNgonNguHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachEffect">
+      <wsdl:input message="tns:DanhSachEffectHttpPostIn" />
+      <wsdl:output message="tns:DanhSachEffectHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachEffectLevel">
+      <wsdl:input message="tns:DanhSachEffectLevelHttpPostIn" />
+      <wsdl:output message="tns:DanhSachEffectLevelHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertCauHinhVoiceKenh">
+      <wsdl:input message="tns:InsertCauHinhVoiceKenhHttpPostIn" />
+      <wsdl:output message="tns:InsertCauHinhVoiceKenhHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ThongTinCauHinhVoiceKenh">
+      <wsdl:input message="tns:ThongTinCauHinhVoiceKenhHttpPostIn" />
+      <wsdl:output message="tns:ThongTinCauHinhVoiceKenhHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachTinCanLayVoice">
+      <wsdl:input message="tns:DanhSachTinCanLayVoiceHttpPostIn" />
+      <wsdl:output message="tns:DanhSachTinCanLayVoiceHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachTinCanLayVoiceTheoKenh">
+      <wsdl:input message="tns:DanhSachTinCanLayVoiceTheoKenhHttpPostIn" />
+      <wsdl:output message="tns:DanhSachTinCanLayVoiceTheoKenhHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachTinCanLayVoiceTheoKenhTop">
+      <wsdl:input message="tns:DanhSachTinCanLayVoiceTheoKenhTopHttpPostIn" />
+      <wsdl:output message="tns:DanhSachTinCanLayVoiceTheoKenhTopHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDaLayVoice">
+      <wsdl:input message="tns:UpdateDaLayVoiceHttpPostIn" />
+      <wsdl:output message="tns:UpdateDaLayVoiceHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBaiVietDaLayVoice">
+      <wsdl:input message="tns:UpdateBaiVietDaLayVoiceHttpPostIn" />
+      <wsdl:output message="tns:UpdateBaiVietDaLayVoiceHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="_Head">
+      <wsdl:input message="tns:_HeadHttpPostIn" />
+      <wsdl:output message="tns:_HeadHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="_Silde">
+      <wsdl:input message="tns:_SildeHttpPostIn" />
+      <wsdl:output message="tns:_SildeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="_SildeMC">
+      <wsdl:input message="tns:_SildeMCHttpPostIn" />
+      <wsdl:output message="tns:_SildeMCHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="_TranSlide">
+      <wsdl:input message="tns:_TranSlideHttpPostIn" />
+      <wsdl:output message="tns:_TranSlideHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="_Footer">
+      <wsdl:input message="tns:_FooterHttpPostIn" />
+      <wsdl:output message="tns:_FooterHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="_InTro">
+      <wsdl:input message="tns:_InTroHttpPostIn" />
+      <wsdl:output message="tns:_InTroHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="_OutTro">
+      <wsdl:input message="tns:_OutTroHttpPostIn" />
+      <wsdl:output message="tns:_OutTroHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachCanSub">
+      <wsdl:input message="tns:DanhSachCanSubHttpPostIn" />
+      <wsdl:output message="tns:DanhSachCanSubHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LogSub">
+      <wsdl:input message="tns:LogSubHttpPostIn" />
+      <wsdl:output message="tns:LogSubHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LogIP">
+      <wsdl:input message="tns:LogIPHttpPostIn" />
+      <wsdl:output message="tns:LogIPHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachMail">
+      <wsdl:input message="tns:DanhSachMailHttpPostIn" />
+      <wsdl:output message="tns:DanhSachMailHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachMailChuaGanIP">
+      <wsdl:input message="tns:DanhSachMailChuaGanIPHttpPostIn" />
+      <wsdl:output message="tns:DanhSachMailChuaGanIPHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SuaIP">
+      <wsdl:input message="tns:SuaIPHttpPostIn" />
+      <wsdl:output message="tns:SuaIPHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VessionSub">
+      <wsdl:input message="tns:VessionSubHttpPostIn" />
+      <wsdl:output message="tns:VessionSubHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachFileUpdate">
+      <wsdl:input message="tns:DanhSachFileUpdateHttpPostIn" />
+      <wsdl:output message="tns:DanhSachFileUpdateHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachFileUpdateSub">
+      <wsdl:input message="tns:DanhSachFileUpdateSubHttpPostIn" />
+      <wsdl:output message="tns:DanhSachFileUpdateSubHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WS_FakeAutoSoap" type="tns:WS_FakeAutoSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DangNhap">
+      <soap:operation soapAction="http://tempuri.org/DangNhap" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachKenh">
+      <soap:operation soapAction="http://tempuri.org/DanhSachKenh" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ThongTinKenh">
+      <soap:operation soapAction="http://tempuri.org/ThongTinKenh" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachBaiViet">
+      <soap:operation soapAction="http://tempuri.org/DanhSachBaiViet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChiTietBaiViet">
+      <soap:operation soapAction="http://tempuri.org/ChiTietBaiViet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachVoiceAMZ">
+      <soap:operation soapAction="http://tempuri.org/DanhSachVoiceAMZ" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachBaiVietDaUp">
+      <soap:operation soapAction="http://tempuri.org/DanhSachBaiVietDaUp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertBaiVietDaUp">
+      <soap:operation soapAction="http://tempuri.org/InsertBaiVietDaUp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Vession">
+      <soap:operation soapAction="http://tempuri.org/Vession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachFileCapNhat">
+      <soap:operation soapAction="http://tempuri.org/DanhSachFileCapNhat" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateVoiceKenh">
+      <soap:operation soapAction="http://tempuri.org/UpdateVoiceKenh" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachBaiVietProshowCanRender">
+      <soap:operation soapAction="http://tempuri.org/DanhSachBaiVietProshowCanRender" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachBaiVietProshowCanRenderTheoKenh">
+      <soap:operation soapAction="http://tempuri.org/DanhSachBaiVietProshowCanRenderTheoKenh" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachBaiVietProshowCanRenderTheoKenh_VoiceSelenium">
+      <soap:operation soapAction="http://tempuri.org/DanhSachBaiVietProshowCanRenderTheoKenh_VoiceSelenium" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachBaiVietProshowDaRender">
+      <soap:operation soapAction="http://tempuri.org/DanhSachBaiVietProshowDaRender" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBaiVietDangRender">
+      <soap:operation soapAction="http://tempuri.org/UpdateBaiVietDangRender" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBaiVietDaRender">
+      <soap:operation soapAction="http://tempuri.org/UpdateBaiVietDaRender" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ThongTinMCTheoKenh">
+      <soap:operation soapAction="http://tempuri.org/ThongTinMCTheoKenh" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachNgonNgu">
+      <soap:operation soapAction="http://tempuri.org/DanhSachNgonNgu" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachVoiceNgonNgu">
+      <soap:operation soapAction="http://tempuri.org/DanhSachVoiceNgonNgu" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachEffect">
+      <soap:operation soapAction="http://tempuri.org/DanhSachEffect" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachEffectLevel">
+      <soap:operation soapAction="http://tempuri.org/DanhSachEffectLevel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertCauHinhVoiceKenh">
+      <soap:operation soapAction="http://tempuri.org/InsertCauHinhVoiceKenh" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ThongTinCauHinhVoiceKenh">
+      <soap:operation soapAction="http://tempuri.org/ThongTinCauHinhVoiceKenh" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachTinCanLayVoice">
+      <soap:operation soapAction="http://tempuri.org/DanhSachTinCanLayVoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachTinCanLayVoiceTheoKenh">
+      <soap:operation soapAction="http://tempuri.org/DanhSachTinCanLayVoiceTheoKenh" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachTinCanLayVoiceTheoKenhTop">
+      <soap:operation soapAction="http://tempuri.org/DanhSachTinCanLayVoiceTheoKenhTop" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDaLayVoice">
+      <soap:operation soapAction="http://tempuri.org/UpdateDaLayVoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBaiVietDaLayVoice">
+      <soap:operation soapAction="http://tempuri.org/UpdateBaiVietDaLayVoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_Head">
+      <soap:operation soapAction="http://tempuri.org/_Head" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_Silde">
+      <soap:operation soapAction="http://tempuri.org/_Silde" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_SildeMC">
+      <soap:operation soapAction="http://tempuri.org/_SildeMC" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_TranSlide">
+      <soap:operation soapAction="http://tempuri.org/_TranSlide" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_Footer">
+      <soap:operation soapAction="http://tempuri.org/_Footer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_InTro">
+      <soap:operation soapAction="http://tempuri.org/_InTro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_OutTro">
+      <soap:operation soapAction="http://tempuri.org/_OutTro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachCanSub">
+      <soap:operation soapAction="http://tempuri.org/DanhSachCanSub" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogSub">
+      <soap:operation soapAction="http://tempuri.org/LogSub" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogIP">
+      <soap:operation soapAction="http://tempuri.org/LogIP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachMail">
+      <soap:operation soapAction="http://tempuri.org/DanhSachMail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachMailChuaGanIP">
+      <soap:operation soapAction="http://tempuri.org/DanhSachMailChuaGanIP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SuaIP">
+      <soap:operation soapAction="http://tempuri.org/SuaIP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VessionSub">
+      <soap:operation soapAction="http://tempuri.org/VessionSub" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachFileUpdate">
+      <soap:operation soapAction="http://tempuri.org/DanhSachFileUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachFileUpdateSub">
+      <soap:operation soapAction="http://tempuri.org/DanhSachFileUpdateSub" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WS_FakeAutoSoap12" type="tns:WS_FakeAutoSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DangNhap">
+      <soap12:operation soapAction="http://tempuri.org/DangNhap" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachKenh">
+      <soap12:operation soapAction="http://tempuri.org/DanhSachKenh" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ThongTinKenh">
+      <soap12:operation soapAction="http://tempuri.org/ThongTinKenh" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachBaiViet">
+      <soap12:operation soapAction="http://tempuri.org/DanhSachBaiViet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChiTietBaiViet">
+      <soap12:operation soapAction="http://tempuri.org/ChiTietBaiViet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachVoiceAMZ">
+      <soap12:operation soapAction="http://tempuri.org/DanhSachVoiceAMZ" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachBaiVietDaUp">
+      <soap12:operation soapAction="http://tempuri.org/DanhSachBaiVietDaUp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertBaiVietDaUp">
+      <soap12:operation soapAction="http://tempuri.org/InsertBaiVietDaUp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Vession">
+      <soap12:operation soapAction="http://tempuri.org/Vession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachFileCapNhat">
+      <soap12:operation soapAction="http://tempuri.org/DanhSachFileCapNhat" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateVoiceKenh">
+      <soap12:operation soapAction="http://tempuri.org/UpdateVoiceKenh" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachBaiVietProshowCanRender">
+      <soap12:operation soapAction="http://tempuri.org/DanhSachBaiVietProshowCanRender" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachBaiVietProshowCanRenderTheoKenh">
+      <soap12:operation soapAction="http://tempuri.org/DanhSachBaiVietProshowCanRenderTheoKenh" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachBaiVietProshowCanRenderTheoKenh_VoiceSelenium">
+      <soap12:operation soapAction="http://tempuri.org/DanhSachBaiVietProshowCanRenderTheoKenh_VoiceSelenium" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachBaiVietProshowDaRender">
+      <soap12:operation soapAction="http://tempuri.org/DanhSachBaiVietProshowDaRender" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBaiVietDangRender">
+      <soap12:operation soapAction="http://tempuri.org/UpdateBaiVietDangRender" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBaiVietDaRender">
+      <soap12:operation soapAction="http://tempuri.org/UpdateBaiVietDaRender" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ThongTinMCTheoKenh">
+      <soap12:operation soapAction="http://tempuri.org/ThongTinMCTheoKenh" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachNgonNgu">
+      <soap12:operation soapAction="http://tempuri.org/DanhSachNgonNgu" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachVoiceNgonNgu">
+      <soap12:operation soapAction="http://tempuri.org/DanhSachVoiceNgonNgu" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachEffect">
+      <soap12:operation soapAction="http://tempuri.org/DanhSachEffect" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachEffectLevel">
+      <soap12:operation soapAction="http://tempuri.org/DanhSachEffectLevel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertCauHinhVoiceKenh">
+      <soap12:operation soapAction="http://tempuri.org/InsertCauHinhVoiceKenh" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ThongTinCauHinhVoiceKenh">
+      <soap12:operation soapAction="http://tempuri.org/ThongTinCauHinhVoiceKenh" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachTinCanLayVoice">
+      <soap12:operation soapAction="http://tempuri.org/DanhSachTinCanLayVoice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachTinCanLayVoiceTheoKenh">
+      <soap12:operation soapAction="http://tempuri.org/DanhSachTinCanLayVoiceTheoKenh" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachTinCanLayVoiceTheoKenhTop">
+      <soap12:operation soapAction="http://tempuri.org/DanhSachTinCanLayVoiceTheoKenhTop" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDaLayVoice">
+      <soap12:operation soapAction="http://tempuri.org/UpdateDaLayVoice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBaiVietDaLayVoice">
+      <soap12:operation soapAction="http://tempuri.org/UpdateBaiVietDaLayVoice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_Head">
+      <soap12:operation soapAction="http://tempuri.org/_Head" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_Silde">
+      <soap12:operation soapAction="http://tempuri.org/_Silde" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_SildeMC">
+      <soap12:operation soapAction="http://tempuri.org/_SildeMC" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_TranSlide">
+      <soap12:operation soapAction="http://tempuri.org/_TranSlide" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_Footer">
+      <soap12:operation soapAction="http://tempuri.org/_Footer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_InTro">
+      <soap12:operation soapAction="http://tempuri.org/_InTro" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_OutTro">
+      <soap12:operation soapAction="http://tempuri.org/_OutTro" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachCanSub">
+      <soap12:operation soapAction="http://tempuri.org/DanhSachCanSub" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogSub">
+      <soap12:operation soapAction="http://tempuri.org/LogSub" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogIP">
+      <soap12:operation soapAction="http://tempuri.org/LogIP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachMail">
+      <soap12:operation soapAction="http://tempuri.org/DanhSachMail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachMailChuaGanIP">
+      <soap12:operation soapAction="http://tempuri.org/DanhSachMailChuaGanIP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SuaIP">
+      <soap12:operation soapAction="http://tempuri.org/SuaIP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VessionSub">
+      <soap12:operation soapAction="http://tempuri.org/VessionSub" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachFileUpdate">
+      <soap12:operation soapAction="http://tempuri.org/DanhSachFileUpdate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachFileUpdateSub">
+      <soap12:operation soapAction="http://tempuri.org/DanhSachFileUpdateSub" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WS_FakeAutoHttpGet" type="tns:WS_FakeAutoHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="DangNhap">
+      <http:operation location="/DangNhap" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachKenh">
+      <http:operation location="/DanhSachKenh" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ThongTinKenh">
+      <http:operation location="/ThongTinKenh" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachBaiViet">
+      <http:operation location="/DanhSachBaiViet" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChiTietBaiViet">
+      <http:operation location="/ChiTietBaiViet" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachVoiceAMZ">
+      <http:operation location="/DanhSachVoiceAMZ" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachBaiVietDaUp">
+      <http:operation location="/DanhSachBaiVietDaUp" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertBaiVietDaUp">
+      <http:operation location="/InsertBaiVietDaUp" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="Vession">
+      <http:operation location="/Vession" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachFileCapNhat">
+      <http:operation location="/DanhSachFileCapNhat" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateVoiceKenh">
+      <http:operation location="/UpdateVoiceKenh" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachBaiVietProshowCanRender">
+      <http:operation location="/DanhSachBaiVietProshowCanRender" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachBaiVietProshowCanRenderTheoKenh">
+      <http:operation location="/DanhSachBaiVietProshowCanRenderTheoKenh" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachBaiVietProshowCanRenderTheoKenh_VoiceSelenium">
+      <http:operation location="/DanhSachBaiVietProshowCanRenderTheoKenh_VoiceSelenium" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachBaiVietProshowDaRender">
+      <http:operation location="/DanhSachBaiVietProshowDaRender" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBaiVietDangRender">
+      <http:operation location="/UpdateBaiVietDangRender" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBaiVietDaRender">
+      <http:operation location="/UpdateBaiVietDaRender" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ThongTinMCTheoKenh">
+      <http:operation location="/ThongTinMCTheoKenh" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachNgonNgu">
+      <http:operation location="/DanhSachNgonNgu" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachVoiceNgonNgu">
+      <http:operation location="/DanhSachVoiceNgonNgu" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachEffect">
+      <http:operation location="/DanhSachEffect" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachEffectLevel">
+      <http:operation location="/DanhSachEffectLevel" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertCauHinhVoiceKenh">
+      <http:operation location="/InsertCauHinhVoiceKenh" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ThongTinCauHinhVoiceKenh">
+      <http:operation location="/ThongTinCauHinhVoiceKenh" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachTinCanLayVoice">
+      <http:operation location="/DanhSachTinCanLayVoice" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachTinCanLayVoiceTheoKenh">
+      <http:operation location="/DanhSachTinCanLayVoiceTheoKenh" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachTinCanLayVoiceTheoKenhTop">
+      <http:operation location="/DanhSachTinCanLayVoiceTheoKenhTop" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDaLayVoice">
+      <http:operation location="/UpdateDaLayVoice" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBaiVietDaLayVoice">
+      <http:operation location="/UpdateBaiVietDaLayVoice" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="_Head">
+      <http:operation location="/_Head" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_Silde">
+      <http:operation location="/_Silde" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_SildeMC">
+      <http:operation location="/_SildeMC" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_TranSlide">
+      <http:operation location="/_TranSlide" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_Footer">
+      <http:operation location="/_Footer" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_InTro">
+      <http:operation location="/_InTro" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_OutTro">
+      <http:operation location="/_OutTro" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachCanSub">
+      <http:operation location="/DanhSachCanSub" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogSub">
+      <http:operation location="/LogSub" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="LogIP">
+      <http:operation location="/LogIP" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachMail">
+      <http:operation location="/DanhSachMail" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachMailChuaGanIP">
+      <http:operation location="/DanhSachMailChuaGanIP" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SuaIP">
+      <http:operation location="/SuaIP" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="VessionSub">
+      <http:operation location="/VessionSub" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachFileUpdate">
+      <http:operation location="/DanhSachFileUpdate" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachFileUpdateSub">
+      <http:operation location="/DanhSachFileUpdateSub" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WS_FakeAutoHttpPost" type="tns:WS_FakeAutoHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="DangNhap">
+      <http:operation location="/DangNhap" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachKenh">
+      <http:operation location="/DanhSachKenh" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ThongTinKenh">
+      <http:operation location="/ThongTinKenh" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachBaiViet">
+      <http:operation location="/DanhSachBaiViet" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChiTietBaiViet">
+      <http:operation location="/ChiTietBaiViet" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachVoiceAMZ">
+      <http:operation location="/DanhSachVoiceAMZ" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachBaiVietDaUp">
+      <http:operation location="/DanhSachBaiVietDaUp" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertBaiVietDaUp">
+      <http:operation location="/InsertBaiVietDaUp" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="Vession">
+      <http:operation location="/Vession" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachFileCapNhat">
+      <http:operation location="/DanhSachFileCapNhat" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateVoiceKenh">
+      <http:operation location="/UpdateVoiceKenh" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachBaiVietProshowCanRender">
+      <http:operation location="/DanhSachBaiVietProshowCanRender" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachBaiVietProshowCanRenderTheoKenh">
+      <http:operation location="/DanhSachBaiVietProshowCanRenderTheoKenh" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachBaiVietProshowCanRenderTheoKenh_VoiceSelenium">
+      <http:operation location="/DanhSachBaiVietProshowCanRenderTheoKenh_VoiceSelenium" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachBaiVietProshowDaRender">
+      <http:operation location="/DanhSachBaiVietProshowDaRender" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBaiVietDangRender">
+      <http:operation location="/UpdateBaiVietDangRender" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBaiVietDaRender">
+      <http:operation location="/UpdateBaiVietDaRender" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ThongTinMCTheoKenh">
+      <http:operation location="/ThongTinMCTheoKenh" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachNgonNgu">
+      <http:operation location="/DanhSachNgonNgu" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachVoiceNgonNgu">
+      <http:operation location="/DanhSachVoiceNgonNgu" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachEffect">
+      <http:operation location="/DanhSachEffect" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachEffectLevel">
+      <http:operation location="/DanhSachEffectLevel" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertCauHinhVoiceKenh">
+      <http:operation location="/InsertCauHinhVoiceKenh" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ThongTinCauHinhVoiceKenh">
+      <http:operation location="/ThongTinCauHinhVoiceKenh" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachTinCanLayVoice">
+      <http:operation location="/DanhSachTinCanLayVoice" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachTinCanLayVoiceTheoKenh">
+      <http:operation location="/DanhSachTinCanLayVoiceTheoKenh" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachTinCanLayVoiceTheoKenhTop">
+      <http:operation location="/DanhSachTinCanLayVoiceTheoKenhTop" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDaLayVoice">
+      <http:operation location="/UpdateDaLayVoice" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBaiVietDaLayVoice">
+      <http:operation location="/UpdateBaiVietDaLayVoice" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="_Head">
+      <http:operation location="/_Head" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_Silde">
+      <http:operation location="/_Silde" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_SildeMC">
+      <http:operation location="/_SildeMC" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_TranSlide">
+      <http:operation location="/_TranSlide" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_Footer">
+      <http:operation location="/_Footer" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_InTro">
+      <http:operation location="/_InTro" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_OutTro">
+      <http:operation location="/_OutTro" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachCanSub">
+      <http:operation location="/DanhSachCanSub" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogSub">
+      <http:operation location="/LogSub" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="LogIP">
+      <http:operation location="/LogIP" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachMail">
+      <http:operation location="/DanhSachMail" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachMailChuaGanIP">
+      <http:operation location="/DanhSachMailChuaGanIP" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SuaIP">
+      <http:operation location="/SuaIP" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="VessionSub">
+      <http:operation location="/VessionSub" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachFileUpdate">
+      <http:operation location="/DanhSachFileUpdate" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachFileUpdateSub">
+      <http:operation location="/DanhSachFileUpdateSub" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WS_FakeAuto">
+    <wsdl:port name="WS_FakeAutoSoap" binding="tns:WS_FakeAutoSoap">
+      <soap:address location="http://buudienhanoi.com.vn/ThangBDHN_Luu2/WS_FakeAuto.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WS_FakeAutoSoap12" binding="tns:WS_FakeAutoSoap12">
+      <soap12:address location="http://buudienhanoi.com.vn/ThangBDHN_Luu2/WS_FakeAuto.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WS_FakeAutoHttpGet" binding="tns:WS_FakeAutoHttpGet">
+      <http:address location="http://buudienhanoi.com.vn/ThangBDHN_Luu2/WS_FakeAuto.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WS_FakeAutoHttpPost" binding="tns:WS_FakeAutoHttpPost">
+      <http:address location="http://buudienhanoi.com.vn/ThangBDHN_Luu2/WS_FakeAuto.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
