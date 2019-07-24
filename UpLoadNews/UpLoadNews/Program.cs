@@ -15,6 +15,7 @@ namespace UpLoadNews
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            // test thử phát coi
             Application.Run(new Login());
         }
     }

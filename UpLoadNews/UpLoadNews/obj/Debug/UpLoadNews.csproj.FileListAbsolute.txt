@@ -302,3 +302,6 @@ D:\THANGLUU\UpLoadNews\UpLoadNews\obj\Debug\UpLoadNews.WebAutomationV2.resources
 D:\THANGLUU\UpLoadNews\UpLoadNews\obj\Debug\UpLoadNews.csproj.GenerateResource.Cache
 D:\THANGLUU\UpLoadNews\UpLoadNews\obj\Debug\UpLoadNews.exe
 D:\THANGLUU\UpLoadNews\UpLoadNews\obj\Debug\UpLoadNews.pdb
+D:\GITHUB\UpLoadNews\UpLoadNews\UpLoadNews\bin\Debug\UpLoadNews.exe.config
+D:\GITHUB\UpLoadNews\UpLoadNews\UpLoadNews\obj\Debug\UpLoadNews.exe
+D:\GITHUB\UpLoadNews\UpLoadNews\UpLoadNews\obj\Debug\UpLoadNews.pdb
