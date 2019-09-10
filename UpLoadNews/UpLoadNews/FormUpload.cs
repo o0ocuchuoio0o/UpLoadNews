@@ -1645,6 +1645,14 @@ namespace UpLoadNews
                                             {
                                                 PropretiesCollection.driver.Navigate().GoToUrl("https://ttsmp3.com/text-to-speech/");
                                             }
+                                            else if (radiovoiceamazon.Checked == true)
+                                            {
+                                                PropretiesCollection.driver.Navigate().GoToUrl("https://ttstool.com/");
+                                            }
+                                            else if (radiovoiceMicrosoft.Checked == true)
+                                            {
+                                                PropretiesCollection.driver.Navigate().GoToUrl("https://ttstool.com/");
+                                            }
                                             int count = listslide.Rows.Count;
                                             if (count > 0 && radvoice2.Checked == true)
                                             {
@@ -1884,6 +1892,18 @@ namespace UpLoadNews
                                                             {
                                                                  read.getvoicemp3_TTSmp3(cmbttsmp3.Text, noidung.Trim());
                                                                  chuyenmp3torender(txtuotdownloads.Text, _voice);
+                                                                _voiceaudio = _voice;
+                                                            }
+                                                            else if (radiovoiceamazon.Checked == true)
+                                                            {
+                                                                read.getvoicemp3_TTSTOOL("Amazon", ddlLaguageamazon.Text,cmbvoiceamazon.Text, noidung.Trim());
+                                                                chuyenmp3torender(txtuotdownloads.Text, _voice);
+                                                                _voiceaudio = _voice;
+                                                            }
+                                                            else if (radiovoiceMicrosoft.Checked == true)
+                                                            {
+                                                                read.getvoicemp3_TTSTOOL("Microsoft", ddlLaguagemicrosoft.Text, cmbvoicemicrosoft.Text, noidung.Trim());
+                                                                chuyenmp3torender(txtuotdownloads.Text, _voice);
                                                                 _voiceaudio = _voice;
                                                             }
                                                             lblxuly.Text = "Lấy voice ok url=" + url.ToString();
@@ -2602,6 +2622,148 @@ namespace UpLoadNews
         private void txtfoldervideo_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void ddlLaguageamazon_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("NgonNgu", typeof(string));
+            dt.Columns.Add("Voice", typeof(string));
+            dt.Rows.Add("Danish", "Mads (Danish)");
+            dt.Rows.Add("Danish", "Naja (Danish)");
+            dt.Rows.Add("Dutch", "Lotte (Dutch)");
+            dt.Rows.Add("Dutch", "Ruben (Dutch)");
+            dt.Rows.Add("English", "Nicole (Australian English)");
+            dt.Rows.Add("English", "Russell (Australian English)");
+            dt.Rows.Add("English", "Amy (British English)");
+            dt.Rows.Add("English", "Brian (British English)");
+            dt.Rows.Add("English", "Emma (British English)");
+            dt.Rows.Add("English", "Aditi (Indian English)");
+            dt.Rows.Add("English", "Raveena (Indian English)");
+            dt.Rows.Add("English", "Ivy (US English)");
+            dt.Rows.Add("English", "Joanna (US English)");
+            dt.Rows.Add("English", "Joey (US English)");
+            dt.Rows.Add("English", "Justin (US English)");
+            dt.Rows.Add("English", "Kendra (US English)");
+            dt.Rows.Add("English", "Kimberly (US English)");
+            dt.Rows.Add("English", "Matthew (US English)");
+            dt.Rows.Add("English", "Salli (US English)");
+            dt.Rows.Add("English", "Geraint (Welsh English)");
+            dt.Rows.Add("French", "Chantal (Canadian French)");
+            dt.Rows.Add("French", "Celine (French)");
+            dt.Rows.Add("French", "Mathieu (French)");
+            dt.Rows.Add("German", "Hans (German)");
+            dt.Rows.Add("German", "Marlene (German)");
+            dt.Rows.Add("German", "Vicki (German)");
+            dt.Rows.Add("Icelandic", "Dora (Icelandic)");
+            dt.Rows.Add("Icelandic", "Karl (Icelandic)");
+            dt.Rows.Add("Italian", "Carla (Italian)");
+            dt.Rows.Add("Italian", "Giorgio (Italian)");
+            dt.Rows.Add("Japanese", "Mizuki (Japanese)");
+            dt.Rows.Add("Japanese", "Takumi (Japanese)");
+            dt.Rows.Add("Korean", "Seoyeon (Korean)");
+            dt.Rows.Add("Norwegian", "Liv (Norwegian)");
+            dt.Rows.Add("Polish", "Ewa (Polish)");
+            dt.Rows.Add("Polish", "Jacek (Polish)");
+            dt.Rows.Add("Polish", "Jan (Polish)");
+            dt.Rows.Add("Polish", "Maja (Polish)");
+            dt.Rows.Add("Portuguese", "Ricardo (Brazilian Portuguese)");
+            dt.Rows.Add("Portuguese", "Vitoria (Brazilian Portuguese)");
+            dt.Rows.Add("Portuguese", "Cristiano (Portuguese)");
+            dt.Rows.Add("Portuguese", "Ines (Portuguese)");
+            dt.Rows.Add("Romanian", "Carmen (Romanian)");
+            dt.Rows.Add("Russian", "Maxim (Russian)");
+            dt.Rows.Add("Russian", "Tatyana (Russian)");
+            dt.Rows.Add("Spanish", "Conchita (Castilian Spanish)");
+            dt.Rows.Add("Spanish", "Enrique (Castilian Spanish)");
+            dt.Rows.Add("Spanish", "Miguel (US Spanish)");
+            dt.Rows.Add("Spanish", "Penelope (US Spanish)");
+            dt.Rows.Add("Swedish", "Astrid (Swedish)");
+            dt.Rows.Add("Turkish", "Filiz (Turkish)");
+            dt.Rows.Add("Welsh", "Gwyneth (Welsh)");           
+            DataRow[] rows = dt.Select("NgonNgu LIKE '*" + ddlLaguageamazon.Text + "*' ");
+            DataTable table = new DataTable();
+            table.Columns.Add("Voice", typeof(string));
+            foreach (DataRow row in rows)
+            {
+                table.Rows.Add(row["Voice"].ToString());
+            }
+            cmbvoiceamazon.DataSource = table;
+            cmbvoiceamazon.DisplayMember = "Voice";
+            cmbvoiceamazon.ValueMember = "Voice";
+        }
+
+        private void ddlLaguagemicrosoft_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("NgonNgu", typeof(string));
+            dt.Columns.Add("Voice", typeof(string));
+            dt.Rows.Add("Catalan", "Herena (Catalan)");
+            dt.Rows.Add("Chinese", "Huihui (Chinese)");
+            dt.Rows.Add("Chinese", "Kangkang (Chinese)");
+            dt.Rows.Add("Chinese", "Yaoyao (Chinese)");
+            dt.Rows.Add("ChineseTW", "Hanhan (ChineseTW)");
+            dt.Rows.Add("ChineseTW", "Yating (ChineseTW)");
+            dt.Rows.Add("ChineseTW", "Zhiwei (ChineseTW)");
+            dt.Rows.Add("Danish", "Helle (Danish)");
+            dt.Rows.Add("Dutch", "Bart (Belgian Dutch)");
+            dt.Rows.Add("Dutch", "Frank (Dutch)");
+            dt.Rows.Add("English", "Catherine (Australian English)");
+            dt.Rows.Add("English", "James (Australian English)");
+            dt.Rows.Add("English", "George (British English)");
+            dt.Rows.Add("English", "Hazel (British English)");
+            dt.Rows.Add("English", "Susan (British English)");
+            dt.Rows.Add("English", "Linda (Canadian English)");
+            dt.Rows.Add("English", "Richard (Canadian English)");
+            dt.Rows.Add("English", "Heera (Indian English)");
+            dt.Rows.Add("English", "Ravi (Indian English)");
+            dt.Rows.Add("English", "David (US English)");
+            dt.Rows.Add("English", "Mark (US English)");
+            dt.Rows.Add("English", "Zira (US English)");
+            dt.Rows.Add("Finnish", "Heidi (Finnish)");
+            dt.Rows.Add("French", "Caroline (Canadian French)");
+            dt.Rows.Add("French", "Claude (Canadian French)");
+            dt.Rows.Add("French", "Nathalie (Canadian French)");
+            dt.Rows.Add("French", "Hortense (French)");
+            dt.Rows.Add("French", "Julie (French)");
+            dt.Rows.Add("French", "Paul (French)");
+            dt.Rows.Add("German", "Hedda (German)");
+            dt.Rows.Add("German", "Katja (German)");
+            dt.Rows.Add("German", "Stefan (German)");
+            dt.Rows.Add("Italian", "Cosimo (Italian)");
+            dt.Rows.Add("Italian", "Elsa (Italian)");
+            dt.Rows.Add("Japanese", "Ayumi (Japanese)");
+            dt.Rows.Add("Japanese", "Haruka (Japanese)");
+            dt.Rows.Add("Japanese", "Ichiro (Japanese)");
+            dt.Rows.Add("Japanese", "Sayaka (Japanese)");
+            dt.Rows.Add("Korean", "Heami (Korean)");
+            dt.Rows.Add("Norwegian", "Jon (Norwegian)");
+            dt.Rows.Add("Polish", "Adam (Polish)");
+            dt.Rows.Add("Polish", "Paulina (Polish)");
+            dt.Rows.Add("Portuguese", "Daniel (Brazilian Portuguese)");
+            dt.Rows.Add("Portuguese", "Maria (Brazilian Portuguese)");
+            dt.Rows.Add("Portuguese", "Helia (Portuguese)");
+            dt.Rows.Add("Russian", "Irina (Russian)");
+            dt.Rows.Add("Russian", "Pavel (Russian)");
+            dt.Rows.Add("Spanish", "Raul (Mexican Spanish)");
+            dt.Rows.Add("Spanish", "Sabina (Mexican Spanish)");
+            dt.Rows.Add("Spanish", "Helena (Spanish)");
+            dt.Rows.Add("Spanish", "Laura (Spanish)");
+            dt.Rows.Add("Spanish", "Pablo (Spanish)");
+            dt.Rows.Add("Swedish", "Bengt (Swedish)");
+            dt.Rows.Add("Turkish", "Tolga (Turkish)");
+            dt.Rows.Add("Vietnamese", "An (Vietnamese)");           
+
+            DataRow[] rows = dt.Select("NgonNgu LIKE '*" + ddlLaguagemicrosoft.Text + "*' ");
+            DataTable table = new DataTable();
+            table.Columns.Add("Voice", typeof(string));
+            foreach (DataRow row in rows)
+            {
+                table.Rows.Add(row["Voice"].ToString());
+            }
+            cmbvoicemicrosoft.DataSource = table;
+            cmbvoicemicrosoft.DisplayMember = "Voice";
+            cmbvoicemicrosoft.ValueMember = "Voice";
         }
     }
 }

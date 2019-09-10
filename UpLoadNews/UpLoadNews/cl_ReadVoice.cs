@@ -934,12 +934,40 @@ namespace UpLoadNews
             m_downttsmp3.Click();
             Thread.Sleep(5000);
         }
-        
+
 
         #endregion
 
+        #region // lấy voice ở trang https://ttstool.com/?fbclid=IwAR0cMXqLvFPhhkaeZhzok0PvB_befDCd4FBIZNfrEdlmZXsAzWZTGGkuX-Y
 
-        #region // get tag       
+        [FindsBy(How = How.XPath, Using = "//textarea")]
+        public IWebElement m_textttstool;
+        [FindsBy(How = How.XPath, Using = "/html/body/div/table/tbody/tr/td[2]/select")]
+        public IWebElement m_chonserverttstool;
+        [FindsBy(How = How.XPath, Using = "/html/body/div/table/tbody/tr[2]/td[2]/select")]
+        public IWebElement m_chonngonnguttstool;
+        [FindsBy(How = How.XPath, Using = "/html/body/div/table[2]/tbody/tr/td/div[2]/div[2]/select")]
+        public IWebElement m_chonvoicettstool;
+        [FindsBy(How = How.XPath, Using = "/html/body/div/div/i[2]")]
+        public IWebElement m_downttstool;
+        public void getvoicemp3_TTSTOOL(string server,string ngonngu,string voice, string text)
+        {
+            SeleniumSetMeThor.SelectDropDown(m_chonserverttstool, server);
+            Thread.Sleep(1000);
+            SeleniumSetMeThor.SelectDropDown(m_chonngonnguttstool, ngonngu);
+            Thread.Sleep(2000);
+            SeleniumSetMeThor.SelectDropDown(m_chonvoicettstool, voice);
+            Thread.Sleep(1000);
+            m_textttstool.Clear();
+            m_textttstool.SendKeys(text);
+            Thread.Sleep(1000);
+            m_downttstool.Click();
+            Thread.Sleep(4000);
+        }
+
+        #endregion
+
+            #region // get tag       
         [FindsBy(How = How.CssSelector, Using = "pre[style='word-wrap: break-word; white-space: pre-wrap;']")]
         public IWebElement listtag;
         public static String chuanHoa(String _string)

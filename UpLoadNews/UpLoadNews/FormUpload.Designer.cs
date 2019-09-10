@@ -195,6 +195,16 @@
             this.bgwlayvoice = new System.ComponentModel.BackgroundWorker();
             this.bgwrendermulti = new System.ComponentModel.BackgroundWorker();
             this.timerrendermulti = new System.Windows.Forms.Timer(this.components);
+            this.radiovoiceamazon = new System.Windows.Forms.RadioButton();
+            this.radiovoiceMicrosoft = new System.Windows.Forms.RadioButton();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.ddlLaguageamazon = new System.Windows.Forms.ComboBox();
+            this.cmbvoiceamazon = new System.Windows.Forms.ComboBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.ddlLaguagemicrosoft = new System.Windows.Forms.ComboBox();
+            this.cmbvoicemicrosoft = new System.Windows.Forms.ComboBox();
             this.groupBox3.SuspendLayout();
             this.tabControl3.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -1758,6 +1768,16 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.label22);
+            this.groupBox7.Controls.Add(this.label23);
+            this.groupBox7.Controls.Add(this.ddlLaguagemicrosoft);
+            this.groupBox7.Controls.Add(this.cmbvoicemicrosoft);
+            this.groupBox7.Controls.Add(this.label20);
+            this.groupBox7.Controls.Add(this.label21);
+            this.groupBox7.Controls.Add(this.ddlLaguageamazon);
+            this.groupBox7.Controls.Add(this.cmbvoiceamazon);
+            this.groupBox7.Controls.Add(this.radiovoiceMicrosoft);
+            this.groupBox7.Controls.Add(this.radiovoiceamazon);
             this.groupBox7.Controls.Add(this.cmbttsmp3);
             this.groupBox7.Controls.Add(this.radttsmp3);
             this.groupBox7.Controls.Add(this.cmbispeech);
@@ -1838,10 +1858,10 @@
             "US Spanish / Miguel",
             "Welsh / Gwyneth",
             "Welsh English / Geraint"});
-            this.cmbttsmp3.Location = new System.Drawing.Point(145, 136);
+            this.cmbttsmp3.Location = new System.Drawing.Point(131, 136);
             this.cmbttsmp3.MaxDropDownItems = 20;
             this.cmbttsmp3.Name = "cmbttsmp3";
-            this.cmbttsmp3.Size = new System.Drawing.Size(311, 21);
+            this.cmbttsmp3.Size = new System.Drawing.Size(339, 21);
             this.cmbttsmp3.Sorted = true;
             this.cmbttsmp3.TabIndex = 267;
             // 
@@ -1890,10 +1910,10 @@
             "UK English",
             "US English",
             "US Spanish"});
-            this.cmbispeech.Location = new System.Drawing.Point(145, 59);
+            this.cmbispeech.Location = new System.Drawing.Point(131, 59);
             this.cmbispeech.MaxDropDownItems = 20;
             this.cmbispeech.Name = "cmbispeech";
-            this.cmbispeech.Size = new System.Drawing.Size(311, 21);
+            this.cmbispeech.Size = new System.Drawing.Size(339, 21);
             this.cmbispeech.Sorted = true;
             this.cmbispeech.TabIndex = 265;
             // 
@@ -1940,10 +1960,10 @@
             "Russian - Дима ",
             "Russian - Яна  ",
             "Turkish - Ayrıca  "});
-            this.cmbnotevibes.Location = new System.Drawing.Point(145, 94);
+            this.cmbnotevibes.Location = new System.Drawing.Point(131, 94);
             this.cmbnotevibes.MaxDropDownItems = 20;
             this.cmbnotevibes.Name = "cmbnotevibes";
-            this.cmbnotevibes.Size = new System.Drawing.Size(311, 21);
+            this.cmbnotevibes.Size = new System.Drawing.Size(339, 21);
             this.cmbnotevibes.Sorted = true;
             this.cmbnotevibes.TabIndex = 264;
             // 
@@ -1994,17 +2014,17 @@
             "Japanese (ja-JP): Emi (female)",
             "Latin American Spanish (es-LA): Sofia (female)",
             "North American Spanish (es-US): Sofia (female)"});
-            this.cmbngonnguIBM.Location = new System.Drawing.Point(145, 181);
+            this.cmbngonnguIBM.Location = new System.Drawing.Point(130, 163);
             this.cmbngonnguIBM.MaxDropDownItems = 20;
             this.cmbngonnguIBM.Name = "cmbngonnguIBM";
-            this.cmbngonnguIBM.Size = new System.Drawing.Size(311, 21);
+            this.cmbngonnguIBM.Size = new System.Drawing.Size(340, 21);
             this.cmbngonnguIBM.Sorted = true;
             this.cmbngonnguIBM.TabIndex = 261;
             // 
             // radvoiceibm
             // 
             this.radvoiceibm.AutoSize = true;
-            this.radvoiceibm.Location = new System.Drawing.Point(10, 181);
+            this.radvoiceibm.Location = new System.Drawing.Point(10, 167);
             this.radvoiceibm.Name = "radvoiceibm";
             this.radvoiceibm.Size = new System.Drawing.Size(74, 17);
             this.radvoiceibm.TabIndex = 4;
@@ -2212,6 +2232,138 @@
             // timerrendermulti
             // 
             this.timerrendermulti.Tick += new System.EventHandler(this.timerrendermulti_Tick);
+            // 
+            // radiovoiceamazon
+            // 
+            this.radiovoiceamazon.AutoSize = true;
+            this.radiovoiceamazon.Location = new System.Drawing.Point(10, 199);
+            this.radiovoiceamazon.Name = "radiovoiceamazon";
+            this.radiovoiceamazon.Size = new System.Drawing.Size(93, 17);
+            this.radiovoiceamazon.TabIndex = 268;
+            this.radiovoiceamazon.TabStop = true;
+            this.radiovoiceamazon.Text = "Voice Amazon";
+            this.radiovoiceamazon.UseVisualStyleBackColor = true;
+            // 
+            // radiovoiceMicrosoft
+            // 
+            this.radiovoiceMicrosoft.AutoSize = true;
+            this.radiovoiceMicrosoft.Location = new System.Drawing.Point(10, 226);
+            this.radiovoiceMicrosoft.Name = "radiovoiceMicrosoft";
+            this.radiovoiceMicrosoft.Size = new System.Drawing.Size(98, 17);
+            this.radiovoiceMicrosoft.TabIndex = 269;
+            this.radiovoiceMicrosoft.TabStop = true;
+            this.radiovoiceMicrosoft.Text = "Voice Microsoft";
+            this.radiovoiceMicrosoft.UseVisualStyleBackColor = true;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(128, 201);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(58, 13);
+            this.label20.TabIndex = 335;
+            this.label20.Text = "Language:";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(310, 201);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(37, 13);
+            this.label21.TabIndex = 337;
+            this.label21.Text = "Voice:";
+            // 
+            // ddlLaguageamazon
+            // 
+            this.ddlLaguageamazon.FormattingEnabled = true;
+            this.ddlLaguageamazon.Items.AddRange(new object[] {
+            "Danish",
+            "Dutch",
+            "English",
+            "French",
+            "German",
+            "Icelandic",
+            "Italian",
+            "Japanese",
+            "Korean",
+            "Norwegian",
+            "Polish",
+            "Portuguese",
+            "Romanian",
+            "Russian",
+            "Spanish",
+            "Swedish",
+            "Turkish",
+            "Welsh"});
+            this.ddlLaguageamazon.Location = new System.Drawing.Point(187, 195);
+            this.ddlLaguageamazon.Name = "ddlLaguageamazon";
+            this.ddlLaguageamazon.Size = new System.Drawing.Size(116, 21);
+            this.ddlLaguageamazon.TabIndex = 338;
+            this.ddlLaguageamazon.SelectedIndexChanged += new System.EventHandler(this.ddlLaguageamazon_SelectedIndexChanged);
+            // 
+            // cmbvoiceamazon
+            // 
+            this.cmbvoiceamazon.FormattingEnabled = true;
+            this.cmbvoiceamazon.Location = new System.Drawing.Point(353, 196);
+            this.cmbvoiceamazon.Name = "cmbvoiceamazon";
+            this.cmbvoiceamazon.Size = new System.Drawing.Size(117, 21);
+            this.cmbvoiceamazon.TabIndex = 336;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(128, 232);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(58, 13);
+            this.label22.TabIndex = 339;
+            this.label22.Text = "Language:";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(310, 232);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(37, 13);
+            this.label23.TabIndex = 341;
+            this.label23.Text = "Voice:";
+            // 
+            // ddlLaguagemicrosoft
+            // 
+            this.ddlLaguagemicrosoft.FormattingEnabled = true;
+            this.ddlLaguagemicrosoft.Items.AddRange(new object[] {
+            "Catalan",
+            "Chinese",
+            "ChineseTW",
+            "Danish",
+            "Dutch",
+            "English",
+            "Finnish",
+            "French",
+            "German",
+            "Italian",
+            "Japanese",
+            "Korean",
+            "Norwegian",
+            "Polish",
+            "Portuguese",
+            "Russian",
+            "Spanish",
+            "Swedish",
+            "Turkish",
+            "Vietnamese"});
+            this.ddlLaguagemicrosoft.Location = new System.Drawing.Point(187, 226);
+            this.ddlLaguagemicrosoft.Name = "ddlLaguagemicrosoft";
+            this.ddlLaguagemicrosoft.Size = new System.Drawing.Size(116, 21);
+            this.ddlLaguagemicrosoft.TabIndex = 342;
+            this.ddlLaguagemicrosoft.SelectedIndexChanged += new System.EventHandler(this.ddlLaguagemicrosoft_SelectedIndexChanged);
+            // 
+            // cmbvoicemicrosoft
+            // 
+            this.cmbvoicemicrosoft.FormattingEnabled = true;
+            this.cmbvoicemicrosoft.Location = new System.Drawing.Point(353, 227);
+            this.cmbvoicemicrosoft.Name = "cmbvoicemicrosoft";
+            this.cmbvoicemicrosoft.Size = new System.Drawing.Size(117, 21);
+            this.cmbvoicemicrosoft.TabIndex = 340;
             // 
             // FormUpload
             // 
@@ -2455,5 +2607,15 @@
         private System.Windows.Forms.GroupBox groupBox12;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.ComboBox cmbcategory;
+        private System.Windows.Forms.RadioButton radiovoiceMicrosoft;
+        private System.Windows.Forms.RadioButton radiovoiceamazon;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.ComboBox ddlLaguageamazon;
+        private System.Windows.Forms.ComboBox cmbvoiceamazon;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.ComboBox ddlLaguagemicrosoft;
+        private System.Windows.Forms.ComboBox cmbvoicemicrosoft;
     }
 }

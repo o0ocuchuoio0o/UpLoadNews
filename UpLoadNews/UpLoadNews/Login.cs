@@ -291,13 +291,10 @@ namespace UpLoadNews
             // options.AddArgument("headless");
             // PropretiesCollection.driver = new ChromeDriver(service,options);
             PropretiesCollection.driver = new ChromeDriver(options);
-            PropretiesCollection.driver.Navigate().GoToUrl("http://www.voiceware.co.kr/eng/product/product1.php?fbclid=IwAR3uoWfvMJ6g53aNRf6o3WSm8A4fbq3hg7OVjXRD4K43ktPh9SsyP_zDnQ0");
+            PropretiesCollection.driver.Navigate().GoToUrl("https://ttstool.com/");
 
             cl_ReadVoice voice = new cl_ReadVoice();
-            voice.selectV2("Japanese", "Takeru");
-            string link = voice.getURLMp3_V2("","すなわち、連合は民主主義と法治の原則に立脚する。連合は市民権を確立し、自由と安全、正義が確保された地域を創造することによって、その組織活動の中心に個人を置く。");
-            downloadFileV2(link, @"D:\1.mp3").Wait();
-            MessageBox.Show("ok");
+            voice.getvoicemp3_TTSTOOL("Microsoft", "Catalan", "Herena (Catalan)", "sdgdfgdfgdfgd");
 
             //resizes.ThumnailConfigTitle(@"C:\thumnailboder.jpeg", @"C:\title.jpeg", @"D:\thumnailtitle.jpeg");
 

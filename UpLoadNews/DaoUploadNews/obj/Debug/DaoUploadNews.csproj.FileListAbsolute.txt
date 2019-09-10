@@ -20,3 +20,8 @@ D:\THANGLUU\UpLoadNews\DaoUploadNews\bin\Debug\DaoUploadNews.dll
 D:\THANGLUU\UpLoadNews\DaoUploadNews\bin\Debug\DaoUploadNews.pdb
 D:\THANGLUU\UpLoadNews\DaoUploadNews\obj\Debug\DaoUploadNews.dll
 D:\THANGLUU\UpLoadNews\DaoUploadNews\obj\Debug\DaoUploadNews.pdb
+D:\GITHUB\UpLoadNews\UpLoadNews\DaoUploadNews\bin\Debug\DaoUploadNews.dll.config
+D:\GITHUB\UpLoadNews\UpLoadNews\DaoUploadNews\bin\Debug\DaoUploadNews.dll
+D:\GITHUB\UpLoadNews\UpLoadNews\DaoUploadNews\bin\Debug\DaoUploadNews.pdb
+D:\GITHUB\UpLoadNews\UpLoadNews\DaoUploadNews\obj\Debug\DaoUploadNews.dll
+D:\GITHUB\UpLoadNews\UpLoadNews\DaoUploadNews\obj\Debug\DaoUploadNews.pdb
