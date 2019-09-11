@@ -331,12 +331,16 @@ namespace UpLoadNews
             hethong = tkxuly.docdulieu(Environment.CurrentDirectory + "/CauHinhAPIAMZ.xml");
             string _AccessKey = hethong.User1;
             string _SecretKey = hethong.Pass1;
-            BasicAWSCredentials connect = new BasicAWSCredentials(_AccessKey, _SecretKey);
-            Amazon.Polly.AmazonPollyClient cl = new Amazon.Polly.AmazonPollyClient(connect, RegionEndpoint.USWest1);
-            DescribeVoicesRequest describeVoicesRequest = new DescribeVoicesRequest();
-            // Synchronously ask Amazon Polly to describe available TTS voices.
-            DescribeVoicesResponse describeVoicesResult = cl.DescribeVoices(describeVoicesRequest);
-            _VoiceAMZ = describeVoicesResult.Voices;
+            try
+            {
+                BasicAWSCredentials connect = new BasicAWSCredentials(_AccessKey, _SecretKey);
+                Amazon.Polly.AmazonPollyClient cl = new Amazon.Polly.AmazonPollyClient(connect, RegionEndpoint.USWest1);
+                DescribeVoicesRequest describeVoicesRequest = new DescribeVoicesRequest();
+                // Synchronously ask Amazon Polly to describe available TTS voices.
+                DescribeVoicesResponse describeVoicesResult = cl.DescribeVoices(describeVoicesRequest);
+                _VoiceAMZ = describeVoicesResult.Voices;
+            }
+            catch { }
             
         }
         private void hienthicmbvoiceamz()
@@ -784,7 +788,7 @@ namespace UpLoadNews
           
             #region // lưu cấu hình mô tả , voice
             daWS_FakeAuto updatevoice = new daWS_FakeAuto();
-            updatevoice.UpdateVoiceKenh(int.Parse(cmbchannel.SelectedValue.ToString()),txtadddesc.Text,cmbvoiceidamz.SelectedValue.ToString(),cmbvoicegoogle.Text);
+            updatevoice.UpdateVoiceKenh(int.Parse(cmbchannel.SelectedValue.ToString()),txtadddesc.Text,cmbvoiceidamz.Text.ToString(),cmbvoicegoogle.Text);
             #endregion
             MessageBox.Show("ok");
         }
@@ -1842,22 +1846,22 @@ namespace UpLoadNews
 
                                                             if (radvoicedefault.Checked == true)
                                                             {
-                                                                url = read.getURLMp3(_urlvoicecu,ngonngu, mcvoice, effect, effectlevel, noidung.Trim());
+                                                                url = read.getURLMp3(_urlvoicecu, ngonngu, mcvoice, effect, effectlevel, noidung.Trim());
                                                                 _urlvoicecu = url;
                                                             }
                                                             else if (radvoice2.Checked == true)
                                                             {
-                                                                if(noidung.Length>=200)
+                                                                if (noidung.Length >= 200)
                                                                 {
-                                                                    url = read.getURLMp3_V2(_urlvoicecu,noidung.Trim().Substring(0, 199));
+                                                                    url = read.getURLMp3_V2(_urlvoicecu, noidung.Trim().Substring(0, 199));
                                                                     _urlvoicecu = url;
                                                                 }
                                                                 else
                                                                 {
-                                                                    url = read.getURLMp3_V2(_urlvoicecu,noidung.Trim());
+                                                                    url = read.getURLMp3_V2(_urlvoicecu, noidung.Trim());
                                                                     _urlvoicecu = url;
                                                                 }
-                                                                
+
 
                                                             }
                                                             else if (radvoice3.Checked == true)
@@ -1880,7 +1884,7 @@ namespace UpLoadNews
                                                             }
                                                             else if (radvoiceibm.Checked == true)
                                                             {
-                                                                url = read.getURLMp3IBM(_urlvoicecu,cmbngonnguIBM.Text, noidung.Trim());
+                                                                url = read.getURLMp3IBM(_urlvoicecu, cmbngonnguIBM.Text, noidung.Trim());
                                                                 _urlvoicecu = url;
                                                             }
                                                             else if (radnotevibes.Checked == true)
@@ -1890,21 +1894,42 @@ namespace UpLoadNews
                                                             }
                                                             else if (radttsmp3.Checked == true)
                                                             {
-                                                                 read.getvoicemp3_TTSmp3(cmbttsmp3.Text, noidung.Trim());
-                                                                 chuyenmp3torender(txtuotdownloads.Text, _voice);
+                                                                read.getvoicemp3_TTSmp3(cmbttsmp3.Text, noidung.Trim());
+                                                                chuyenmp3torender(txtuotdownloads.Text, _voice);
                                                                 _voiceaudio = _voice;
                                                             }
                                                             else if (radiovoiceamazon.Checked == true)
                                                             {
-                                                                read.getvoicemp3_TTSTOOL("Amazon", ddlLaguageamazon.Text,cmbvoiceamazon.Text, noidung.Trim());
-                                                                chuyenmp3torender(txtuotdownloads.Text, _voice);
-                                                                _voiceaudio = _voice;
+                                                                if (noidung.Length >= 200)
+                                                                {
+                                                                    read.getvoicemp3_TTSTOOL("Amazon", ddlLaguageamazon.Text, cmbvoiceamazon.Text, noidung.Trim().Substring(0, 199));
+                                                                    chuyenmp3torender(txtuotdownloads.Text, _voice);
+                                                                    _voiceaudio = _voice;
+                                                                }
+                                                                else
+                                                                {
+                                                                    read.getvoicemp3_TTSTOOL("Amazon", ddlLaguageamazon.Text, cmbvoiceamazon.Text, noidung.Trim());
+                                                                    chuyenmp3torender(txtuotdownloads.Text, _voice);
+                                                                    _voiceaudio = _voice;
+                                                                }
+
+
                                                             }
                                                             else if (radiovoiceMicrosoft.Checked == true)
                                                             {
-                                                                read.getvoicemp3_TTSTOOL("Microsoft", ddlLaguagemicrosoft.Text, cmbvoicemicrosoft.Text, noidung.Trim());
-                                                                chuyenmp3torender(txtuotdownloads.Text, _voice);
-                                                                _voiceaudio = _voice;
+                                                                if (noidung.Length >= 200)
+                                                                {
+                                                                    read.getvoicemp3_TTSTOOL("Microsoft", ddlLaguagemicrosoft.Text, cmbvoicemicrosoft.Text, noidung.Trim().Substring(0, 199));
+                                                                    chuyenmp3torender(txtuotdownloads.Text, _voice);
+                                                                    _voiceaudio = _voice;
+                                                                }
+                                                                else
+                                                                {
+                                                                    read.getvoicemp3_TTSTOOL("Microsoft", ddlLaguagemicrosoft.Text, cmbvoicemicrosoft.Text, noidung.Trim());
+                                                                    chuyenmp3torender(txtuotdownloads.Text, _voice);
+                                                                    _voiceaudio = _voice;
+
+                                                                }
                                                             }
                                                             lblxuly.Text = "Lấy voice ok url=" + url.ToString();
                                                             //lấy để upload lên server
