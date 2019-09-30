@@ -635,8 +635,7 @@ namespace UpLoadNews
 
         /// <summary>
         /// khai báo biến cục bộ 
-        /// </summary>
-      
+        /// </summary>     
 
         #region // test xu ly anh
         private void test()
@@ -655,11 +654,7 @@ namespace UpLoadNews
             //CreateVideoEffect(@"D:\a.wmv", @"D:\download4.png");
             //MessageBox.Show("ok");
         }
-        #endregion
-       
-            
-
-    
+        #endregion        
 
         #region // cấu hình api voice amazon
         private void btnkeyamz_Click(object sender, EventArgs e)
@@ -917,12 +912,13 @@ namespace UpLoadNews
             }
             return ex;
         }
-     
-    
+
+
         #endregion
 
-      
+
         // - Nén file
+        #region // các button cấu hình
         private void CompressRAR(string rar_file, string path_file)
         {
             try
@@ -1055,11 +1051,7 @@ namespace UpLoadNews
         {
 
         }
-
-      
-       
-
-
+        
         private void btnborderthumnail_Click(object sender, EventArgs e)
         {
             ColorDialog colorDlg = new ColorDialog();
@@ -1068,11 +1060,11 @@ namespace UpLoadNews
                 lblborderthumnail.ForeColor = colorDlg.Color;
             }
         }
-
+        #endregion
 
 
         #region // lay voice
-       
+
         private void downloadFile(string url, string path)
         {
             using (WebClient wc = new WebClient())
@@ -1448,7 +1440,7 @@ namespace UpLoadNews
         }
         #endregion
 
-        #region // render multi
+        #region // render multi video news slide
         private void btnrendermulti_Click(object sender, EventArgs e)
         {
             try
@@ -2512,6 +2504,8 @@ namespace UpLoadNews
 
         #endregion
 
+        #region // cấu hình
+
         private void btnoutdownload_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog fl = new FolderBrowserDialog();
@@ -2789,6 +2783,13 @@ namespace UpLoadNews
             cmbvoicemicrosoft.DataSource = table;
             cmbvoicemicrosoft.DisplayMember = "Voice";
             cmbvoicemicrosoft.ValueMember = "Voice";
+        }
+        #endregion
+
+
+        private void btnchangepassall_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

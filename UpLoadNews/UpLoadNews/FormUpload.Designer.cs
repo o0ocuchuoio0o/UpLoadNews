@@ -167,6 +167,16 @@
             this.txtuotdownloads = new System.Windows.Forms.TextBox();
             this.cmbvoicevietnam = new System.Windows.Forms.ComboBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.ddlLaguagemicrosoft = new System.Windows.Forms.ComboBox();
+            this.cmbvoicemicrosoft = new System.Windows.Forms.ComboBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.ddlLaguageamazon = new System.Windows.Forms.ComboBox();
+            this.cmbvoiceamazon = new System.Windows.Forms.ComboBox();
+            this.radiovoiceMicrosoft = new System.Windows.Forms.RadioButton();
+            this.radiovoiceamazon = new System.Windows.Forms.RadioButton();
             this.cmbttsmp3 = new System.Windows.Forms.ComboBox();
             this.radttsmp3 = new System.Windows.Forms.RadioButton();
             this.cmbispeech = new System.Windows.Forms.ComboBox();
@@ -195,16 +205,21 @@
             this.bgwlayvoice = new System.ComponentModel.BackgroundWorker();
             this.bgwrendermulti = new System.ComponentModel.BackgroundWorker();
             this.timerrendermulti = new System.Windows.Forms.Timer(this.components);
-            this.radiovoiceamazon = new System.Windows.Forms.RadioButton();
-            this.radiovoiceMicrosoft = new System.Windows.Forms.RadioButton();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.ddlLaguageamazon = new System.Windows.Forms.ComboBox();
-            this.cmbvoiceamazon = new System.Windows.Forms.ComboBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.ddlLaguagemicrosoft = new System.Windows.Forms.ComboBox();
-            this.cmbvoicemicrosoft = new System.Windows.Forms.ComboBox();
+            this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.dataGridViewListKenh = new System.Windows.Forms.DataGridView();
+            this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnfloderlistmcbg = new System.Windows.Forms.Button();
+            this.checkMcBG = new System.Windows.Forms.CheckBox();
+            this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.tabPage10 = new System.Windows.Forms.TabPage();
+            this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.btnchangepassall = new System.Windows.Forms.Button();
+            this.txttientopass = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.Mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pass = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MailKhoiPhuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3.SuspendLayout();
             this.tabControl3.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -239,6 +254,11 @@
             this.groupBox7.SuspendLayout();
             this.tabPage8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtsizeboderthumnail)).BeginInit();
+            this.tabPage9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListKenh)).BeginInit();
+            this.groupBox14.SuspendLayout();
+            this.tabControl2.SuspendLayout();
+            this.tabPage10.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox3
@@ -254,9 +274,9 @@
             this.groupBox3.Controls.Add(this.lblthongbao);
             this.groupBox3.Controls.Add(this.btninputfolder);
             this.groupBox3.Controls.Add(this.txtfoldervideo);
-            this.groupBox3.Location = new System.Drawing.Point(563, 12);
+            this.groupBox3.Location = new System.Drawing.Point(614, 7);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(359, 563);
+            this.groupBox3.Size = new System.Drawing.Size(335, 563);
             this.groupBox3.TabIndex = 282;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Config video";
@@ -347,7 +367,7 @@
             // label45
             // 
             this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(321, 355);
+            this.label45.Location = new System.Drawing.Point(297, 355);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(25, 13);
             this.label45.TabIndex = 322;
@@ -359,7 +379,7 @@
             this.ddlVoices.FormattingEnabled = true;
             this.ddlVoices.Location = new System.Drawing.Point(93, 80);
             this.ddlVoices.Name = "ddlVoices";
-            this.ddlVoices.Size = new System.Drawing.Size(258, 22);
+            this.ddlVoices.Size = new System.Drawing.Size(229, 22);
             this.ddlVoices.TabIndex = 324;
             // 
             // label44
@@ -378,7 +398,7 @@
             this.cmbvoiceidamz.FormattingEnabled = true;
             this.cmbvoiceidamz.Location = new System.Drawing.Point(93, 9);
             this.cmbvoiceidamz.Name = "cmbvoiceidamz";
-            this.cmbvoiceidamz.Size = new System.Drawing.Size(258, 21);
+            this.cmbvoiceidamz.Size = new System.Drawing.Size(229, 21);
             this.cmbvoiceidamz.TabIndex = 301;
             this.cmbvoiceidamz.ValueMember = "ID";
             this.cmbvoiceidamz.SelectedIndexChanged += new System.EventHandler(this.cmbvoiceidamz_SelectedIndexChanged);
@@ -396,7 +416,7 @@
             // 
             this.trackcountchar.Location = new System.Drawing.Point(15, 323);
             this.trackcountchar.Name = "trackcountchar";
-            this.trackcountchar.Size = new System.Drawing.Size(327, 45);
+            this.trackcountchar.Size = new System.Drawing.Size(307, 45);
             this.trackcountchar.TabIndex = 319;
             this.trackcountchar.Scroll += new System.EventHandler(this.trackcountchar_Scroll);
             // 
@@ -407,7 +427,7 @@
             this.cmbvoicegoogle.Location = new System.Drawing.Point(93, 55);
             this.cmbvoicegoogle.MaxDropDownItems = 20;
             this.cmbvoicegoogle.Name = "cmbvoicegoogle";
-            this.cmbvoicegoogle.Size = new System.Drawing.Size(258, 21);
+            this.cmbvoicegoogle.Size = new System.Drawing.Size(229, 21);
             this.cmbvoicegoogle.Sorted = true;
             this.cmbvoicegoogle.TabIndex = 260;
             // 
@@ -457,13 +477,13 @@
             this.txtadddesc.Multiline = true;
             this.txtadddesc.Name = "txtadddesc";
             this.txtadddesc.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtadddesc.Size = new System.Drawing.Size(331, 71);
+            this.txtadddesc.Size = new System.Drawing.Size(311, 71);
             this.txtadddesc.TabIndex = 278;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(317, 273);
+            this.label16.Location = new System.Drawing.Point(297, 274);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(25, 13);
             this.label16.TabIndex = 295;
@@ -482,7 +502,7 @@
             // 
             this.trackhardsub.Location = new System.Drawing.Point(11, 242);
             this.trackhardsub.Name = "trackhardsub";
-            this.trackhardsub.Size = new System.Drawing.Size(331, 45);
+            this.trackhardsub.Size = new System.Drawing.Size(311, 45);
             this.trackhardsub.TabIndex = 289;
             this.trackhardsub.Scroll += new System.EventHandler(this.trackhardsub_Scroll);
             // 
@@ -499,7 +519,7 @@
             // 
             this.txtsave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtsave.ForeColor = System.Drawing.Color.Red;
-            this.txtsave.Location = new System.Drawing.Point(238, 106);
+            this.txtsave.Location = new System.Drawing.Point(214, 108);
             this.txtsave.Name = "txtsave";
             this.txtsave.Size = new System.Drawing.Size(108, 33);
             this.txtsave.TabIndex = 279;
@@ -517,7 +537,7 @@
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage5.Size = new System.Drawing.Size(354, 374);
             this.tabPage5.TabIndex = 1;
-            this.tabPage5.Text = "Voice selenium";
+            this.tabPage5.Text = "Voice emulator";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
             // txttimes
@@ -572,7 +592,7 @@
             // 
             this.btnsavevoicecf.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnsavevoicecf.ForeColor = System.Drawing.Color.Red;
-            this.btnsavevoicecf.Location = new System.Drawing.Point(263, 482);
+            this.btnsavevoicecf.Location = new System.Drawing.Point(221, 481);
             this.btnsavevoicecf.Name = "btnsavevoicecf";
             this.btnsavevoicecf.Size = new System.Drawing.Size(86, 48);
             this.btnsavevoicecf.TabIndex = 334;
@@ -629,7 +649,7 @@
             this.txtfoldervideo.Enabled = false;
             this.txtfoldervideo.Location = new System.Drawing.Point(106, 19);
             this.txtfoldervideo.Name = "txtfoldervideo";
-            this.txtfoldervideo.Size = new System.Drawing.Size(247, 20);
+            this.txtfoldervideo.Size = new System.Drawing.Size(223, 20);
             this.txtfoldervideo.TabIndex = 259;
             this.txtfoldervideo.TextChanged += new System.EventHandler(this.txtfoldervideo_TextChanged);
             // 
@@ -871,7 +891,7 @@
             this.groupBox1.Controls.Add(this.checkuploadvideo);
             this.groupBox1.Location = new System.Drawing.Point(5, 407);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(538, 96);
+            this.groupBox1.Size = new System.Drawing.Size(587, 96);
             this.groupBox1.TabIndex = 286;
             this.groupBox1.TabStop = false;
             // 
@@ -1086,7 +1106,7 @@
             this.groupBox2.Controls.Add(this.dataGridViewList);
             this.groupBox2.Location = new System.Drawing.Point(10, 266);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(531, 142);
+            this.groupBox2.Size = new System.Drawing.Size(580, 142);
             this.groupBox2.TabIndex = 311;
             this.groupBox2.TabStop = false;
             // 
@@ -1096,7 +1116,7 @@
             this.dataGridViewList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewList.Location = new System.Drawing.Point(3, 16);
             this.dataGridViewList.Name = "dataGridViewList";
-            this.dataGridViewList.Size = new System.Drawing.Size(525, 123);
+            this.dataGridViewList.Size = new System.Drawing.Size(574, 123);
             this.dataGridViewList.TabIndex = 7;
             // 
             // statusStrip1
@@ -1107,7 +1127,7 @@
             this.toolStripProgressBar1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 582);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(934, 36);
+            this.statusStrip1.Size = new System.Drawing.Size(961, 36);
             this.statusStrip1.TabIndex = 313;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -1139,10 +1159,11 @@
             this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Controls.Add(this.tabPage8);
+            this.tabControl1.Controls.Add(this.tabPage9);
             this.tabControl1.Location = new System.Drawing.Point(0, 47);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(562, 532);
+            this.tabControl1.Size = new System.Drawing.Size(611, 532);
             this.tabControl1.TabIndex = 311;
             // 
             // tabPage3
@@ -1164,7 +1185,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(554, 506);
+            this.tabPage3.Size = new System.Drawing.Size(603, 506);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Intro and outtro";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1184,7 +1205,7 @@
             // btnlogovids
             // 
             this.btnlogovids.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnlogovids.Location = new System.Drawing.Point(429, 119);
+            this.btnlogovids.Location = new System.Drawing.Point(478, 119);
             this.btnlogovids.Name = "btnlogovids";
             this.btnlogovids.Size = new System.Drawing.Size(24, 23);
             this.btnlogovids.TabIndex = 295;
@@ -1199,7 +1220,7 @@
             this.txtlogovids.Location = new System.Drawing.Point(117, 121);
             this.txtlogovids.Name = "txtlogovids";
             this.txtlogovids.ReadOnly = true;
-            this.txtlogovids.Size = new System.Drawing.Size(306, 20);
+            this.txtlogovids.Size = new System.Drawing.Size(355, 20);
             this.txtlogovids.TabIndex = 294;
             // 
             // label46
@@ -1254,7 +1275,7 @@
             // btnouttro
             // 
             this.btnouttro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnouttro.Location = new System.Drawing.Point(430, 83);
+            this.btnouttro.Location = new System.Drawing.Point(479, 83);
             this.btnouttro.Name = "btnouttro";
             this.btnouttro.Size = new System.Drawing.Size(24, 23);
             this.btnouttro.TabIndex = 39;
@@ -1270,7 +1291,7 @@
             this.tbouttro.Location = new System.Drawing.Point(118, 85);
             this.tbouttro.Name = "tbouttro";
             this.tbouttro.ReadOnly = true;
-            this.tbouttro.Size = new System.Drawing.Size(306, 20);
+            this.tbouttro.Size = new System.Drawing.Size(355, 20);
             this.tbouttro.TabIndex = 38;
             // 
             // label41
@@ -1285,7 +1306,7 @@
             // btnintro
             // 
             this.btnintro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnintro.Location = new System.Drawing.Point(430, 43);
+            this.btnintro.Location = new System.Drawing.Point(479, 43);
             this.btnintro.Name = "btnintro";
             this.btnintro.Size = new System.Drawing.Size(24, 23);
             this.btnintro.TabIndex = 36;
@@ -1301,7 +1322,7 @@
             this.tbintro.Location = new System.Drawing.Point(118, 45);
             this.tbintro.Name = "tbintro";
             this.tbintro.ReadOnly = true;
-            this.tbintro.Size = new System.Drawing.Size(306, 20);
+            this.tbintro.Size = new System.Drawing.Size(355, 20);
             this.tbintro.TabIndex = 35;
             // 
             // label40
@@ -1322,7 +1343,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(554, 506);
+            this.tabPage1.Size = new System.Drawing.Size(603, 506);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Slide Options";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1346,7 +1367,7 @@
             this.groupBox6.Controls.Add(this.txtsizetext);
             this.groupBox6.Location = new System.Drawing.Point(5, 56);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(543, 204);
+            this.groupBox6.Size = new System.Drawing.Size(592, 204);
             this.groupBox6.TabIndex = 3;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Sub";
@@ -1382,12 +1403,13 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.groupBox14);
             this.tabPage2.Controls.Add(this.groupBox11);
             this.tabPage2.Controls.Add(this.groupBox5);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(554, 506);
+            this.tabPage2.Size = new System.Drawing.Size(603, 506);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Config MC";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -1481,7 +1503,7 @@
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(554, 506);
+            this.tabPage6.Size = new System.Drawing.Size(603, 506);
             this.tabPage6.TabIndex = 3;
             this.tabPage6.Text = "Config Upload";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -1729,7 +1751,7 @@
             this.tabPage7.Location = new System.Drawing.Point(4, 22);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(554, 506);
+            this.tabPage7.Size = new System.Drawing.Size(603, 506);
             this.tabPage7.TabIndex = 4;
             this.tabPage7.Text = "Config voice";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -1795,6 +1817,138 @@
             this.groupBox7.Size = new System.Drawing.Size(487, 410);
             this.groupBox7.TabIndex = 340;
             this.groupBox7.TabStop = false;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(128, 232);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(58, 13);
+            this.label22.TabIndex = 339;
+            this.label22.Text = "Language:";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(310, 232);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(37, 13);
+            this.label23.TabIndex = 341;
+            this.label23.Text = "Voice:";
+            // 
+            // ddlLaguagemicrosoft
+            // 
+            this.ddlLaguagemicrosoft.FormattingEnabled = true;
+            this.ddlLaguagemicrosoft.Items.AddRange(new object[] {
+            "Catalan",
+            "Chinese",
+            "ChineseTW",
+            "Danish",
+            "Dutch",
+            "English",
+            "Finnish",
+            "French",
+            "German",
+            "Italian",
+            "Japanese",
+            "Korean",
+            "Norwegian",
+            "Polish",
+            "Portuguese",
+            "Russian",
+            "Spanish",
+            "Swedish",
+            "Turkish",
+            "Vietnamese"});
+            this.ddlLaguagemicrosoft.Location = new System.Drawing.Point(187, 226);
+            this.ddlLaguagemicrosoft.Name = "ddlLaguagemicrosoft";
+            this.ddlLaguagemicrosoft.Size = new System.Drawing.Size(116, 21);
+            this.ddlLaguagemicrosoft.TabIndex = 342;
+            this.ddlLaguagemicrosoft.SelectedIndexChanged += new System.EventHandler(this.ddlLaguagemicrosoft_SelectedIndexChanged);
+            // 
+            // cmbvoicemicrosoft
+            // 
+            this.cmbvoicemicrosoft.FormattingEnabled = true;
+            this.cmbvoicemicrosoft.Location = new System.Drawing.Point(353, 227);
+            this.cmbvoicemicrosoft.Name = "cmbvoicemicrosoft";
+            this.cmbvoicemicrosoft.Size = new System.Drawing.Size(117, 21);
+            this.cmbvoicemicrosoft.TabIndex = 340;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(128, 201);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(58, 13);
+            this.label20.TabIndex = 335;
+            this.label20.Text = "Language:";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(310, 201);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(37, 13);
+            this.label21.TabIndex = 337;
+            this.label21.Text = "Voice:";
+            // 
+            // ddlLaguageamazon
+            // 
+            this.ddlLaguageamazon.FormattingEnabled = true;
+            this.ddlLaguageamazon.Items.AddRange(new object[] {
+            "Danish",
+            "Dutch",
+            "English",
+            "French",
+            "German",
+            "Icelandic",
+            "Italian",
+            "Japanese",
+            "Korean",
+            "Norwegian",
+            "Polish",
+            "Portuguese",
+            "Romanian",
+            "Russian",
+            "Spanish",
+            "Swedish",
+            "Turkish",
+            "Welsh"});
+            this.ddlLaguageamazon.Location = new System.Drawing.Point(187, 195);
+            this.ddlLaguageamazon.Name = "ddlLaguageamazon";
+            this.ddlLaguageamazon.Size = new System.Drawing.Size(116, 21);
+            this.ddlLaguageamazon.TabIndex = 338;
+            this.ddlLaguageamazon.SelectedIndexChanged += new System.EventHandler(this.ddlLaguageamazon_SelectedIndexChanged);
+            // 
+            // cmbvoiceamazon
+            // 
+            this.cmbvoiceamazon.FormattingEnabled = true;
+            this.cmbvoiceamazon.Location = new System.Drawing.Point(353, 196);
+            this.cmbvoiceamazon.Name = "cmbvoiceamazon";
+            this.cmbvoiceamazon.Size = new System.Drawing.Size(117, 21);
+            this.cmbvoiceamazon.TabIndex = 336;
+            // 
+            // radiovoiceMicrosoft
+            // 
+            this.radiovoiceMicrosoft.AutoSize = true;
+            this.radiovoiceMicrosoft.Location = new System.Drawing.Point(10, 226);
+            this.radiovoiceMicrosoft.Name = "radiovoiceMicrosoft";
+            this.radiovoiceMicrosoft.Size = new System.Drawing.Size(98, 17);
+            this.radiovoiceMicrosoft.TabIndex = 269;
+            this.radiovoiceMicrosoft.TabStop = true;
+            this.radiovoiceMicrosoft.Text = "Voice Microsoft";
+            this.radiovoiceMicrosoft.UseVisualStyleBackColor = true;
+            // 
+            // radiovoiceamazon
+            // 
+            this.radiovoiceamazon.AutoSize = true;
+            this.radiovoiceamazon.Location = new System.Drawing.Point(10, 199);
+            this.radiovoiceamazon.Name = "radiovoiceamazon";
+            this.radiovoiceamazon.Size = new System.Drawing.Size(93, 17);
+            this.radiovoiceamazon.TabIndex = 268;
+            this.radiovoiceamazon.TabStop = true;
+            this.radiovoiceamazon.Text = "Voice Amazon";
+            this.radiovoiceamazon.UseVisualStyleBackColor = true;
             // 
             // cmbttsmp3
             // 
@@ -2094,7 +2248,7 @@
             this.tabPage8.Location = new System.Drawing.Point(4, 22);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(554, 506);
+            this.tabPage8.Size = new System.Drawing.Size(603, 506);
             this.tabPage8.TabIndex = 5;
             this.tabPage8.Text = "Config thumnail";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -2102,7 +2256,7 @@
             // checklogothumnail
             // 
             this.checklogothumnail.AutoSize = true;
-            this.checklogothumnail.Location = new System.Drawing.Point(138, 39);
+            this.checklogothumnail.Location = new System.Drawing.Point(24, 33);
             this.checklogothumnail.Name = "checklogothumnail";
             this.checklogothumnail.Size = new System.Drawing.Size(92, 17);
             this.checklogothumnail.TabIndex = 331;
@@ -2112,7 +2266,7 @@
             // checktitlethumnail
             // 
             this.checktitlethumnail.AutoSize = true;
-            this.checktitlethumnail.Location = new System.Drawing.Point(138, 129);
+            this.checktitlethumnail.Location = new System.Drawing.Point(24, 123);
             this.checktitlethumnail.Name = "checktitlethumnail";
             this.checktitlethumnail.Size = new System.Drawing.Size(106, 17);
             this.checktitlethumnail.TabIndex = 330;
@@ -2121,7 +2275,7 @@
             // 
             // txtsizeboderthumnail
             // 
-            this.txtsizeboderthumnail.Location = new System.Drawing.Point(451, 78);
+            this.txtsizeboderthumnail.Location = new System.Drawing.Point(337, 72);
             this.txtsizeboderthumnail.Name = "txtsizeboderthumnail";
             this.txtsizeboderthumnail.Size = new System.Drawing.Size(66, 20);
             this.txtsizeboderthumnail.TabIndex = 329;
@@ -2133,7 +2287,7 @@
             // 
             // btntestthumnail
             // 
-            this.btntestthumnail.Location = new System.Drawing.Point(138, 180);
+            this.btntestthumnail.Location = new System.Drawing.Point(24, 174);
             this.btntestthumnail.Name = "btntestthumnail";
             this.btntestthumnail.Size = new System.Drawing.Size(75, 23);
             this.btntestthumnail.TabIndex = 328;
@@ -2144,7 +2298,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(258, 132);
+            this.label13.Location = new System.Drawing.Point(144, 126);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(47, 13);
             this.label13.TabIndex = 327;
@@ -2154,7 +2308,7 @@
             // 
             this.cmbfontthumnail.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbfontthumnail.FormattingEnabled = true;
-            this.cmbfontthumnail.Location = new System.Drawing.Point(322, 129);
+            this.cmbfontthumnail.Location = new System.Drawing.Point(208, 123);
             this.cmbfontthumnail.Name = "cmbfontthumnail";
             this.cmbfontthumnail.Size = new System.Drawing.Size(195, 22);
             this.cmbfontthumnail.TabIndex = 326;
@@ -2162,7 +2316,7 @@
             // checkborderthumnail
             // 
             this.checkborderthumnail.AutoSize = true;
-            this.checkborderthumnail.Location = new System.Drawing.Point(138, 81);
+            this.checkborderthumnail.Location = new System.Drawing.Point(24, 75);
             this.checkborderthumnail.Name = "checkborderthumnail";
             this.checkborderthumnail.Size = new System.Drawing.Size(99, 17);
             this.checkborderthumnail.TabIndex = 322;
@@ -2172,7 +2326,7 @@
             // lblborderthumnail
             // 
             this.lblborderthumnail.AutoSize = true;
-            this.lblborderthumnail.Location = new System.Drawing.Point(258, 84);
+            this.lblborderthumnail.Location = new System.Drawing.Point(144, 78);
             this.lblborderthumnail.Name = "lblborderthumnail";
             this.lblborderthumnail.Size = new System.Drawing.Size(59, 13);
             this.lblborderthumnail.TabIndex = 321;
@@ -2180,7 +2334,7 @@
             // 
             // btnborderthumnail
             // 
-            this.btnborderthumnail.Location = new System.Drawing.Point(322, 77);
+            this.btnborderthumnail.Location = new System.Drawing.Point(208, 71);
             this.btnborderthumnail.Name = "btnborderthumnail";
             this.btnborderthumnail.Size = new System.Drawing.Size(119, 23);
             this.btnborderthumnail.TabIndex = 320;
@@ -2191,7 +2345,7 @@
             // btnlogothumnail
             // 
             this.btnlogothumnail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnlogothumnail.Location = new System.Drawing.Point(493, 34);
+            this.btnlogothumnail.Location = new System.Drawing.Point(428, 28);
             this.btnlogothumnail.Name = "btnlogothumnail";
             this.btnlogothumnail.Size = new System.Drawing.Size(24, 23);
             this.btnlogothumnail.TabIndex = 318;
@@ -2204,16 +2358,16 @@
             this.tblogothumnail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tblogothumnail.BackColor = System.Drawing.Color.Yellow;
-            this.tblogothumnail.Location = new System.Drawing.Point(322, 36);
+            this.tblogothumnail.Location = new System.Drawing.Point(208, 30);
             this.tblogothumnail.Name = "tblogothumnail";
             this.tblogothumnail.ReadOnly = true;
-            this.tblogothumnail.Size = new System.Drawing.Size(165, 20);
+            this.tblogothumnail.Size = new System.Drawing.Size(214, 20);
             this.tblogothumnail.TabIndex = 317;
             // 
             // label42
             // 
             this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(243, 39);
+            this.label42.Location = new System.Drawing.Point(129, 33);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(73, 13);
             this.label42.TabIndex = 319;
@@ -2233,143 +2387,152 @@
             // 
             this.timerrendermulti.Tick += new System.EventHandler(this.timerrendermulti_Tick);
             // 
-            // radiovoiceamazon
+            // tabPage9
             // 
-            this.radiovoiceamazon.AutoSize = true;
-            this.radiovoiceamazon.Location = new System.Drawing.Point(10, 199);
-            this.radiovoiceamazon.Name = "radiovoiceamazon";
-            this.radiovoiceamazon.Size = new System.Drawing.Size(93, 17);
-            this.radiovoiceamazon.TabIndex = 268;
-            this.radiovoiceamazon.TabStop = true;
-            this.radiovoiceamazon.Text = "Voice Amazon";
-            this.radiovoiceamazon.UseVisualStyleBackColor = true;
+            this.tabPage9.Controls.Add(this.tabControl2);
+            this.tabPage9.Location = new System.Drawing.Point(4, 22);
+            this.tabPage9.Name = "tabPage9";
+            this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage9.Size = new System.Drawing.Size(603, 506);
+            this.tabPage9.TabIndex = 6;
+            this.tabPage9.Text = "Manager list channel";
+            this.tabPage9.UseVisualStyleBackColor = true;
             // 
-            // radiovoiceMicrosoft
+            // dataGridViewListKenh
             // 
-            this.radiovoiceMicrosoft.AutoSize = true;
-            this.radiovoiceMicrosoft.Location = new System.Drawing.Point(10, 226);
-            this.radiovoiceMicrosoft.Name = "radiovoiceMicrosoft";
-            this.radiovoiceMicrosoft.Size = new System.Drawing.Size(98, 17);
-            this.radiovoiceMicrosoft.TabIndex = 269;
-            this.radiovoiceMicrosoft.TabStop = true;
-            this.radiovoiceMicrosoft.Text = "Voice Microsoft";
-            this.radiovoiceMicrosoft.UseVisualStyleBackColor = true;
+            this.dataGridViewListKenh.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewListKenh.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Mail,
+            this.Pass,
+            this.MailKhoiPhuc});
+            this.dataGridViewListKenh.Location = new System.Drawing.Point(3, 74);
+            this.dataGridViewListKenh.Name = "dataGridViewListKenh";
+            this.dataGridViewListKenh.Size = new System.Drawing.Size(580, 368);
+            this.dataGridViewListKenh.TabIndex = 0;
             // 
-            // label20
+            // groupBox14
             // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(128, 201);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(58, 13);
-            this.label20.TabIndex = 335;
-            this.label20.Text = "Language:";
+            this.groupBox14.Controls.Add(this.textBox1);
+            this.groupBox14.Controls.Add(this.btnfloderlistmcbg);
+            this.groupBox14.Controls.Add(this.checkMcBG);
+            this.groupBox14.Location = new System.Drawing.Point(6, 181);
+            this.groupBox14.Name = "groupBox14";
+            this.groupBox14.Size = new System.Drawing.Size(542, 55);
+            this.groupBox14.TabIndex = 2;
+            this.groupBox14.TabStop = false;
+            this.groupBox14.Text = "MC resize bachgroud";
             // 
-            // label21
+            // textBox1
             // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(310, 201);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(37, 13);
-            this.label21.TabIndex = 337;
-            this.label21.Text = "Voice:";
+            this.textBox1.Enabled = false;
+            this.textBox1.Location = new System.Drawing.Point(238, 19);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(247, 20);
+            this.textBox1.TabIndex = 317;
             // 
-            // ddlLaguageamazon
+            // btnfloderlistmcbg
             // 
-            this.ddlLaguageamazon.FormattingEnabled = true;
-            this.ddlLaguageamazon.Items.AddRange(new object[] {
-            "Danish",
-            "Dutch",
-            "English",
-            "French",
-            "German",
-            "Icelandic",
-            "Italian",
-            "Japanese",
-            "Korean",
-            "Norwegian",
-            "Polish",
-            "Portuguese",
-            "Romanian",
-            "Russian",
-            "Spanish",
-            "Swedish",
-            "Turkish",
-            "Welsh"});
-            this.ddlLaguageamazon.Location = new System.Drawing.Point(187, 195);
-            this.ddlLaguageamazon.Name = "ddlLaguageamazon";
-            this.ddlLaguageamazon.Size = new System.Drawing.Size(116, 21);
-            this.ddlLaguageamazon.TabIndex = 338;
-            this.ddlLaguageamazon.SelectedIndexChanged += new System.EventHandler(this.ddlLaguageamazon_SelectedIndexChanged);
+            this.btnfloderlistmcbg.Location = new System.Drawing.Point(118, 17);
+            this.btnfloderlistmcbg.Name = "btnfloderlistmcbg";
+            this.btnfloderlistmcbg.Size = new System.Drawing.Size(95, 23);
+            this.btnfloderlistmcbg.TabIndex = 316;
+            this.btnfloderlistmcbg.Text = "&Floder list mc";
+            this.btnfloderlistmcbg.UseVisualStyleBackColor = true;
             // 
-            // cmbvoiceamazon
+            // checkMcBG
             // 
-            this.cmbvoiceamazon.FormattingEnabled = true;
-            this.cmbvoiceamazon.Location = new System.Drawing.Point(353, 196);
-            this.cmbvoiceamazon.Name = "cmbvoiceamazon";
-            this.cmbvoiceamazon.Size = new System.Drawing.Size(117, 21);
-            this.cmbvoiceamazon.TabIndex = 336;
+            this.checkMcBG.AutoSize = true;
+            this.checkMcBG.Location = new System.Drawing.Point(16, 19);
+            this.checkMcBG.Name = "checkMcBG";
+            this.checkMcBG.Size = new System.Drawing.Size(57, 17);
+            this.checkMcBG.TabIndex = 315;
+            this.checkMcBG.Text = "MC bg";
+            this.checkMcBG.UseVisualStyleBackColor = true;
             // 
-            // label22
+            // tabControl2
             // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(128, 232);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(58, 13);
-            this.label22.TabIndex = 339;
-            this.label22.Text = "Language:";
+            this.tabControl2.Controls.Add(this.tabPage10);
+            this.tabControl2.Controls.Add(this.tabPage11);
+            this.tabControl2.Location = new System.Drawing.Point(3, 47);
+            this.tabControl2.Name = "tabControl2";
+            this.tabControl2.SelectedIndex = 0;
+            this.tabControl2.Size = new System.Drawing.Size(597, 453);
+            this.tabControl2.TabIndex = 1;
             // 
-            // label23
+            // tabPage10
             // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(310, 232);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(37, 13);
-            this.label23.TabIndex = 341;
-            this.label23.Text = "Voice:";
+            this.tabPage10.Controls.Add(this.label24);
+            this.tabPage10.Controls.Add(this.txttientopass);
+            this.tabPage10.Controls.Add(this.btnchangepassall);
+            this.tabPage10.Controls.Add(this.dataGridViewListKenh);
+            this.tabPage10.Location = new System.Drawing.Point(4, 22);
+            this.tabPage10.Name = "tabPage10";
+            this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage10.Size = new System.Drawing.Size(589, 427);
+            this.tabPage10.TabIndex = 0;
+            this.tabPage10.Text = "Mail chưa đổi pass";
+            this.tabPage10.UseVisualStyleBackColor = true;
             // 
-            // ddlLaguagemicrosoft
+            // tabPage11
             // 
-            this.ddlLaguagemicrosoft.FormattingEnabled = true;
-            this.ddlLaguagemicrosoft.Items.AddRange(new object[] {
-            "Catalan",
-            "Chinese",
-            "ChineseTW",
-            "Danish",
-            "Dutch",
-            "English",
-            "Finnish",
-            "French",
-            "German",
-            "Italian",
-            "Japanese",
-            "Korean",
-            "Norwegian",
-            "Polish",
-            "Portuguese",
-            "Russian",
-            "Spanish",
-            "Swedish",
-            "Turkish",
-            "Vietnamese"});
-            this.ddlLaguagemicrosoft.Location = new System.Drawing.Point(187, 226);
-            this.ddlLaguagemicrosoft.Name = "ddlLaguagemicrosoft";
-            this.ddlLaguagemicrosoft.Size = new System.Drawing.Size(116, 21);
-            this.ddlLaguagemicrosoft.TabIndex = 342;
-            this.ddlLaguagemicrosoft.SelectedIndexChanged += new System.EventHandler(this.ddlLaguagemicrosoft_SelectedIndexChanged);
+            this.tabPage11.Location = new System.Drawing.Point(4, 22);
+            this.tabPage11.Name = "tabPage11";
+            this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage11.Size = new System.Drawing.Size(589, 427);
+            this.tabPage11.TabIndex = 1;
+            this.tabPage11.Text = "Mail Reup";
+            this.tabPage11.UseVisualStyleBackColor = true;
             // 
-            // cmbvoicemicrosoft
+            // btnchangepassall
             // 
-            this.cmbvoicemicrosoft.FormattingEnabled = true;
-            this.cmbvoicemicrosoft.Location = new System.Drawing.Point(353, 227);
-            this.cmbvoicemicrosoft.Name = "cmbvoicemicrosoft";
-            this.cmbvoicemicrosoft.Size = new System.Drawing.Size(117, 21);
-            this.cmbvoicemicrosoft.TabIndex = 340;
+            this.btnchangepassall.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnchangepassall.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnchangepassall.Location = new System.Drawing.Point(219, 23);
+            this.btnchangepassall.Name = "btnchangepassall";
+            this.btnchangepassall.Size = new System.Drawing.Size(125, 33);
+            this.btnchangepassall.TabIndex = 338;
+            this.btnchangepassall.Text = "CHANGE PASS ALL";
+            this.btnchangepassall.UseVisualStyleBackColor = true;
+            this.btnchangepassall.Click += new System.EventHandler(this.btnchangepassall_Click);
+            // 
+            // txttientopass
+            // 
+            this.txttientopass.Location = new System.Drawing.Point(9, 30);
+            this.txttientopass.Name = "txttientopass";
+            this.txttientopass.Size = new System.Drawing.Size(204, 20);
+            this.txttientopass.TabIndex = 339;
+            this.txttientopass.Text = "thang2019";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(6, 6);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(475, 13);
+            this.label24.TabIndex = 340;
+            this.label24.Text = "Tiền tố pass và mail khôi phục ví dụ : trangthang@gmail.com ---> tranthang.thang2" +
+    "019@gmail.com";
+            // 
+            // Mail
+            // 
+            this.Mail.HeaderText = "Mail";
+            this.Mail.Name = "Mail";
+            // 
+            // Pass
+            // 
+            this.Pass.HeaderText = "Pass";
+            this.Pass.Name = "Pass";
+            // 
+            // MailKhoiPhuc
+            // 
+            this.MailKhoiPhuc.HeaderText = "MailKhoiPhuc";
+            this.MailKhoiPhuc.Name = "MailKhoiPhuc";
             // 
             // FormUpload
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(934, 618);
+            this.ClientSize = new System.Drawing.Size(961, 618);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.checkhideffmpeg1);
@@ -2434,6 +2597,13 @@
             this.tabPage8.ResumeLayout(false);
             this.tabPage8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtsizeboderthumnail)).EndInit();
+            this.tabPage9.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListKenh)).EndInit();
+            this.groupBox14.ResumeLayout(false);
+            this.groupBox14.PerformLayout();
+            this.tabControl2.ResumeLayout(false);
+            this.tabPage10.ResumeLayout(false);
+            this.tabPage10.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2617,5 +2787,20 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.ComboBox ddlLaguagemicrosoft;
         private System.Windows.Forms.ComboBox cmbvoicemicrosoft;
+        private System.Windows.Forms.TabPage tabPage9;
+        private System.Windows.Forms.DataGridView dataGridViewListKenh;
+        private System.Windows.Forms.GroupBox groupBox14;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btnfloderlistmcbg;
+        private System.Windows.Forms.CheckBox checkMcBG;
+        private System.Windows.Forms.TabControl tabControl2;
+        private System.Windows.Forms.TabPage tabPage10;
+        private System.Windows.Forms.TabPage tabPage11;
+        private System.Windows.Forms.TextBox txttientopass;
+        private System.Windows.Forms.Button btnchangepassall;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Mail;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Pass;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MailKhoiPhuc;
     }
 }
