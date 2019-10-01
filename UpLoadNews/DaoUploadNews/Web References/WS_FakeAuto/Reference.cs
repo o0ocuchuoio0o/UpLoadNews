@@ -24,7 +24,7 @@ namespace DaoUploadNews.WS_FakeAuto {
     
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Web.Services.WebServiceBindingAttribute(Name="WS_FakeAutoSoap", Namespace="http://tempuri.org/")]
@@ -119,6 +119,20 @@ namespace DaoUploadNews.WS_FakeAuto {
         private System.Threading.SendOrPostCallback DanhSachFileUpdateOperationCompleted;
         
         private System.Threading.SendOrPostCallback DanhSachFileUpdateSubOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback XuLyMailOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback DanhSachMailChuaXuLyOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback CauHinhMailOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback ThemChiTietReupOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback UpdateDaReupOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback DanhSachVideoChuaReupOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback SoLuongDaUpTheoNgayOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -292,6 +306,27 @@ namespace DaoUploadNews.WS_FakeAuto {
         
         /// <remarks/>
         public event DanhSachFileUpdateSubCompletedEventHandler DanhSachFileUpdateSubCompleted;
+        
+        /// <remarks/>
+        public event XuLyMailCompletedEventHandler XuLyMailCompleted;
+        
+        /// <remarks/>
+        public event DanhSachMailChuaXuLyCompletedEventHandler DanhSachMailChuaXuLyCompleted;
+        
+        /// <remarks/>
+        public event CauHinhMailCompletedEventHandler CauHinhMailCompleted;
+        
+        /// <remarks/>
+        public event ThemChiTietReupCompletedEventHandler ThemChiTietReupCompleted;
+        
+        /// <remarks/>
+        public event UpdateDaReupCompletedEventHandler UpdateDaReupCompleted;
+        
+        /// <remarks/>
+        public event DanhSachVideoChuaReupCompletedEventHandler DanhSachVideoChuaReupCompleted;
+        
+        /// <remarks/>
+        public event SoLuongDaUpTheoNgayCompletedEventHandler SoLuongDaUpTheoNgayCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/DangNhap", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -1641,6 +1676,233 @@ namespace DaoUploadNews.WS_FakeAuto {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/XuLyMail", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void XuLyMail(string mail, string pass, string mailkhoiphuc, int idtaikhoan) {
+            this.Invoke("XuLyMail", new object[] {
+                        mail,
+                        pass,
+                        mailkhoiphuc,
+                        idtaikhoan});
+        }
+        
+        /// <remarks/>
+        public void XuLyMailAsync(string mail, string pass, string mailkhoiphuc, int idtaikhoan) {
+            this.XuLyMailAsync(mail, pass, mailkhoiphuc, idtaikhoan, null);
+        }
+        
+        /// <remarks/>
+        public void XuLyMailAsync(string mail, string pass, string mailkhoiphuc, int idtaikhoan, object userState) {
+            if ((this.XuLyMailOperationCompleted == null)) {
+                this.XuLyMailOperationCompleted = new System.Threading.SendOrPostCallback(this.OnXuLyMailOperationCompleted);
+            }
+            this.InvokeAsync("XuLyMail", new object[] {
+                        mail,
+                        pass,
+                        mailkhoiphuc,
+                        idtaikhoan}, this.XuLyMailOperationCompleted, userState);
+        }
+        
+        private void OnXuLyMailOperationCompleted(object arg) {
+            if ((this.XuLyMailCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.XuLyMailCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/DanhSachMailChuaXuLy", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataTable DanhSachMailChuaXuLy(int idtaikhoan) {
+            object[] results = this.Invoke("DanhSachMailChuaXuLy", new object[] {
+                        idtaikhoan});
+            return ((System.Data.DataTable)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void DanhSachMailChuaXuLyAsync(int idtaikhoan) {
+            this.DanhSachMailChuaXuLyAsync(idtaikhoan, null);
+        }
+        
+        /// <remarks/>
+        public void DanhSachMailChuaXuLyAsync(int idtaikhoan, object userState) {
+            if ((this.DanhSachMailChuaXuLyOperationCompleted == null)) {
+                this.DanhSachMailChuaXuLyOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDanhSachMailChuaXuLyOperationCompleted);
+            }
+            this.InvokeAsync("DanhSachMailChuaXuLy", new object[] {
+                        idtaikhoan}, this.DanhSachMailChuaXuLyOperationCompleted, userState);
+        }
+        
+        private void OnDanhSachMailChuaXuLyOperationCompleted(object arg) {
+            if ((this.DanhSachMailChuaXuLyCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.DanhSachMailChuaXuLyCompleted(this, new DanhSachMailChuaXuLyCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/CauHinhMail", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void CauHinhMail(int m_ID, string m_LinkKenh, string m_LinkKenhReUp, int m_SoLuongVideoUp, string m_NgonNguGoc, string m_NgonNguThay, string m_BotTieuDe, string m_ThemTieuDe, string m_ThemMoTa, string m_ThemTag) {
+            this.Invoke("CauHinhMail", new object[] {
+                        m_ID,
+                        m_LinkKenh,
+                        m_LinkKenhReUp,
+                        m_SoLuongVideoUp,
+                        m_NgonNguGoc,
+                        m_NgonNguThay,
+                        m_BotTieuDe,
+                        m_ThemTieuDe,
+                        m_ThemMoTa,
+                        m_ThemTag});
+        }
+        
+        /// <remarks/>
+        public void CauHinhMailAsync(int m_ID, string m_LinkKenh, string m_LinkKenhReUp, int m_SoLuongVideoUp, string m_NgonNguGoc, string m_NgonNguThay, string m_BotTieuDe, string m_ThemTieuDe, string m_ThemMoTa, string m_ThemTag) {
+            this.CauHinhMailAsync(m_ID, m_LinkKenh, m_LinkKenhReUp, m_SoLuongVideoUp, m_NgonNguGoc, m_NgonNguThay, m_BotTieuDe, m_ThemTieuDe, m_ThemMoTa, m_ThemTag, null);
+        }
+        
+        /// <remarks/>
+        public void CauHinhMailAsync(int m_ID, string m_LinkKenh, string m_LinkKenhReUp, int m_SoLuongVideoUp, string m_NgonNguGoc, string m_NgonNguThay, string m_BotTieuDe, string m_ThemTieuDe, string m_ThemMoTa, string m_ThemTag, object userState) {
+            if ((this.CauHinhMailOperationCompleted == null)) {
+                this.CauHinhMailOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCauHinhMailOperationCompleted);
+            }
+            this.InvokeAsync("CauHinhMail", new object[] {
+                        m_ID,
+                        m_LinkKenh,
+                        m_LinkKenhReUp,
+                        m_SoLuongVideoUp,
+                        m_NgonNguGoc,
+                        m_NgonNguThay,
+                        m_BotTieuDe,
+                        m_ThemTieuDe,
+                        m_ThemMoTa,
+                        m_ThemTag}, this.CauHinhMailOperationCompleted, userState);
+        }
+        
+        private void OnCauHinhMailOperationCompleted(object arg) {
+            if ((this.CauHinhMailCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.CauHinhMailCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ThemChiTietReup", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void ThemChiTietReup(string Link, string TieuDe, int IDMailDaXuLy) {
+            this.Invoke("ThemChiTietReup", new object[] {
+                        Link,
+                        TieuDe,
+                        IDMailDaXuLy});
+        }
+        
+        /// <remarks/>
+        public void ThemChiTietReupAsync(string Link, string TieuDe, int IDMailDaXuLy) {
+            this.ThemChiTietReupAsync(Link, TieuDe, IDMailDaXuLy, null);
+        }
+        
+        /// <remarks/>
+        public void ThemChiTietReupAsync(string Link, string TieuDe, int IDMailDaXuLy, object userState) {
+            if ((this.ThemChiTietReupOperationCompleted == null)) {
+                this.ThemChiTietReupOperationCompleted = new System.Threading.SendOrPostCallback(this.OnThemChiTietReupOperationCompleted);
+            }
+            this.InvokeAsync("ThemChiTietReup", new object[] {
+                        Link,
+                        TieuDe,
+                        IDMailDaXuLy}, this.ThemChiTietReupOperationCompleted, userState);
+        }
+        
+        private void OnThemChiTietReupOperationCompleted(object arg) {
+            if ((this.ThemChiTietReupCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ThemChiTietReupCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UpdateDaReup", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void UpdateDaReup(int ID) {
+            this.Invoke("UpdateDaReup", new object[] {
+                        ID});
+        }
+        
+        /// <remarks/>
+        public void UpdateDaReupAsync(int ID) {
+            this.UpdateDaReupAsync(ID, null);
+        }
+        
+        /// <remarks/>
+        public void UpdateDaReupAsync(int ID, object userState) {
+            if ((this.UpdateDaReupOperationCompleted == null)) {
+                this.UpdateDaReupOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateDaReupOperationCompleted);
+            }
+            this.InvokeAsync("UpdateDaReup", new object[] {
+                        ID}, this.UpdateDaReupOperationCompleted, userState);
+        }
+        
+        private void OnUpdateDaReupOperationCompleted(object arg) {
+            if ((this.UpdateDaReupCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UpdateDaReupCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/DanhSachVideoChuaReup", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataTable DanhSachVideoChuaReup(int IDMailDaXuLy) {
+            object[] results = this.Invoke("DanhSachVideoChuaReup", new object[] {
+                        IDMailDaXuLy});
+            return ((System.Data.DataTable)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void DanhSachVideoChuaReupAsync(int IDMailDaXuLy) {
+            this.DanhSachVideoChuaReupAsync(IDMailDaXuLy, null);
+        }
+        
+        /// <remarks/>
+        public void DanhSachVideoChuaReupAsync(int IDMailDaXuLy, object userState) {
+            if ((this.DanhSachVideoChuaReupOperationCompleted == null)) {
+                this.DanhSachVideoChuaReupOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDanhSachVideoChuaReupOperationCompleted);
+            }
+            this.InvokeAsync("DanhSachVideoChuaReup", new object[] {
+                        IDMailDaXuLy}, this.DanhSachVideoChuaReupOperationCompleted, userState);
+        }
+        
+        private void OnDanhSachVideoChuaReupOperationCompleted(object arg) {
+            if ((this.DanhSachVideoChuaReupCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.DanhSachVideoChuaReupCompleted(this, new DanhSachVideoChuaReupCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SoLuongDaUpTheoNgay", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int SoLuongDaUpTheoNgay(int IDMailDaXuLy) {
+            object[] results = this.Invoke("SoLuongDaUpTheoNgay", new object[] {
+                        IDMailDaXuLy});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void SoLuongDaUpTheoNgayAsync(int IDMailDaXuLy) {
+            this.SoLuongDaUpTheoNgayAsync(IDMailDaXuLy, null);
+        }
+        
+        /// <remarks/>
+        public void SoLuongDaUpTheoNgayAsync(int IDMailDaXuLy, object userState) {
+            if ((this.SoLuongDaUpTheoNgayOperationCompleted == null)) {
+                this.SoLuongDaUpTheoNgayOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSoLuongDaUpTheoNgayOperationCompleted);
+            }
+            this.InvokeAsync("SoLuongDaUpTheoNgay", new object[] {
+                        IDMailDaXuLy}, this.SoLuongDaUpTheoNgayOperationCompleted, userState);
+        }
+        
+        private void OnSoLuongDaUpTheoNgayOperationCompleted(object arg) {
+            if ((this.SoLuongDaUpTheoNgayCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.SoLuongDaUpTheoNgayCompleted(this, new SoLuongDaUpTheoNgayCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -1660,11 +1922,11 @@ namespace DaoUploadNews.WS_FakeAuto {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void DangNhapCompletedEventHandler(object sender, DangNhapCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class DangNhapCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1686,11 +1948,11 @@ namespace DaoUploadNews.WS_FakeAuto {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void DanhSachKenhCompletedEventHandler(object sender, DanhSachKenhCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class DanhSachKenhCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1712,11 +1974,11 @@ namespace DaoUploadNews.WS_FakeAuto {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void ThongTinKenhCompletedEventHandler(object sender, ThongTinKenhCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class ThongTinKenhCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1738,11 +2000,11 @@ namespace DaoUploadNews.WS_FakeAuto {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void DanhSachBaiVietCompletedEventHandler(object sender, DanhSachBaiVietCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class DanhSachBaiVietCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1764,11 +2026,11 @@ namespace DaoUploadNews.WS_FakeAuto {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void ChiTietBaiVietCompletedEventHandler(object sender, ChiTietBaiVietCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class ChiTietBaiVietCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1790,11 +2052,11 @@ namespace DaoUploadNews.WS_FakeAuto {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void DanhSachVoiceAMZCompletedEventHandler(object sender, DanhSachVoiceAMZCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class DanhSachVoiceAMZCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1816,11 +2078,11 @@ namespace DaoUploadNews.WS_FakeAuto {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void DanhSachBaiVietDaUpCompletedEventHandler(object sender, DanhSachBaiVietDaUpCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class DanhSachBaiVietDaUpCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1842,15 +2104,15 @@ namespace DaoUploadNews.WS_FakeAuto {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void InsertBaiVietDaUpCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void VessionCompletedEventHandler(object sender, VessionCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class VessionCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1872,11 +2134,11 @@ namespace DaoUploadNews.WS_FakeAuto {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void DanhSachFileCapNhatCompletedEventHandler(object sender, DanhSachFileCapNhatCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class DanhSachFileCapNhatCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1898,15 +2160,15 @@ namespace DaoUploadNews.WS_FakeAuto {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void UpdateVoiceKenhCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void DanhSachBaiVietProshowCanRenderCompletedEventHandler(object sender, DanhSachBaiVietProshowCanRenderCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class DanhSachBaiVietProshowCanRenderCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1928,11 +2190,11 @@ namespace DaoUploadNews.WS_FakeAuto {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void DanhSachBaiVietProshowCanRenderTheoKenhCompletedEventHandler(object sender, DanhSachBaiVietProshowCanRenderTheoKenhCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class DanhSachBaiVietProshowCanRenderTheoKenhCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1954,11 +2216,11 @@ namespace DaoUploadNews.WS_FakeAuto {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void DanhSachBaiVietProshowCanRenderTheoKenh_VoiceSeleniumCompletedEventHandler(object sender, DanhSachBaiVietProshowCanRenderTheoKenh_VoiceSeleniumCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class DanhSachBaiVietProshowCanRenderTheoKenh_VoiceSeleniumCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1980,11 +2242,11 @@ namespace DaoUploadNews.WS_FakeAuto {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void DanhSachBaiVietProshowDaRenderCompletedEventHandler(object sender, DanhSachBaiVietProshowDaRenderCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class DanhSachBaiVietProshowDaRenderCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -2006,19 +2268,19 @@ namespace DaoUploadNews.WS_FakeAuto {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void UpdateBaiVietDangRenderCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void UpdateBaiVietDaRenderCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void ThongTinMCTheoKenhCompletedEventHandler(object sender, ThongTinMCTheoKenhCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class ThongTinMCTheoKenhCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -2040,11 +2302,11 @@ namespace DaoUploadNews.WS_FakeAuto {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void DanhSachNgonNguCompletedEventHandler(object sender, DanhSachNgonNguCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class DanhSachNgonNguCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -2066,11 +2328,11 @@ namespace DaoUploadNews.WS_FakeAuto {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void DanhSachVoiceNgonNguCompletedEventHandler(object sender, DanhSachVoiceNgonNguCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class DanhSachVoiceNgonNguCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -2092,11 +2354,11 @@ namespace DaoUploadNews.WS_FakeAuto {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void DanhSachEffectCompletedEventHandler(object sender, DanhSachEffectCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class DanhSachEffectCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -2118,11 +2380,11 @@ namespace DaoUploadNews.WS_FakeAuto {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void DanhSachEffectLevelCompletedEventHandler(object sender, DanhSachEffectLevelCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class DanhSachEffectLevelCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -2144,15 +2406,15 @@ namespace DaoUploadNews.WS_FakeAuto {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void InsertCauHinhVoiceKenhCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void ThongTinCauHinhVoiceKenhCompletedEventHandler(object sender, ThongTinCauHinhVoiceKenhCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class ThongTinCauHinhVoiceKenhCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -2174,11 +2436,11 @@ namespace DaoUploadNews.WS_FakeAuto {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void DanhSachTinCanLayVoiceCompletedEventHandler(object sender, DanhSachTinCanLayVoiceCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class DanhSachTinCanLayVoiceCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -2200,11 +2462,11 @@ namespace DaoUploadNews.WS_FakeAuto {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void DanhSachTinCanLayVoiceTheoKenhCompletedEventHandler(object sender, DanhSachTinCanLayVoiceTheoKenhCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class DanhSachTinCanLayVoiceTheoKenhCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -2226,11 +2488,11 @@ namespace DaoUploadNews.WS_FakeAuto {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void DanhSachTinCanLayVoiceTheoKenhTopCompletedEventHandler(object sender, DanhSachTinCanLayVoiceTheoKenhTopCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class DanhSachTinCanLayVoiceTheoKenhTopCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -2252,19 +2514,19 @@ namespace DaoUploadNews.WS_FakeAuto {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void UpdateDaLayVoiceCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void UpdateBaiVietDaLayVoiceCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void _HeadCompletedEventHandler(object sender, _HeadCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class _HeadCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -2286,11 +2548,11 @@ namespace DaoUploadNews.WS_FakeAuto {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void _SildeCompletedEventHandler(object sender, _SildeCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class _SildeCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -2312,11 +2574,11 @@ namespace DaoUploadNews.WS_FakeAuto {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void _SildeMCCompletedEventHandler(object sender, _SildeMCCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class _SildeMCCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -2338,11 +2600,11 @@ namespace DaoUploadNews.WS_FakeAuto {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void _TranSlideCompletedEventHandler(object sender, _TranSlideCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class _TranSlideCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -2364,11 +2626,11 @@ namespace DaoUploadNews.WS_FakeAuto {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void _FooterCompletedEventHandler(object sender, _FooterCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class _FooterCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -2390,11 +2652,11 @@ namespace DaoUploadNews.WS_FakeAuto {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void _InTroCompletedEventHandler(object sender, _InTroCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class _InTroCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -2416,11 +2678,11 @@ namespace DaoUploadNews.WS_FakeAuto {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void _OutTroCompletedEventHandler(object sender, _OutTroCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class _OutTroCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -2442,11 +2704,11 @@ namespace DaoUploadNews.WS_FakeAuto {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void DanhSachCanSubCompletedEventHandler(object sender, DanhSachCanSubCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class DanhSachCanSubCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -2468,19 +2730,19 @@ namespace DaoUploadNews.WS_FakeAuto {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void LogSubCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void LogIPCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void DanhSachMailCompletedEventHandler(object sender, DanhSachMailCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class DanhSachMailCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -2502,11 +2764,11 @@ namespace DaoUploadNews.WS_FakeAuto {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void DanhSachMailChuaGanIPCompletedEventHandler(object sender, DanhSachMailChuaGanIPCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class DanhSachMailChuaGanIPCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -2528,15 +2790,15 @@ namespace DaoUploadNews.WS_FakeAuto {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void SuaIPCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void VessionSubCompletedEventHandler(object sender, VessionSubCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class VessionSubCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -2558,11 +2820,11 @@ namespace DaoUploadNews.WS_FakeAuto {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void DanhSachFileUpdateCompletedEventHandler(object sender, DanhSachFileUpdateCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class DanhSachFileUpdateCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -2584,11 +2846,11 @@ namespace DaoUploadNews.WS_FakeAuto {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void DanhSachFileUpdateSubCompletedEventHandler(object sender, DanhSachFileUpdateSubCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class DanhSachFileUpdateSubCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -2605,6 +2867,100 @@ namespace DaoUploadNews.WS_FakeAuto {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((System.Data.DataTable)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void XuLyMailCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void DanhSachMailChuaXuLyCompletedEventHandler(object sender, DanhSachMailChuaXuLyCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class DanhSachMailChuaXuLyCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal DanhSachMailChuaXuLyCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataTable Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataTable)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void CauHinhMailCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void ThemChiTietReupCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void UpdateDaReupCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void DanhSachVideoChuaReupCompletedEventHandler(object sender, DanhSachVideoChuaReupCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class DanhSachVideoChuaReupCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal DanhSachVideoChuaReupCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataTable Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataTable)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void SoLuongDaUpTheoNgayCompletedEventHandler(object sender, SoLuongDaUpTheoNgayCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class SoLuongDaUpTheoNgayCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal SoLuongDaUpTheoNgayCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
             }
         }
     }

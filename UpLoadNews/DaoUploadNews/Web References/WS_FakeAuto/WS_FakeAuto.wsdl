@@ -760,6 +760,116 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="XuLyMail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="mail" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pass" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mailkhoiphuc" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="idtaikhoan" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="XuLyMailResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DanhSachMailChuaXuLy">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idtaikhoan" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DanhSachMailChuaXuLyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DanhSachMailChuaXuLyResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CauHinhMail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="m_ID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="m_LinkKenh" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="m_LinkKenhReUp" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="m_SoLuongVideoUp" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="m_NgonNguGoc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="m_NgonNguThay" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="m_BotTieuDe" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="m_ThemTieuDe" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="m_ThemMoTa" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="m_ThemTag" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CauHinhMailResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ThemChiTietReup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Link" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TieuDe" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IDMailDaXuLy" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ThemChiTietReupResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateDaReup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateDaReupResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DanhSachVideoChuaReup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IDMailDaXuLy" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DanhSachVideoChuaReupResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DanhSachVideoChuaReupResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SoLuongDaUpTheoNgay">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IDMailDaXuLy" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SoLuongDaUpTheoNgayResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SoLuongDaUpTheoNgayResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="DataTable" nillable="true">
         <s:complexType>
           <s:sequence>
@@ -1042,6 +1152,48 @@
   <wsdl:message name="DanhSachFileUpdateSubSoapOut">
     <wsdl:part name="parameters" element="tns:DanhSachFileUpdateSubResponse" />
   </wsdl:message>
+  <wsdl:message name="XuLyMailSoapIn">
+    <wsdl:part name="parameters" element="tns:XuLyMail" />
+  </wsdl:message>
+  <wsdl:message name="XuLyMailSoapOut">
+    <wsdl:part name="parameters" element="tns:XuLyMailResponse" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachMailChuaXuLySoapIn">
+    <wsdl:part name="parameters" element="tns:DanhSachMailChuaXuLy" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachMailChuaXuLySoapOut">
+    <wsdl:part name="parameters" element="tns:DanhSachMailChuaXuLyResponse" />
+  </wsdl:message>
+  <wsdl:message name="CauHinhMailSoapIn">
+    <wsdl:part name="parameters" element="tns:CauHinhMail" />
+  </wsdl:message>
+  <wsdl:message name="CauHinhMailSoapOut">
+    <wsdl:part name="parameters" element="tns:CauHinhMailResponse" />
+  </wsdl:message>
+  <wsdl:message name="ThemChiTietReupSoapIn">
+    <wsdl:part name="parameters" element="tns:ThemChiTietReup" />
+  </wsdl:message>
+  <wsdl:message name="ThemChiTietReupSoapOut">
+    <wsdl:part name="parameters" element="tns:ThemChiTietReupResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDaReupSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateDaReup" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDaReupSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateDaReupResponse" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachVideoChuaReupSoapIn">
+    <wsdl:part name="parameters" element="tns:DanhSachVideoChuaReup" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachVideoChuaReupSoapOut">
+    <wsdl:part name="parameters" element="tns:DanhSachVideoChuaReupResponse" />
+  </wsdl:message>
+  <wsdl:message name="SoLuongDaUpTheoNgaySoapIn">
+    <wsdl:part name="parameters" element="tns:SoLuongDaUpTheoNgay" />
+  </wsdl:message>
+  <wsdl:message name="SoLuongDaUpTheoNgaySoapOut">
+    <wsdl:part name="parameters" element="tns:SoLuongDaUpTheoNgayResponse" />
+  </wsdl:message>
   <wsdl:message name="DangNhapHttpGetIn">
     <wsdl:part name="taikhoan" type="s:string" />
     <wsdl:part name="matkhau" type="s:string" />
@@ -1306,6 +1458,54 @@
   <wsdl:message name="DanhSachFileUpdateSubHttpGetIn" />
   <wsdl:message name="DanhSachFileUpdateSubHttpGetOut">
     <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="XuLyMailHttpGetIn">
+    <wsdl:part name="mail" type="s:string" />
+    <wsdl:part name="pass" type="s:string" />
+    <wsdl:part name="mailkhoiphuc" type="s:string" />
+    <wsdl:part name="idtaikhoan" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="XuLyMailHttpGetOut" />
+  <wsdl:message name="DanhSachMailChuaXuLyHttpGetIn">
+    <wsdl:part name="idtaikhoan" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachMailChuaXuLyHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="CauHinhMailHttpGetIn">
+    <wsdl:part name="m_ID" type="s:string" />
+    <wsdl:part name="m_LinkKenh" type="s:string" />
+    <wsdl:part name="m_LinkKenhReUp" type="s:string" />
+    <wsdl:part name="m_SoLuongVideoUp" type="s:string" />
+    <wsdl:part name="m_NgonNguGoc" type="s:string" />
+    <wsdl:part name="m_NgonNguThay" type="s:string" />
+    <wsdl:part name="m_BotTieuDe" type="s:string" />
+    <wsdl:part name="m_ThemTieuDe" type="s:string" />
+    <wsdl:part name="m_ThemMoTa" type="s:string" />
+    <wsdl:part name="m_ThemTag" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CauHinhMailHttpGetOut" />
+  <wsdl:message name="ThemChiTietReupHttpGetIn">
+    <wsdl:part name="Link" type="s:string" />
+    <wsdl:part name="TieuDe" type="s:string" />
+    <wsdl:part name="IDMailDaXuLy" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ThemChiTietReupHttpGetOut" />
+  <wsdl:message name="UpdateDaReupHttpGetIn">
+    <wsdl:part name="ID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDaReupHttpGetOut" />
+  <wsdl:message name="DanhSachVideoChuaReupHttpGetIn">
+    <wsdl:part name="IDMailDaXuLy" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachVideoChuaReupHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="SoLuongDaUpTheoNgayHttpGetIn">
+    <wsdl:part name="IDMailDaXuLy" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SoLuongDaUpTheoNgayHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
   </wsdl:message>
   <wsdl:message name="DangNhapHttpPostIn">
     <wsdl:part name="taikhoan" type="s:string" />
@@ -1572,6 +1772,54 @@
   <wsdl:message name="DanhSachFileUpdateSubHttpPostOut">
     <wsdl:part name="Body" element="tns:DataTable" />
   </wsdl:message>
+  <wsdl:message name="XuLyMailHttpPostIn">
+    <wsdl:part name="mail" type="s:string" />
+    <wsdl:part name="pass" type="s:string" />
+    <wsdl:part name="mailkhoiphuc" type="s:string" />
+    <wsdl:part name="idtaikhoan" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="XuLyMailHttpPostOut" />
+  <wsdl:message name="DanhSachMailChuaXuLyHttpPostIn">
+    <wsdl:part name="idtaikhoan" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachMailChuaXuLyHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="CauHinhMailHttpPostIn">
+    <wsdl:part name="m_ID" type="s:string" />
+    <wsdl:part name="m_LinkKenh" type="s:string" />
+    <wsdl:part name="m_LinkKenhReUp" type="s:string" />
+    <wsdl:part name="m_SoLuongVideoUp" type="s:string" />
+    <wsdl:part name="m_NgonNguGoc" type="s:string" />
+    <wsdl:part name="m_NgonNguThay" type="s:string" />
+    <wsdl:part name="m_BotTieuDe" type="s:string" />
+    <wsdl:part name="m_ThemTieuDe" type="s:string" />
+    <wsdl:part name="m_ThemMoTa" type="s:string" />
+    <wsdl:part name="m_ThemTag" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CauHinhMailHttpPostOut" />
+  <wsdl:message name="ThemChiTietReupHttpPostIn">
+    <wsdl:part name="Link" type="s:string" />
+    <wsdl:part name="TieuDe" type="s:string" />
+    <wsdl:part name="IDMailDaXuLy" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ThemChiTietReupHttpPostOut" />
+  <wsdl:message name="UpdateDaReupHttpPostIn">
+    <wsdl:part name="ID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDaReupHttpPostOut" />
+  <wsdl:message name="DanhSachVideoChuaReupHttpPostIn">
+    <wsdl:part name="IDMailDaXuLy" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachVideoChuaReupHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="SoLuongDaUpTheoNgayHttpPostIn">
+    <wsdl:part name="IDMailDaXuLy" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SoLuongDaUpTheoNgayHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
   <wsdl:portType name="WS_FakeAutoSoap">
     <wsdl:operation name="DangNhap">
       <wsdl:input message="tns:DangNhapSoapIn" />
@@ -1752,6 +2000,34 @@
     <wsdl:operation name="DanhSachFileUpdateSub">
       <wsdl:input message="tns:DanhSachFileUpdateSubSoapIn" />
       <wsdl:output message="tns:DanhSachFileUpdateSubSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="XuLyMail">
+      <wsdl:input message="tns:XuLyMailSoapIn" />
+      <wsdl:output message="tns:XuLyMailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachMailChuaXuLy">
+      <wsdl:input message="tns:DanhSachMailChuaXuLySoapIn" />
+      <wsdl:output message="tns:DanhSachMailChuaXuLySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CauHinhMail">
+      <wsdl:input message="tns:CauHinhMailSoapIn" />
+      <wsdl:output message="tns:CauHinhMailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ThemChiTietReup">
+      <wsdl:input message="tns:ThemChiTietReupSoapIn" />
+      <wsdl:output message="tns:ThemChiTietReupSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDaReup">
+      <wsdl:input message="tns:UpdateDaReupSoapIn" />
+      <wsdl:output message="tns:UpdateDaReupSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachVideoChuaReup">
+      <wsdl:input message="tns:DanhSachVideoChuaReupSoapIn" />
+      <wsdl:output message="tns:DanhSachVideoChuaReupSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SoLuongDaUpTheoNgay">
+      <wsdl:input message="tns:SoLuongDaUpTheoNgaySoapIn" />
+      <wsdl:output message="tns:SoLuongDaUpTheoNgaySoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="WS_FakeAutoHttpGet">
@@ -1935,6 +2211,34 @@
       <wsdl:input message="tns:DanhSachFileUpdateSubHttpGetIn" />
       <wsdl:output message="tns:DanhSachFileUpdateSubHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="XuLyMail">
+      <wsdl:input message="tns:XuLyMailHttpGetIn" />
+      <wsdl:output message="tns:XuLyMailHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachMailChuaXuLy">
+      <wsdl:input message="tns:DanhSachMailChuaXuLyHttpGetIn" />
+      <wsdl:output message="tns:DanhSachMailChuaXuLyHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CauHinhMail">
+      <wsdl:input message="tns:CauHinhMailHttpGetIn" />
+      <wsdl:output message="tns:CauHinhMailHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ThemChiTietReup">
+      <wsdl:input message="tns:ThemChiTietReupHttpGetIn" />
+      <wsdl:output message="tns:ThemChiTietReupHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDaReup">
+      <wsdl:input message="tns:UpdateDaReupHttpGetIn" />
+      <wsdl:output message="tns:UpdateDaReupHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachVideoChuaReup">
+      <wsdl:input message="tns:DanhSachVideoChuaReupHttpGetIn" />
+      <wsdl:output message="tns:DanhSachVideoChuaReupHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SoLuongDaUpTheoNgay">
+      <wsdl:input message="tns:SoLuongDaUpTheoNgayHttpGetIn" />
+      <wsdl:output message="tns:SoLuongDaUpTheoNgayHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="WS_FakeAutoHttpPost">
     <wsdl:operation name="DangNhap">
@@ -2116,6 +2420,34 @@
     <wsdl:operation name="DanhSachFileUpdateSub">
       <wsdl:input message="tns:DanhSachFileUpdateSubHttpPostIn" />
       <wsdl:output message="tns:DanhSachFileUpdateSubHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="XuLyMail">
+      <wsdl:input message="tns:XuLyMailHttpPostIn" />
+      <wsdl:output message="tns:XuLyMailHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachMailChuaXuLy">
+      <wsdl:input message="tns:DanhSachMailChuaXuLyHttpPostIn" />
+      <wsdl:output message="tns:DanhSachMailChuaXuLyHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CauHinhMail">
+      <wsdl:input message="tns:CauHinhMailHttpPostIn" />
+      <wsdl:output message="tns:CauHinhMailHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ThemChiTietReup">
+      <wsdl:input message="tns:ThemChiTietReupHttpPostIn" />
+      <wsdl:output message="tns:ThemChiTietReupHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDaReup">
+      <wsdl:input message="tns:UpdateDaReupHttpPostIn" />
+      <wsdl:output message="tns:UpdateDaReupHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachVideoChuaReup">
+      <wsdl:input message="tns:DanhSachVideoChuaReupHttpPostIn" />
+      <wsdl:output message="tns:DanhSachVideoChuaReupHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SoLuongDaUpTheoNgay">
+      <wsdl:input message="tns:SoLuongDaUpTheoNgayHttpPostIn" />
+      <wsdl:output message="tns:SoLuongDaUpTheoNgayHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WS_FakeAutoSoap" type="tns:WS_FakeAutoSoap">
@@ -2518,6 +2850,69 @@
     </wsdl:operation>
     <wsdl:operation name="DanhSachFileUpdateSub">
       <soap:operation soapAction="http://tempuri.org/DanhSachFileUpdateSub" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="XuLyMail">
+      <soap:operation soapAction="http://tempuri.org/XuLyMail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachMailChuaXuLy">
+      <soap:operation soapAction="http://tempuri.org/DanhSachMailChuaXuLy" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CauHinhMail">
+      <soap:operation soapAction="http://tempuri.org/CauHinhMail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ThemChiTietReup">
+      <soap:operation soapAction="http://tempuri.org/ThemChiTietReup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDaReup">
+      <soap:operation soapAction="http://tempuri.org/UpdateDaReup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachVideoChuaReup">
+      <soap:operation soapAction="http://tempuri.org/DanhSachVideoChuaReup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SoLuongDaUpTheoNgay">
+      <soap:operation soapAction="http://tempuri.org/SoLuongDaUpTheoNgay" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2933,6 +3328,69 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="XuLyMail">
+      <soap12:operation soapAction="http://tempuri.org/XuLyMail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachMailChuaXuLy">
+      <soap12:operation soapAction="http://tempuri.org/DanhSachMailChuaXuLy" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CauHinhMail">
+      <soap12:operation soapAction="http://tempuri.org/CauHinhMail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ThemChiTietReup">
+      <soap12:operation soapAction="http://tempuri.org/ThemChiTietReup" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDaReup">
+      <soap12:operation soapAction="http://tempuri.org/UpdateDaReup" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachVideoChuaReup">
+      <soap12:operation soapAction="http://tempuri.org/DanhSachVideoChuaReup" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SoLuongDaUpTheoNgay">
+      <soap12:operation soapAction="http://tempuri.org/SoLuongDaUpTheoNgay" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="WS_FakeAutoHttpGet" type="tns:WS_FakeAutoHttpGet">
     <http:binding verb="GET" />
@@ -3321,6 +3779,61 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="XuLyMail">
+      <http:operation location="/XuLyMail" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachMailChuaXuLy">
+      <http:operation location="/DanhSachMailChuaXuLy" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CauHinhMail">
+      <http:operation location="/CauHinhMail" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ThemChiTietReup">
+      <http:operation location="/ThemChiTietReup" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDaReup">
+      <http:operation location="/UpdateDaReup" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachVideoChuaReup">
+      <http:operation location="/DanhSachVideoChuaReup" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SoLuongDaUpTheoNgay">
+      <http:operation location="/SoLuongDaUpTheoNgay" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="WS_FakeAutoHttpPost" type="tns:WS_FakeAutoHttpPost">
     <http:binding verb="POST" />
@@ -3702,6 +4215,61 @@
     </wsdl:operation>
     <wsdl:operation name="DanhSachFileUpdateSub">
       <http:operation location="/DanhSachFileUpdateSub" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="XuLyMail">
+      <http:operation location="/XuLyMail" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachMailChuaXuLy">
+      <http:operation location="/DanhSachMailChuaXuLy" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CauHinhMail">
+      <http:operation location="/CauHinhMail" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ThemChiTietReup">
+      <http:operation location="/ThemChiTietReup" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDaReup">
+      <http:operation location="/UpdateDaReup" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachVideoChuaReup">
+      <http:operation location="/DanhSachVideoChuaReup" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SoLuongDaUpTheoNgay">
+      <http:operation location="/SoLuongDaUpTheoNgay" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

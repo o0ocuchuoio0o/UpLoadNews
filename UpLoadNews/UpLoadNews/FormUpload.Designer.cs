@@ -133,6 +133,10 @@
             this.txttextsubtest = new System.Windows.Forms.TextBox();
             this.cmbfonthardsub = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnfloderlistmcbg = new System.Windows.Forms.Button();
+            this.checkMcBG = new System.Windows.Forms.CheckBox();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.txtfloderlistmc = new System.Windows.Forms.TextBox();
             this.btnfloderlistmc = new System.Windows.Forms.Button();
@@ -202,24 +206,22 @@
             this.btnlogothumnail = new System.Windows.Forms.Button();
             this.tblogothumnail = new System.Windows.Forms.TextBox();
             this.label42 = new System.Windows.Forms.Label();
-            this.bgwlayvoice = new System.ComponentModel.BackgroundWorker();
-            this.bgwrendermulti = new System.ComponentModel.BackgroundWorker();
-            this.timerrendermulti = new System.Windows.Forms.Timer(this.components);
             this.tabPage9 = new System.Windows.Forms.TabPage();
-            this.dataGridViewListKenh = new System.Windows.Forms.DataGridView();
-            this.groupBox14 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.btnfloderlistmcbg = new System.Windows.Forms.Button();
-            this.checkMcBG = new System.Windows.Forms.CheckBox();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage10 = new System.Windows.Forms.TabPage();
-            this.tabPage11 = new System.Windows.Forms.TabPage();
-            this.btnchangepassall = new System.Windows.Forms.Button();
-            this.txttientopass = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
+            this.txttientopass = new System.Windows.Forms.TextBox();
+            this.btnchangepassall = new System.Windows.Forms.Button();
+            this.dataGridViewListKenh = new System.Windows.Forms.DataGridView();
             this.Mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Pass = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MailKhoiPhuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.bgwlayvoice = new System.ComponentModel.BackgroundWorker();
+            this.bgwrendermulti = new System.ComponentModel.BackgroundWorker();
+            this.timerrendermulti = new System.Windows.Forms.Timer(this.components);
+            this.txtsoluongmailchange = new System.Windows.Forms.NumericUpDown();
+            this.label25 = new System.Windows.Forms.Label();
             this.groupBox3.SuspendLayout();
             this.tabControl3.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -244,6 +246,7 @@
             this.tabPage1.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.groupBox14.SuspendLayout();
             this.groupBox11.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tabPage6.SuspendLayout();
@@ -255,10 +258,10 @@
             this.tabPage8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtsizeboderthumnail)).BeginInit();
             this.tabPage9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListKenh)).BeginInit();
-            this.groupBox14.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListKenh)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtsoluongmailchange)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox3
@@ -1414,6 +1417,45 @@
             this.tabPage2.Text = "Config MC";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // groupBox14
+            // 
+            this.groupBox14.Controls.Add(this.textBox1);
+            this.groupBox14.Controls.Add(this.btnfloderlistmcbg);
+            this.groupBox14.Controls.Add(this.checkMcBG);
+            this.groupBox14.Location = new System.Drawing.Point(6, 181);
+            this.groupBox14.Name = "groupBox14";
+            this.groupBox14.Size = new System.Drawing.Size(542, 55);
+            this.groupBox14.TabIndex = 2;
+            this.groupBox14.TabStop = false;
+            this.groupBox14.Text = "MC resize bachgroud";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Enabled = false;
+            this.textBox1.Location = new System.Drawing.Point(238, 19);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(247, 20);
+            this.textBox1.TabIndex = 317;
+            // 
+            // btnfloderlistmcbg
+            // 
+            this.btnfloderlistmcbg.Location = new System.Drawing.Point(118, 17);
+            this.btnfloderlistmcbg.Name = "btnfloderlistmcbg";
+            this.btnfloderlistmcbg.Size = new System.Drawing.Size(95, 23);
+            this.btnfloderlistmcbg.TabIndex = 316;
+            this.btnfloderlistmcbg.Text = "&Floder list mc";
+            this.btnfloderlistmcbg.UseVisualStyleBackColor = true;
+            // 
+            // checkMcBG
+            // 
+            this.checkMcBG.AutoSize = true;
+            this.checkMcBG.Location = new System.Drawing.Point(16, 19);
+            this.checkMcBG.Name = "checkMcBG";
+            this.checkMcBG.Size = new System.Drawing.Size(57, 17);
+            this.checkMcBG.TabIndex = 315;
+            this.checkMcBG.Text = "MC bg";
+            this.checkMcBG.UseVisualStyleBackColor = true;
+            // 
             // groupBox11
             // 
             this.groupBox11.Controls.Add(this.txtfloderlistmc);
@@ -2373,20 +2415,6 @@
             this.label42.TabIndex = 319;
             this.label42.Text = "Logo thumnail";
             // 
-            // bgwlayvoice
-            // 
-            this.bgwlayvoice.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwlayvoice_DoWork);
-            this.bgwlayvoice.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwlayvoice_RunWorkerCompleted);
-            // 
-            // bgwrendermulti
-            // 
-            this.bgwrendermulti.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwrendermulti_DoWork);
-            this.bgwrendermulti.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwrendermulti_RunWorkerCompleted);
-            // 
-            // timerrendermulti
-            // 
-            this.timerrendermulti.Tick += new System.EventHandler(this.timerrendermulti_Tick);
-            // 
             // tabPage9
             // 
             this.tabPage9.Controls.Add(this.tabControl2);
@@ -2397,57 +2425,6 @@
             this.tabPage9.TabIndex = 6;
             this.tabPage9.Text = "Manager list channel";
             this.tabPage9.UseVisualStyleBackColor = true;
-            // 
-            // dataGridViewListKenh
-            // 
-            this.dataGridViewListKenh.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewListKenh.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Mail,
-            this.Pass,
-            this.MailKhoiPhuc});
-            this.dataGridViewListKenh.Location = new System.Drawing.Point(3, 74);
-            this.dataGridViewListKenh.Name = "dataGridViewListKenh";
-            this.dataGridViewListKenh.Size = new System.Drawing.Size(580, 368);
-            this.dataGridViewListKenh.TabIndex = 0;
-            // 
-            // groupBox14
-            // 
-            this.groupBox14.Controls.Add(this.textBox1);
-            this.groupBox14.Controls.Add(this.btnfloderlistmcbg);
-            this.groupBox14.Controls.Add(this.checkMcBG);
-            this.groupBox14.Location = new System.Drawing.Point(6, 181);
-            this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(542, 55);
-            this.groupBox14.TabIndex = 2;
-            this.groupBox14.TabStop = false;
-            this.groupBox14.Text = "MC resize bachgroud";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(238, 19);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(247, 20);
-            this.textBox1.TabIndex = 317;
-            // 
-            // btnfloderlistmcbg
-            // 
-            this.btnfloderlistmcbg.Location = new System.Drawing.Point(118, 17);
-            this.btnfloderlistmcbg.Name = "btnfloderlistmcbg";
-            this.btnfloderlistmcbg.Size = new System.Drawing.Size(95, 23);
-            this.btnfloderlistmcbg.TabIndex = 316;
-            this.btnfloderlistmcbg.Text = "&Floder list mc";
-            this.btnfloderlistmcbg.UseVisualStyleBackColor = true;
-            // 
-            // checkMcBG
-            // 
-            this.checkMcBG.AutoSize = true;
-            this.checkMcBG.Location = new System.Drawing.Point(16, 19);
-            this.checkMcBG.Name = "checkMcBG";
-            this.checkMcBG.Size = new System.Drawing.Size(57, 17);
-            this.checkMcBG.TabIndex = 315;
-            this.checkMcBG.Text = "MC bg";
-            this.checkMcBG.UseVisualStyleBackColor = true;
             // 
             // tabControl2
             // 
@@ -2461,6 +2438,8 @@
             // 
             // tabPage10
             // 
+            this.tabPage10.Controls.Add(this.label25);
+            this.tabPage10.Controls.Add(this.txtsoluongmailchange);
             this.tabPage10.Controls.Add(this.label24);
             this.tabPage10.Controls.Add(this.txttientopass);
             this.tabPage10.Controls.Add(this.btnchangepassall);
@@ -2473,36 +2452,6 @@
             this.tabPage10.Text = "Mail chưa đổi pass";
             this.tabPage10.UseVisualStyleBackColor = true;
             // 
-            // tabPage11
-            // 
-            this.tabPage11.Location = new System.Drawing.Point(4, 22);
-            this.tabPage11.Name = "tabPage11";
-            this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage11.Size = new System.Drawing.Size(589, 427);
-            this.tabPage11.TabIndex = 1;
-            this.tabPage11.Text = "Mail Reup";
-            this.tabPage11.UseVisualStyleBackColor = true;
-            // 
-            // btnchangepassall
-            // 
-            this.btnchangepassall.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnchangepassall.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnchangepassall.Location = new System.Drawing.Point(219, 23);
-            this.btnchangepassall.Name = "btnchangepassall";
-            this.btnchangepassall.Size = new System.Drawing.Size(125, 33);
-            this.btnchangepassall.TabIndex = 338;
-            this.btnchangepassall.Text = "CHANGE PASS ALL";
-            this.btnchangepassall.UseVisualStyleBackColor = true;
-            this.btnchangepassall.Click += new System.EventHandler(this.btnchangepassall_Click);
-            // 
-            // txttientopass
-            // 
-            this.txttientopass.Location = new System.Drawing.Point(9, 30);
-            this.txttientopass.Name = "txttientopass";
-            this.txttientopass.Size = new System.Drawing.Size(204, 20);
-            this.txttientopass.TabIndex = 339;
-            this.txttientopass.Text = "thang2019";
-            // 
             // label24
             // 
             this.label24.AutoSize = true;
@@ -2512,6 +2461,38 @@
             this.label24.TabIndex = 340;
             this.label24.Text = "Tiền tố pass và mail khôi phục ví dụ : trangthang@gmail.com ---> tranthang.thang2" +
     "019@gmail.com";
+            // 
+            // txttientopass
+            // 
+            this.txttientopass.Location = new System.Drawing.Point(9, 30);
+            this.txttientopass.Name = "txttientopass";
+            this.txttientopass.Size = new System.Drawing.Size(204, 20);
+            this.txttientopass.TabIndex = 339;
+            this.txttientopass.Text = "thang2019";
+            // 
+            // btnchangepassall
+            // 
+            this.btnchangepassall.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnchangepassall.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnchangepassall.Location = new System.Drawing.Point(401, 21);
+            this.btnchangepassall.Name = "btnchangepassall";
+            this.btnchangepassall.Size = new System.Drawing.Size(125, 33);
+            this.btnchangepassall.TabIndex = 338;
+            this.btnchangepassall.Text = "CHANGE PASS";
+            this.btnchangepassall.UseVisualStyleBackColor = true;
+            this.btnchangepassall.Click += new System.EventHandler(this.btnchangepassall_Click);
+            // 
+            // dataGridViewListKenh
+            // 
+            this.dataGridViewListKenh.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewListKenh.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Mail,
+            this.Pass,
+            this.MailKhoiPhuc});
+            this.dataGridViewListKenh.Location = new System.Drawing.Point(3, 96);
+            this.dataGridViewListKenh.Name = "dataGridViewListKenh";
+            this.dataGridViewListKenh.Size = new System.Drawing.Size(580, 325);
+            this.dataGridViewListKenh.TabIndex = 0;
             // 
             // Mail
             // 
@@ -2527,6 +2508,51 @@
             // 
             this.MailKhoiPhuc.HeaderText = "MailKhoiPhuc";
             this.MailKhoiPhuc.Name = "MailKhoiPhuc";
+            // 
+            // tabPage11
+            // 
+            this.tabPage11.Location = new System.Drawing.Point(4, 22);
+            this.tabPage11.Name = "tabPage11";
+            this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage11.Size = new System.Drawing.Size(589, 427);
+            this.tabPage11.TabIndex = 1;
+            this.tabPage11.Text = "Mail Reup";
+            this.tabPage11.UseVisualStyleBackColor = true;
+            // 
+            // bgwlayvoice
+            // 
+            this.bgwlayvoice.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwlayvoice_DoWork);
+            this.bgwlayvoice.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwlayvoice_RunWorkerCompleted);
+            // 
+            // bgwrendermulti
+            // 
+            this.bgwrendermulti.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwrendermulti_DoWork);
+            this.bgwrendermulti.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwrendermulti_RunWorkerCompleted);
+            // 
+            // timerrendermulti
+            // 
+            this.timerrendermulti.Tick += new System.EventHandler(this.timerrendermulti_Tick);
+            // 
+            // txtsoluongmailchange
+            // 
+            this.txtsoluongmailchange.Location = new System.Drawing.Point(336, 31);
+            this.txtsoluongmailchange.Name = "txtsoluongmailchange";
+            this.txtsoluongmailchange.Size = new System.Drawing.Size(51, 20);
+            this.txtsoluongmailchange.TabIndex = 341;
+            this.txtsoluongmailchange.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(219, 33);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(115, 13);
+            this.label25.TabIndex = 342;
+            this.label25.Text = "Số lượng mail change :";
             // 
             // FormUpload
             // 
@@ -2578,6 +2604,8 @@
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.tabPage2.ResumeLayout(false);
+            this.groupBox14.ResumeLayout(false);
+            this.groupBox14.PerformLayout();
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
             this.groupBox5.ResumeLayout(false);
@@ -2598,12 +2626,11 @@
             this.tabPage8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtsizeboderthumnail)).EndInit();
             this.tabPage9.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListKenh)).EndInit();
-            this.groupBox14.ResumeLayout(false);
-            this.groupBox14.PerformLayout();
             this.tabControl2.ResumeLayout(false);
             this.tabPage10.ResumeLayout(false);
             this.tabPage10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListKenh)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtsoluongmailchange)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2802,5 +2829,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Mail;
         private System.Windows.Forms.DataGridViewTextBoxColumn Pass;
         private System.Windows.Forms.DataGridViewTextBoxColumn MailKhoiPhuc;
+        private System.Windows.Forms.NumericUpDown txtsoluongmailchange;
+        private System.Windows.Forms.Label label25;
     }
 }

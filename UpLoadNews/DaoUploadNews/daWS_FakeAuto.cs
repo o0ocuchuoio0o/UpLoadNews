@@ -251,5 +251,64 @@ namespace DaoUploadNews
             return ex;
         }
         #endregion
+
+
+        #region // các hàm hệ thống quản lý mail và reup
+      
+        public void XuLyMail(string mail, string pass, string mailkhoiphuc, int idtaikhoan)
+        {
+            WS_FakeAuto.WS_FakeAuto xuly = new  WS_FakeAuto.WS_FakeAuto();
+            xuly.XuLyMail(mail, pass, mailkhoiphuc, idtaikhoan);
+        }
+       
+        public DataTable DanhSachMailChuaXuLy(int idtaikhoan)
+        {
+            DataTable dt = new DataTable();
+            WS_FakeAuto.WS_FakeAuto ds = new WS_FakeAuto.WS_FakeAuto();
+            dt = ds.DanhSachMailChuaXuLy( idtaikhoan);
+            return dt;
+        }
+
+        public void CauHinhMail(int m_ID, string m_LinkKenh, string m_LinkKenhReUp,
+              int m_SoLuongVideoUp, string m_NgonNguGoc, string m_NgonNguThay, string m_BotTieuDe,
+              string m_ThemTieuDe, string m_ThemMoTa, string m_ThemTag)
+        {
+            WS_FakeAuto.WS_FakeAuto xuly = new WS_FakeAuto.WS_FakeAuto();
+            xuly.CauHinhMail( m_ID, m_LinkKenh, m_LinkKenhReUp,
+               m_SoLuongVideoUp, m_NgonNguGoc, m_NgonNguThay, m_BotTieuDe,
+               m_ThemTieuDe, m_ThemMoTa, m_ThemTag);
+        }
+       
+        public void ThemChiTietReup(string Link, string TieuDe, int IDMailDaXuLy)
+        {
+            WS_FakeAuto.WS_FakeAuto xuly = new WS_FakeAuto.WS_FakeAuto();
+            xuly.ThemChiTietReup(Link, TieuDe, IDMailDaXuLy);
+        }
+       
+        public void UpdateDaReup(int ID)
+        {
+            WS_FakeAuto.WS_FakeAuto xuly = new WS_FakeAuto.WS_FakeAuto();
+            xuly.UpdateDaReup( ID);
+        }
+      
+        public DataTable DanhSachVideoChuaReup(int IDMailDaXuLy)
+        {
+            DataTable dt = new DataTable();
+            WS_FakeAuto.WS_FakeAuto ds = new WS_FakeAuto.WS_FakeAuto();
+            dt = ds.DanhSachVideoChuaReup( IDMailDaXuLy);
+            return dt;
+        }
+      
+        public int SoLuongDaUpTheoNgay(int IDMailDaXuLy)
+        {
+            int kq = 0;
+            WS_FakeAuto.WS_FakeAuto ds = new WS_FakeAuto.WS_FakeAuto();
+            kq = ds.SoLuongDaUpTheoNgay( IDMailDaXuLy);
+            return kq;
+        }
+
+        #endregion
+
+
     }
 }

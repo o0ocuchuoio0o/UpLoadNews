@@ -347,5 +347,18 @@ namespace UpLoadNews
 
         }
         #endregion
+
+
+
+        #region // các thay đổi trong csdl
+
+
+
+
+
+        #endregion
+
+
+
     }
 }

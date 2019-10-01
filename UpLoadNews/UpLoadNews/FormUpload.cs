@@ -514,6 +514,7 @@ namespace UpLoadNews
             hienthisoluongdaup();
             Itrack();
             layngayhientai();
+            loadmailchuaxuly();
         }
         private void layngayhientai()
         {
@@ -2787,9 +2788,20 @@ namespace UpLoadNews
         #endregion
 
 
+        #region /// phần dành cho reup
+        private void loadmailchuaxuly()
+        {
+            daWS_FakeAuto ds = new daWS_FakeAuto();
+            DataTable dt = new DataTable();
+            dt = ds.DanhSachMailChuaXuLy(m_IDTaiKhoan);
+            dataGridViewListKenh.DataSource = dt;
+        }
+
         private void btnchangepassall_Click(object sender, EventArgs e)
         {
 
         }
+
+        #endregion
     }
 }
