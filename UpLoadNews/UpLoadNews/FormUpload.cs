@@ -2799,7 +2799,42 @@ namespace UpLoadNews
 
         private void btnchangepassall_Click(object sender, EventArgs e)
         {
+            Thread change = new Thread(()=> {
+                DataTable dt = new DataTable();
+                dt=(DataTable)dataGridViewListKenh.DataSource;
+                if(dt.Rows.Count>0)
+                {
+                    int k = 1;
+                    foreach (DataRow r in dt.Rows)
+                    {
+                        if(k<=txtsoluongmailchange.Value)
+                        {
+                            #region // thực hiện các bước change mail
+                            try
+                            {
+                                string mail = r["Mail"].ToString();
+                                string pass = r["Pass"].ToString();
+                                string mailkhoiphuc = r["MailKhoiPhuc"].ToString();
+                                string[] temp = mail.Split(new string[] { "@" }, StringSplitOptions.RemoveEmptyEntries);
+                                string passmoi = temp[0].ToString() + "." + txttientopass.Text + "@gmail.com";
+                                string mailkhoiphucmoi = passmoi;
+                                ManagerChannel changemailkhoiphuc = new ManagerChannel();
+                                changemailkhoiphuc.ThayMailKhoiPhuc(mail, pass, mailkhoiphuc, mailkhoiphucmoi);
+                                ManagerChannel changepass = new ManagerChannel();
+                                changepass.ThayPassMoi(mail, pass, mailkhoiphucmoi, passmoi);
+                                #region // khi thay xong thay đổi trong csdl
 
+                                #endregion
+
+                            }
+                            catch { }
+                            #endregion
+                        }
+                        k = k + 1;
+                    }
+                }
+            });
+            change.Start();
         }
 
         #endregion
