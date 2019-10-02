@@ -1,2 +1,0 @@
-file 'D:\_OutputFolder\sankei\1\1_output.avi'
-file 'D:\_OutputFolder\sankei\2\2_output.avi'

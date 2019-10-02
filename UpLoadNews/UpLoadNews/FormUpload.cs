@@ -177,6 +177,30 @@ namespace UpLoadNews
             catch { }
             try
             {
+                if (ConfigurationManager.AppSettings["Listvideobg"].ToString() == "")
+                {
+                    txtfloderlistbg.Text = "";
+                }
+                else
+                {
+                    txtfloderlistbg.Text = ConfigurationManager.AppSettings["Listvideobg"].ToString();
+                }
+            }
+            catch { }
+            try
+            {
+                if (ConfigurationManager.AppSettings["Listpicture"].ToString() == "")
+                {
+                    txtfloderlistpicture.Text = "";
+                }
+                else
+                {
+                    txtfloderlistpicture.Text = ConfigurationManager.AppSettings["Listpicture"].ToString();
+                }
+            }
+            catch { }
+            try
+            {
                 if (ConfigurationManager.AppSettings["InTro"].ToString() == "")
                 {
                   tbintro.Text = "";
@@ -1059,6 +1083,41 @@ namespace UpLoadNews
             if (colorDlg.ShowDialog() == DialogResult.OK)
             {
                 lblborderthumnail.ForeColor = colorDlg.Color;
+            }
+        }
+        private void btnfloderlistmcbg_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fl = new FolderBrowserDialog();
+            fl.ShowNewFolderButton = true;
+            if (fl.ShowDialog() == DialogResult.OK)
+            {
+                txtfloderlistbg.Text = fl.SelectedPath;
+                ExeConfigurationFileMap exmap = new ExeConfigurationFileMap();
+                exmap.ExeConfigFilename = @"UpLoadNews.exe.config";
+                //Configuration cf = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                Configuration cf = ConfigurationManager.OpenMappedExeConfiguration(exmap, ConfigurationUserLevel.None);
+                cf.AppSettings.Settings.Remove("Listvideobg");
+                cf.AppSettings.Settings.Add("Listvideobg", txtfloderlistbg.Text);
+                cf.Save(ConfigurationSaveMode.Modified);
+                ConfigurationManager.RefreshSection("appSettings");
+            }
+        }
+
+        private void btnfloderlistpicbg_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fl = new FolderBrowserDialog();
+            fl.ShowNewFolderButton = true;
+            if (fl.ShowDialog() == DialogResult.OK)
+            {
+                txtfloderlistpicture.Text = fl.SelectedPath;
+                ExeConfigurationFileMap exmap = new ExeConfigurationFileMap();
+                exmap.ExeConfigFilename = @"UpLoadNews.exe.config";
+                //Configuration cf = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                Configuration cf = ConfigurationManager.OpenMappedExeConfiguration(exmap, ConfigurationUserLevel.None);
+                cf.AppSettings.Settings.Remove("Listpicture");
+                cf.AppSettings.Settings.Add("Listpicture", txtfloderlistpicture.Text);
+                cf.Save(ConfigurationSaveMode.Modified);
+                ConfigurationManager.RefreshSection("appSettings");
             }
         }
         #endregion
@@ -2198,7 +2257,28 @@ namespace UpLoadNews
                                     ffrunmc.RunCommand(addmc, _AtriHidde);
                                     fileFromComputer = _outputvideoMC;
                                 }
+                                // thêm nền và mc tĩnh
+                                if(checkMcBG.Checked==true)
+                                {
+                                    var filesbg = new DirectoryInfo(txtfloderlistbg.Text).GetFiles();
+                                    int indexbg = new Random().Next(0, filesbg.Length);
+                                    string pathbg = txtfloderlistbg.Text + @"\" + filesbg[indexbg].Name;
+                                    // copy file video bg vào chung thư mục ffmpeg
+                                    System.IO.File.Copy(pathbg, Application.StartupPath + @"\" + filesbg[indexbg].Name, true);
+                                    var filespicture = new DirectoryInfo(txtfloderlistpicture.Text).GetFiles();
+                                    int indexpicture = new Random().Next(0, filesbg.Length);
+                                    string pathpicture = txtfloderlistpicture.Text + @"\" + filespicture[indexpicture].Name;
 
+                                    //ghep vao video
+                                    string _outputvideobg = txtfoldervideo.Text + @"\" + folder + @"\" + k.ToString() + @"\_output" + k.ToString() + ".mp4";
+                                    RunFFMPEG ffrunmc = new RunFFMPEG();
+                                    string addmc = string.Format(@" -y -i {0} -i {1} -filter_complex ""[0:v]scale=300:260[v1];movie={2}:loop=999,setpts=N/(FRAME_RATE*TB),scale=854:480,setdar=16/9[v2];[v2][v1]overlay=shortest=1:x=5:y=5[v3];[1:v]scale=854:480[v4];[v3][v4]overlay=0:0"" -vcodec libx264 -pix_fmt yuv420p -r 25 -g 62 -b:v 1200k -shortest -acodec aac -b:a 128k -ar 44100  -preset veryfast {3}", fileFromComputer, pathpicture, filesbg[indexbg].Name, _outputvideobg);
+                                    ffrunmc.RunCommand(addmc, false);
+                                    //thực hiện xóa file videobg sau khi xử lý xong
+                                    System.IO.File.Delete(Application.StartupPath + @"\" + filesbg[indexbg].Name);
+                                 
+                                    fileFromComputer = _outputvideobg;
+                                }
 
                                 #region // them va link log da upload và xóa folder
                                 try
@@ -2818,12 +2898,14 @@ namespace UpLoadNews
                                 string[] temp = mail.Split(new string[] { "@" }, StringSplitOptions.RemoveEmptyEntries);
                                 string passmoi = temp[0].ToString() + "." + txttientopass.Text + "@gmail.com";
                                 string mailkhoiphucmoi = passmoi;
+
                                 ManagerChannel changemailkhoiphuc = new ManagerChannel();
                                 changemailkhoiphuc.ThayMailKhoiPhuc(mail, pass, mailkhoiphuc, mailkhoiphucmoi);
                                 ManagerChannel changepass = new ManagerChannel();
                                 changepass.ThayPassMoi(mail, pass, mailkhoiphucmoi, passmoi);
                                 #region // khi thay xong thay đổi trong csdl
-
+                                daWS_FakeAuto thaydoi = new daWS_FakeAuto();
+                                thaydoi.XuLyMail(mail,passmoi,mailkhoiphucmoi,m_IDTaiKhoan);
                                 #endregion
 
                             }
@@ -2838,5 +2920,7 @@ namespace UpLoadNews
         }
 
         #endregion
+
+     
     }
 }

@@ -36,10 +36,13 @@ namespace DaoUploadNews
 
         public DataTable DanhSachBaiViet(int idkenh)
         {
-            DataTable dt = new DataTable();
-            WS_FakeAuto.WS_FakeAuto ds = new WS_FakeAuto.WS_FakeAuto();
-            dt = ds.DanhSachBaiViet(idkenh);
-            return dt;
+           
+                DataTable dt = new DataTable();
+                WS_FakeAuto.WS_FakeAuto ds = new WS_FakeAuto.WS_FakeAuto();
+                try { dt = ds.DanhSachBaiViet(idkenh); }
+                catch { }
+                return dt;
+         
         }
         public DataTable DanhSachBaiVietProshow()
         {

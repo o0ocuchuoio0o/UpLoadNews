@@ -263,52 +263,28 @@ namespace UpLoadNews
 
         private void button1_Click_2(object sender, EventArgs e)
         {
-            //CoreDriver something = new CoreDriver(); // creating an object
-            //                                         // settings
-            //something.my_port = 50150; // multiple chrome instances - will be run on different ports
-            //                           // I am currently having 4 chrome profiles ;)
-            //something.my_name = "mynewprofile"; // full profile name will be: 'profile + my_name'. Check the code of the object.
-            //                                    // void
-            //something.ConfigureProfile(); // creating new profile or updating existing one, if folder eists
-            //something.Initialize();
+            string fileFromComputer = @"D:\1_A\KenhNews14\887497\_VideoUp.mp4";
+            var filesbg = new DirectoryInfo(@"D:\oto1\BGVideo").GetFiles();
+            int indexbg = new Random().Next(0, filesbg.Length);
+            string pathbg = @"D:\oto1\BGVideo" + @"\" + filesbg[indexbg].Name;
+            // copy file video bg vào chung thư mục ffmpeg
+            System.IO.File.Copy(pathbg, Application.StartupPath+@"\"  +filesbg[indexbg].Name, true);
+            System.IO.File.Copy(pathbg, Application.StartupPath + @"\Win32bit\" + filesbg[indexbg].Name, true);
+            System.IO.File.Copy(pathbg, Application.StartupPath + @"\Win64bit\" + filesbg[indexbg].Name, true);
+            var filespicture = new DirectoryInfo(@"D:\oto1\BGPIC").GetFiles();
+            int indexpicture = new Random().Next(0, filesbg.Length);
+            string pathpicture = @"D:\oto1\BGPIC" + @"\" + filespicture[indexpicture].Name;
 
-
-            //ChromeOptions options = new ChromeOptions();
-            //options.AddArguments("user-data-dir=C:/Users/" + Environment.GetEnvironmentVariable("UserName") + "/AppData/Local/Google/Chrome/User Data");
-            //options.AddArguments("--start-maximized");
-            //ChromeDriverService service = ChromeDriverService.CreateDefaultService();
-            //service.HideCommandPromptWindow = false;
-            //PropretiesCollection.driver = new ChromeDriver(service, options);
-            //PropretiesCollection.driver.Navigate().GoToUrl("https://dailymotion.com/upload");
-
-            //voice.selectIspeech("Korean");
-
-            //UploadDailymotion fb = new UploadDailymotion();
-            //string _path = @"D:\681.mp4";
-            //fb.Upload(_path, "tieu de", "mo ta", "tag tesst", "News", "").Wait();
-
-            ChromeOptions options = new ChromeOptions();
-            // options.AddArgument("headless");
-            // PropretiesCollection.driver = new ChromeDriver(service,options);
-            PropretiesCollection.driver = new ChromeDriver(options);
-            PropretiesCollection.driver.Navigate().GoToUrl("https://ttstool.com/");
-
-            cl_ReadVoice voice = new cl_ReadVoice();
-            voice.getvoicemp3_TTSTOOL("Microsoft", "Catalan", "Herena (Catalan)", "sdgdfgdfgdfgd");
-
-            //resizes.ThumnailConfigTitle(@"C:\thumnailboder.jpeg", @"C:\title.jpeg", @"D:\thumnailtitle.jpeg");
-
-            //    string voicexuly = @"C:\a" + @"\KenhNews92\785093";
-            //    string name= "6767562.wav";
-            //    if (hamkiemtratontaifile(voicexuly,name)==true)
-            //    {
-            //        int times = (int)Proshow.getDuration(voicexuly + @"\" + name);
-            //        MessageBox.Show(times.ToString());
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("exre");
-            //    }
+            //ghep vao video
+            string _outputvideobg = @"D:\1_A\KenhNews14\887497\1_VideoUp.mp4";
+            RunFFMPEG ffrunmc = new RunFFMPEG();
+            string addmc = string.Format(@" -y -i {0} -i {1} -filter_complex ""[0:v]scale=300:250[v1];movie={2}:loop=999,setpts=N/(FRAME_RATE*TB),scale=854:480,setdar=16/9[v2];[v2][v1]overlay=shortest=1:x=0:y=0[v3];[1:v]scale=854:480[v4];[v3][v4]overlay=0:0"" -vcodec libx264 -pix_fmt yuv420p -r 25 -g 62 -b:v 1200k -shortest -acodec aac -b:a 128k -ar 44100  -preset veryfast {3} ", fileFromComputer, pathpicture, filesbg[indexbg].Name, _outputvideobg);
+           // string addmc = string.Format(@" -y -i {0} -i {1} -filter_complex ""[0:v]scale=300:250[v1];movie={2}:loop=999,setpts=N/(FRAME_RATE*TB),scale=854:480,setdar=16/9[v2];[v2][v1]overlay=shortest=1:x=0:y=0[v3];[1:v]scale=854:480[v4];[v3][v4]overlay=0:0"" -shortest {3} ", fileFromComputer, pathpicture, filesbg[indexbg].Name, _outputvideobg);
+            ffrunmc.RunCommand(addmc, false);
+            //thực hiện xóa file videobg sau khi xử lý xong
+            System.IO.File.Delete(Application.StartupPath + @"\Win32bit\" + filesbg[indexbg].Name);
+            System.IO.File.Delete(Application.StartupPath + @"\Win64bit\" + filesbg[indexbg].Name);
+            fileFromComputer = _outputvideobg;
         }
         private bool hamkiemtratontaifile(string path, string name)
         {

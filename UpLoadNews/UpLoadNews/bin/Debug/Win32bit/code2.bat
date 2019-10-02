@@ -1,2 +1,2 @@
-ffmpeg -y -f concat -safe 0 -i "JoinVideo.txt" -codec copy "D:\_OutputFolder\sankei\out.avi"
+ffmpeg -y -i D:\1_A\KenhNews14\887497\_VideoUp.mp4 -i D:\oto1\BGPIC\1.png -filter_complex "[0:v]scale=300:250[v1];movie=1.mp4:loop=999,setpts=N/(FRAME_RATE*TB),scale=854:480,setdar=16/9[v2];[v2][v1]overlay=shortest=1:x=0:y=0[v3];[1:v]scale=854:480[v4];[v3][v4]overlay=0:0" -vcodec libx264 -pix_fmt yuv420p -r 25 -g 62 -b:v 1200k -shortest -acodec aac -b:a 128k -ar 44100  -preset veryfast D:\1_A\KenhNews14\887497\1_VideoUp.mp4
 pause

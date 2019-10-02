@@ -134,7 +134,7 @@
             this.cmbfonthardsub = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtfloderlistbg = new System.Windows.Forms.TextBox();
             this.btnfloderlistmcbg = new System.Windows.Forms.Button();
             this.checkMcBG = new System.Windows.Forms.CheckBox();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
@@ -209,19 +209,20 @@
             this.tabPage9 = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage10 = new System.Windows.Forms.TabPage();
+            this.label25 = new System.Windows.Forms.Label();
+            this.txtsoluongmailchange = new System.Windows.Forms.NumericUpDown();
             this.label24 = new System.Windows.Forms.Label();
             this.txttientopass = new System.Windows.Forms.TextBox();
             this.btnchangepassall = new System.Windows.Forms.Button();
             this.dataGridViewListKenh = new System.Windows.Forms.DataGridView();
-            this.Mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Pass = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MailKhoiPhuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.groupBox15 = new System.Windows.Forms.GroupBox();
+            this.dataGridViewListReup = new System.Windows.Forms.DataGridView();
             this.bgwlayvoice = new System.ComponentModel.BackgroundWorker();
             this.bgwrendermulti = new System.ComponentModel.BackgroundWorker();
             this.timerrendermulti = new System.Windows.Forms.Timer(this.components);
-            this.txtsoluongmailchange = new System.Windows.Forms.NumericUpDown();
-            this.label25 = new System.Windows.Forms.Label();
+            this.btnfloderlistpicbg = new System.Windows.Forms.Button();
+            this.txtfloderlistpicture = new System.Windows.Forms.TextBox();
             this.groupBox3.SuspendLayout();
             this.tabControl3.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -260,8 +261,10 @@
             this.tabPage9.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListKenh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtsoluongmailchange)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListKenh)).BeginInit();
+            this.tabPage11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListReup)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox3
@@ -1419,23 +1422,25 @@
             // 
             // groupBox14
             // 
-            this.groupBox14.Controls.Add(this.textBox1);
+            this.groupBox14.Controls.Add(this.txtfloderlistpicture);
+            this.groupBox14.Controls.Add(this.btnfloderlistpicbg);
+            this.groupBox14.Controls.Add(this.txtfloderlistbg);
             this.groupBox14.Controls.Add(this.btnfloderlistmcbg);
             this.groupBox14.Controls.Add(this.checkMcBG);
             this.groupBox14.Location = new System.Drawing.Point(6, 181);
             this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(542, 55);
+            this.groupBox14.Size = new System.Drawing.Size(542, 123);
             this.groupBox14.TabIndex = 2;
             this.groupBox14.TabStop = false;
             this.groupBox14.Text = "MC resize bachgroud";
             // 
-            // textBox1
+            // txtfloderlistbg
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(238, 19);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(247, 20);
-            this.textBox1.TabIndex = 317;
+            this.txtfloderlistbg.Enabled = false;
+            this.txtfloderlistbg.Location = new System.Drawing.Point(238, 19);
+            this.txtfloderlistbg.Name = "txtfloderlistbg";
+            this.txtfloderlistbg.Size = new System.Drawing.Size(247, 20);
+            this.txtfloderlistbg.TabIndex = 317;
             // 
             // btnfloderlistmcbg
             // 
@@ -1443,8 +1448,9 @@
             this.btnfloderlistmcbg.Name = "btnfloderlistmcbg";
             this.btnfloderlistmcbg.Size = new System.Drawing.Size(95, 23);
             this.btnfloderlistmcbg.TabIndex = 316;
-            this.btnfloderlistmcbg.Text = "&Floder list mc";
+            this.btnfloderlistmcbg.Text = "&Floder list bg";
             this.btnfloderlistmcbg.UseVisualStyleBackColor = true;
+            this.btnfloderlistmcbg.Click += new System.EventHandler(this.btnfloderlistmcbg_Click);
             // 
             // checkMcBG
             // 
@@ -2452,6 +2458,27 @@
             this.tabPage10.Text = "Mail chưa đổi pass";
             this.tabPage10.UseVisualStyleBackColor = true;
             // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(219, 33);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(115, 13);
+            this.label25.TabIndex = 342;
+            this.label25.Text = "Số lượng mail change :";
+            // 
+            // txtsoluongmailchange
+            // 
+            this.txtsoluongmailchange.Location = new System.Drawing.Point(336, 31);
+            this.txtsoluongmailchange.Name = "txtsoluongmailchange";
+            this.txtsoluongmailchange.Size = new System.Drawing.Size(51, 20);
+            this.txtsoluongmailchange.TabIndex = 341;
+            this.txtsoluongmailchange.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
             // label24
             // 
             this.label24.AutoSize = true;
@@ -2485,32 +2512,15 @@
             // dataGridViewListKenh
             // 
             this.dataGridViewListKenh.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewListKenh.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Mail,
-            this.Pass,
-            this.MailKhoiPhuc});
             this.dataGridViewListKenh.Location = new System.Drawing.Point(3, 96);
             this.dataGridViewListKenh.Name = "dataGridViewListKenh";
             this.dataGridViewListKenh.Size = new System.Drawing.Size(580, 325);
             this.dataGridViewListKenh.TabIndex = 0;
             // 
-            // Mail
-            // 
-            this.Mail.HeaderText = "Mail";
-            this.Mail.Name = "Mail";
-            // 
-            // Pass
-            // 
-            this.Pass.HeaderText = "Pass";
-            this.Pass.Name = "Pass";
-            // 
-            // MailKhoiPhuc
-            // 
-            this.MailKhoiPhuc.HeaderText = "MailKhoiPhuc";
-            this.MailKhoiPhuc.Name = "MailKhoiPhuc";
-            // 
             // tabPage11
             // 
+            this.tabPage11.Controls.Add(this.groupBox15);
+            this.tabPage11.Controls.Add(this.dataGridViewListReup);
             this.tabPage11.Location = new System.Drawing.Point(4, 22);
             this.tabPage11.Name = "tabPage11";
             this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
@@ -2518,6 +2528,22 @@
             this.tabPage11.TabIndex = 1;
             this.tabPage11.Text = "Mail Reup";
             this.tabPage11.UseVisualStyleBackColor = true;
+            // 
+            // groupBox15
+            // 
+            this.groupBox15.Location = new System.Drawing.Point(6, 0);
+            this.groupBox15.Name = "groupBox15";
+            this.groupBox15.Size = new System.Drawing.Size(221, 416);
+            this.groupBox15.TabIndex = 2;
+            this.groupBox15.TabStop = false;
+            // 
+            // dataGridViewListReup
+            // 
+            this.dataGridViewListReup.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewListReup.Location = new System.Drawing.Point(233, 6);
+            this.dataGridViewListReup.Name = "dataGridViewListReup";
+            this.dataGridViewListReup.Size = new System.Drawing.Size(350, 410);
+            this.dataGridViewListReup.TabIndex = 1;
             // 
             // bgwlayvoice
             // 
@@ -2533,26 +2559,23 @@
             // 
             this.timerrendermulti.Tick += new System.EventHandler(this.timerrendermulti_Tick);
             // 
-            // txtsoluongmailchange
+            // btnfloderlistpicbg
             // 
-            this.txtsoluongmailchange.Location = new System.Drawing.Point(336, 31);
-            this.txtsoluongmailchange.Name = "txtsoluongmailchange";
-            this.txtsoluongmailchange.Size = new System.Drawing.Size(51, 20);
-            this.txtsoluongmailchange.TabIndex = 341;
-            this.txtsoluongmailchange.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
+            this.btnfloderlistpicbg.Location = new System.Drawing.Point(118, 57);
+            this.btnfloderlistpicbg.Name = "btnfloderlistpicbg";
+            this.btnfloderlistpicbg.Size = new System.Drawing.Size(95, 23);
+            this.btnfloderlistpicbg.TabIndex = 318;
+            this.btnfloderlistpicbg.Text = "&Floder picture";
+            this.btnfloderlistpicbg.UseVisualStyleBackColor = true;
+            this.btnfloderlistpicbg.Click += new System.EventHandler(this.btnfloderlistpicbg_Click);
             // 
-            // label25
+            // txtfloderlistpicture
             // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(219, 33);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(115, 13);
-            this.label25.TabIndex = 342;
-            this.label25.Text = "Số lượng mail change :";
+            this.txtfloderlistpicture.Enabled = false;
+            this.txtfloderlistpicture.Location = new System.Drawing.Point(238, 62);
+            this.txtfloderlistpicture.Name = "txtfloderlistpicture";
+            this.txtfloderlistpicture.Size = new System.Drawing.Size(247, 20);
+            this.txtfloderlistpicture.TabIndex = 319;
             // 
             // FormUpload
             // 
@@ -2629,8 +2652,10 @@
             this.tabControl2.ResumeLayout(false);
             this.tabPage10.ResumeLayout(false);
             this.tabPage10.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListKenh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtsoluongmailchange)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListKenh)).EndInit();
+            this.tabPage11.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListReup)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2817,7 +2842,7 @@
         private System.Windows.Forms.TabPage tabPage9;
         private System.Windows.Forms.DataGridView dataGridViewListKenh;
         private System.Windows.Forms.GroupBox groupBox14;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtfloderlistbg;
         private System.Windows.Forms.Button btnfloderlistmcbg;
         private System.Windows.Forms.CheckBox checkMcBG;
         private System.Windows.Forms.TabControl tabControl2;
@@ -2826,10 +2851,11 @@
         private System.Windows.Forms.TextBox txttientopass;
         private System.Windows.Forms.Button btnchangepassall;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Mail;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Pass;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MailKhoiPhuc;
         private System.Windows.Forms.NumericUpDown txtsoluongmailchange;
         private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.DataGridView dataGridViewListReup;
+        private System.Windows.Forms.GroupBox groupBox15;
+        private System.Windows.Forms.TextBox txtfloderlistpicture;
+        private System.Windows.Forms.Button btnfloderlistpicbg;
     }
 }
