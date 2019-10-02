@@ -271,7 +271,13 @@ namespace DaoUploadNews
             dt = ds.DanhSachMailChuaXuLy( idtaikhoan);
             return dt;
         }
-
+        public DataTable DanhSachMailDaXuLy(int idtaikhoan)
+        {
+            DataTable dt = new DataTable();
+            WS_FakeAuto.WS_FakeAuto ds = new WS_FakeAuto.WS_FakeAuto();
+            dt = ds.DanhSachMailDaXuLy(idtaikhoan);
+            return dt;
+        }
         public void CauHinhMail(int m_ID, string m_LinkKenh, string m_LinkKenhReUp,
               int m_SoLuongVideoUp, string m_NgonNguGoc, string m_NgonNguThay, string m_BotTieuDe,
               string m_ThemTieuDe, string m_ThemMoTa, string m_ThemTag)

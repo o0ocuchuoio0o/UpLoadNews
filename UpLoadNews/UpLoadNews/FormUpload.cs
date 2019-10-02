@@ -539,6 +539,7 @@ namespace UpLoadNews
             Itrack();
             layngayhientai();
             loadmailchuaxuly();
+            loadmaildaxuly();
         }
         private void layngayhientai()
         {
@@ -2898,18 +2899,35 @@ namespace UpLoadNews
                                 string[] temp = mail.Split(new string[] { "@" }, StringSplitOptions.RemoveEmptyEntries);
                                 string passmoi = temp[0].ToString() + "." + txttientopass.Text + "@gmail.com";
                                 string mailkhoiphucmoi = passmoi;
-
+                                ChromePerformanceLoggingPreferences perfLogPrefs = new ChromePerformanceLoggingPreferences();
+                                perfLogPrefs.AddTracingCategories(new string[] { "devtools.timeline" });
+                                ChromeOptions options = new ChromeOptions();
+                                if (checktabandanh.Checked == true)
+                                { options.AddArguments("--incognito"); }
+                                options.PerformanceLoggingPreferences = perfLogPrefs;
+                                options.SetLoggingPreference(LogType.Driver, LogLevel.All);
+                                options.SetLoggingPreference("performance", LogLevel.All);
+                                options.AddAdditionalCapability(CapabilityType.EnableProfiling, true, true);
+                                PropretiesCollection.driver = new ChromeDriver(options);
+                                PropretiesCollection.driver.Navigate().GoToUrl("https://myaccount.google.com/personal-info");
                                 ManagerChannel changemailkhoiphuc = new ManagerChannel();
                                 changemailkhoiphuc.ThayMailKhoiPhuc(mail, pass, mailkhoiphuc, mailkhoiphucmoi);
+                                ChomeClose().Wait();                             
+                                PropretiesCollection.driver = new ChromeDriver(options);
+                                PropretiesCollection.driver.Navigate().GoToUrl("https://myaccount.google.com/personal-info");
+
                                 ManagerChannel changepass = new ManagerChannel();
                                 changepass.ThayPassMoi(mail, pass, mailkhoiphucmoi, passmoi);
+                                ChomeClose().Wait();
                                 #region // khi thay xong thay đổi trong csdl
                                 daWS_FakeAuto thaydoi = new daWS_FakeAuto();
                                 thaydoi.XuLyMail(mail,passmoi,mailkhoiphucmoi,m_IDTaiKhoan);
                                 #endregion
-
+                               
                             }
-                            catch { }
+                            catch {
+                                ChomeClose().Wait();
+                            }
                             #endregion
                         }
                         k = k + 1;
@@ -2917,6 +2935,15 @@ namespace UpLoadNews
                 }
             });
             change.Start();
+        }
+
+
+        private void loadmaildaxuly()
+        {
+            daWS_FakeAuto ds = new daWS_FakeAuto();
+            DataTable dt = new DataTable();
+            dt = ds.DanhSachMailDaXuLy(m_IDTaiKhoan);
+            dataGridViewListReup.DataSource = dt;
         }
 
         #endregion

@@ -124,6 +124,8 @@ namespace DaoUploadNews.WS_FakeAuto {
         
         private System.Threading.SendOrPostCallback DanhSachMailChuaXuLyOperationCompleted;
         
+        private System.Threading.SendOrPostCallback DanhSachMailDaXuLyOperationCompleted;
+        
         private System.Threading.SendOrPostCallback CauHinhMailOperationCompleted;
         
         private System.Threading.SendOrPostCallback ThemChiTietReupOperationCompleted;
@@ -312,6 +314,9 @@ namespace DaoUploadNews.WS_FakeAuto {
         
         /// <remarks/>
         public event DanhSachMailChuaXuLyCompletedEventHandler DanhSachMailChuaXuLyCompleted;
+        
+        /// <remarks/>
+        public event DanhSachMailDaXuLyCompletedEventHandler DanhSachMailDaXuLyCompleted;
         
         /// <remarks/>
         public event CauHinhMailCompletedEventHandler CauHinhMailCompleted;
@@ -1739,6 +1744,35 @@ namespace DaoUploadNews.WS_FakeAuto {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/DanhSachMailDaXuLy", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataTable DanhSachMailDaXuLy(int idtaikhoan) {
+            object[] results = this.Invoke("DanhSachMailDaXuLy", new object[] {
+                        idtaikhoan});
+            return ((System.Data.DataTable)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void DanhSachMailDaXuLyAsync(int idtaikhoan) {
+            this.DanhSachMailDaXuLyAsync(idtaikhoan, null);
+        }
+        
+        /// <remarks/>
+        public void DanhSachMailDaXuLyAsync(int idtaikhoan, object userState) {
+            if ((this.DanhSachMailDaXuLyOperationCompleted == null)) {
+                this.DanhSachMailDaXuLyOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDanhSachMailDaXuLyOperationCompleted);
+            }
+            this.InvokeAsync("DanhSachMailDaXuLy", new object[] {
+                        idtaikhoan}, this.DanhSachMailDaXuLyOperationCompleted, userState);
+        }
+        
+        private void OnDanhSachMailDaXuLyOperationCompleted(object arg) {
+            if ((this.DanhSachMailDaXuLyCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.DanhSachMailDaXuLyCompleted(this, new DanhSachMailDaXuLyCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/CauHinhMail", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public void CauHinhMail(int m_ID, string m_LinkKenh, string m_LinkKenhReUp, int m_SoLuongVideoUp, string m_NgonNguGoc, string m_NgonNguThay, string m_BotTieuDe, string m_ThemTieuDe, string m_ThemMoTa, string m_ThemTag) {
             this.Invoke("CauHinhMail", new object[] {
@@ -2888,6 +2922,32 @@ namespace DaoUploadNews.WS_FakeAuto {
         private object[] results;
         
         internal DanhSachMailChuaXuLyCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataTable Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataTable)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void DanhSachMailDaXuLyCompletedEventHandler(object sender, DanhSachMailDaXuLyCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class DanhSachMailDaXuLyCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal DanhSachMailDaXuLyCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

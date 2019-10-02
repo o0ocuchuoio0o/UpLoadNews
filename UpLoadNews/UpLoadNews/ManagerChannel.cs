@@ -188,6 +188,7 @@ namespace UpLoadNews
                     btndonesuamailkhoiphuc.Click();
                 }
                 catch { }
+                System.Threading.Thread.Sleep(2000);
             }
             catch { }
             #endregion
@@ -283,7 +284,7 @@ namespace UpLoadNews
 
             }
             catch { }
-
+            System.Threading.Thread.Sleep(2000);
         }
 
         #region //load video youtube

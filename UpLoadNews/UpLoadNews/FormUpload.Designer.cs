@@ -134,6 +134,8 @@
             this.cmbfonthardsub = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.txtfloderlistpicture = new System.Windows.Forms.TextBox();
+            this.btnfloderlistpicbg = new System.Windows.Forms.Button();
             this.txtfloderlistbg = new System.Windows.Forms.TextBox();
             this.btnfloderlistmcbg = new System.Windows.Forms.Button();
             this.checkMcBG = new System.Windows.Forms.CheckBox();
@@ -221,8 +223,7 @@
             this.bgwlayvoice = new System.ComponentModel.BackgroundWorker();
             this.bgwrendermulti = new System.ComponentModel.BackgroundWorker();
             this.timerrendermulti = new System.Windows.Forms.Timer(this.components);
-            this.btnfloderlistpicbg = new System.Windows.Forms.Button();
-            this.txtfloderlistpicture = new System.Windows.Forms.TextBox();
+            this.checktabandanh = new System.Windows.Forms.CheckBox();
             this.groupBox3.SuspendLayout();
             this.tabControl3.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -1434,6 +1435,24 @@
             this.groupBox14.TabStop = false;
             this.groupBox14.Text = "MC resize bachgroud";
             // 
+            // txtfloderlistpicture
+            // 
+            this.txtfloderlistpicture.Enabled = false;
+            this.txtfloderlistpicture.Location = new System.Drawing.Point(238, 62);
+            this.txtfloderlistpicture.Name = "txtfloderlistpicture";
+            this.txtfloderlistpicture.Size = new System.Drawing.Size(247, 20);
+            this.txtfloderlistpicture.TabIndex = 319;
+            // 
+            // btnfloderlistpicbg
+            // 
+            this.btnfloderlistpicbg.Location = new System.Drawing.Point(118, 57);
+            this.btnfloderlistpicbg.Name = "btnfloderlistpicbg";
+            this.btnfloderlistpicbg.Size = new System.Drawing.Size(95, 23);
+            this.btnfloderlistpicbg.TabIndex = 318;
+            this.btnfloderlistpicbg.Text = "&Floder picture";
+            this.btnfloderlistpicbg.UseVisualStyleBackColor = true;
+            this.btnfloderlistpicbg.Click += new System.EventHandler(this.btnfloderlistpicbg_Click);
+            // 
             // txtfloderlistbg
             // 
             this.txtfloderlistbg.Enabled = false;
@@ -2444,6 +2463,7 @@
             // 
             // tabPage10
             // 
+            this.tabPage10.Controls.Add(this.checktabandanh);
             this.tabPage10.Controls.Add(this.label25);
             this.tabPage10.Controls.Add(this.txtsoluongmailchange);
             this.tabPage10.Controls.Add(this.label24);
@@ -2559,23 +2579,15 @@
             // 
             this.timerrendermulti.Tick += new System.EventHandler(this.timerrendermulti_Tick);
             // 
-            // btnfloderlistpicbg
+            // checktabandanh
             // 
-            this.btnfloderlistpicbg.Location = new System.Drawing.Point(118, 57);
-            this.btnfloderlistpicbg.Name = "btnfloderlistpicbg";
-            this.btnfloderlistpicbg.Size = new System.Drawing.Size(95, 23);
-            this.btnfloderlistpicbg.TabIndex = 318;
-            this.btnfloderlistpicbg.Text = "&Floder picture";
-            this.btnfloderlistpicbg.UseVisualStyleBackColor = true;
-            this.btnfloderlistpicbg.Click += new System.EventHandler(this.btnfloderlistpicbg_Click);
-            // 
-            // txtfloderlistpicture
-            // 
-            this.txtfloderlistpicture.Enabled = false;
-            this.txtfloderlistpicture.Location = new System.Drawing.Point(238, 62);
-            this.txtfloderlistpicture.Name = "txtfloderlistpicture";
-            this.txtfloderlistpicture.Size = new System.Drawing.Size(247, 20);
-            this.txtfloderlistpicture.TabIndex = 319;
+            this.checktabandanh.AutoSize = true;
+            this.checktabandanh.Location = new System.Drawing.Point(9, 65);
+            this.checktabandanh.Name = "checktabandanh";
+            this.checktabandanh.Size = new System.Drawing.Size(87, 17);
+            this.checktabandanh.TabIndex = 343;
+            this.checktabandanh.Text = "Tab ẩn danh";
+            this.checktabandanh.UseVisualStyleBackColor = true;
             // 
             // FormUpload
             // 
@@ -2857,5 +2869,6 @@
         private System.Windows.Forms.GroupBox groupBox15;
         private System.Windows.Forms.TextBox txtfloderlistpicture;
         private System.Windows.Forms.Button btnfloderlistpicbg;
+        private System.Windows.Forms.CheckBox checktabandanh;
     }
 }

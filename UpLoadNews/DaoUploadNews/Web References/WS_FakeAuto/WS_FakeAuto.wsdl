@@ -794,6 +794,27 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="DanhSachMailDaXuLy">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idtaikhoan" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DanhSachMailDaXuLyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DanhSachMailDaXuLyResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="CauHinhMail">
         <s:complexType>
           <s:sequence>
@@ -1164,6 +1185,12 @@
   <wsdl:message name="DanhSachMailChuaXuLySoapOut">
     <wsdl:part name="parameters" element="tns:DanhSachMailChuaXuLyResponse" />
   </wsdl:message>
+  <wsdl:message name="DanhSachMailDaXuLySoapIn">
+    <wsdl:part name="parameters" element="tns:DanhSachMailDaXuLy" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachMailDaXuLySoapOut">
+    <wsdl:part name="parameters" element="tns:DanhSachMailDaXuLyResponse" />
+  </wsdl:message>
   <wsdl:message name="CauHinhMailSoapIn">
     <wsdl:part name="parameters" element="tns:CauHinhMail" />
   </wsdl:message>
@@ -1470,6 +1497,12 @@
     <wsdl:part name="idtaikhoan" type="s:string" />
   </wsdl:message>
   <wsdl:message name="DanhSachMailChuaXuLyHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachMailDaXuLyHttpGetIn">
+    <wsdl:part name="idtaikhoan" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachMailDaXuLyHttpGetOut">
     <wsdl:part name="Body" element="tns:DataTable" />
   </wsdl:message>
   <wsdl:message name="CauHinhMailHttpGetIn">
@@ -1785,6 +1818,12 @@
   <wsdl:message name="DanhSachMailChuaXuLyHttpPostOut">
     <wsdl:part name="Body" element="tns:DataTable" />
   </wsdl:message>
+  <wsdl:message name="DanhSachMailDaXuLyHttpPostIn">
+    <wsdl:part name="idtaikhoan" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DanhSachMailDaXuLyHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
   <wsdl:message name="CauHinhMailHttpPostIn">
     <wsdl:part name="m_ID" type="s:string" />
     <wsdl:part name="m_LinkKenh" type="s:string" />
@@ -2009,6 +2048,10 @@
       <wsdl:input message="tns:DanhSachMailChuaXuLySoapIn" />
       <wsdl:output message="tns:DanhSachMailChuaXuLySoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="DanhSachMailDaXuLy">
+      <wsdl:input message="tns:DanhSachMailDaXuLySoapIn" />
+      <wsdl:output message="tns:DanhSachMailDaXuLySoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="CauHinhMail">
       <wsdl:input message="tns:CauHinhMailSoapIn" />
       <wsdl:output message="tns:CauHinhMailSoapOut" />
@@ -2219,6 +2262,10 @@
       <wsdl:input message="tns:DanhSachMailChuaXuLyHttpGetIn" />
       <wsdl:output message="tns:DanhSachMailChuaXuLyHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="DanhSachMailDaXuLy">
+      <wsdl:input message="tns:DanhSachMailDaXuLyHttpGetIn" />
+      <wsdl:output message="tns:DanhSachMailDaXuLyHttpGetOut" />
+    </wsdl:operation>
     <wsdl:operation name="CauHinhMail">
       <wsdl:input message="tns:CauHinhMailHttpGetIn" />
       <wsdl:output message="tns:CauHinhMailHttpGetOut" />
@@ -2428,6 +2475,10 @@
     <wsdl:operation name="DanhSachMailChuaXuLy">
       <wsdl:input message="tns:DanhSachMailChuaXuLyHttpPostIn" />
       <wsdl:output message="tns:DanhSachMailChuaXuLyHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachMailDaXuLy">
+      <wsdl:input message="tns:DanhSachMailDaXuLyHttpPostIn" />
+      <wsdl:output message="tns:DanhSachMailDaXuLyHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="CauHinhMail">
       <wsdl:input message="tns:CauHinhMailHttpPostIn" />
@@ -2868,6 +2919,15 @@
     </wsdl:operation>
     <wsdl:operation name="DanhSachMailChuaXuLy">
       <soap:operation soapAction="http://tempuri.org/DanhSachMailChuaXuLy" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachMailDaXuLy">
+      <soap:operation soapAction="http://tempuri.org/DanhSachMailDaXuLy" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -3346,6 +3406,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="DanhSachMailDaXuLy">
+      <soap12:operation soapAction="http://tempuri.org/DanhSachMailDaXuLy" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="CauHinhMail">
       <soap12:operation soapAction="http://tempuri.org/CauHinhMail" style="document" />
       <wsdl:input>
@@ -3795,6 +3864,15 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="DanhSachMailDaXuLy">
+      <http:operation location="/DanhSachMailDaXuLy" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="CauHinhMail">
       <http:operation location="/CauHinhMail" />
       <wsdl:input>
@@ -4231,6 +4309,15 @@
     </wsdl:operation>
     <wsdl:operation name="DanhSachMailChuaXuLy">
       <http:operation location="/DanhSachMailChuaXuLy" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DanhSachMailDaXuLy">
+      <http:operation location="/DanhSachMailDaXuLy" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
