@@ -79,7 +79,12 @@ namespace UpLoadNews
         public IWebElement btndonesuamailkhoiphuc;
         #endregion
 
-
+        #region // các biến lấy link kênh
+        [FindsBy(How = How.XPath, Using = "/html/body/ytd-app/div/div/ytd-masthead/div[3]/div[2]/div[2]/ytd-topbar-menu-button-renderer[3]/button/yt-img-shadow/img")]
+        public IWebElement linkkenh;
+        [FindsBy(How = How.XPath, Using = "/html/body/ytd-app/ytd-popup-container/iron-dropdown/div/ytd-multi-page-menu-renderer/div[3]/div[1]/yt-multi-page-menu-section-renderer[1]/div[2]/ytd-compact-link-renderer[1]/a/paper-item/yt-formatted-string[1]")]
+        public IWebElement xemkenh;
+        #endregion
 
         public void NextUser(string user)
         {
@@ -291,7 +296,7 @@ namespace UpLoadNews
         public DataTable LoadListVideo(string linkvideocu)
         {
             DataTable dt = new DataTable();
-            dt.Columns.Add("LinkAnh", typeof(string));
+            dt.Columns.Add("Link", typeof(string));
             dt.Columns.Add("Ten", typeof(string));
             while (true)
             {
@@ -301,26 +306,7 @@ namespace UpLoadNews
                     int dem = 0;
                     IWebElement lastvideo = null;
                     foreach (IWebElement field in listVideoBefore)
-                    {
-                        try
-                        {
-                            IWebElement video = field.FindElement(By.TagName("ytd-grid-video-renderer"));
-
-                            string[] thongtinvideo = video.Text.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
-                            string tenvideo = thongtinvideo[1].ToString();
-                            IWebElement Ivideo = PropretiesCollection.driver.FindElement(By.XPath("//*[@title='" + tenvideo + "']"));
-                            string linkvideo = Ivideo.GetAttribute("href");
-                            if (tenvideo != null && linkvideo != null)
-                            {
-                                dt.Rows.Add(linkvideo, tenvideo);
-                            }
-                            // trường hợp tìm kiếm link tới video đã lưu thì thoát vòng lặp
-                            if(linkvideo==linkvideocu)
-                            {
-                                break;
-                            }
-                        }
-                        catch { }
+                    {                       
                         if (dem == listVideoBefore.Count - 1)
                         {
                             lastvideo = field;
@@ -337,11 +323,48 @@ namespace UpLoadNews
                     List<IWebElement> listVideoAffter = PropretiesCollection.driver.FindElements(By.XPath("//*[@class='style-scope ytd-grid-renderer']")).ToList();
                     if (listVideoBefore.Count == listVideoAffter.Count)
                     {
+                        // thực hiện thêm dữ liệu vào bảng
+                        foreach (IWebElement field in listVideoBefore)
+                        {
+                            try
+                            {
+                                if (field.TagName == "ytd-grid-video-renderer")
+                                {
+                                    string[] thongtinvideo = field.Text.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+                                    string tenvideo = thongtinvideo[1].ToString();
+                                    string linkvideo = "";
+                                    try
+                                    {
+                                        IWebElement Ivideo = PropretiesCollection.driver.FindElement(By.XPath("//*[@title='" + tenvideo + "']"));
+                                        linkvideo = Ivideo.GetAttribute("href");
+                                    }
+                                    catch { }
+                                    if (linkvideo == "")
+                                    {
+                                        IWebElement videoLink = field.FindElement(By.Id("video-title"));
+                                        linkvideo = videoLink.GetAttribute("href");
+                                    }
+                                    if (tenvideo != null && linkvideo != null)
+                                    {
+                                        dt.Rows.Add(linkvideo, tenvideo);
+                                    }
+                                    if(linkvideo==linkvideocu)
+                                    {
+                                        break;
+                                    }
+                                }
+                            }
+                            catch { }
+                           
+                        }
+
                         break;
                     }
                 }
                 catch { }
             }
+
+
 
             return dt;
 
@@ -351,9 +374,60 @@ namespace UpLoadNews
 
 
 
-        #region // các thay đổi trong csdl
+        #region // lấy link kênh youtube
+        
+        public string GetLinkChannel(string user, string pass, string mailkhoiphuc)
+        {
+            string kq = "";
 
-
+            try
+            {
+                NextUser(user);
+            }
+            catch { }
+            System.Threading.Thread.Sleep(2000);
+            try
+            {
+                NextPass(pass);
+            }
+            catch { }
+            System.Threading.Thread.Sleep(2000);
+            #region // trường hợp bắt xác nhận mail khôi phục
+            try
+            {
+                try
+                {
+                    m_xacnhanmailkhoiphuc.Click();
+                }
+                catch { }
+                System.Threading.Thread.Sleep(4000);
+                try
+                {
+                    m_txtxacnhanmail.SendKeys(mailkhoiphuc);
+                }
+                catch { }
+                System.Threading.Thread.Sleep(1000);
+                try
+                {
+                    m_nexxacnhanmail.Click();
+                }
+                catch { }
+                System.Threading.Thread.Sleep(6000);
+                try
+                {
+                    btndonexacnhanmail.Click();
+                }
+                catch { }
+            }
+            catch { }
+            #endregion
+            System.Threading.Thread.Sleep(1000);
+            linkkenh.Click();
+            System.Threading.Thread.Sleep(2000);
+            xemkenh.Click();
+            kq = PropretiesCollection.driver.Url;
+            return kq.Replace("?view_as=subscriber", "") ;
+        }
 
 
 

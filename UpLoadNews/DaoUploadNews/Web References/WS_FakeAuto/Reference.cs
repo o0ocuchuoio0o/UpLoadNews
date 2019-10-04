@@ -128,7 +128,15 @@ namespace DaoUploadNews.WS_FakeAuto {
         
         private System.Threading.SendOrPostCallback CauHinhMailOperationCompleted;
         
+        private System.Threading.SendOrPostCallback UpdateViewOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback XoaMailOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback ChiTietMailOperationCompleted;
+        
         private System.Threading.SendOrPostCallback ThemChiTietReupOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback LinkVideoMoiNhatOperationCompleted;
         
         private System.Threading.SendOrPostCallback UpdateDaReupOperationCompleted;
         
@@ -322,7 +330,19 @@ namespace DaoUploadNews.WS_FakeAuto {
         public event CauHinhMailCompletedEventHandler CauHinhMailCompleted;
         
         /// <remarks/>
+        public event UpdateViewCompletedEventHandler UpdateViewCompleted;
+        
+        /// <remarks/>
+        public event XoaMailCompletedEventHandler XoaMailCompleted;
+        
+        /// <remarks/>
+        public event ChiTietMailCompletedEventHandler ChiTietMailCompleted;
+        
+        /// <remarks/>
         public event ThemChiTietReupCompletedEventHandler ThemChiTietReupCompleted;
+        
+        /// <remarks/>
+        public event LinkVideoMoiNhatCompletedEventHandler LinkVideoMoiNhatCompleted;
         
         /// <remarks/>
         public event UpdateDaReupCompletedEventHandler UpdateDaReupCompleted;
@@ -1819,6 +1839,99 @@ namespace DaoUploadNews.WS_FakeAuto {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UpdateView", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void UpdateView(int m_ID, string view, string sub, string ngaytao, bool trangthai) {
+            this.Invoke("UpdateView", new object[] {
+                        m_ID,
+                        view,
+                        sub,
+                        ngaytao,
+                        trangthai});
+        }
+        
+        /// <remarks/>
+        public void UpdateViewAsync(int m_ID, string view, string sub, string ngaytao, bool trangthai) {
+            this.UpdateViewAsync(m_ID, view, sub, ngaytao, trangthai, null);
+        }
+        
+        /// <remarks/>
+        public void UpdateViewAsync(int m_ID, string view, string sub, string ngaytao, bool trangthai, object userState) {
+            if ((this.UpdateViewOperationCompleted == null)) {
+                this.UpdateViewOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateViewOperationCompleted);
+            }
+            this.InvokeAsync("UpdateView", new object[] {
+                        m_ID,
+                        view,
+                        sub,
+                        ngaytao,
+                        trangthai}, this.UpdateViewOperationCompleted, userState);
+        }
+        
+        private void OnUpdateViewOperationCompleted(object arg) {
+            if ((this.UpdateViewCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UpdateViewCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/XoaMail", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void XoaMail(int m_ID) {
+            this.Invoke("XoaMail", new object[] {
+                        m_ID});
+        }
+        
+        /// <remarks/>
+        public void XoaMailAsync(int m_ID) {
+            this.XoaMailAsync(m_ID, null);
+        }
+        
+        /// <remarks/>
+        public void XoaMailAsync(int m_ID, object userState) {
+            if ((this.XoaMailOperationCompleted == null)) {
+                this.XoaMailOperationCompleted = new System.Threading.SendOrPostCallback(this.OnXoaMailOperationCompleted);
+            }
+            this.InvokeAsync("XoaMail", new object[] {
+                        m_ID}, this.XoaMailOperationCompleted, userState);
+        }
+        
+        private void OnXoaMailOperationCompleted(object arg) {
+            if ((this.XoaMailCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.XoaMailCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ChiTietMail", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataTable ChiTietMail(int m_ID) {
+            object[] results = this.Invoke("ChiTietMail", new object[] {
+                        m_ID});
+            return ((System.Data.DataTable)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ChiTietMailAsync(int m_ID) {
+            this.ChiTietMailAsync(m_ID, null);
+        }
+        
+        /// <remarks/>
+        public void ChiTietMailAsync(int m_ID, object userState) {
+            if ((this.ChiTietMailOperationCompleted == null)) {
+                this.ChiTietMailOperationCompleted = new System.Threading.SendOrPostCallback(this.OnChiTietMailOperationCompleted);
+            }
+            this.InvokeAsync("ChiTietMail", new object[] {
+                        m_ID}, this.ChiTietMailOperationCompleted, userState);
+        }
+        
+        private void OnChiTietMailOperationCompleted(object arg) {
+            if ((this.ChiTietMailCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ChiTietMailCompleted(this, new ChiTietMailCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ThemChiTietReup", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public void ThemChiTietReup(string Link, string TieuDe, int IDMailDaXuLy) {
             this.Invoke("ThemChiTietReup", new object[] {
@@ -1847,6 +1960,35 @@ namespace DaoUploadNews.WS_FakeAuto {
             if ((this.ThemChiTietReupCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.ThemChiTietReupCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/LinkVideoMoiNhat", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string LinkVideoMoiNhat(int IDMailDaXuLy) {
+            object[] results = this.Invoke("LinkVideoMoiNhat", new object[] {
+                        IDMailDaXuLy});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void LinkVideoMoiNhatAsync(int IDMailDaXuLy) {
+            this.LinkVideoMoiNhatAsync(IDMailDaXuLy, null);
+        }
+        
+        /// <remarks/>
+        public void LinkVideoMoiNhatAsync(int IDMailDaXuLy, object userState) {
+            if ((this.LinkVideoMoiNhatOperationCompleted == null)) {
+                this.LinkVideoMoiNhatOperationCompleted = new System.Threading.SendOrPostCallback(this.OnLinkVideoMoiNhatOperationCompleted);
+            }
+            this.InvokeAsync("LinkVideoMoiNhat", new object[] {
+                        IDMailDaXuLy}, this.LinkVideoMoiNhatOperationCompleted, userState);
+        }
+        
+        private void OnLinkVideoMoiNhatOperationCompleted(object arg) {
+            if ((this.LinkVideoMoiNhatCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.LinkVideoMoiNhatCompleted(this, new LinkVideoMoiNhatCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -2967,7 +3109,67 @@ namespace DaoUploadNews.WS_FakeAuto {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void UpdateViewCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void XoaMailCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void ChiTietMailCompletedEventHandler(object sender, ChiTietMailCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ChiTietMailCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ChiTietMailCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataTable Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataTable)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void ThemChiTietReupCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void LinkVideoMoiNhatCompletedEventHandler(object sender, LinkVideoMoiNhatCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class LinkVideoMoiNhatCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal LinkVideoMoiNhatCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]

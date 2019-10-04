@@ -834,6 +834,51 @@
       <s:element name="CauHinhMailResponse">
         <s:complexType />
       </s:element>
+      <s:element name="UpdateView">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="m_ID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="view" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sub" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ngaytao" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="trangthai" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateViewResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="XoaMail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="m_ID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="XoaMailResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ChiTietMail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="m_ID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChiTietMailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ChiTietMailResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="ThemChiTietReup">
         <s:complexType>
           <s:sequence>
@@ -845,6 +890,20 @@
       </s:element>
       <s:element name="ThemChiTietReupResponse">
         <s:complexType />
+      </s:element>
+      <s:element name="LinkVideoMoiNhat">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IDMailDaXuLy" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LinkVideoMoiNhatResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LinkVideoMoiNhatResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
       </s:element>
       <s:element name="UpdateDaReup">
         <s:complexType>
@@ -1197,11 +1256,35 @@
   <wsdl:message name="CauHinhMailSoapOut">
     <wsdl:part name="parameters" element="tns:CauHinhMailResponse" />
   </wsdl:message>
+  <wsdl:message name="UpdateViewSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateView" />
+  </wsdl:message>
+  <wsdl:message name="UpdateViewSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateViewResponse" />
+  </wsdl:message>
+  <wsdl:message name="XoaMailSoapIn">
+    <wsdl:part name="parameters" element="tns:XoaMail" />
+  </wsdl:message>
+  <wsdl:message name="XoaMailSoapOut">
+    <wsdl:part name="parameters" element="tns:XoaMailResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChiTietMailSoapIn">
+    <wsdl:part name="parameters" element="tns:ChiTietMail" />
+  </wsdl:message>
+  <wsdl:message name="ChiTietMailSoapOut">
+    <wsdl:part name="parameters" element="tns:ChiTietMailResponse" />
+  </wsdl:message>
   <wsdl:message name="ThemChiTietReupSoapIn">
     <wsdl:part name="parameters" element="tns:ThemChiTietReup" />
   </wsdl:message>
   <wsdl:message name="ThemChiTietReupSoapOut">
     <wsdl:part name="parameters" element="tns:ThemChiTietReupResponse" />
+  </wsdl:message>
+  <wsdl:message name="LinkVideoMoiNhatSoapIn">
+    <wsdl:part name="parameters" element="tns:LinkVideoMoiNhat" />
+  </wsdl:message>
+  <wsdl:message name="LinkVideoMoiNhatSoapOut">
+    <wsdl:part name="parameters" element="tns:LinkVideoMoiNhatResponse" />
   </wsdl:message>
   <wsdl:message name="UpdateDaReupSoapIn">
     <wsdl:part name="parameters" element="tns:UpdateDaReup" />
@@ -1518,12 +1601,36 @@
     <wsdl:part name="m_ThemTag" type="s:string" />
   </wsdl:message>
   <wsdl:message name="CauHinhMailHttpGetOut" />
+  <wsdl:message name="UpdateViewHttpGetIn">
+    <wsdl:part name="m_ID" type="s:string" />
+    <wsdl:part name="view" type="s:string" />
+    <wsdl:part name="sub" type="s:string" />
+    <wsdl:part name="ngaytao" type="s:string" />
+    <wsdl:part name="trangthai" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateViewHttpGetOut" />
+  <wsdl:message name="XoaMailHttpGetIn">
+    <wsdl:part name="m_ID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="XoaMailHttpGetOut" />
+  <wsdl:message name="ChiTietMailHttpGetIn">
+    <wsdl:part name="m_ID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ChiTietMailHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
   <wsdl:message name="ThemChiTietReupHttpGetIn">
     <wsdl:part name="Link" type="s:string" />
     <wsdl:part name="TieuDe" type="s:string" />
     <wsdl:part name="IDMailDaXuLy" type="s:string" />
   </wsdl:message>
   <wsdl:message name="ThemChiTietReupHttpGetOut" />
+  <wsdl:message name="LinkVideoMoiNhatHttpGetIn">
+    <wsdl:part name="IDMailDaXuLy" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LinkVideoMoiNhatHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:message name="UpdateDaReupHttpGetIn">
     <wsdl:part name="ID" type="s:string" />
   </wsdl:message>
@@ -1837,12 +1944,36 @@
     <wsdl:part name="m_ThemTag" type="s:string" />
   </wsdl:message>
   <wsdl:message name="CauHinhMailHttpPostOut" />
+  <wsdl:message name="UpdateViewHttpPostIn">
+    <wsdl:part name="m_ID" type="s:string" />
+    <wsdl:part name="view" type="s:string" />
+    <wsdl:part name="sub" type="s:string" />
+    <wsdl:part name="ngaytao" type="s:string" />
+    <wsdl:part name="trangthai" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateViewHttpPostOut" />
+  <wsdl:message name="XoaMailHttpPostIn">
+    <wsdl:part name="m_ID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="XoaMailHttpPostOut" />
+  <wsdl:message name="ChiTietMailHttpPostIn">
+    <wsdl:part name="m_ID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ChiTietMailHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
   <wsdl:message name="ThemChiTietReupHttpPostIn">
     <wsdl:part name="Link" type="s:string" />
     <wsdl:part name="TieuDe" type="s:string" />
     <wsdl:part name="IDMailDaXuLy" type="s:string" />
   </wsdl:message>
   <wsdl:message name="ThemChiTietReupHttpPostOut" />
+  <wsdl:message name="LinkVideoMoiNhatHttpPostIn">
+    <wsdl:part name="IDMailDaXuLy" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LinkVideoMoiNhatHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:message name="UpdateDaReupHttpPostIn">
     <wsdl:part name="ID" type="s:string" />
   </wsdl:message>
@@ -2056,9 +2187,25 @@
       <wsdl:input message="tns:CauHinhMailSoapIn" />
       <wsdl:output message="tns:CauHinhMailSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="UpdateView">
+      <wsdl:input message="tns:UpdateViewSoapIn" />
+      <wsdl:output message="tns:UpdateViewSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="XoaMail">
+      <wsdl:input message="tns:XoaMailSoapIn" />
+      <wsdl:output message="tns:XoaMailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChiTietMail">
+      <wsdl:input message="tns:ChiTietMailSoapIn" />
+      <wsdl:output message="tns:ChiTietMailSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="ThemChiTietReup">
       <wsdl:input message="tns:ThemChiTietReupSoapIn" />
       <wsdl:output message="tns:ThemChiTietReupSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LinkVideoMoiNhat">
+      <wsdl:input message="tns:LinkVideoMoiNhatSoapIn" />
+      <wsdl:output message="tns:LinkVideoMoiNhatSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="UpdateDaReup">
       <wsdl:input message="tns:UpdateDaReupSoapIn" />
@@ -2270,9 +2417,25 @@
       <wsdl:input message="tns:CauHinhMailHttpGetIn" />
       <wsdl:output message="tns:CauHinhMailHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="UpdateView">
+      <wsdl:input message="tns:UpdateViewHttpGetIn" />
+      <wsdl:output message="tns:UpdateViewHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="XoaMail">
+      <wsdl:input message="tns:XoaMailHttpGetIn" />
+      <wsdl:output message="tns:XoaMailHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChiTietMail">
+      <wsdl:input message="tns:ChiTietMailHttpGetIn" />
+      <wsdl:output message="tns:ChiTietMailHttpGetOut" />
+    </wsdl:operation>
     <wsdl:operation name="ThemChiTietReup">
       <wsdl:input message="tns:ThemChiTietReupHttpGetIn" />
       <wsdl:output message="tns:ThemChiTietReupHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LinkVideoMoiNhat">
+      <wsdl:input message="tns:LinkVideoMoiNhatHttpGetIn" />
+      <wsdl:output message="tns:LinkVideoMoiNhatHttpGetOut" />
     </wsdl:operation>
     <wsdl:operation name="UpdateDaReup">
       <wsdl:input message="tns:UpdateDaReupHttpGetIn" />
@@ -2484,9 +2647,25 @@
       <wsdl:input message="tns:CauHinhMailHttpPostIn" />
       <wsdl:output message="tns:CauHinhMailHttpPostOut" />
     </wsdl:operation>
+    <wsdl:operation name="UpdateView">
+      <wsdl:input message="tns:UpdateViewHttpPostIn" />
+      <wsdl:output message="tns:UpdateViewHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="XoaMail">
+      <wsdl:input message="tns:XoaMailHttpPostIn" />
+      <wsdl:output message="tns:XoaMailHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChiTietMail">
+      <wsdl:input message="tns:ChiTietMailHttpPostIn" />
+      <wsdl:output message="tns:ChiTietMailHttpPostOut" />
+    </wsdl:operation>
     <wsdl:operation name="ThemChiTietReup">
       <wsdl:input message="tns:ThemChiTietReupHttpPostIn" />
       <wsdl:output message="tns:ThemChiTietReupHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LinkVideoMoiNhat">
+      <wsdl:input message="tns:LinkVideoMoiNhatHttpPostIn" />
+      <wsdl:output message="tns:LinkVideoMoiNhatHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="UpdateDaReup">
       <wsdl:input message="tns:UpdateDaReupHttpPostIn" />
@@ -2944,8 +3123,44 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="UpdateView">
+      <soap:operation soapAction="http://tempuri.org/UpdateView" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="XoaMail">
+      <soap:operation soapAction="http://tempuri.org/XoaMail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChiTietMail">
+      <soap:operation soapAction="http://tempuri.org/ChiTietMail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ThemChiTietReup">
       <soap:operation soapAction="http://tempuri.org/ThemChiTietReup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LinkVideoMoiNhat">
+      <soap:operation soapAction="http://tempuri.org/LinkVideoMoiNhat" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -3424,8 +3639,44 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="UpdateView">
+      <soap12:operation soapAction="http://tempuri.org/UpdateView" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="XoaMail">
+      <soap12:operation soapAction="http://tempuri.org/XoaMail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChiTietMail">
+      <soap12:operation soapAction="http://tempuri.org/ChiTietMail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ThemChiTietReup">
       <soap12:operation soapAction="http://tempuri.org/ThemChiTietReup" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LinkVideoMoiNhat">
+      <soap12:operation soapAction="http://tempuri.org/LinkVideoMoiNhat" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -3880,12 +4131,44 @@
       </wsdl:input>
       <wsdl:output />
     </wsdl:operation>
+    <wsdl:operation name="UpdateView">
+      <http:operation location="/UpdateView" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="XoaMail">
+      <http:operation location="/XoaMail" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ChiTietMail">
+      <http:operation location="/ChiTietMail" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ThemChiTietReup">
       <http:operation location="/ThemChiTietReup" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
       <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="LinkVideoMoiNhat">
+      <http:operation location="/LinkVideoMoiNhat" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="UpdateDaReup">
       <http:operation location="/UpdateDaReup" />
@@ -4332,12 +4615,44 @@
       </wsdl:input>
       <wsdl:output />
     </wsdl:operation>
+    <wsdl:operation name="UpdateView">
+      <http:operation location="/UpdateView" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="XoaMail">
+      <http:operation location="/XoaMail" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ChiTietMail">
+      <http:operation location="/ChiTietMail" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ThemChiTietReup">
       <http:operation location="/ThemChiTietReup" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
       <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="LinkVideoMoiNhat">
+      <http:operation location="/LinkVideoMoiNhat" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="UpdateDaReup">
       <http:operation location="/UpdateDaReup" />

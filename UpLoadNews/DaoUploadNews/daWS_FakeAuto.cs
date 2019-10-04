@@ -287,13 +287,41 @@ namespace DaoUploadNews
                m_SoLuongVideoUp, m_NgonNguGoc, m_NgonNguThay, m_BotTieuDe,
                m_ThemTieuDe, m_ThemMoTa, m_ThemTag);
         }
-       
+        public void UpdateView( int m_ID, string view, string sub, string ngaytao, bool trangthai)
+        {
+            WS_FakeAuto.WS_FakeAuto xuly = new WS_FakeAuto.WS_FakeAuto();
+            xuly.UpdateView(m_ID, view, sub, ngaytao, trangthai);
+        }
+        public void XoaMail(int m_ID)
+        {
+            WS_FakeAuto.WS_FakeAuto xuly = new WS_FakeAuto.WS_FakeAuto();
+            xuly.XoaMail(m_ID);
+        }
+
+        public DataTable ChiTietMail( int m_ID)
+        {
+            DataTable dt = new DataTable();
+            WS_FakeAuto.WS_FakeAuto ds = new WS_FakeAuto.WS_FakeAuto();
+            dt = ds.ChiTietMail(m_ID);
+            return dt;
+        }
+
         public void ThemChiTietReup(string Link, string TieuDe, int IDMailDaXuLy)
         {
             WS_FakeAuto.WS_FakeAuto xuly = new WS_FakeAuto.WS_FakeAuto();
             xuly.ThemChiTietReup(Link, TieuDe, IDMailDaXuLy);
         }
-       
+        public string  Linkvideomoinhat(int IDMailDaXuLy)
+        {
+            string kq = "";
+            WS_FakeAuto.WS_FakeAuto ds = new WS_FakeAuto.WS_FakeAuto();
+            try
+            {
+                kq = ds.LinkVideoMoiNhat(IDMailDaXuLy);
+            }
+            catch { }
+            return kq;
+        }
         public void UpdateDaReup(int ID)
         {
             WS_FakeAuto.WS_FakeAuto xuly = new WS_FakeAuto.WS_FakeAuto();

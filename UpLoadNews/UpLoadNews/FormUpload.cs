@@ -529,6 +529,9 @@ namespace UpLoadNews
         {
             txttextchannel.Text = "ChangeChannel" + Randomtext();
             this.cmbvoicegoogle.Items.AddRange(Translator.Languages.ToArray());
+            this.cmbngonnguthay.Items.AddRange(Translator.Languages.ToArray());
+            this.cmdngonngugoc.Items.AddRange(Translator.Languages.ToArray());
+
             _LISTVOICE();
             hienthicmbkenh();
             hienthicmbvoiceamz();
@@ -2265,15 +2268,17 @@ namespace UpLoadNews
                                     int indexbg = new Random().Next(0, filesbg.Length);
                                     string pathbg = txtfloderlistbg.Text + @"\" + filesbg[indexbg].Name;
                                     // copy file video bg vào chung thư mục ffmpeg
+                                    try { System.IO.File.Delete(Application.StartupPath + @"\" + filesbg[indexbg].Name); }
+                                    catch { }
                                     System.IO.File.Copy(pathbg, Application.StartupPath + @"\" + filesbg[indexbg].Name, true);
                                     var filespicture = new DirectoryInfo(txtfloderlistpicture.Text).GetFiles();
-                                    int indexpicture = new Random().Next(0, filesbg.Length);
+                                    int indexpicture = new Random().Next(0, filespicture.Length);
                                     string pathpicture = txtfloderlistpicture.Text + @"\" + filespicture[indexpicture].Name;
 
                                     //ghep vao video
                                     string _outputvideobg = txtfoldervideo.Text + @"\" + folder + @"\" + k.ToString() + @"\_output" + k.ToString() + ".mp4";
                                     RunFFMPEG ffrunmc = new RunFFMPEG();
-                                    string addmc = string.Format(@" -y -i {0} -i {1} -filter_complex ""[0:v]scale=300:260[v1];movie={2}:loop=999,setpts=N/(FRAME_RATE*TB),scale=854:480,setdar=16/9[v2];[v2][v1]overlay=shortest=1:x=5:y=5[v3];[1:v]scale=854:480[v4];[v3][v4]overlay=0:0"" -vcodec libx264 -pix_fmt yuv420p -r 25 -g 62 -b:v 1200k -shortest -acodec aac -b:a 128k -ar 44100  -preset veryfast {3}", fileFromComputer, pathpicture, filesbg[indexbg].Name, _outputvideobg);
+                                    string addmc = string.Format(@" -y -i {0} -i {1} -filter_complex ""[0:v]scale=320:260[v1];movie={2}:loop=999,setpts=N/(FRAME_RATE*TB),scale=854:480,setdar=16/9[v2];[v2][v1]overlay=shortest=1:x=5:y=5[v3];[1:v]scale=854:480[v4];[v3][v4]overlay=0:0"" -vcodec libx264 -pix_fmt yuv420p -r 25 -g 62 -b:v 1200k -shortest -acodec aac -b:a 128k -ar 44100  -preset veryfast {3}", fileFromComputer, pathpicture, filesbg[indexbg].Name, _outputvideobg);
                                     ffrunmc.RunCommand(addmc, false);
                                     //thực hiện xóa file videobg sau khi xử lý xong
                                     System.IO.File.Delete(Application.StartupPath + @"\" + filesbg[indexbg].Name);
@@ -2870,6 +2875,13 @@ namespace UpLoadNews
 
 
         #region /// phần dành cho reup
+        private void btnrefresh_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+            loadmailchuaxuly();
+            loadmaildaxuly();
+            this.Cursor = Cursors.Default;
+        }
         private void loadmailchuaxuly()
         {
             daWS_FakeAuto ds = new daWS_FakeAuto();
@@ -2896,12 +2908,14 @@ namespace UpLoadNews
                                 string mail = r["Mail"].ToString();
                                 string pass = r["Pass"].ToString();
                                 string mailkhoiphuc = r["MailKhoiPhuc"].ToString();
+                                lblthongbaoreup.Text = "Change info mail :"+mail;
                                 string[] temp = mail.Split(new string[] { "@" }, StringSplitOptions.RemoveEmptyEntries);
                                 string passmoi = temp[0].ToString() + "." + txttientopass.Text + "@gmail.com";
                                 string mailkhoiphucmoi = passmoi;
                                 ChromePerformanceLoggingPreferences perfLogPrefs = new ChromePerformanceLoggingPreferences();
                                 perfLogPrefs.AddTracingCategories(new string[] { "devtools.timeline" });
                                 ChromeOptions options = new ChromeOptions();
+                                options.AddArguments("--disable-notifications");
                                 if (checktabandanh.Checked == true)
                                 { options.AddArguments("--incognito"); }
                                 options.PerformanceLoggingPreferences = perfLogPrefs;
@@ -2940,14 +2954,320 @@ namespace UpLoadNews
 
         private void loadmaildaxuly()
         {
+            DataGridViewCheckBoxColumn CheckboxColumn = new DataGridViewCheckBoxColumn();
+            CheckBox chk = new CheckBox();
+            CheckboxColumn.Width = 50;
+            dataGridViewListReup.Columns.Add(CheckboxColumn);
+
             daWS_FakeAuto ds = new daWS_FakeAuto();
             DataTable dt = new DataTable();
             dt = ds.DanhSachMailDaXuLy(m_IDTaiKhoan);
             dataGridViewListReup.DataSource = dt;
         }
+     
+
+        private void btngetlinkkenh_Click(object sender, EventArgs e)
+        {
+            Thread getlinkkenh = new Thread(() =>
+            {
+                ChromePerformanceLoggingPreferences perfLogPrefs = new ChromePerformanceLoggingPreferences();
+                perfLogPrefs.AddTracingCategories(new string[] { "devtools.timeline" });
+                ChromeOptions options = new ChromeOptions();
+                options.AddArguments("--disable-notifications");
+                options.AddArguments("--incognito");
+                options.PerformanceLoggingPreferences = perfLogPrefs;
+                options.SetLoggingPreference(LogType.Driver, LogLevel.All);
+                options.SetLoggingPreference("performance", LogLevel.All);
+                options.AddAdditionalCapability(CapabilityType.EnableProfiling, true, true);
+                PropretiesCollection.driver = new ChromeDriver(options);
+                PropretiesCollection.driver.Navigate().GoToUrl("https://accounts.google.com/signin/v2/identifier?service=youtube&uilel=3&passive=true&continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26hl%3Dvi%26next%3D%252F&hl=vi&ec=65620&flowName=GlifWebSignIn&flowEntry=ServiceLogin");
+                ManagerChannel getlinkenh = new ManagerChannel();
+                txtlinkkenh.Text = getlinkenh.GetLinkChannel(txtmailreup.Text,lblpass.Text,lblmailkhoiphuc.Text);
+                ChomeClose().Wait();
+            }
+            );
+            getlinkkenh.Start();
+        }
+
+        private void btngetlistvideo_Click(object sender, EventArgs e)
+        {
+            if(txtlinkkenhreup.Text==null ||txtlinkkenhreup.Text=="")
+            {
+                MessageBox.Show("Nhập vào link kênh cần reup");
+                return;
+            }
+            Thread getlist = new Thread(() =>
+            {
+                ChromePerformanceLoggingPreferences perfLogPrefs = new ChromePerformanceLoggingPreferences();
+                perfLogPrefs.AddTracingCategories(new string[] { "devtools.timeline" });
+                ChromeOptions options = new ChromeOptions();
+                options.AddArguments("--disable-notifications");
+                options.AddArguments("--incognito"); 
+                options.PerformanceLoggingPreferences = perfLogPrefs;
+                options.SetLoggingPreference(LogType.Driver, LogLevel.All);
+                options.SetLoggingPreference("performance", LogLevel.All);
+                options.AddAdditionalCapability(CapabilityType.EnableProfiling, true, true);
+                PropretiesCollection.driver = new ChromeDriver(options);
+                PropretiesCollection.driver.Navigate().GoToUrl(txtlinkkenhreup.Text+"/videos");
+                daWS_FakeAuto getlinkmoinhat = new daWS_FakeAuto();
+
+                ManagerChannel listvideo = new ManagerChannel();
+                DataTable dt = new DataTable();
+                dt=listvideo.LoadListVideo(getlinkmoinhat.Linkvideomoinhat(int.Parse(lblIDMail.Text)));
+                ChomeClose().Wait();
+                if(dt.Rows.Count>0)
+                {
+                    foreach(DataRow r in dt.Rows)
+                    {
+                        try
+                        {
+                            string tieude = r["Ten"].ToString();
+                            if ((string)this.cmbngonnguthay.SelectedItem != "" && (string)this.cmdngonngugoc.SelectedItem != "" && (string)this.cmdngonngugoc.SelectedItem != (string)this.cmbngonnguthay.SelectedItem)
+                            {
+                                Translator t = new Translator();
+                                tieude = t.Translate(tieude, (string)this.cmdngonngugoc.SelectedItem, (string)this.cmbngonnguthay.SelectedItem);
+                                Thread.Sleep(3000);
+                            }
+                            string link = r["Link"].ToString();
+                            daWS_FakeAuto themchitiet = new daWS_FakeAuto();
+                            themchitiet.ThemChiTietReup(link, tieude, int.Parse(lblIDMail.Text));
+                            lblthongbao.Text = "Thêm vào hệ thống video :" + link;
+                        }
+                        catch { }
+                    }
+                }
+            }
+            );
+            getlist.Start();
+         }
+
+        private void btnsavecauhinhkenh_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+            daWS_FakeAuto luu = new daWS_FakeAuto();
+            int m_ID = int.Parse(lblIDMail.Text);
+            string m_LinkKenh = txtlinkkenh.Text;
+            string m_LinkKenhReUp = txtlinkkenhreup.Text;
+            int m_SoLuongVideoUp =int.Parse(txtsoluongup.Value.ToString());
+            string m_NgonNguGoc = "";
+            try
+            {
+                m_NgonNguGoc= (string)this.cmdngonngugoc.SelectedItem;
+            }
+            catch { }
+            string m_NgonNguThay = "";
+            try
+            {
+                m_NgonNguThay= (string)this.cmbngonnguthay.SelectedItem;
+            }
+            catch { }
+            string m_BotTieuDe = txtbottieude.Text;
+            string m_ThemTieuDe = txtthemtieude.Text;
+            string m_ThemMoTa = txtthemmota.Text;
+            string m_ThemTag = txtthemtag.Text;
+            luu.CauHinhMail( m_ID,  m_LinkKenh,  m_LinkKenhReUp,
+               m_SoLuongVideoUp,  m_NgonNguGoc,  m_NgonNguThay, m_BotTieuDe,
+               m_ThemTieuDe,  m_ThemMoTa,  m_ThemTag);
+            MessageBox.Show("OK!");
+            this.Cursor = Cursors.Default;
+        }
+        private void dataGridViewListReup_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                  
+                    string task = dataGridViewListReup.Rows[e.RowIndex].Cells[18].Value.ToString();
+                    if (task == "Delete")
+                    {
+                        if (MessageBox.Show("Bạn có chắc chắm muốn xóa không?", "Đang xóa...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            int r = e.RowIndex;
+                            int idmail=int.Parse(dataGridViewListReup.Rows[r].Cells["ID"].Value.ToString());
+                        daWS_FakeAuto xoa = new daWS_FakeAuto();
+                        xoa.XoaMail(idmail);
+                    }
+            }      
+               
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void dataGridViewListReup_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                //int lastRow = e.RowIndex;
+                //DataGridViewRow nRow = dataGridViewListReup.Rows[lastRow];
+                //DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
+                //dataGridViewListReup[5, lastRow] = linkCell;
+                //nRow.Cells["Delete"].Value = "View";
+
+                int r = e.RowIndex;
+                lblIDMail.Text = dataGridViewListReup.Rows[r].Cells["ID"].Value.ToString();
+                lblpass.Text = dataGridViewListReup.Rows[r].Cells["Pass"].Value.ToString();
+                lblmailkhoiphuc.Text = dataGridViewListReup.Rows[r].Cells["MailKhoiPhuc"].Value.ToString();
+                txtmailreup.Text = dataGridViewListReup.Rows[r].Cells["Mail"].Value.ToString();
+                txtlinkkenh.Text = dataGridViewListReup.Rows[r].Cells["LinkKenh"].Value.ToString();
+                txtlinkkenhreup.Text = dataGridViewListReup.Rows[r].Cells["LinkKenhReUp"].Value.ToString();
+                try
+                {
+                    cmdngonngugoc.SelectedItem = dataGridViewListReup.Rows[r].Cells["NgonNguGoc"].Value.ToString();
+                }
+                catch { }
+                try
+                {
+                    cmbngonnguthay.SelectedItem = dataGridViewListReup.Rows[r].Cells["NgonNguThay"].Value.ToString();
+                }
+                catch { }
+                txtthemtieude.Text = dataGridViewListReup.Rows[r].Cells["ThemTieuDe"].Value.ToString();
+                txtbottieude.Text = dataGridViewListReup.Rows[r].Cells["BotTieuDe"].Value.ToString();
+                txtthemmota.Text = dataGridViewListReup.Rows[r].Cells["ThemMoTa"].Value.ToString();
+                txtthemtag.Text = dataGridViewListReup.Rows[r].Cells["ThemTag"].Value.ToString();
+                txtsoluongup.Value = int.Parse(dataGridViewListReup.Rows[r].Cells["SoLuongVideoUp"].Value.ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+      
+        private void btnrefeshview_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void btnbeginreup_Click(object sender, EventArgs e)
+        {
+            DataTable table = new DataTable();
+            table.Columns.Add("ID",typeof(int));
+            foreach (DataGridViewRow row in dataGridViewListReup.Rows)
+            {
+                int i = row.Index;
+                bool chk = false;
+                try
+                {
+                    chk = bool.Parse(dataGridViewListReup.Rows[i].Cells[0].Value.ToString());
+                }
+                catch { }
+                if (chk == true)
+                {
+                    int id =int.Parse(dataGridViewListReup.Rows[i].Cells["ID"].Value.ToString());
+                    table.Rows.Add(id);
+                }
+             
+            }
+            if(table.Rows.Count>0)
+            {
+                Thread reup = new Thread(()=> {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        int idmail =int.Parse(row["ID"].ToString());
+                        DataTable thongtinkenh = new DataTable();
+                        daWS_FakeAuto tt = new daWS_FakeAuto();
+                        thongtinkenh = tt.ChiTietMail(idmail);
+                        DataRow rthongtin = thongtinkenh.Rows[0];
+                        string linkkenhreup = rthongtin["LinkKenhReUp"].ToString();
+                        string ngonngugoc = rthongtin["NgonNguGoc"].ToString();
+                        string ngonnguthay = rthongtin["NgonNguThay"].ToString();
+                        int soluongup = int.Parse(rthongtin["SoLuongVideoUp"].ToString());
+
+                        #region // load video mới nhất từ kênh reup
+                        if (checkloadvideomoi.Checked == true)
+                        {
+                            ChromePerformanceLoggingPreferences perfLogPrefs = new ChromePerformanceLoggingPreferences();
+                            perfLogPrefs.AddTracingCategories(new string[] { "devtools.timeline" });
+                            ChromeOptions options = new ChromeOptions();
+                            options.AddArguments("--disable-notifications");
+                            options.AddArguments("--incognito");
+                            options.PerformanceLoggingPreferences = perfLogPrefs;
+                            options.SetLoggingPreference(LogType.Driver, LogLevel.All);
+                            options.SetLoggingPreference("performance", LogLevel.All);
+                            options.AddAdditionalCapability(CapabilityType.EnableProfiling, true, true);
+                            PropretiesCollection.driver = new ChromeDriver(options);
+                            PropretiesCollection.driver.Navigate().GoToUrl(linkkenhreup + "/videos");
+                            daWS_FakeAuto getlinkmoinhat = new daWS_FakeAuto();
+
+                            ManagerChannel listvideo = new ManagerChannel();
+                            DataTable dt = new DataTable();
+                            dt = listvideo.LoadListVideo(getlinkmoinhat.Linkvideomoinhat(idmail));
+                            ChomeClose().Wait();
+                            if (dt.Rows.Count > 0)
+                            {
+                                foreach (DataRow r in dt.Rows)
+                                {
+                                    try
+                                    {
+                                        string tieude = r["Ten"].ToString();
+                                        if (ngonngugoc != "" && ngonnguthay != "" && ngonngugoc != ngonnguthay)
+                                        {
+                                            Translator t = new Translator();
+                                            tieude = t.Translate(tieude, ngonngugoc, ngonnguthay);
+                                            Thread.Sleep(3000);
+                                        }
+                                        string link = r["Link"].ToString();
+                                        daWS_FakeAuto themchitiet = new daWS_FakeAuto();
+                                        themchitiet.ThemChiTietReup(link, tieude, idmail);
+                                        lblthongbao.Text = "Thêm vào hệ thống video :" + link;
+                                    }
+                                    catch { }
+                                }
+                            }
+                        }
+                        #endregion
+
+
+                        #region // xử lý down video về
+                        // lấy list video chưa up theo kênh
+                        DataTable listlinkvideo = new DataTable();
+                        daWS_FakeAuto vids = new daWS_FakeAuto();
+                        listlinkvideo = vids.DanhSachVideoChuaReup(idmail);
+                        if(listlinkvideo.Rows.Count>0)
+                        {
+                            foreach (DataRow rvids in listlinkvideo.Rows)
+                            {
+                                string linkvideo = rvids["Link"].ToString();
+                                string tieude = rvids["TieuDe"].ToString();
+
+                                #region // thực hiện chạy download
+                                System.Diagnostics.Process process = new System.Diagnostics.Process();
+                                System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+                                startInfo.FileName = @"youtube-dl.exe";
+                                startInfo.Arguments = linkvideo;
+                                process.StartInfo = startInfo;
+                                process.Start();
+                                #endregion
+
+                                #region // thực hiện copy file download sang forder upload
+
+                                #endregion
+
+
+                            }
+
+                        }
+
+
+                        #endregion
+
+                        #region // sau khi down về sẽ upload lên kênh youtube
+
+                        #endregion
+                    }
+                });
+                reup.Start();
+
+            }
+            else
+            {
+                MessageBox.Show("Hãy chọn kênh cần reup","thông báo",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return;
+            }
+        }
+
 
         #endregion
 
-     
+      
     }
 }

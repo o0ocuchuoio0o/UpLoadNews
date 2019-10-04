@@ -209,8 +209,12 @@
             this.tblogothumnail = new System.Windows.Forms.TextBox();
             this.label42 = new System.Windows.Forms.Label();
             this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.btnbeginreup = new System.Windows.Forms.Button();
+            this.btnrefresh = new System.Windows.Forms.Button();
+            this.lblthongbaoreup = new System.Windows.Forms.Label();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage10 = new System.Windows.Forms.TabPage();
+            this.checktabandanh = new System.Windows.Forms.CheckBox();
             this.label25 = new System.Windows.Forms.Label();
             this.txtsoluongmailchange = new System.Windows.Forms.NumericUpDown();
             this.label24 = new System.Windows.Forms.Label();
@@ -218,12 +222,38 @@
             this.btnchangepassall = new System.Windows.Forms.Button();
             this.dataGridViewListKenh = new System.Windows.Forms.DataGridView();
             this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.btnrefeshview = new System.Windows.Forms.Button();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
+            this.lblmailkhoiphuc = new System.Windows.Forms.Label();
+            this.lblpass = new System.Windows.Forms.Label();
+            this.lblIDMail = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.txtsoluongup = new System.Windows.Forms.NumericUpDown();
+            this.btnsavecauhinhkenh = new System.Windows.Forms.Button();
+            this.btngetlistvideo = new System.Windows.Forms.Button();
+            this.label32 = new System.Windows.Forms.Label();
+            this.txtthemtag = new System.Windows.Forms.TextBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.txtthemmota = new System.Windows.Forms.TextBox();
+            this.cmbngonnguthay = new System.Windows.Forms.ComboBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.cmdngonngugoc = new System.Windows.Forms.ComboBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.txtthemtieude = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.txtbottieude = new System.Windows.Forms.TextBox();
+            this.btngetlinkkenh = new System.Windows.Forms.Button();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.txtlinkkenhreup = new System.Windows.Forms.TextBox();
+            this.txtlinkkenh = new System.Windows.Forms.TextBox();
+            this.txtmailreup = new System.Windows.Forms.TextBox();
             this.dataGridViewListReup = new System.Windows.Forms.DataGridView();
             this.bgwlayvoice = new System.ComponentModel.BackgroundWorker();
             this.bgwrendermulti = new System.ComponentModel.BackgroundWorker();
             this.timerrendermulti = new System.Windows.Forms.Timer(this.components);
-            this.checktabandanh = new System.Windows.Forms.CheckBox();
+            this.checkloadvideomoi = new System.Windows.Forms.CheckBox();
             this.groupBox3.SuspendLayout();
             this.tabControl3.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -265,6 +295,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtsoluongmailchange)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListKenh)).BeginInit();
             this.tabPage11.SuspendLayout();
+            this.groupBox15.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtsoluongup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListReup)).BeginInit();
             this.SuspendLayout();
             // 
@@ -2442,6 +2474,10 @@
             // 
             // tabPage9
             // 
+            this.tabPage9.Controls.Add(this.checkloadvideomoi);
+            this.tabPage9.Controls.Add(this.btnbeginreup);
+            this.tabPage9.Controls.Add(this.btnrefresh);
+            this.tabPage9.Controls.Add(this.lblthongbaoreup);
             this.tabPage9.Controls.Add(this.tabControl2);
             this.tabPage9.Location = new System.Drawing.Point(4, 22);
             this.tabPage9.Name = "tabPage9";
@@ -2451,14 +2487,46 @@
             this.tabPage9.Text = "Manager list channel";
             this.tabPage9.UseVisualStyleBackColor = true;
             // 
+            // btnbeginreup
+            // 
+            this.btnbeginreup.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnbeginreup.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnbeginreup.Location = new System.Drawing.Point(371, 5);
+            this.btnbeginreup.Name = "btnbeginreup";
+            this.btnbeginreup.Size = new System.Drawing.Size(96, 33);
+            this.btnbeginreup.TabIndex = 338;
+            this.btnbeginreup.Text = "BEGIN REUP";
+            this.btnbeginreup.UseVisualStyleBackColor = true;
+            this.btnbeginreup.Click += new System.EventHandler(this.btnbeginreup_Click);
+            // 
+            // btnrefresh
+            // 
+            this.btnrefresh.Location = new System.Drawing.Point(515, 10);
+            this.btnrefresh.Name = "btnrefresh";
+            this.btnrefresh.Size = new System.Drawing.Size(81, 23);
+            this.btnrefresh.TabIndex = 6;
+            this.btnrefresh.Text = "Refresh";
+            this.btnrefresh.UseVisualStyleBackColor = true;
+            this.btnrefresh.Click += new System.EventHandler(this.btnrefresh_Click);
+            // 
+            // lblthongbaoreup
+            // 
+            this.lblthongbaoreup.AutoSize = true;
+            this.lblthongbaoreup.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblthongbaoreup.ForeColor = System.Drawing.Color.Red;
+            this.lblthongbaoreup.Location = new System.Drawing.Point(4, 10);
+            this.lblthongbaoreup.Name = "lblthongbaoreup";
+            this.lblthongbaoreup.Size = new System.Drawing.Size(0, 13);
+            this.lblthongbaoreup.TabIndex = 4;
+            // 
             // tabControl2
             // 
             this.tabControl2.Controls.Add(this.tabPage10);
             this.tabControl2.Controls.Add(this.tabPage11);
-            this.tabControl2.Location = new System.Drawing.Point(3, 47);
+            this.tabControl2.Location = new System.Drawing.Point(3, 26);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(597, 453);
+            this.tabControl2.Size = new System.Drawing.Size(597, 474);
             this.tabControl2.TabIndex = 1;
             // 
             // tabPage10
@@ -2473,10 +2541,20 @@
             this.tabPage10.Location = new System.Drawing.Point(4, 22);
             this.tabPage10.Name = "tabPage10";
             this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage10.Size = new System.Drawing.Size(589, 427);
+            this.tabPage10.Size = new System.Drawing.Size(589, 448);
             this.tabPage10.TabIndex = 0;
             this.tabPage10.Text = "Mail chưa đổi pass";
             this.tabPage10.UseVisualStyleBackColor = true;
+            // 
+            // checktabandanh
+            // 
+            this.checktabandanh.AutoSize = true;
+            this.checktabandanh.Location = new System.Drawing.Point(9, 65);
+            this.checktabandanh.Name = "checktabandanh";
+            this.checktabandanh.Size = new System.Drawing.Size(87, 17);
+            this.checktabandanh.TabIndex = 343;
+            this.checktabandanh.Text = "Tab ẩn danh";
+            this.checktabandanh.UseVisualStyleBackColor = true;
             // 
             // label25
             // 
@@ -2539,31 +2617,294 @@
             // 
             // tabPage11
             // 
+            this.tabPage11.Controls.Add(this.btnrefeshview);
             this.tabPage11.Controls.Add(this.groupBox15);
             this.tabPage11.Controls.Add(this.dataGridViewListReup);
             this.tabPage11.Location = new System.Drawing.Point(4, 22);
             this.tabPage11.Name = "tabPage11";
             this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage11.Size = new System.Drawing.Size(589, 427);
+            this.tabPage11.Size = new System.Drawing.Size(589, 448);
             this.tabPage11.TabIndex = 1;
             this.tabPage11.Text = "Mail Reup";
             this.tabPage11.UseVisualStyleBackColor = true;
             // 
+            // btnrefeshview
+            // 
+            this.btnrefeshview.Location = new System.Drawing.Point(502, 416);
+            this.btnrefeshview.Name = "btnrefeshview";
+            this.btnrefeshview.Size = new System.Drawing.Size(81, 23);
+            this.btnrefeshview.TabIndex = 7;
+            this.btnrefeshview.Text = "Refresh view";
+            this.btnrefeshview.UseVisualStyleBackColor = true;
+            this.btnrefeshview.Click += new System.EventHandler(this.btnrefeshview_Click);
+            // 
             // groupBox15
             // 
+            this.groupBox15.Controls.Add(this.lblmailkhoiphuc);
+            this.groupBox15.Controls.Add(this.lblpass);
+            this.groupBox15.Controls.Add(this.lblIDMail);
+            this.groupBox15.Controls.Add(this.label34);
+            this.groupBox15.Controls.Add(this.txtsoluongup);
+            this.groupBox15.Controls.Add(this.btnsavecauhinhkenh);
+            this.groupBox15.Controls.Add(this.btngetlistvideo);
+            this.groupBox15.Controls.Add(this.label32);
+            this.groupBox15.Controls.Add(this.txtthemtag);
+            this.groupBox15.Controls.Add(this.label33);
+            this.groupBox15.Controls.Add(this.txtthemmota);
+            this.groupBox15.Controls.Add(this.cmbngonnguthay);
+            this.groupBox15.Controls.Add(this.label31);
+            this.groupBox15.Controls.Add(this.cmdngonngugoc);
+            this.groupBox15.Controls.Add(this.label29);
+            this.groupBox15.Controls.Add(this.label30);
+            this.groupBox15.Controls.Add(this.txtthemtieude);
+            this.groupBox15.Controls.Add(this.label28);
+            this.groupBox15.Controls.Add(this.txtbottieude);
+            this.groupBox15.Controls.Add(this.btngetlinkkenh);
+            this.groupBox15.Controls.Add(this.label27);
+            this.groupBox15.Controls.Add(this.label26);
+            this.groupBox15.Controls.Add(this.txtlinkkenhreup);
+            this.groupBox15.Controls.Add(this.txtlinkkenh);
+            this.groupBox15.Controls.Add(this.txtmailreup);
             this.groupBox15.Location = new System.Drawing.Point(6, 0);
             this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Size = new System.Drawing.Size(221, 416);
+            this.groupBox15.Size = new System.Drawing.Size(221, 442);
             this.groupBox15.TabIndex = 2;
             this.groupBox15.TabStop = false;
             // 
+            // lblmailkhoiphuc
+            // 
+            this.lblmailkhoiphuc.AutoSize = true;
+            this.lblmailkhoiphuc.Location = new System.Drawing.Point(153, 42);
+            this.lblmailkhoiphuc.Name = "lblmailkhoiphuc";
+            this.lblmailkhoiphuc.Size = new System.Drawing.Size(79, 13);
+            this.lblmailkhoiphuc.TabIndex = 339;
+            this.lblmailkhoiphuc.Text = "lblmailkhoiphuc";
+            this.lblmailkhoiphuc.Visible = false;
+            // 
+            // lblpass
+            // 
+            this.lblpass.AutoSize = true;
+            this.lblpass.Location = new System.Drawing.Point(119, 42);
+            this.lblpass.Name = "lblpass";
+            this.lblpass.Size = new System.Drawing.Size(39, 13);
+            this.lblpass.TabIndex = 338;
+            this.lblpass.Text = "lblpass";
+            this.lblpass.Visible = false;
+            // 
+            // lblIDMail
+            // 
+            this.lblIDMail.AutoSize = true;
+            this.lblIDMail.Location = new System.Drawing.Point(72, 42);
+            this.lblIDMail.Name = "lblIDMail";
+            this.lblIDMail.Size = new System.Drawing.Size(47, 13);
+            this.lblIDMail.TabIndex = 337;
+            this.lblIDMail.Text = "lblIDMail";
+            this.lblIDMail.Visible = false;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(1, 407);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(70, 13);
+            this.label34.TabIndex = 336;
+            this.label34.Text = "Số lượng up :";
+            // 
+            // txtsoluongup
+            // 
+            this.txtsoluongup.Location = new System.Drawing.Point(75, 412);
+            this.txtsoluongup.Name = "txtsoluongup";
+            this.txtsoluongup.Size = new System.Drawing.Size(42, 20);
+            this.txtsoluongup.TabIndex = 335;
+            this.txtsoluongup.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // btnsavecauhinhkenh
+            // 
+            this.btnsavecauhinhkenh.Location = new System.Drawing.Point(123, 409);
+            this.btnsavecauhinhkenh.Name = "btnsavecauhinhkenh";
+            this.btnsavecauhinhkenh.Size = new System.Drawing.Size(81, 23);
+            this.btnsavecauhinhkenh.TabIndex = 334;
+            this.btnsavecauhinhkenh.Text = "&Save";
+            this.btnsavecauhinhkenh.UseVisualStyleBackColor = true;
+            this.btnsavecauhinhkenh.Click += new System.EventHandler(this.btnsavecauhinhkenh_Click);
+            // 
+            // btngetlistvideo
+            // 
+            this.btngetlistvideo.Location = new System.Drawing.Point(122, 148);
+            this.btngetlistvideo.Name = "btngetlistvideo";
+            this.btngetlistvideo.Size = new System.Drawing.Size(81, 23);
+            this.btngetlistvideo.TabIndex = 333;
+            this.btngetlistvideo.Text = "get list video";
+            this.btngetlistvideo.UseVisualStyleBackColor = true;
+            this.btngetlistvideo.Click += new System.EventHandler(this.btngetlistvideo_Click);
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(5, 367);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(58, 13);
+            this.label32.TabIndex = 332;
+            this.label32.Text = "Thêm tag :";
+            // 
+            // txtthemtag
+            // 
+            this.txtthemtag.Location = new System.Drawing.Point(8, 383);
+            this.txtthemtag.Name = "txtthemtag";
+            this.txtthemtag.Size = new System.Drawing.Size(198, 20);
+            this.txtthemtag.TabIndex = 331;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(7, 328);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(69, 13);
+            this.label33.TabIndex = 330;
+            this.label33.Text = "Thêm mô tả :";
+            // 
+            // txtthemmota
+            // 
+            this.txtthemmota.Location = new System.Drawing.Point(7, 344);
+            this.txtthemmota.Name = "txtthemmota";
+            this.txtthemmota.Size = new System.Drawing.Size(198, 20);
+            this.txtthemmota.TabIndex = 329;
+            // 
+            // cmbngonnguthay
+            // 
+            this.cmbngonnguthay.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbngonnguthay.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbngonnguthay.FormattingEnabled = true;
+            this.cmbngonnguthay.Location = new System.Drawing.Point(6, 220);
+            this.cmbngonnguthay.Name = "cmbngonnguthay";
+            this.cmbngonnguthay.Size = new System.Drawing.Size(198, 22);
+            this.cmbngonnguthay.TabIndex = 328;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(7, 204);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(83, 13);
+            this.label31.TabIndex = 327;
+            this.label31.Text = "Ngôn ngữ thay :";
+            // 
+            // cmdngonngugoc
+            // 
+            this.cmdngonngugoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmdngonngugoc.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdngonngugoc.FormattingEnabled = true;
+            this.cmdngonngugoc.Location = new System.Drawing.Point(6, 179);
+            this.cmdngonngugoc.Name = "cmdngonngugoc";
+            this.cmdngonngugoc.Size = new System.Drawing.Size(198, 22);
+            this.cmdngonngugoc.TabIndex = 326;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(3, 288);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(76, 13);
+            this.label29.TabIndex = 9;
+            this.label29.Text = "Thêm tiêu đề :";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(7, 163);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(81, 13);
+            this.label30.TabIndex = 325;
+            this.label30.Text = "Ngôn ngữ gốc :";
+            // 
+            // txtthemtieude
+            // 
+            this.txtthemtieude.Location = new System.Drawing.Point(6, 304);
+            this.txtthemtieude.Name = "txtthemtieude";
+            this.txtthemtieude.Size = new System.Drawing.Size(198, 20);
+            this.txtthemtieude.TabIndex = 8;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(6, 245);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(65, 13);
+            this.label28.TabIndex = 7;
+            this.label28.Text = "Bớt tiêu đề :";
+            // 
+            // txtbottieude
+            // 
+            this.txtbottieude.Location = new System.Drawing.Point(5, 262);
+            this.txtbottieude.Name = "txtbottieude";
+            this.txtbottieude.Size = new System.Drawing.Size(198, 20);
+            this.txtbottieude.TabIndex = 6;
+            // 
+            // btngetlinkkenh
+            // 
+            this.btngetlinkkenh.Location = new System.Drawing.Point(123, 86);
+            this.btngetlinkkenh.Name = "btngetlinkkenh";
+            this.btngetlinkkenh.Size = new System.Drawing.Size(81, 23);
+            this.btngetlinkkenh.TabIndex = 5;
+            this.btngetlinkkenh.Text = "get link kenh";
+            this.btngetlinkkenh.UseVisualStyleBackColor = true;
+            this.btngetlinkkenh.Click += new System.EventHandler(this.btngetlinkkenh_Click);
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(7, 106);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(84, 13);
+            this.label27.TabIndex = 4;
+            this.label27.Text = "Link kênh reup :";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(6, 42);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(60, 13);
+            this.label26.TabIndex = 3;
+            this.label26.Text = "Link kênh :";
+            // 
+            // txtlinkkenhreup
+            // 
+            this.txtlinkkenhreup.Location = new System.Drawing.Point(6, 122);
+            this.txtlinkkenhreup.Name = "txtlinkkenhreup";
+            this.txtlinkkenhreup.Size = new System.Drawing.Size(198, 20);
+            this.txtlinkkenhreup.TabIndex = 2;
+            // 
+            // txtlinkkenh
+            // 
+            this.txtlinkkenh.Location = new System.Drawing.Point(6, 60);
+            this.txtlinkkenh.Name = "txtlinkkenh";
+            this.txtlinkkenh.Size = new System.Drawing.Size(198, 20);
+            this.txtlinkkenh.TabIndex = 1;
+            // 
+            // txtmailreup
+            // 
+            this.txtmailreup.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtmailreup.ForeColor = System.Drawing.Color.Blue;
+            this.txtmailreup.Location = new System.Drawing.Point(6, 19);
+            this.txtmailreup.Name = "txtmailreup";
+            this.txtmailreup.Size = new System.Drawing.Size(198, 20);
+            this.txtmailreup.TabIndex = 0;
+            // 
             // dataGridViewListReup
             // 
+            this.dataGridViewListReup.AllowUserToAddRows = false;
             this.dataGridViewListReup.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewListReup.Location = new System.Drawing.Point(233, 6);
             this.dataGridViewListReup.Name = "dataGridViewListReup";
-            this.dataGridViewListReup.Size = new System.Drawing.Size(350, 410);
+            this.dataGridViewListReup.Size = new System.Drawing.Size(350, 397);
             this.dataGridViewListReup.TabIndex = 1;
+            this.dataGridViewListReup.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewListReup_CellContentClick);
+            this.dataGridViewListReup.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewListReup_CellDoubleClick);
             // 
             // bgwlayvoice
             // 
@@ -2579,15 +2920,18 @@
             // 
             this.timerrendermulti.Tick += new System.EventHandler(this.timerrendermulti_Tick);
             // 
-            // checktabandanh
+            // checkloadvideomoi
             // 
-            this.checktabandanh.AutoSize = true;
-            this.checktabandanh.Location = new System.Drawing.Point(9, 65);
-            this.checktabandanh.Name = "checktabandanh";
-            this.checktabandanh.Size = new System.Drawing.Size(87, 17);
-            this.checktabandanh.TabIndex = 343;
-            this.checktabandanh.Text = "Tab ẩn danh";
-            this.checktabandanh.UseVisualStyleBackColor = true;
+            this.checkloadvideomoi.AutoSize = true;
+            this.checkloadvideomoi.Checked = true;
+            this.checkloadvideomoi.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkloadvideomoi.ForeColor = System.Drawing.Color.Red;
+            this.checkloadvideomoi.Location = new System.Drawing.Point(240, 14);
+            this.checkloadvideomoi.Name = "checkloadvideomoi";
+            this.checkloadvideomoi.Size = new System.Drawing.Size(89, 17);
+            this.checkloadvideomoi.TabIndex = 325;
+            this.checkloadvideomoi.Text = "get video mới";
+            this.checkloadvideomoi.UseVisualStyleBackColor = true;
             // 
             // FormUpload
             // 
@@ -2661,12 +3005,16 @@
             this.tabPage8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtsizeboderthumnail)).EndInit();
             this.tabPage9.ResumeLayout(false);
+            this.tabPage9.PerformLayout();
             this.tabControl2.ResumeLayout(false);
             this.tabPage10.ResumeLayout(false);
             this.tabPage10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtsoluongmailchange)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListKenh)).EndInit();
             this.tabPage11.ResumeLayout(false);
+            this.groupBox15.ResumeLayout(false);
+            this.groupBox15.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtsoluongup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListReup)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -2870,5 +3218,35 @@
         private System.Windows.Forms.TextBox txtfloderlistpicture;
         private System.Windows.Forms.Button btnfloderlistpicbg;
         private System.Windows.Forms.CheckBox checktabandanh;
+        private System.Windows.Forms.TextBox txtmailreup;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TextBox txtlinkkenhreup;
+        private System.Windows.Forms.TextBox txtlinkkenh;
+        private System.Windows.Forms.Button btngetlinkkenh;
+        private System.Windows.Forms.ComboBox cmbngonnguthay;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.ComboBox cmdngonngugoc;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.TextBox txtthemtieude;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.TextBox txtbottieude;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.TextBox txtthemtag;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.TextBox txtthemmota;
+        private System.Windows.Forms.Button btnsavecauhinhkenh;
+        private System.Windows.Forms.Button btngetlistvideo;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.NumericUpDown txtsoluongup;
+        private System.Windows.Forms.Label lblthongbaoreup;
+        private System.Windows.Forms.Label lblIDMail;
+        private System.Windows.Forms.Button btnrefresh;
+        private System.Windows.Forms.Label lblmailkhoiphuc;
+        private System.Windows.Forms.Label lblpass;
+        private System.Windows.Forms.Button btnrefeshview;
+        private System.Windows.Forms.Button btnbeginreup;
+        private System.Windows.Forms.CheckBox checkloadvideomoi;
     }
 }
