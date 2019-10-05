@@ -31,6 +31,18 @@ namespace UpLoadNews
         [FindsBy(How = How.Id, Using = "text")]
         public IWebElement m_statuslogin;
         #endregion
+
+        #region // các biến xác nhận mail khôi phục lúc login
+        [FindsBy(How = How.XPath, Using = "/html/body/div[1]/div[1]/div[2]/div[2]/div/div/div[2]/div/div/div/form/span/section/div/div/div/ul/li[1]/div/div[2]")]
+        public IWebElement m_xacnhanmailkhoiphuc;
+        [FindsBy(How = How.Id, Using = "knowledge-preregistered-email-response")]
+        public IWebElement m_txtxacnhanmail;
+        [FindsBy(How = How.XPath, Using = "/html/body/div[1]/div[1]/div[2]/div[2]/div/div/div[2]/div/div[2]/div/div[1]/div/span/span")]
+        public IWebElement m_nexxacnhanmail;
+        [FindsBy(How = How.XPath, Using = "/html/body/c-wiz[2]/c-wiz/div/div[1]/div/div/div/div[2]/div[3]/div/div[2]/div/span/span")]
+        public IWebElement btndonexacnhanmail;
+        #endregion
+
         [FindsBy(How = How.Id, Using = "button")]
         public IWebElement btnsub;
        //[FindsBy(How = How.XPath, Using = "/html/body/div[2]/div[4]/div/div[5]/div/div[4]/div[4]/div/div/div/button")]
@@ -96,7 +108,65 @@ namespace UpLoadNews
             catch { }
             
         }
+        public async Task LoginAnDanh(string user, string pass,string mailkhoiphuc, string path)
+        {
 
+            try
+            {
+                NextUser(user);
+            }
+            catch { }
+            System.Threading.Thread.Sleep(4000);
+            try
+            {
+                NextPass(pass);
+            }
+            catch { }
+            System.Threading.Thread.Sleep(10000);
+            try
+            {
+                btnupload.SendKeys(path);
+            }
+            catch { }
+            System.Threading.Thread.Sleep(2000);
+            #region // trường hợp bắt xác nhận mail khôi phục
+            try
+            {
+                try
+                {
+                    m_xacnhanmailkhoiphuc.Click();
+                }
+                catch { }
+                System.Threading.Thread.Sleep(4000);
+                try
+                {
+                    m_txtxacnhanmail.SendKeys(mailkhoiphuc);
+                }
+                catch { }
+                System.Threading.Thread.Sleep(1000);
+                try
+                {
+                    m_nexxacnhanmail.Click();
+                }
+                catch { }
+                System.Threading.Thread.Sleep(6000);
+                try
+                {
+                    btndonexacnhanmail.Click();
+                }
+                catch { }
+            }
+            catch { }
+            #endregion
+            System.Threading.Thread.Sleep(1000);
+            try
+            {
+                btnupload.SendKeys(path);
+            }
+            catch { }
+
+
+        }
         public async Task UploadFroFile(string path,string tieude, string mota, string tag, string paththumnail,int batkiemtien)
         {           
             System.Threading.Thread.Sleep(10000);
@@ -167,28 +237,28 @@ namespace UpLoadNews
         public async Task Upload(string tieude, string mota, string tag, string paththumnail,int batkiemtien)
         {
             
-            System.Threading.Thread.Sleep(5000);
+            System.Threading.Thread.Sleep(2000);
             try
             {
                 txttieude.Clear();
                 txttieude.SendKeys(tieude);
             }
             catch { }
-            System.Threading.Thread.Sleep(5000);
+            System.Threading.Thread.Sleep(2000);
             try
             {
                 txtmota.Clear();
                 txtmota.SendKeys(mota);
             }
             catch { }
-            System.Threading.Thread.Sleep(5000);
+            System.Threading.Thread.Sleep(2000);
             try
             {
                 txttag.Clear();
                 txttag.SendKeys(tag);
             }
             catch { }
-            System.Threading.Thread.Sleep(8000);
+            System.Threading.Thread.Sleep(2000);
             try
             {
                 if (System.IO.File.Exists(paththumnail))

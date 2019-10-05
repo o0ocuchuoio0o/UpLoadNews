@@ -3031,10 +3031,11 @@ namespace UpLoadNews
                             string link = r["Link"].ToString();
                             daWS_FakeAuto themchitiet = new daWS_FakeAuto();
                             themchitiet.ThemChiTietReup(link, tieude, int.Parse(lblIDMail.Text));
-                            lblthongbao.Text = "Thêm vào hệ thống video :" + link;
+                            lblxuly.Text = "Thêm vào hệ thống video :" + link;
                         }
                         catch { }
                     }
+                    lblxuly.Text = "Done";
                 }
             }
             );
@@ -3137,137 +3138,360 @@ namespace UpLoadNews
         {
 
         }
+        private string chuyenmp4touotput(string path, string pathoutput)
+        {
+            string namefile = "";
+            string[] fileList = System.IO.Directory.GetFiles(path);
+            //duyệt từng file và copy đè lên file cũ trong thư mục đang chạy chương trình
+            foreach (string sourceFile in fileList)
+            {
+                //tách tên file ra khỏi đường dẫn (tên file sẽ dùng để tạo đường dẫn đích cần copy đè)
+                string fileName = System.IO.Path.GetFileName(sourceFile);
+                //tạo đường dẫn đích để copy file mới tới
+                if (fileName.IndexOf(".mp4") != -1)
+                {
+                    namefile = fileName;
+                    string destinationFile = path + @"\" + fileName;
+                    pathoutput= pathoutput + @"\" + fileName;
+                    // thực hiện copy
+                    System.IO.File.Copy(destinationFile, pathoutput, true);
+                    //thực hiện xóa file
+                    System.IO.File.Delete(destinationFile);
+
+                }
+
+            }
+            return namefile;
+        }
+        private int kiemtratontaimp4(string path)
+        {
+            int namefile = 0;
+            string[] fileList = System.IO.Directory.GetFiles(path);
+            //duyệt từng file và copy đè lên file cũ trong thư mục đang chạy chương trình
+            foreach (string sourceFile in fileList)
+            {
+                //tách tên file ra khỏi đường dẫn (tên file sẽ dùng để tạo đường dẫn đích cần copy đè)
+                string fileName = System.IO.Path.GetFileName(sourceFile);
+                //tạo đường dẫn đích để copy file mới tới
+                if (fileName.IndexOf(".mp4") != -1)
+                {
+                    namefile = 1;                  
+
+                }
+
+            }
+            return namefile;
+        }
+        private void DoiTenFileMp4(string path, string pathoutput)
+        {
+          
+            string[] fileList = System.IO.Directory.GetFiles(path);
+            //duyệt từng file và copy đè lên file cũ trong thư mục đang chạy chương trình
+            foreach (string sourceFile in fileList)
+            {
+                //tách tên file ra khỏi đường dẫn (tên file sẽ dùng để tạo đường dẫn đích cần copy đè)
+                string fileName = System.IO.Path.GetFileName(sourceFile);
+                //tạo đường dẫn đích để copy file mới tới
+                if (fileName.IndexOf(".mp4") != -1)
+                {
+                   
+                    string destinationFile = path + @"\" + fileName;                 
+                    // thực hiện copy
+                    System.IO.File.Copy(destinationFile, pathoutput, true);
+                    //thực hiện xóa file
+                    System.IO.File.Delete(destinationFile);
+
+                }
+
+            }
+          
+        }
+        private void XoaFileMp4(string pathoutput)
+        {
+
+            string[] fileList = System.IO.Directory.GetFiles(pathoutput);
+            //duyệt từng file và copy đè lên file cũ trong thư mục đang chạy chương trình
+            foreach (string sourceFile in fileList)
+            {
+                //tách tên file ra khỏi đường dẫn (tên file sẽ dùng để tạo đường dẫn đích cần copy đè)
+                string fileName = System.IO.Path.GetFileName(sourceFile);
+                //tạo đường dẫn đích để copy file mới tới
+                if (fileName.IndexOf(".mp4") != -1)
+                {
+                    string destinationFile = pathoutput + @"\" + fileName;                   
+                    System.IO.File.Delete(destinationFile);
+
+                }
+
+            }
+
+        }
         private void btnbeginreup_Click(object sender, EventArgs e)
         {
-            DataTable table = new DataTable();
-            table.Columns.Add("ID",typeof(int));
-            foreach (DataGridViewRow row in dataGridViewListReup.Rows)
-            {
-                int i = row.Index;
-                bool chk = false;
-                try
-                {
-                    chk = bool.Parse(dataGridViewListReup.Rows[i].Cells[0].Value.ToString());
-                }
-                catch { }
-                if (chk == true)
-                {
-                    int id =int.Parse(dataGridViewListReup.Rows[i].Cells["ID"].Value.ToString());
-                    table.Rows.Add(id);
-                }
-             
+
+            if (!bgwreup.IsBusy)
+            {               
+                bgwreup.RunWorkerAsync();
+
             }
-            if(table.Rows.Count>0)
+
+
+        }
+
+        private void bgwreup_DoWork(object sender, DoWorkEventArgs e)
+        {
+        DataTable table = new DataTable();
+        table.Columns.Add("ID", typeof(int));
+        foreach (DataGridViewRow row in dataGridViewListReup.Rows)
+        {
+            int i = row.Index;
+            bool chk = false;
+            try
             {
-                Thread reup = new Thread(()=> {
-                    foreach (DataRow row in table.Rows)
+                chk = bool.Parse(dataGridViewListReup.Rows[i].Cells[0].Value.ToString());
+            }
+            catch { }
+            if (chk == true)
+            {
+                int id = int.Parse(dataGridViewListReup.Rows[i].Cells["ID"].Value.ToString());
+                table.Rows.Add(id);
+            }
+
+        }
+        if (table.Rows.Count > 0)
+        {
+
+            foreach (DataRow row in table.Rows)
+            {
+                int idmail = int.Parse(row["ID"].ToString());
+                DataTable thongtinkenh = new DataTable();
+                daWS_FakeAuto tt = new daWS_FakeAuto();
+                thongtinkenh = tt.ChiTietMail(idmail);
+                DataRow rthongtin = thongtinkenh.Rows[0];
+                string linkkenhreup = rthongtin["LinkKenhReUp"].ToString();
+                string ngonngugoc = rthongtin["NgonNguGoc"].ToString();
+                string ngonnguthay = rthongtin["NgonNguThay"].ToString();
+                string mail = rthongtin["Mail"].ToString();
+                string pass = rthongtin["Pass"].ToString();
+                string mailkhoiphuc = rthongtin["MailKhoiPhuc"].ToString();
+                string themtieude = rthongtin["ThemTieuDe"].ToString();
+                string bottieude = rthongtin["BotTieuDe"].ToString();
+                string themmota = rthongtin["ThemMoTa"].ToString();
+                string themtag = rthongtin["ThemTag"].ToString();
+                int soluongup = int.Parse(rthongtin["SoLuongVideoUp"].ToString());
+
+                #region // load video mới nhất từ kênh reup
+                if (checkloadvideomoi.Checked == true)
+                {
+                    ChromePerformanceLoggingPreferences perfLogPrefs = new ChromePerformanceLoggingPreferences();
+                    perfLogPrefs.AddTracingCategories(new string[] { "devtools.timeline" });
+                    ChromeOptions options = new ChromeOptions();
+                    options.AddArguments("--disable-notifications");
+                    options.AddArguments("--incognito");
+                    options.PerformanceLoggingPreferences = perfLogPrefs;
+                    options.SetLoggingPreference(LogType.Driver, LogLevel.All);
+                    options.SetLoggingPreference("performance", LogLevel.All);
+                    options.AddAdditionalCapability(CapabilityType.EnableProfiling, true, true);
+                    PropretiesCollection.driver = new ChromeDriver(options);
+                    PropretiesCollection.driver.Navigate().GoToUrl(linkkenhreup + "/videos");
+                    daWS_FakeAuto getlinkmoinhat = new daWS_FakeAuto();
+
+                    ManagerChannel listvideo = new ManagerChannel();
+                    DataTable dt = new DataTable();
+                    dt = listvideo.LoadListVideo(getlinkmoinhat.Linkvideomoinhat(idmail));
+                    ChomeClose().Wait();
+                    if (dt.Rows.Count > 0)
                     {
-                        int idmail =int.Parse(row["ID"].ToString());
-                        DataTable thongtinkenh = new DataTable();
-                        daWS_FakeAuto tt = new daWS_FakeAuto();
-                        thongtinkenh = tt.ChiTietMail(idmail);
-                        DataRow rthongtin = thongtinkenh.Rows[0];
-                        string linkkenhreup = rthongtin["LinkKenhReUp"].ToString();
-                        string ngonngugoc = rthongtin["NgonNguGoc"].ToString();
-                        string ngonnguthay = rthongtin["NgonNguThay"].ToString();
-                        int soluongup = int.Parse(rthongtin["SoLuongVideoUp"].ToString());
-
-                        #region // load video mới nhất từ kênh reup
-                        if (checkloadvideomoi.Checked == true)
+                        foreach (DataRow r in dt.Rows)
                         {
-                            ChromePerformanceLoggingPreferences perfLogPrefs = new ChromePerformanceLoggingPreferences();
-                            perfLogPrefs.AddTracingCategories(new string[] { "devtools.timeline" });
-                            ChromeOptions options = new ChromeOptions();
-                            options.AddArguments("--disable-notifications");
-                            options.AddArguments("--incognito");
-                            options.PerformanceLoggingPreferences = perfLogPrefs;
-                            options.SetLoggingPreference(LogType.Driver, LogLevel.All);
-                            options.SetLoggingPreference("performance", LogLevel.All);
-                            options.AddAdditionalCapability(CapabilityType.EnableProfiling, true, true);
-                            PropretiesCollection.driver = new ChromeDriver(options);
-                            PropretiesCollection.driver.Navigate().GoToUrl(linkkenhreup + "/videos");
-                            daWS_FakeAuto getlinkmoinhat = new daWS_FakeAuto();
-
-                            ManagerChannel listvideo = new ManagerChannel();
-                            DataTable dt = new DataTable();
-                            dt = listvideo.LoadListVideo(getlinkmoinhat.Linkvideomoinhat(idmail));
-                            ChomeClose().Wait();
-                            if (dt.Rows.Count > 0)
+                            try
                             {
-                                foreach (DataRow r in dt.Rows)
+                                string tieude = r["Ten"].ToString();
+                                if (ngonngugoc != "" && ngonnguthay != "" && ngonngugoc != ngonnguthay)
                                 {
-                                    try
-                                    {
-                                        string tieude = r["Ten"].ToString();
-                                        if (ngonngugoc != "" && ngonnguthay != "" && ngonngugoc != ngonnguthay)
-                                        {
-                                            Translator t = new Translator();
-                                            tieude = t.Translate(tieude, ngonngugoc, ngonnguthay);
-                                            Thread.Sleep(3000);
-                                        }
-                                        string link = r["Link"].ToString();
-                                        daWS_FakeAuto themchitiet = new daWS_FakeAuto();
-                                        themchitiet.ThemChiTietReup(link, tieude, idmail);
-                                        lblthongbao.Text = "Thêm vào hệ thống video :" + link;
-                                    }
-                                    catch { }
+                                    Translator t = new Translator();
+                                    tieude = t.Translate(tieude, ngonngugoc, ngonnguthay);
+                                    Thread.Sleep(3000);
                                 }
+                                string link = r["Link"].ToString();
+                                daWS_FakeAuto themchitiet = new daWS_FakeAuto();
+                                themchitiet.ThemChiTietReup(link, tieude, idmail);
+                                lblxuly.Text = "Thêm vào hệ thống video :" + link;
                             }
+                            catch { }
                         }
-                        #endregion
-
-
-                        #region // xử lý down video về
-                        // lấy list video chưa up theo kênh
-                        DataTable listlinkvideo = new DataTable();
-                        daWS_FakeAuto vids = new daWS_FakeAuto();
-                        listlinkvideo = vids.DanhSachVideoChuaReup(idmail);
-                        if(listlinkvideo.Rows.Count>0)
-                        {
-                            foreach (DataRow rvids in listlinkvideo.Rows)
-                            {
-                                string linkvideo = rvids["Link"].ToString();
-                                string tieude = rvids["TieuDe"].ToString();
-
-                                #region // thực hiện chạy download
-                                System.Diagnostics.Process process = new System.Diagnostics.Process();
-                                System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
-                                startInfo.FileName = @"youtube-dl.exe";
-                                startInfo.Arguments = linkvideo;
-                                process.StartInfo = startInfo;
-                                process.Start();
-                                #endregion
-
-                                #region // thực hiện copy file download sang forder upload
-
-                                #endregion
-
-
-                            }
-
-                        }
-
-
-                        #endregion
-
-                        #region // sau khi down về sẽ upload lên kênh youtube
-
-                        #endregion
                     }
-                });
-                reup.Start();
+                }
+                #endregion
 
+
+
+                #region // xử lý down video về
+                // lấy list video chưa up theo kênh
+                DataTable listlinkvideo = new DataTable();
+                daWS_FakeAuto vids = new daWS_FakeAuto();
+                listlinkvideo = vids.DanhSachVideoChuaReup(idmail);
+                if (listlinkvideo.Rows.Count > 0)
+                {
+                    int k = 1;
+                    foreach (DataRow rvids in listlinkvideo.Rows)
+                    {
+                        if (k <= soluongup)
+                        {
+                            #region // thuc hien xoa fordel luu tru video
+                            XoaFileMp4(txtfoldervideo.Text);
+                            #endregion
+                            int idvideo = int.Parse(rvids["ID"].ToString());
+                            string linkvideo = rvids["Link"].ToString();
+                            string tieude = rvids["TieuDe"].ToString();
+                            string idlinkvideo = linkvideo.Replace("https://www.youtube.com/watch?v=", "");
+                            #region // thực hiện chạy download
+                            System.Diagnostics.Process process = new System.Diagnostics.Process();
+                            System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+                            startInfo.FileName = @"youtube-dl.exe";
+                            startInfo.Arguments = linkvideo;
+                            process.StartInfo = startInfo;
+                            process.Start();
+                                #endregion
+                            int kiemtra = 0;
+                            switch (kiemtra)
+                                {
+                                    case 0:             
+                                        System.Threading.Thread.Sleep(6000);
+                                        goto case 1;
+                                        break;
+                                    case 1:
+                                        try
+                                        {
+                                            int xuly = kiemtratontaimp4(Application.StartupPath);
+                                            if (xuly == 1)
+                                            {
+                                                #region // thực hiện copy file download sang forder upload
+                                                tieude = chuyenmp4touotput(Application.StartupPath, txtfoldervideo.Text).Replace("-" + idlinkvideo, "").Replace(".mp4", "");
+                                                lblxuly.Text = "Đã down load xong video" + tieude.ToString();
+                                                string dich = "";
+                                                try
+                                                {
+                                                    Translator t = new Translator();
+                                                    dich = t.Translate(tieude.Trim(), ngonngugoc, ngonnguthay);
+                                                }
+                                                catch { }
+                                                Thread.Sleep(5000);
+                                                if (dich != "")
+                                                {
+                                                    tieude = dich;
+                                                }
+                                                #endregion
+                                                DoiTenFileMp4(txtfoldervideo.Text, txtfoldervideo.Text + @"\" + tieude + ".mp4");
+                                                string _path = txtfoldervideo.Text + @"\" + tieude + ".mp4";
+
+                                                #region // thực hiện upload lên youtube
+                                                try
+                                                {
+                                                    string profile_add = "Profile";
+                                                    string profile_new = "Profile\\"+mail.ToString();
+                                                    ChromePerformanceLoggingPreferences perfLogPrefs = new ChromePerformanceLoggingPreferences();
+                                                    perfLogPrefs.AddTracingCategories(new string[] { "devtools.timeline" });
+                                                    ChromeOptions options = new ChromeOptions();
+                                                    if (checkcreateprofire.Checked == true)
+                                                    {
+                                                        if (!Directory.Exists(profile_add)) { Directory.CreateDirectory(profile_add); }
+                                                        options.AddArgument("user-data-dir=" + Application.StartupPath + "\\" + profile_new);
+                                                    }                                                  
+                                                    options.AddArguments("--disable-notifications");
+                                                    options.AddArguments("--incognito");
+                                                    options.PerformanceLoggingPreferences = perfLogPrefs;
+                                                    options.SetLoggingPreference(LogType.Driver, LogLevel.All);
+                                                    options.SetLoggingPreference("performance", LogLevel.All);
+                                                    options.AddAdditionalCapability(CapabilityType.EnableProfiling, true, true);
+                                                    PropretiesCollection.driver = new ChromeDriver(options);
+                                                    PropretiesCollection.driver.Navigate().GoToUrl("https://www.youtube.com/upload?redirect_to_classic=true");
+                                                    UploadYoutube ytb = new UploadYoutube();
+                                                    ytb.LoginAnDanh(mail, pass, mailkhoiphuc, _path).Wait();
+                                                    #region desc
+                                                    string _desc = "";
+                                                    string mota = tieude + "\r\n" + themmota + "\r\n";
+                                                    if (mota.Length > 200) { _desc = chuanHoa(mota.Substring(0, 200)); }
+                                                    else { _desc = chuanHoa(mota); }
+                                                    #endregion
+                                                    #region // title
+                                                    string _title = tieude;
+
+                                                    if (_title.Length > 100)
+                                                    {
+                                                        _title = (_title.Substring(0, 100));
+                                                    }
+                                                    if (bottieude != "")
+                                                    {
+                                                        _title = _title.Replace(bottieude, "");
+                                                    }
+                                                    if (themtieude != "")
+                                                    {
+                                                        _title = _title + "|" + themtieude;
+                                                    }
+                                                    string _tag = tieude;
+                                                    if (themtag != "")
+                                                    {
+                                                        _tag = _tag + "," + themtag;
+                                                    }
+                                                    #endregion
+                                                    ytb.Upload(_title, _desc, _tag, "", 0).Wait();
+                                                }
+                                                catch { ChomeClose().Wait(); }
+                                                #endregion
+
+                                                #region // thực hiện xác nhận đã reup
+                                                daWS_FakeAuto xacnhan = new daWS_FakeAuto();
+                                                xacnhan.UpdateDaReup(idvideo);
+                                                #endregion
+
+                                                #region // thuc hien xoa fordel luu tru video
+                                                XoaFileMp4(txtfoldervideo.Text);
+                                                ChomeClose().Wait();
+                                                #endregion
+                                            }
+                                            else
+                                            {
+                                                goto case 0;
+                                            }
+                                        }
+                                        catch { goto case 0; }
+                                        break;
+
+                                }
+                        
+
+                        }
+                        k = k + 1;
+                    }
+
+                }
+
+
+                #endregion
+
+
+            }
             }
             else
             {
-                MessageBox.Show("Hãy chọn kênh cần reup","thông báo",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Hãy chọn kênh cần reup", "thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
         }
 
+        private void bgwreup_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Cancelled)
+            {
+            }
+            else
+            {   lblxuly.Text = "Complete!";
+            }
+        }
 
         #endregion
 
-      
+
     }
 }

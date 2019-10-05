@@ -55,13 +55,13 @@ namespace UpLoadNews
         /// Translates the specified source text.
         /// </summary>
         /// <param name="sourceText">The source text.</param>
-        /// <param name="targetLanguage">targetLanguage language.</param>
-
+        /// <param name="sourceLanguage">The source language.</param>
+        /// <param name="targetLanguage">The target language.</param>
         /// <returns>The translation.</returns>
         public string Translate
-           (string sourceText,
-            string sourceLanguage,
-            string targetLanguage)
+            (string sourceText,
+             string sourceLanguage,
+             string targetLanguage)
         {
             // Initialize
             this.Error = null;
@@ -128,16 +128,16 @@ namespace UpLoadNews
                     }
 
                     // Fix up translation
-                    //translation = translation.Trim();
-                    //translation = translation.Replace(" ?", "?");
-                    //translation = translation.Replace(" !", "!");
-                    //translation = translation.Replace(" ,", ",");
-                    //translation = translation.Replace(" .", ".");
-                    //translation = translation.Replace(" ;", ";");
+                    translation = translation.Trim();
+                    translation = translation.Replace(" ?", "?");
+                    translation = translation.Replace(" !", "!");
+                    translation = translation.Replace(" ,", ",");
+                    translation = translation.Replace(" .", ".");
+                    translation = translation.Replace(" ;", ";");
 
-                    //// And translation speech URL
-                    //this.TranslationSpeechUrl = string.Format("https://translate.googleapis.com/translate_tts?ie=UTF-8&q={0}&tl={1}&total=1&idx=0&textlen={2}&client=gtx",
-                    //                                           HttpUtility.UrlEncode(translation), Translator.LanguageEnumToIdentifier(targetLanguage), translation.Length);
+                    // And translation speech URL
+                    this.TranslationSpeechUrl = string.Format("https://translate.googleapis.com/translate_tts?ie=UTF-8&q={0}&tl={1}&total=1&idx=0&textlen={2}&client=gtx",
+                                                               HttpUtility.UrlEncode(translation), Translator.LanguageEnumToIdentifier(targetLanguage), translation.Length);
                 }
             }
             catch (Exception ex)

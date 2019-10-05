@@ -263,26 +263,8 @@ namespace UpLoadNews
 
         private void button1_Click_2(object sender, EventArgs e)
         {
-            string fileFromComputer = @"D:\1_A\KenhNews14\887497\_VideoUp.mp4";
-            var filesbg = new DirectoryInfo(@"D:\oto1\BGVideo").GetFiles();
-            int indexbg = new Random().Next(0, filesbg.Length);
-            string pathbg = @"D:\oto1\BGVideo" + @"\" + filesbg[indexbg].Name;
-            // copy file video bg vào chung thư mục ffmpeg
-            System.IO.File.Copy(pathbg, Application.StartupPath+@"\"  +filesbg[indexbg].Name, true);
-          
-            var filespicture = new DirectoryInfo(@"D:\oto1\BGPIC").GetFiles();
-            int indexpicture = new Random().Next(0, filesbg.Length);
-            string pathpicture = @"D:\oto1\BGPIC" + @"\" + filespicture[indexpicture].Name;
-
-            //ghep vao video
-            string _outputvideobg = @"D:\1_A\KenhNews14\887497\1_VideoUp.mp4";
-            RunFFMPEG ffrunmc = new RunFFMPEG();
-            string addmc = string.Format(@" -y -i {0} -i {1} -filter_complex ""[0:v]scale=300:250[v1];movie={2}:loop=999,setpts=N/(FRAME_RATE*TB),scale=854:480,setdar=16/9[v2];[v2][v1]overlay=shortest=1:x=5:y=5[v3];[1:v]scale=854:480[v4];[v3][v4]overlay=0:0"" -vcodec libx264 -pix_fmt yuv420p -r 25 -g 62 -b:v 1200k -shortest -acodec aac -b:a 128k -ar 44100  -preset veryfast {3} ", fileFromComputer, pathpicture, filesbg[indexbg].Name, _outputvideobg);
-           // string addmc = string.Format(@" -y -i {0} -i {1} -filter_complex ""[0:v]scale=300:250[v1];movie={2}:loop=999,setpts=N/(FRAME_RATE*TB),scale=854:480,setdar=16/9[v2];[v2][v1]overlay=shortest=1:x=0:y=0[v3];[1:v]scale=854:480[v4];[v3][v4]overlay=0:0"" -shortest {3} ", fileFromComputer, pathpicture, filesbg[indexbg].Name, _outputvideobg);
-            ffrunmc.RunCommand(addmc, false);
-            //thực hiện xóa file videobg sau khi xử lý xong
-            System.IO.File.Delete(Application.StartupPath + @"\" + filesbg[indexbg].Name);          
-            fileFromComputer = _outputvideobg;
+            Translator t = new Translator();
+           string  dich = t.Translate("BMW 3 Series 2020 - Glamorous Midsize Sedan!", "English", "Korean");
         }
         private bool hamkiemtratontaifile(string path, string name)
         {

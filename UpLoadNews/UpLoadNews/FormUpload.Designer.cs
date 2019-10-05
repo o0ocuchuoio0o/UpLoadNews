@@ -209,6 +209,7 @@
             this.tblogothumnail = new System.Windows.Forms.TextBox();
             this.label42 = new System.Windows.Forms.Label();
             this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.checkloadvideomoi = new System.Windows.Forms.CheckBox();
             this.btnbeginreup = new System.Windows.Forms.Button();
             this.btnrefresh = new System.Windows.Forms.Button();
             this.lblthongbaoreup = new System.Windows.Forms.Label();
@@ -253,7 +254,8 @@
             this.bgwlayvoice = new System.ComponentModel.BackgroundWorker();
             this.bgwrendermulti = new System.ComponentModel.BackgroundWorker();
             this.timerrendermulti = new System.Windows.Forms.Timer(this.components);
-            this.checkloadvideomoi = new System.Windows.Forms.CheckBox();
+            this.bgwreup = new System.ComponentModel.BackgroundWorker();
+            this.checkcreateprofire = new System.Windows.Forms.CheckBox();
             this.groupBox3.SuspendLayout();
             this.tabControl3.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -2474,6 +2476,7 @@
             // 
             // tabPage9
             // 
+            this.tabPage9.Controls.Add(this.checkcreateprofire);
             this.tabPage9.Controls.Add(this.checkloadvideomoi);
             this.tabPage9.Controls.Add(this.btnbeginreup);
             this.tabPage9.Controls.Add(this.btnrefresh);
@@ -2487,11 +2490,22 @@
             this.tabPage9.Text = "Manager list channel";
             this.tabPage9.UseVisualStyleBackColor = true;
             // 
+            // checkloadvideomoi
+            // 
+            this.checkloadvideomoi.AutoSize = true;
+            this.checkloadvideomoi.ForeColor = System.Drawing.Color.Red;
+            this.checkloadvideomoi.Location = new System.Drawing.Point(179, 6);
+            this.checkloadvideomoi.Name = "checkloadvideomoi";
+            this.checkloadvideomoi.Size = new System.Drawing.Size(89, 17);
+            this.checkloadvideomoi.TabIndex = 325;
+            this.checkloadvideomoi.Text = "get video mới";
+            this.checkloadvideomoi.UseVisualStyleBackColor = true;
+            // 
             // btnbeginreup
             // 
             this.btnbeginreup.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnbeginreup.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnbeginreup.Location = new System.Drawing.Point(371, 5);
+            this.btnbeginreup.Location = new System.Drawing.Point(274, 3);
             this.btnbeginreup.Name = "btnbeginreup";
             this.btnbeginreup.Size = new System.Drawing.Size(96, 33);
             this.btnbeginreup.TabIndex = 338;
@@ -2920,18 +2934,21 @@
             // 
             this.timerrendermulti.Tick += new System.EventHandler(this.timerrendermulti_Tick);
             // 
-            // checkloadvideomoi
+            // bgwreup
             // 
-            this.checkloadvideomoi.AutoSize = true;
-            this.checkloadvideomoi.Checked = true;
-            this.checkloadvideomoi.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkloadvideomoi.ForeColor = System.Drawing.Color.Red;
-            this.checkloadvideomoi.Location = new System.Drawing.Point(240, 14);
-            this.checkloadvideomoi.Name = "checkloadvideomoi";
-            this.checkloadvideomoi.Size = new System.Drawing.Size(89, 17);
-            this.checkloadvideomoi.TabIndex = 325;
-            this.checkloadvideomoi.Text = "get video mới";
-            this.checkloadvideomoi.UseVisualStyleBackColor = true;
+            this.bgwreup.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwreup_DoWork);
+            this.bgwreup.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwreup_RunWorkerCompleted);
+            // 
+            // checkcreateprofire
+            // 
+            this.checkcreateprofire.AutoSize = true;
+            this.checkcreateprofire.ForeColor = System.Drawing.Color.Red;
+            this.checkcreateprofire.Location = new System.Drawing.Point(376, 6);
+            this.checkcreateprofire.Name = "checkcreateprofire";
+            this.checkcreateprofire.Size = new System.Drawing.Size(88, 17);
+            this.checkcreateprofire.TabIndex = 339;
+            this.checkcreateprofire.Text = "create profire";
+            this.checkcreateprofire.UseVisualStyleBackColor = true;
             // 
             // FormUpload
             // 
@@ -3248,5 +3265,7 @@
         private System.Windows.Forms.Button btnrefeshview;
         private System.Windows.Forms.Button btnbeginreup;
         private System.Windows.Forms.CheckBox checkloadvideomoi;
+        private System.ComponentModel.BackgroundWorker bgwreup;
+        private System.Windows.Forms.CheckBox checkcreateprofire;
     }
 }
