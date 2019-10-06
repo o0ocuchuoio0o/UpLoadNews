@@ -2905,6 +2905,7 @@ namespace UpLoadNews
                             #region // thực hiện các bước change mail
                             try
                             {
+                                dataGridViewListKenh.Rows[k-1].DefaultCellStyle.BackColor = Color.Beige;
                                 string mail = r["Mail"].ToString();
                                 string pass = r["Pass"].ToString();
                                 string mailkhoiphuc = r["MailKhoiPhuc"].ToString();
@@ -3260,7 +3261,7 @@ namespace UpLoadNews
             if (chk == true)
             {
                 int id = int.Parse(dataGridViewListReup.Rows[i].Cells["ID"].Value.ToString());
-                dataGridViewListReup.Rows[1].DefaultCellStyle.BackColor = Color.Beige;
+                dataGridViewListReup.Rows[i].DefaultCellStyle.BackColor = Color.Beige;
                 table.Rows.Add(id);
             }
 

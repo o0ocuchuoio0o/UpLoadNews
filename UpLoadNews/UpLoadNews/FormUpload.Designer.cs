@@ -209,6 +209,7 @@
             this.tblogothumnail = new System.Windows.Forms.TextBox();
             this.label42 = new System.Windows.Forms.Label();
             this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.checkcreateprofire = new System.Windows.Forms.CheckBox();
             this.checkloadvideomoi = new System.Windows.Forms.CheckBox();
             this.btnbeginreup = new System.Windows.Forms.Button();
             this.btnrefresh = new System.Windows.Forms.Button();
@@ -255,7 +256,6 @@
             this.bgwrendermulti = new System.ComponentModel.BackgroundWorker();
             this.timerrendermulti = new System.Windows.Forms.Timer(this.components);
             this.bgwreup = new System.ComponentModel.BackgroundWorker();
-            this.checkcreateprofire = new System.Windows.Forms.CheckBox();
             this.groupBox3.SuspendLayout();
             this.tabControl3.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -315,7 +315,7 @@
             this.groupBox3.Controls.Add(this.lblthongbao);
             this.groupBox3.Controls.Add(this.btninputfolder);
             this.groupBox3.Controls.Add(this.txtfoldervideo);
-            this.groupBox3.Location = new System.Drawing.Point(614, 7);
+            this.groupBox3.Location = new System.Drawing.Point(828, 16);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(335, 563);
             this.groupBox3.TabIndex = 282;
@@ -859,7 +859,7 @@
             this.groupBox4.Controls.Add(this.radvoicegoogle);
             this.groupBox4.Location = new System.Drawing.Point(10, 4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(538, 46);
+            this.groupBox4.Size = new System.Drawing.Size(794, 46);
             this.groupBox4.TabIndex = 299;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Select voice";
@@ -932,7 +932,7 @@
             this.groupBox1.Controls.Add(this.checkuploadvideo);
             this.groupBox1.Location = new System.Drawing.Point(5, 407);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(587, 96);
+            this.groupBox1.Size = new System.Drawing.Size(801, 96);
             this.groupBox1.TabIndex = 286;
             this.groupBox1.TabStop = false;
             // 
@@ -1147,7 +1147,7 @@
             this.groupBox2.Controls.Add(this.dataGridViewList);
             this.groupBox2.Location = new System.Drawing.Point(10, 266);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(580, 142);
+            this.groupBox2.Size = new System.Drawing.Size(794, 142);
             this.groupBox2.TabIndex = 311;
             this.groupBox2.TabStop = false;
             // 
@@ -1157,7 +1157,7 @@
             this.dataGridViewList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewList.Location = new System.Drawing.Point(3, 16);
             this.dataGridViewList.Name = "dataGridViewList";
-            this.dataGridViewList.Size = new System.Drawing.Size(574, 123);
+            this.dataGridViewList.Size = new System.Drawing.Size(788, 123);
             this.dataGridViewList.TabIndex = 7;
             // 
             // statusStrip1
@@ -1168,7 +1168,7 @@
             this.toolStripProgressBar1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 582);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(961, 36);
+            this.statusStrip1.Size = new System.Drawing.Size(1172, 36);
             this.statusStrip1.TabIndex = 313;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -1204,7 +1204,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 47);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(611, 532);
+            this.tabControl1.Size = new System.Drawing.Size(825, 532);
             this.tabControl1.TabIndex = 311;
             // 
             // tabPage3
@@ -1226,7 +1226,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(603, 506);
+            this.tabPage3.Size = new System.Drawing.Size(817, 506);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Intro and outtro";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1246,7 +1246,7 @@
             // btnlogovids
             // 
             this.btnlogovids.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnlogovids.Location = new System.Drawing.Point(478, 119);
+            this.btnlogovids.Location = new System.Drawing.Point(692, 119);
             this.btnlogovids.Name = "btnlogovids";
             this.btnlogovids.Size = new System.Drawing.Size(24, 23);
             this.btnlogovids.TabIndex = 295;
@@ -1261,7 +1261,7 @@
             this.txtlogovids.Location = new System.Drawing.Point(117, 121);
             this.txtlogovids.Name = "txtlogovids";
             this.txtlogovids.ReadOnly = true;
-            this.txtlogovids.Size = new System.Drawing.Size(355, 20);
+            this.txtlogovids.Size = new System.Drawing.Size(569, 20);
             this.txtlogovids.TabIndex = 294;
             // 
             // label46
@@ -1316,7 +1316,7 @@
             // btnouttro
             // 
             this.btnouttro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnouttro.Location = new System.Drawing.Point(479, 83);
+            this.btnouttro.Location = new System.Drawing.Point(693, 83);
             this.btnouttro.Name = "btnouttro";
             this.btnouttro.Size = new System.Drawing.Size(24, 23);
             this.btnouttro.TabIndex = 39;
@@ -1332,7 +1332,7 @@
             this.tbouttro.Location = new System.Drawing.Point(118, 85);
             this.tbouttro.Name = "tbouttro";
             this.tbouttro.ReadOnly = true;
-            this.tbouttro.Size = new System.Drawing.Size(355, 20);
+            this.tbouttro.Size = new System.Drawing.Size(569, 20);
             this.tbouttro.TabIndex = 38;
             // 
             // label41
@@ -1347,7 +1347,7 @@
             // btnintro
             // 
             this.btnintro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnintro.Location = new System.Drawing.Point(479, 43);
+            this.btnintro.Location = new System.Drawing.Point(693, 43);
             this.btnintro.Name = "btnintro";
             this.btnintro.Size = new System.Drawing.Size(24, 23);
             this.btnintro.TabIndex = 36;
@@ -1363,7 +1363,7 @@
             this.tbintro.Location = new System.Drawing.Point(118, 45);
             this.tbintro.Name = "tbintro";
             this.tbintro.ReadOnly = true;
-            this.tbintro.Size = new System.Drawing.Size(355, 20);
+            this.tbintro.Size = new System.Drawing.Size(569, 20);
             this.tbintro.TabIndex = 35;
             // 
             // label40
@@ -1384,7 +1384,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(603, 506);
+            this.tabPage1.Size = new System.Drawing.Size(817, 506);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Slide Options";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1408,7 +1408,7 @@
             this.groupBox6.Controls.Add(this.txtsizetext);
             this.groupBox6.Location = new System.Drawing.Point(5, 56);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(592, 204);
+            this.groupBox6.Size = new System.Drawing.Size(806, 204);
             this.groupBox6.TabIndex = 3;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Sub";
@@ -1450,7 +1450,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(603, 506);
+            this.tabPage2.Size = new System.Drawing.Size(817, 506);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Config MC";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -1464,7 +1464,7 @@
             this.groupBox14.Controls.Add(this.checkMcBG);
             this.groupBox14.Location = new System.Drawing.Point(6, 181);
             this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(542, 123);
+            this.groupBox14.Size = new System.Drawing.Size(805, 123);
             this.groupBox14.TabIndex = 2;
             this.groupBox14.TabStop = false;
             this.groupBox14.Text = "MC resize bachgroud";
@@ -1522,7 +1522,7 @@
             this.groupBox11.Controls.Add(this.checkmcsmall);
             this.groupBox11.Location = new System.Drawing.Point(6, 89);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(542, 55);
+            this.groupBox11.Size = new System.Drawing.Size(805, 55);
             this.groupBox11.TabIndex = 1;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "MC resize small";
@@ -1561,7 +1561,7 @@
             this.groupBox5.Controls.Add(this.checkjoinmc);
             this.groupBox5.Location = new System.Drawing.Point(6, 6);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(542, 55);
+            this.groupBox5.Size = new System.Drawing.Size(805, 55);
             this.groupBox5.TabIndex = 0;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Config MC";
@@ -1604,7 +1604,7 @@
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(603, 506);
+            this.tabPage6.Size = new System.Drawing.Size(817, 506);
             this.tabPage6.TabIndex = 3;
             this.tabPage6.Text = "Config Upload";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -1852,7 +1852,7 @@
             this.tabPage7.Location = new System.Drawing.Point(4, 22);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(603, 506);
+            this.tabPage7.Size = new System.Drawing.Size(817, 506);
             this.tabPage7.TabIndex = 4;
             this.tabPage7.Text = "Config voice";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -1915,7 +1915,7 @@
             this.groupBox7.Controls.Add(this.radvoicedefault);
             this.groupBox7.Location = new System.Drawing.Point(14, 22);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(487, 410);
+            this.groupBox7.Size = new System.Drawing.Size(787, 410);
             this.groupBox7.TabIndex = 340;
             this.groupBox7.TabStop = false;
             // 
@@ -2349,7 +2349,7 @@
             this.tabPage8.Location = new System.Drawing.Point(4, 22);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(603, 506);
+            this.tabPage8.Size = new System.Drawing.Size(817, 506);
             this.tabPage8.TabIndex = 5;
             this.tabPage8.Text = "Config thumnail";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -2446,7 +2446,7 @@
             // btnlogothumnail
             // 
             this.btnlogothumnail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnlogothumnail.Location = new System.Drawing.Point(428, 28);
+            this.btnlogothumnail.Location = new System.Drawing.Point(642, 28);
             this.btnlogothumnail.Name = "btnlogothumnail";
             this.btnlogothumnail.Size = new System.Drawing.Size(24, 23);
             this.btnlogothumnail.TabIndex = 318;
@@ -2462,7 +2462,7 @@
             this.tblogothumnail.Location = new System.Drawing.Point(208, 30);
             this.tblogothumnail.Name = "tblogothumnail";
             this.tblogothumnail.ReadOnly = true;
-            this.tblogothumnail.Size = new System.Drawing.Size(214, 20);
+            this.tblogothumnail.Size = new System.Drawing.Size(428, 20);
             this.tblogothumnail.TabIndex = 317;
             // 
             // label42
@@ -2485,10 +2485,21 @@
             this.tabPage9.Location = new System.Drawing.Point(4, 22);
             this.tabPage9.Name = "tabPage9";
             this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage9.Size = new System.Drawing.Size(603, 506);
+            this.tabPage9.Size = new System.Drawing.Size(817, 506);
             this.tabPage9.TabIndex = 6;
             this.tabPage9.Text = "Manager list channel";
             this.tabPage9.UseVisualStyleBackColor = true;
+            // 
+            // checkcreateprofire
+            // 
+            this.checkcreateprofire.AutoSize = true;
+            this.checkcreateprofire.ForeColor = System.Drawing.Color.Red;
+            this.checkcreateprofire.Location = new System.Drawing.Point(376, 6);
+            this.checkcreateprofire.Name = "checkcreateprofire";
+            this.checkcreateprofire.Size = new System.Drawing.Size(88, 17);
+            this.checkcreateprofire.TabIndex = 339;
+            this.checkcreateprofire.Text = "create profire";
+            this.checkcreateprofire.UseVisualStyleBackColor = true;
             // 
             // checkloadvideomoi
             // 
@@ -2540,7 +2551,7 @@
             this.tabControl2.Location = new System.Drawing.Point(3, 26);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(597, 474);
+            this.tabControl2.Size = new System.Drawing.Size(808, 474);
             this.tabControl2.TabIndex = 1;
             // 
             // tabPage10
@@ -2555,7 +2566,7 @@
             this.tabPage10.Location = new System.Drawing.Point(4, 22);
             this.tabPage10.Name = "tabPage10";
             this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage10.Size = new System.Drawing.Size(589, 448);
+            this.tabPage10.Size = new System.Drawing.Size(800, 448);
             this.tabPage10.TabIndex = 0;
             this.tabPage10.Text = "Mail chưa đổi pass";
             this.tabPage10.UseVisualStyleBackColor = true;
@@ -2626,7 +2637,7 @@
             this.dataGridViewListKenh.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewListKenh.Location = new System.Drawing.Point(3, 96);
             this.dataGridViewListKenh.Name = "dataGridViewListKenh";
-            this.dataGridViewListKenh.Size = new System.Drawing.Size(580, 325);
+            this.dataGridViewListKenh.Size = new System.Drawing.Size(781, 325);
             this.dataGridViewListKenh.TabIndex = 0;
             // 
             // tabPage11
@@ -2637,14 +2648,14 @@
             this.tabPage11.Location = new System.Drawing.Point(4, 22);
             this.tabPage11.Name = "tabPage11";
             this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage11.Size = new System.Drawing.Size(589, 448);
+            this.tabPage11.Size = new System.Drawing.Size(800, 448);
             this.tabPage11.TabIndex = 1;
             this.tabPage11.Text = "Mail Reup";
             this.tabPage11.UseVisualStyleBackColor = true;
             // 
             // btnrefeshview
             // 
-            this.btnrefeshview.Location = new System.Drawing.Point(502, 416);
+            this.btnrefeshview.Location = new System.Drawing.Point(704, 412);
             this.btnrefeshview.Name = "btnrefeshview";
             this.btnrefeshview.Size = new System.Drawing.Size(81, 23);
             this.btnrefeshview.TabIndex = 7;
@@ -2913,9 +2924,9 @@
             // 
             this.dataGridViewListReup.AllowUserToAddRows = false;
             this.dataGridViewListReup.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewListReup.Location = new System.Drawing.Point(233, 6);
+            this.dataGridViewListReup.Location = new System.Drawing.Point(318, 6);
             this.dataGridViewListReup.Name = "dataGridViewListReup";
-            this.dataGridViewListReup.Size = new System.Drawing.Size(350, 397);
+            this.dataGridViewListReup.Size = new System.Drawing.Size(467, 397);
             this.dataGridViewListReup.TabIndex = 1;
             this.dataGridViewListReup.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewListReup_CellContentClick);
             this.dataGridViewListReup.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewListReup_CellDoubleClick);
@@ -2939,22 +2950,11 @@
             this.bgwreup.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwreup_DoWork);
             this.bgwreup.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwreup_RunWorkerCompleted);
             // 
-            // checkcreateprofire
-            // 
-            this.checkcreateprofire.AutoSize = true;
-            this.checkcreateprofire.ForeColor = System.Drawing.Color.Red;
-            this.checkcreateprofire.Location = new System.Drawing.Point(376, 6);
-            this.checkcreateprofire.Name = "checkcreateprofire";
-            this.checkcreateprofire.Size = new System.Drawing.Size(88, 17);
-            this.checkcreateprofire.TabIndex = 339;
-            this.checkcreateprofire.Text = "create profire";
-            this.checkcreateprofire.UseVisualStyleBackColor = true;
-            // 
             // FormUpload
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(961, 618);
+            this.ClientSize = new System.Drawing.Size(1172, 618);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.checkhideffmpeg1);
