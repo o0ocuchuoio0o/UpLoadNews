@@ -2908,7 +2908,7 @@ namespace UpLoadNews
                                 string mail = r["Mail"].ToString();
                                 string pass = r["Pass"].ToString();
                                 string mailkhoiphuc = r["MailKhoiPhuc"].ToString();
-                                lblthongbaoreup.Text = "Change info mail :"+mail;
+                                lblthongbaoreup.Text = "Change info mail :" + mail;
                                 string[] temp = mail.Split(new string[] { "@" }, StringSplitOptions.RemoveEmptyEntries);
                                 string passmoi = temp[0].ToString() + "." + txttientopass.Text + "@gmail.com";
                                 string mailkhoiphucmoi = passmoi;
@@ -2925,19 +2925,25 @@ namespace UpLoadNews
                                 PropretiesCollection.driver = new ChromeDriver(options);
                                 PropretiesCollection.driver.Navigate().GoToUrl("https://myaccount.google.com/personal-info");
                                 ManagerChannel changemailkhoiphuc = new ManagerChannel();
-                                changemailkhoiphuc.ThayMailKhoiPhuc(mail, pass, mailkhoiphuc, mailkhoiphucmoi);
-                                ChomeClose().Wait();                             
-                                PropretiesCollection.driver = new ChromeDriver(options);
-                                PropretiesCollection.driver.Navigate().GoToUrl("https://myaccount.google.com/personal-info");
-
-                                ManagerChannel changepass = new ManagerChannel();
-                                changepass.ThayPassMoi(mail, pass, mailkhoiphucmoi, passmoi);
+                                int kqthaymail = changemailkhoiphuc.ThayMailKhoiPhuc(mail, pass, mailkhoiphuc, mailkhoiphucmoi);
                                 ChomeClose().Wait();
-                                #region // khi thay xong thay đổi trong csdl
-                                daWS_FakeAuto thaydoi = new daWS_FakeAuto();
-                                thaydoi.XuLyMail(mail,passmoi,mailkhoiphucmoi,m_IDTaiKhoan);
-                                #endregion
-                               
+                                // thay thanh cong mail moi chuyen sang thay pass
+                                if (kqthaymail == 1)
+                                {
+                                    PropretiesCollection.driver = new ChromeDriver(options);
+                                    PropretiesCollection.driver.Navigate().GoToUrl("https://myaccount.google.com/personal-info");
+                                    ManagerChannel changepass = new ManagerChannel();
+                                    int kq = changepass.ThayPassMoi(mail, pass, mailkhoiphucmoi, passmoi);
+                                    ChomeClose().Wait();
+                                    #region // khi thay thanh cong xong thay đổi trong csdl
+                                    if (kq == 1)
+                                    {
+                                        daWS_FakeAuto thaydoi = new daWS_FakeAuto();
+                                        thaydoi.XuLyMail(mail, passmoi, mailkhoiphucmoi, m_IDTaiKhoan);
+                                    }
+                                    #endregion
+                                }
+                            
                             }
                             catch {
                                 ChomeClose().Wait();
@@ -3254,6 +3260,7 @@ namespace UpLoadNews
             if (chk == true)
             {
                 int id = int.Parse(dataGridViewListReup.Rows[i].Cells["ID"].Value.ToString());
+                dataGridViewListReup.Rows[1].DefaultCellStyle.BackColor = Color.Beige;
                 table.Rows.Add(id);
             }
 
@@ -3334,132 +3341,138 @@ namespace UpLoadNews
                 if (listlinkvideo.Rows.Count > 0)
                 {
                     int k = 1;
+                    int max = listlinkvideo.Rows.Count;
                     foreach (DataRow rvids in listlinkvideo.Rows)
                     {
-                        if (k <= soluongup)
-                        {
-                            #region // thuc hien xoa fordel luu tru video
-                            XoaFileMp4(txtfoldervideo.Text);
-                            #endregion
-                            int idvideo = int.Parse(rvids["ID"].ToString());
-                            string linkvideo = rvids["Link"].ToString();
-                            string tieude = rvids["TieuDe"].ToString();
-                            string idlinkvideo = linkvideo.Replace("https://www.youtube.com/watch?v=", "");
-                            #region // thực hiện chạy download
-                            System.Diagnostics.Process process = new System.Diagnostics.Process();
-                            System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
-                            startInfo.FileName = @"youtube-dl.exe";
-                            startInfo.Arguments = linkvideo;
-                            process.StartInfo = startInfo;
-                            process.Start();
-                                #endregion
-                            int kiemtra = 0;
-                            switch (kiemtra)
+
+                            if (k <= soluongup)
+                            {
+                                try
                                 {
-                                    case 0:             
-                                        System.Threading.Thread.Sleep(6000);
-                                        goto case 1;
-                                        break;
-                                    case 1:
-                                        try
-                                        {
-                                            int xuly = kiemtratontaimp4(Application.StartupPath);
-                                            if (xuly == 1)
+                                    #region // thuc hien xoa fordel luu tru video
+                                    XoaFileMp4(txtfoldervideo.Text);
+                                    #endregion
+                                    lblxuly.Text = "Xu ly:" + k.ToString()+"/"+max.ToString();
+                                    int idvideo = int.Parse(rvids["ID"].ToString());
+                                    string linkvideo = rvids["Link"].ToString();
+                                    string tieude = rvids["TieuDe"].ToString();
+                                    string idlinkvideo = linkvideo.Replace("https://www.youtube.com/watch?v=", "");
+                                    #region // thực hiện chạy download
+                                    System.Diagnostics.Process process = new System.Diagnostics.Process();
+                                    System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+                                    startInfo.FileName = @"youtube-dl.exe";
+                                    startInfo.Arguments = linkvideo;
+                                    process.StartInfo = startInfo;
+                                    process.Start();
+                                    #endregion
+                                    int kiemtra = 0;
+                                    switch (kiemtra)
+                                    {
+                                        case 0:
+                                            System.Threading.Thread.Sleep(6000);
+                                            goto case 1;
+                                            break;
+                                        case 1:
+                                            try
                                             {
-                                                #region // thực hiện copy file download sang forder upload
-                                                tieude = chuyenmp4touotput(Application.StartupPath, txtfoldervideo.Text).Replace("-" + idlinkvideo, "").Replace(".mp4", "");
-                                                lblxuly.Text = "Đã down load xong video" + tieude.ToString();
-                                                string dich = "";
-                                                try
+                                                int xuly = kiemtratontaimp4(Application.StartupPath);
+                                                if (xuly == 1)
                                                 {
-                                                    Translator t = new Translator();
-                                                    dich = t.Translate(tieude.Trim(), ngonngugoc, ngonnguthay);
-                                                }
-                                                catch { }
-                                                Thread.Sleep(5000);
-                                                if (dich != "")
-                                                {
-                                                    tieude = dich;
-                                                }
-                                                #endregion
-                                                DoiTenFileMp4(txtfoldervideo.Text, txtfoldervideo.Text + @"\" + tieude + ".mp4");
-                                                string _path = txtfoldervideo.Text + @"\" + tieude + ".mp4";
-
-                                                #region // thực hiện upload lên youtube
-                                                try
-                                                {
-                                                    string profile_add = "Profile";
-                                                    string profile_new = "Profile\\"+mail.ToString();
-                                                    ChromePerformanceLoggingPreferences perfLogPrefs = new ChromePerformanceLoggingPreferences();
-                                                    perfLogPrefs.AddTracingCategories(new string[] { "devtools.timeline" });
-                                                    ChromeOptions options = new ChromeOptions();
-                                                    if (checkcreateprofire.Checked == true)
+                                                    #region // thực hiện copy file download sang forder upload
+                                                    tieude = chuyenmp4touotput(Application.StartupPath, txtfoldervideo.Text).Replace("-" + idlinkvideo, "").Replace(".mp4", "");
+                                                    lblxuly.Text = "Đã down load xong video" + tieude.ToString();
+                                                    string dich = "";
+                                                    try
                                                     {
-                                                        if (!Directory.Exists(profile_add)) { Directory.CreateDirectory(profile_add); }
-                                                        options.AddArgument("user-data-dir=" + Application.StartupPath + "\\" + profile_new);
-                                                    }                                                  
-                                                    options.AddArguments("--disable-notifications");
-                                                    options.AddArguments("--incognito");
-                                                    options.PerformanceLoggingPreferences = perfLogPrefs;
-                                                    options.SetLoggingPreference(LogType.Driver, LogLevel.All);
-                                                    options.SetLoggingPreference("performance", LogLevel.All);
-                                                    options.AddAdditionalCapability(CapabilityType.EnableProfiling, true, true);
-                                                    PropretiesCollection.driver = new ChromeDriver(options);
-                                                    PropretiesCollection.driver.Navigate().GoToUrl("https://www.youtube.com/upload?redirect_to_classic=true");
-                                                    UploadYoutube ytb = new UploadYoutube();
-                                                    ytb.LoginAnDanh(mail, pass, mailkhoiphuc, _path).Wait();
-                                                    #region desc
-                                                    string _desc = "";
-                                                    string mota = tieude + "\r\n" + themmota + "\r\n";
-                                                    if (mota.Length > 200) { _desc = chuanHoa(mota.Substring(0, 200)); }
-                                                    else { _desc = chuanHoa(mota); }
-                                                    #endregion
-                                                    #region // title
-                                                    string _title = tieude;
-
-                                                    if (_title.Length > 100)
-                                                    {
-                                                        _title = (_title.Substring(0, 100));
+                                                        Translator t = new Translator();
+                                                        dich = t.Translate(tieude.Trim(), ngonngugoc, ngonnguthay);
                                                     }
-                                                    if (bottieude != "")
+                                                    catch { }
+                                                    Thread.Sleep(5000);
+                                                    if (dich != "")
                                                     {
-                                                        _title = _title.Replace(bottieude, "");
-                                                    }
-                                                    if (themtieude != "")
-                                                    {
-                                                        _title = _title + "|" + themtieude;
-                                                    }
-                                                    string _tag = tieude;
-                                                    if (themtag != "")
-                                                    {
-                                                        _tag = _tag + "," + themtag;
+                                                        tieude = dich;
                                                     }
                                                     #endregion
-                                                    ytb.Upload(_title, _desc, _tag, "", 0).Wait();
+                                                    DoiTenFileMp4(txtfoldervideo.Text, txtfoldervideo.Text + @"\" + tieude + ".mp4");
+                                                    string _path = txtfoldervideo.Text + @"\" + tieude + ".mp4";
+
+                                                    #region // thực hiện upload lên youtube
+                                                    try
+                                                    {
+                                                        string profile_add = "Profile";
+                                                        string profile_new = "Profile\\" + mail.ToString();
+                                                        ChromePerformanceLoggingPreferences perfLogPrefs = new ChromePerformanceLoggingPreferences();
+                                                        perfLogPrefs.AddTracingCategories(new string[] { "devtools.timeline" });
+                                                        ChromeOptions options = new ChromeOptions();
+                                                        if (checkcreateprofire.Checked == true)
+                                                        {
+                                                            if (!Directory.Exists(profile_add)) { Directory.CreateDirectory(profile_add); }
+                                                            options.AddArgument("user-data-dir=" + Application.StartupPath + "\\" + profile_new);
+                                                        }
+                                                        options.AddArguments("--disable-notifications");
+                                                        options.AddArguments("--incognito");
+                                                        options.PerformanceLoggingPreferences = perfLogPrefs;
+                                                        options.SetLoggingPreference(LogType.Driver, LogLevel.All);
+                                                        options.SetLoggingPreference("performance", LogLevel.All);
+                                                        options.AddAdditionalCapability(CapabilityType.EnableProfiling, true, true);
+                                                        PropretiesCollection.driver = new ChromeDriver(options);
+                                                        PropretiesCollection.driver.Navigate().GoToUrl("https://www.youtube.com/upload?redirect_to_classic=true");
+                                                        UploadYoutube ytb = new UploadYoutube();
+                                                        ytb.LoginAnDanh(mail, pass, mailkhoiphuc, _path).Wait();
+                                                        #region desc
+                                                        string _desc = "";
+                                                        string mota = tieude + "\r\n" + themmota + "\r\n";
+                                                        if (mota.Length > 200) { _desc = chuanHoa(mota.Substring(0, 200)); }
+                                                        else { _desc = chuanHoa(mota); }
+                                                        #endregion
+                                                        #region // title
+                                                        string _title = tieude;
+
+                                                        if (_title.Length > 100)
+                                                        {
+                                                            _title = (_title.Substring(0, 100));
+                                                        }
+                                                        if (bottieude != "")
+                                                        {
+                                                            _title = _title.Replace(bottieude, "");
+                                                        }
+                                                        if (themtieude != "")
+                                                        {
+                                                            _title = _title + "|" + themtieude;
+                                                        }
+                                                        string _tag = tieude;
+                                                        if (themtag != "")
+                                                        {
+                                                            _tag = _tag + "," + themtag;
+                                                        }
+                                                        #endregion
+                                                        ytb.Upload(_title, _desc, _tag, "", 0).Wait();
+                                                    }
+                                                    catch { ChomeClose().Wait(); }
+                                                    #endregion
+
+                                                    #region // thực hiện xác nhận đã reup
+                                                    daWS_FakeAuto xacnhan = new daWS_FakeAuto();
+                                                    xacnhan.UpdateDaReup(idvideo);
+                                                    #endregion
+
+                                                    #region // thuc hien xoa fordel luu tru video
+                                                    XoaFileMp4(txtfoldervideo.Text);
+                                                    ChomeClose().Wait();
+                                                    #endregion
                                                 }
-                                                catch { ChomeClose().Wait(); }
-                                                #endregion
-
-                                                #region // thực hiện xác nhận đã reup
-                                                daWS_FakeAuto xacnhan = new daWS_FakeAuto();
-                                                xacnhan.UpdateDaReup(idvideo);
-                                                #endregion
-
-                                                #region // thuc hien xoa fordel luu tru video
-                                                XoaFileMp4(txtfoldervideo.Text);
-                                                ChomeClose().Wait();
-                                                #endregion
+                                                else
+                                                {
+                                                    goto case 0;
+                                                }
                                             }
-                                            else
-                                            {
-                                                goto case 0;
-                                            }
-                                        }
-                                        catch { goto case 0; }
-                                        break;
+                                            catch { goto case 0; }
+                                            break;
 
+                                    }
                                 }
-                        
+                                catch { }
 
                         }
                         k = k + 1;

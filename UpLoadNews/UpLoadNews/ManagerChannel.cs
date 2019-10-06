@@ -100,8 +100,9 @@ namespace UpLoadNews
             btnnextpass.Click();
         }
 
-        public void ThayMailKhoiPhuc(string user, string pass, string mailkhoiphuccu, string mailkhoiphuc)
+        public int ThayMailKhoiPhuc(string user, string pass, string mailkhoiphuccu, string mailkhoiphuc)
         {
+            int kq = 0;
             btndangnhap.Click();
             System.Threading.Thread.Sleep(2000);
 
@@ -191,6 +192,7 @@ namespace UpLoadNews
                 try
                 {
                     btndonesuamailkhoiphuc.Click();
+                    kq = 1;
                 }
                 catch { }
                 System.Threading.Thread.Sleep(2000);
@@ -198,13 +200,14 @@ namespace UpLoadNews
             catch { }
             #endregion
 
-
+            return kq;
 
 
         }
         
-        public void ThayPassMoi(string user, string pass, string mailkhoiphuc, string passmoi)
+        public int ThayPassMoi(string user, string pass, string mailkhoiphuc, string passmoi)
         {
+            int kq = 0;
             btndangnhap.Click();
             System.Threading.Thread.Sleep(2000);
 
@@ -286,10 +289,11 @@ namespace UpLoadNews
             try
             {
                 btnxacnhanpassmoi.Click();
-
+                kq = 1;
             }
             catch { }
             System.Threading.Thread.Sleep(2000);
+            return kq;
         }
 
         #region //load video youtube
