@@ -35,6 +35,7 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using System.Web;
+using OpenQA.Selenium.Firefox;
 
 namespace UpLoadNews
 {
@@ -184,6 +185,18 @@ namespace UpLoadNews
                 else
                 {
                     txtfloderlistbg.Text = ConfigurationManager.AppSettings["Listvideobg"].ToString();
+                }
+            }
+            catch { }
+            try
+            {
+                if (ConfigurationManager.AppSettings["TorPath"].ToString() == "")
+                {
+                    txtpathtor.Text = "";
+                }
+                else
+                {
+                    txtpathtor.Text = ConfigurationManager.AppSettings["TorPath"].ToString();
                 }
             }
             catch { }
@@ -1221,14 +1234,38 @@ namespace UpLoadNews
                 PropretiesCollection.driver.Close();
                 PropretiesCollection.driver.Quit();
                 System.Threading.Thread.Sleep(2000);
-                foreach (Process proc in Process.GetProcessesByName("chromedriver"))
+                try
                 {
-                    proc.Kill();
+                    foreach (Process proc in Process.GetProcessesByName("chromedriver"))
+                    {
+                        proc.Kill();
+                    }
                 }
-                foreach (Process proc in Process.GetProcessesByName("chrome"))
+                catch { }
+                try
                 {
-                    proc.Kill();
+                    foreach (Process proc in Process.GetProcessesByName("chrome"))
+                    {
+                        proc.Kill();
+                    }
                 }
+                catch { }
+                try
+                {
+                    foreach (Process proc in Process.GetProcessesByName("geckodriver"))
+                    {
+                        proc.Kill();
+                    }
+                }
+                catch { }
+                try
+                {
+                    foreach (Process proc in Process.GetProcessesByName("firefox"))
+                    {
+                        proc.Kill();
+                    }
+                }
+                catch { }
             }
             catch { }
         }
@@ -3401,23 +3438,43 @@ namespace UpLoadNews
                                                     #region // thực hiện upload lên youtube
                                                     try
                                                     {
-                                                        string profile_add = "Profile";
-                                                        string profile_new = "Profile\\" + mail.ToString();
-                                                        ChromePerformanceLoggingPreferences perfLogPrefs = new ChromePerformanceLoggingPreferences();
-                                                        perfLogPrefs.AddTracingCategories(new string[] { "devtools.timeline" });
-                                                        ChromeOptions options = new ChromeOptions();
-                                                        if (checkcreateprofire.Checked == true)
+                                                        if (radiochome.Checked == true)
                                                         {
-                                                            if (!Directory.Exists(profile_add)) { Directory.CreateDirectory(profile_add); }
-                                                            options.AddArgument("user-data-dir=" + Application.StartupPath + "\\" + profile_new);
+                                                            string profile_add = "Profile";
+                                                            string profile_new = "Profile\\" + mail.ToString();
+                                                            ChromePerformanceLoggingPreferences perfLogPrefs = new ChromePerformanceLoggingPreferences();
+                                                            perfLogPrefs.AddTracingCategories(new string[] { "devtools.timeline" });
+                                                            ChromeOptions options = new ChromeOptions();
+                                                            if (checkcreateprofire.Checked == true)
+                                                            {
+                                                                if (!Directory.Exists(profile_add)) { Directory.CreateDirectory(profile_add); }
+                                                                options.AddArgument("user-data-dir=" + Application.StartupPath + "\\" + profile_new);
+                                                            }
+                                                            options.AddArguments("--disable-notifications");
+                                                            options.AddArguments("--incognito");
+                                                            options.PerformanceLoggingPreferences = perfLogPrefs;
+                                                            options.SetLoggingPreference(LogType.Driver, LogLevel.All);
+                                                            options.SetLoggingPreference("performance", LogLevel.All);
+                                                            options.AddAdditionalCapability(CapabilityType.EnableProfiling, true, true);
+                                                            PropretiesCollection.driver = new ChromeDriver(options);
                                                         }
-                                                        options.AddArguments("--disable-notifications");
-                                                        options.AddArguments("--incognito");
-                                                        options.PerformanceLoggingPreferences = perfLogPrefs;
-                                                        options.SetLoggingPreference(LogType.Driver, LogLevel.All);
-                                                        options.SetLoggingPreference("performance", LogLevel.All);
-                                                        options.AddAdditionalCapability(CapabilityType.EnableProfiling, true, true);
-                                                        PropretiesCollection.driver = new ChromeDriver(options);
+                                                        else if (radiofirefox.Checked == true)
+                                                        {
+                                                            String torBinaryPath = @"D:\Tor\Tor Browser\Browser\firefox.exe";
+                                                            Process TorProcess = new Process();
+                                                            TorProcess.StartInfo.FileName = torBinaryPath;
+                                                            TorProcess.StartInfo.Arguments = "-n";
+                                                            TorProcess.StartInfo.WindowStyle = ProcessWindowStyle.Maximized;
+                                                            TorProcess.Start();                                                         
+                                                            FirefoxOptions optionsfire = new FirefoxOptions();
+                                                            optionsfire.SetPreference("network.proxy.type", 1);
+                                                            optionsfire.SetPreference("network.proxy.socks", "127.0.0.1");
+                                                            optionsfire.SetPreference("network.proxy.socks_port", 9150);
+                                                            //optionsfire.SetPreference("webdriver.firefox.profile", "default");
+                                                            PropretiesCollection.driver = new FirefoxDriver(optionsfire);
+                                                        }
+
+                                                        
                                                         PropretiesCollection.driver.Navigate().GoToUrl("https://www.youtube.com/upload?redirect_to_classic=true");
                                                         UploadYoutube ytb = new UploadYoutube();
                                                         ytb.LoginAnDanh(mail, pass, mailkhoiphuc, _path).Wait();
@@ -3504,6 +3561,136 @@ namespace UpLoadNews
             }
         }
 
+
+        #endregion
+
+        #region // path tor 
+        private void btnpathtor_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.CheckFileExists = false;
+            dlg.CheckPathExists = false;
+            dlg.Multiselect = false;
+            dlg.Filter = "Files(*.exe)|*.exe";
+            dlg.Multiselect = true;
+            dlg.SupportMultiDottedExtensions = true;
+            dlg.Title = "Select intro file Tor";  
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                //Settings.Default.LastUsedFolder = Path.GetDirectoryName(dlg.FileNames[0]);
+                txtpathtor.Text = dlg.FileName;
+                ExeConfigurationFileMap exmap = new ExeConfigurationFileMap();
+                exmap.ExeConfigFilename = @"UpLoadNews.exe.config";
+                //Configuration cf = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                Configuration cf = ConfigurationManager.OpenMappedExeConfiguration(exmap, ConfigurationUserLevel.None);
+                cf.AppSettings.Settings.Remove("TorPath");
+                cf.AppSettings.Settings.Add("TorPath", txtpathtor.Text);
+                cf.Save(ConfigurationSaveMode.Modified);
+                ConfigurationManager.RefreshSection("appSettings");
+            }
+        }
+        private void btnstartview_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (!bgwchayview.IsBusy)
+                {
+                    timerchayview.Enabled = false;
+                    timerchayview.Stop();
+                    bgwchayview.RunWorkerAsync();
+
+                }
+            }
+            catch
+            {
+                lblxuly.Text = string.Empty;
+                timerchayview.Enabled = true;
+                timerchayview.Interval = 10000;
+                timerchayview.Start();
+            }
+         
+        }
+        private void bgwchayview_DoWork(object sender, DoWorkEventArgs e)
+        {
+            for (int i = 1; i <= int.Parse(txtnumberthread.Value.ToString()); i++)
+            {
+                Task startI = new Task(() =>
+                {
+                    String torBinaryPath = @"D:\Tor\Tor Browser\Browser\firefox.exe";
+                    Process TorProcess = new Process();
+                    TorProcess.StartInfo.FileName = torBinaryPath;
+                    TorProcess.StartInfo.Arguments = "-n";
+                    TorProcess.StartInfo.WindowStyle = ProcessWindowStyle.Maximized;
+                    TorProcess.Start();
+                    FirefoxOptions options = new FirefoxOptions();
+                    options.SetPreference("network.proxy.type", 1);
+                    options.SetPreference("network.proxy.socks", "127.0.0.1");
+                    options.SetPreference("network.proxy.socks_port", 9150);
+                    options.SetPreference("webdriver.firefox.profile", "default");
+                    FirefoxDriver _Driver = new FirefoxDriver(options);
+                    _Driver.Navigate().GoToUrl(txtlink.Text);
+                    IWebElement video = _Driver.FindElement(By.CssSelector("#movie_player"));
+                    video.Click();
+                    try
+                    {
+                        TorProcess.Kill();
+                        TorProcess.Close();
+                        TorProcess.Dispose();
+                    }
+                    catch { }
+                    
+                    Thread.Sleep(int.Parse(txttimeview.Value.ToString()) * 60 * 1000);
+
+                    _Driver.Close();
+                    _Driver.Dispose();
+                });
+                startI.Start();
+                Thread.Sleep(45000);
+
+            }
+
+        }
+
+        private void bgwchayview_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+
+            if (e.Cancelled)
+            {
+            }
+            else
+            {
+                if (!bgwchayview.IsBusy)
+                {
+
+                    prs.Value = 0;
+                    lblxuly.Text = "Complete!";                  
+                    Thread.Sleep(10000);
+                    timerchayview.Enabled = true;
+                    timerchayview.Start();
+                }
+            }
+        }
+
+        private void timerchayview_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!bgwchayview.IsBusy)
+                {
+                    bgwchayview.RunWorkerAsync();
+                    timerrendermulti.Enabled = false;
+                    timerrendermulti.Stop();
+                }
+
+            }
+            catch
+            {
+                timerchayview.Enabled = true;
+                timerchayview.Interval = 10000;
+                timerchayview.Start();
+            }
+        }
         #endregion
 
 

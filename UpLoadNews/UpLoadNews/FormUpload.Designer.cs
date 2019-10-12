@@ -209,10 +209,13 @@
             this.tblogothumnail = new System.Windows.Forms.TextBox();
             this.label42 = new System.Windows.Forms.Label();
             this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.btnrefresh = new System.Windows.Forms.Button();
+            this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.radiofirefox = new System.Windows.Forms.RadioButton();
+            this.radiochome = new System.Windows.Forms.RadioButton();
             this.checkcreateprofire = new System.Windows.Forms.CheckBox();
             this.checkloadvideomoi = new System.Windows.Forms.CheckBox();
             this.btnbeginreup = new System.Windows.Forms.Button();
-            this.btnrefresh = new System.Windows.Forms.Button();
             this.lblthongbaoreup = new System.Windows.Forms.Label();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage10 = new System.Windows.Forms.TabPage();
@@ -252,10 +255,24 @@
             this.txtlinkkenh = new System.Windows.Forms.TextBox();
             this.txtmailreup = new System.Windows.Forms.TextBox();
             this.dataGridViewListReup = new System.Windows.Forms.DataGridView();
+            this.tabPage12 = new System.Windows.Forms.TabPage();
+            this.tabPage13 = new System.Windows.Forms.TabPage();
+            this.txttimeview = new System.Windows.Forms.NumericUpDown();
+            this.label38 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.txtlink = new System.Windows.Forms.TextBox();
+            this.btnstartview = new System.Windows.Forms.Button();
+            this.label36 = new System.Windows.Forms.Label();
+            this.txtnumberthread = new System.Windows.Forms.NumericUpDown();
+            this.btnpathtor = new System.Windows.Forms.Button();
+            this.txtpathtor = new System.Windows.Forms.TextBox();
+            this.label35 = new System.Windows.Forms.Label();
             this.bgwlayvoice = new System.ComponentModel.BackgroundWorker();
             this.bgwrendermulti = new System.ComponentModel.BackgroundWorker();
             this.timerrendermulti = new System.Windows.Forms.Timer(this.components);
             this.bgwreup = new System.ComponentModel.BackgroundWorker();
+            this.bgwchayview = new System.ComponentModel.BackgroundWorker();
+            this.timerchayview = new System.Windows.Forms.Timer(this.components);
             this.groupBox3.SuspendLayout();
             this.tabControl3.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -292,6 +309,7 @@
             this.tabPage8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtsizeboderthumnail)).BeginInit();
             this.tabPage9.SuspendLayout();
+            this.groupBox16.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtsoluongmailchange)).BeginInit();
@@ -300,6 +318,9 @@
             this.groupBox15.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtsoluongup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListReup)).BeginInit();
+            this.tabPage13.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txttimeview)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtnumberthread)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox3
@@ -1201,6 +1222,7 @@
             this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Controls.Add(this.tabPage8);
             this.tabControl1.Controls.Add(this.tabPage9);
+            this.tabControl1.Controls.Add(this.tabPage13);
             this.tabControl1.Location = new System.Drawing.Point(0, 47);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -2476,10 +2498,11 @@
             // 
             // tabPage9
             // 
+            this.tabPage9.Controls.Add(this.btnrefresh);
+            this.tabPage9.Controls.Add(this.groupBox16);
             this.tabPage9.Controls.Add(this.checkcreateprofire);
             this.tabPage9.Controls.Add(this.checkloadvideomoi);
             this.tabPage9.Controls.Add(this.btnbeginreup);
-            this.tabPage9.Controls.Add(this.btnrefresh);
             this.tabPage9.Controls.Add(this.lblthongbaoreup);
             this.tabPage9.Controls.Add(this.tabControl2);
             this.tabPage9.Location = new System.Drawing.Point(4, 22);
@@ -2489,6 +2512,48 @@
             this.tabPage9.TabIndex = 6;
             this.tabPage9.Text = "Manager list channel";
             this.tabPage9.UseVisualStyleBackColor = true;
+            // 
+            // btnrefresh
+            // 
+            this.btnrefresh.Location = new System.Drawing.Point(723, 8);
+            this.btnrefresh.Name = "btnrefresh";
+            this.btnrefresh.Size = new System.Drawing.Size(81, 23);
+            this.btnrefresh.TabIndex = 6;
+            this.btnrefresh.Text = "Refresh";
+            this.btnrefresh.UseVisualStyleBackColor = true;
+            this.btnrefresh.Click += new System.EventHandler(this.btnrefresh_Click);
+            // 
+            // groupBox16
+            // 
+            this.groupBox16.Controls.Add(this.radiofirefox);
+            this.groupBox16.Controls.Add(this.radiochome);
+            this.groupBox16.Location = new System.Drawing.Point(470, 0);
+            this.groupBox16.Name = "groupBox16";
+            this.groupBox16.Size = new System.Drawing.Size(148, 36);
+            this.groupBox16.TabIndex = 344;
+            this.groupBox16.TabStop = false;
+            // 
+            // radiofirefox
+            // 
+            this.radiofirefox.AutoSize = true;
+            this.radiofirefox.Location = new System.Drawing.Point(85, 10);
+            this.radiofirefox.Name = "radiofirefox";
+            this.radiofirefox.Size = new System.Drawing.Size(53, 17);
+            this.radiofirefox.TabIndex = 1;
+            this.radiofirefox.Text = "firefox";
+            this.radiofirefox.UseVisualStyleBackColor = true;
+            // 
+            // radiochome
+            // 
+            this.radiochome.AutoSize = true;
+            this.radiochome.Checked = true;
+            this.radiochome.Location = new System.Drawing.Point(7, 10);
+            this.radiochome.Name = "radiochome";
+            this.radiochome.Size = new System.Drawing.Size(57, 17);
+            this.radiochome.TabIndex = 0;
+            this.radiochome.TabStop = true;
+            this.radiochome.Text = "chome";
+            this.radiochome.UseVisualStyleBackColor = true;
             // 
             // checkcreateprofire
             // 
@@ -2524,16 +2589,6 @@
             this.btnbeginreup.UseVisualStyleBackColor = true;
             this.btnbeginreup.Click += new System.EventHandler(this.btnbeginreup_Click);
             // 
-            // btnrefresh
-            // 
-            this.btnrefresh.Location = new System.Drawing.Point(515, 10);
-            this.btnrefresh.Name = "btnrefresh";
-            this.btnrefresh.Size = new System.Drawing.Size(81, 23);
-            this.btnrefresh.TabIndex = 6;
-            this.btnrefresh.Text = "Refresh";
-            this.btnrefresh.UseVisualStyleBackColor = true;
-            this.btnrefresh.Click += new System.EventHandler(this.btnrefresh_Click);
-            // 
             // lblthongbaoreup
             // 
             this.lblthongbaoreup.AutoSize = true;
@@ -2548,6 +2603,7 @@
             // 
             this.tabControl2.Controls.Add(this.tabPage10);
             this.tabControl2.Controls.Add(this.tabPage11);
+            this.tabControl2.Controls.Add(this.tabPage12);
             this.tabControl2.Location = new System.Drawing.Point(3, 26);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
@@ -2931,6 +2987,137 @@
             this.dataGridViewListReup.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewListReup_CellContentClick);
             this.dataGridViewListReup.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewListReup_CellDoubleClick);
             // 
+            // tabPage12
+            // 
+            this.tabPage12.Location = new System.Drawing.Point(4, 22);
+            this.tabPage12.Name = "tabPage12";
+            this.tabPage12.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage12.Size = new System.Drawing.Size(800, 448);
+            this.tabPage12.TabIndex = 2;
+            this.tabPage12.Text = "Fake IP";
+            this.tabPage12.UseVisualStyleBackColor = true;
+            // 
+            // tabPage13
+            // 
+            this.tabPage13.Controls.Add(this.txttimeview);
+            this.tabPage13.Controls.Add(this.label38);
+            this.tabPage13.Controls.Add(this.label37);
+            this.tabPage13.Controls.Add(this.txtlink);
+            this.tabPage13.Controls.Add(this.btnstartview);
+            this.tabPage13.Controls.Add(this.label36);
+            this.tabPage13.Controls.Add(this.txtnumberthread);
+            this.tabPage13.Controls.Add(this.btnpathtor);
+            this.tabPage13.Controls.Add(this.txtpathtor);
+            this.tabPage13.Controls.Add(this.label35);
+            this.tabPage13.Location = new System.Drawing.Point(4, 22);
+            this.tabPage13.Name = "tabPage13";
+            this.tabPage13.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage13.Size = new System.Drawing.Size(817, 506);
+            this.tabPage13.TabIndex = 7;
+            this.tabPage13.Text = "Chạy view";
+            this.tabPage13.UseVisualStyleBackColor = true;
+            // 
+            // txttimeview
+            // 
+            this.txttimeview.Location = new System.Drawing.Point(124, 147);
+            this.txttimeview.Name = "txttimeview";
+            this.txttimeview.Size = new System.Drawing.Size(77, 20);
+            this.txttimeview.TabIndex = 340;
+            this.txttimeview.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(54, 154);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(61, 13);
+            this.label38.TabIndex = 339;
+            this.label38.Text = "Time view :";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(55, 115);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(62, 13);
+            this.label37.TabIndex = 338;
+            this.label37.Text = "Link video :";
+            // 
+            // txtlink
+            // 
+            this.txtlink.Location = new System.Drawing.Point(124, 110);
+            this.txtlink.Name = "txtlink";
+            this.txtlink.Size = new System.Drawing.Size(569, 20);
+            this.txtlink.TabIndex = 337;
+            // 
+            // btnstartview
+            // 
+            this.btnstartview.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnstartview.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnstartview.Location = new System.Drawing.Point(123, 234);
+            this.btnstartview.Name = "btnstartview";
+            this.btnstartview.Size = new System.Drawing.Size(125, 48);
+            this.btnstartview.TabIndex = 336;
+            this.btnstartview.Text = "START VIEW";
+            this.btnstartview.UseVisualStyleBackColor = true;
+            this.btnstartview.Click += new System.EventHandler(this.btnstartview_Click);
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(36, 76);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(83, 13);
+            this.label36.TabIndex = 271;
+            this.label36.Text = "Number thread :";
+            // 
+            // txtnumberthread
+            // 
+            this.txtnumberthread.Location = new System.Drawing.Point(123, 76);
+            this.txtnumberthread.Name = "txtnumberthread";
+            this.txtnumberthread.Size = new System.Drawing.Size(77, 20);
+            this.txtnumberthread.TabIndex = 270;
+            this.txtnumberthread.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // btnpathtor
+            // 
+            this.btnpathtor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnpathtor.Location = new System.Drawing.Point(699, 36);
+            this.btnpathtor.Name = "btnpathtor";
+            this.btnpathtor.Size = new System.Drawing.Size(24, 23);
+            this.btnpathtor.TabIndex = 39;
+            this.btnpathtor.Text = "...";
+            this.btnpathtor.UseVisualStyleBackColor = true;
+            this.btnpathtor.Click += new System.EventHandler(this.btnpathtor_Click);
+            // 
+            // txtpathtor
+            // 
+            this.txtpathtor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtpathtor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.txtpathtor.Location = new System.Drawing.Point(124, 38);
+            this.txtpathtor.Name = "txtpathtor";
+            this.txtpathtor.ReadOnly = true;
+            this.txtpathtor.Size = new System.Drawing.Size(569, 20);
+            this.txtpathtor.TabIndex = 38;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(62, 41);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(54, 13);
+            this.label35.TabIndex = 40;
+            this.label35.Text = "Path Tor :";
+            // 
             // bgwlayvoice
             // 
             this.bgwlayvoice.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwlayvoice_DoWork);
@@ -2949,6 +3136,15 @@
             // 
             this.bgwreup.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwreup_DoWork);
             this.bgwreup.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwreup_RunWorkerCompleted);
+            // 
+            // bgwchayview
+            // 
+            this.bgwchayview.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwchayview_DoWork);
+            this.bgwchayview.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwchayview_RunWorkerCompleted);
+            // 
+            // timerchayview
+            // 
+            this.timerchayview.Tick += new System.EventHandler(this.timerchayview_Tick);
             // 
             // FormUpload
             // 
@@ -3023,6 +3219,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtsizeboderthumnail)).EndInit();
             this.tabPage9.ResumeLayout(false);
             this.tabPage9.PerformLayout();
+            this.groupBox16.ResumeLayout(false);
+            this.groupBox16.PerformLayout();
             this.tabControl2.ResumeLayout(false);
             this.tabPage10.ResumeLayout(false);
             this.tabPage10.PerformLayout();
@@ -3033,6 +3231,10 @@
             this.groupBox15.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtsoluongup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListReup)).EndInit();
+            this.tabPage13.ResumeLayout(false);
+            this.tabPage13.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txttimeview)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtnumberthread)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3267,5 +3469,22 @@
         private System.Windows.Forms.CheckBox checkloadvideomoi;
         private System.ComponentModel.BackgroundWorker bgwreup;
         private System.Windows.Forms.CheckBox checkcreateprofire;
+        private System.Windows.Forms.GroupBox groupBox16;
+        private System.Windows.Forms.RadioButton radiofirefox;
+        private System.Windows.Forms.RadioButton radiochome;
+        private System.Windows.Forms.TabPage tabPage12;
+        private System.Windows.Forms.TabPage tabPage13;
+        private System.Windows.Forms.Button btnpathtor;
+        private System.Windows.Forms.TextBox txtpathtor;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.NumericUpDown txtnumberthread;
+        private System.Windows.Forms.Button btnstartview;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.TextBox txtlink;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.NumericUpDown txttimeview;
+        private System.ComponentModel.BackgroundWorker bgwchayview;
+        private System.Windows.Forms.Timer timerchayview;
     }
 }
