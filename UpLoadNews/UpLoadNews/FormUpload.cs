@@ -3086,6 +3086,48 @@ namespace UpLoadNews
             getlist.Start();
          }
 
+        private void btngetlist_Click(object sender, EventArgs e)
+        {
+            DataTable table = new DataTable();
+            table.Columns.Add("ID", typeof(int));
+            foreach (DataGridViewRow row in dataGridViewListReup.Rows)
+            {
+                int i = row.Index;
+                bool chk = false;
+                try
+                {
+                    chk = bool.Parse(dataGridViewListReup.Rows[i].Cells[0].Value.ToString());
+                }
+                catch { }
+                if (chk == true)
+                {
+                    int id = int.Parse(dataGridViewListReup.Rows[i].Cells["ID"].Value.ToString());
+                    dataGridViewListReup.Rows[i].DefaultCellStyle.BackColor = Color.Beige;
+                    table.Rows.Add(id);
+                }
+
+            }
+            if (table.Rows.Count > 0)
+            {
+                foreach (DataRow row in table.Rows)
+                {
+                    int idmail = int.Parse(row["ID"].ToString());
+                    DataTable thongtinkenh = new DataTable();
+                    daWS_FakeAuto tt = new daWS_FakeAuto();
+                    thongtinkenh = tt.ChiTietMail(idmail);
+                    DataRow rthongtin = thongtinkenh.Rows[0];
+                    string linkkenh = rthongtin["LinkKenh"].ToString();
+                    string mail = rthongtin["Mail"].ToString();
+                    string pass = rthongtin["Pass"].ToString();
+                    string mailkhoiphuc = rthongtin["MailKhoiPhuc"].ToString();
+
+                    FormManageChannel channel = new FormManageChannel(idmail,mail,pass,mailkhoiphuc,linkkenh);
+                    channel.Show();
+
+
+                }
+            }
+        }
         private void btnsavecauhinhkenh_Click(object sender, EventArgs e)
         {
             this.Cursor = Cursors.WaitCursor;
@@ -3268,7 +3310,8 @@ namespace UpLoadNews
                 {
                     int idkenh=int.Parse(r["ID"].ToString());
                     string linkkenh = r["LinkKenh"].ToString();
-                    if(linkkenh!="")
+                  
+                    if (linkkenh!="")
                     {
                         DataTable table = new DataTable();
                         table = getViewChannel(linkkenh);
@@ -3761,7 +3804,7 @@ namespace UpLoadNews
                     }
                     catch { }
                     
-                    Thread.Sleep(int.Parse(txttimeview.Value.ToString()) * 60 * 1000);
+                    Thread.Sleep(int.Parse(txttimeview.Value.ToString()) *60* 60 * 1000);
 
                     _Driver.Close();
                     _Driver.Dispose();
@@ -3812,8 +3855,9 @@ namespace UpLoadNews
                 timerchayview.Start();
             }
         }
+
         #endregion
 
-
+       
     }
 }

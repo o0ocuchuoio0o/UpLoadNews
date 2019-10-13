@@ -37,6 +37,7 @@
             this.btnvideotrunglap = new System.Windows.Forms.Button();
             this.dataListtrunglap = new System.Windows.Forms.DataGridView();
             this.txtpage = new System.Windows.Forms.TextBox();
+            this.checkbyselenium = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataListVideo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataListtrunglap)).BeginInit();
             this.SuspendLayout();
@@ -96,7 +97,7 @@
             // 
             // btnvideotrunglap
             // 
-            this.btnvideotrunglap.Location = new System.Drawing.Point(533, 39);
+            this.btnvideotrunglap.Location = new System.Drawing.Point(639, 39);
             this.btnvideotrunglap.Name = "btnvideotrunglap";
             this.btnvideotrunglap.Size = new System.Drawing.Size(93, 23);
             this.btnvideotrunglap.TabIndex = 316;
@@ -119,11 +120,22 @@
             this.txtpage.Size = new System.Drawing.Size(154, 20);
             this.txtpage.TabIndex = 318;
             // 
+            // checkbyselenium
+            // 
+            this.checkbyselenium.AutoSize = true;
+            this.checkbyselenium.Location = new System.Drawing.Point(503, 43);
+            this.checkbyselenium.Name = "checkbyselenium";
+            this.checkbyselenium.Size = new System.Drawing.Size(114, 17);
+            this.checkbyselenium.TabIndex = 319;
+            this.checkbyselenium.Text = "check by selenium";
+            this.checkbyselenium.UseVisualStyleBackColor = true;
+            // 
             // FormManageChannel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1002, 569);
+            this.Controls.Add(this.checkbyselenium);
             this.Controls.Add(this.txtpage);
             this.Controls.Add(this.dataListtrunglap);
             this.Controls.Add(this.btnvideotrunglap);
@@ -154,5 +166,6 @@
         private System.Windows.Forms.Button btnvideotrunglap;
         private System.Windows.Forms.DataGridView dataListtrunglap;
         private System.Windows.Forms.TextBox txtpage;
+        private System.Windows.Forms.CheckBox checkbyselenium;
     }
 }

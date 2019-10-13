@@ -227,6 +227,7 @@
             this.btnchangepassall = new System.Windows.Forms.Button();
             this.dataGridViewListKenh = new System.Windows.Forms.DataGridView();
             this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.btngetlist = new System.Windows.Forms.Button();
             this.btnrefeshview = new System.Windows.Forms.Button();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
             this.lblmailkhoiphuc = new System.Windows.Forms.Label();
@@ -273,6 +274,7 @@
             this.bgwreup = new System.ComponentModel.BackgroundWorker();
             this.bgwchayview = new System.ComponentModel.BackgroundWorker();
             this.timerchayview = new System.Windows.Forms.Timer(this.components);
+            this.tabPage14 = new System.Windows.Forms.TabPage();
             this.groupBox3.SuspendLayout();
             this.tabControl3.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -1223,6 +1225,7 @@
             this.tabControl1.Controls.Add(this.tabPage8);
             this.tabControl1.Controls.Add(this.tabPage9);
             this.tabControl1.Controls.Add(this.tabPage13);
+            this.tabControl1.Controls.Add(this.tabPage14);
             this.tabControl1.Location = new System.Drawing.Point(0, 47);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -2698,6 +2701,7 @@
             // 
             // tabPage11
             // 
+            this.tabPage11.Controls.Add(this.btngetlist);
             this.tabPage11.Controls.Add(this.btnrefeshview);
             this.tabPage11.Controls.Add(this.groupBox15);
             this.tabPage11.Controls.Add(this.dataGridViewListReup);
@@ -2708,6 +2712,18 @@
             this.tabPage11.TabIndex = 1;
             this.tabPage11.Text = "Mail Reup";
             this.tabPage11.UseVisualStyleBackColor = true;
+            // 
+            // btngetlist
+            // 
+            this.btngetlist.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btngetlist.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btngetlist.Location = new System.Drawing.Point(318, 407);
+            this.btngetlist.Name = "btngetlist";
+            this.btngetlist.Size = new System.Drawing.Size(96, 33);
+            this.btngetlist.TabIndex = 339;
+            this.btngetlist.Text = "Get List Vids";
+            this.btngetlist.UseVisualStyleBackColor = true;
+            this.btngetlist.Click += new System.EventHandler(this.btngetlist_Click);
             // 
             // btnrefeshview
             // 
@@ -3146,6 +3162,16 @@
             // 
             this.timerchayview.Tick += new System.EventHandler(this.timerchayview_Tick);
             // 
+            // tabPage14
+            // 
+            this.tabPage14.Location = new System.Drawing.Point(4, 22);
+            this.tabPage14.Name = "tabPage14";
+            this.tabPage14.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage14.Size = new System.Drawing.Size(817, 506);
+            this.tabPage14.TabIndex = 8;
+            this.tabPage14.Text = "Tương tác mobile";
+            this.tabPage14.UseVisualStyleBackColor = true;
+            // 
             // FormUpload
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3486,5 +3512,7 @@
         private System.Windows.Forms.NumericUpDown txttimeview;
         private System.ComponentModel.BackgroundWorker bgwchayview;
         private System.Windows.Forms.Timer timerchayview;
+        private System.Windows.Forms.Button btngetlist;
+        private System.Windows.Forms.TabPage tabPage14;
     }
 }

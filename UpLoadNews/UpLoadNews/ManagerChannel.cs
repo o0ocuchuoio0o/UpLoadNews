@@ -377,12 +377,89 @@ namespace UpLoadNews
 
 
         }
+        public DataTable LoadListVideoV2(string linkvideocu)
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ID", typeof(string));
+            dt.Columns.Add("TieuDe", typeof(string));
+            while (true)
+            {
+                List<IWebElement> listVideoBefore = PropretiesCollection.driver.FindElements(By.XPath("//*[@class='style-scope ytd-grid-renderer']")).ToList();
+                try
+                {
+                    int dem = 0;
+                    IWebElement lastvideo = null;
+                    foreach (IWebElement field in listVideoBefore)
+                    {
+                        if (dem == listVideoBefore.Count - 1)
+                        {
+                            lastvideo = field;
+                        }
+                        else
+                        {
+                            dem++;
+                        }
+                    }
+                    int Y = lastvideo.Location.Y;
+                    IJavaScriptExecutor jse = (IJavaScriptExecutor)PropretiesCollection.driver;
+                    jse.ExecuteScript("window.scrollTo(0," + Y + ")", "");
+                    Thread.Sleep(3000);
+                    List<IWebElement> listVideoAffter = PropretiesCollection.driver.FindElements(By.XPath("//*[@class='style-scope ytd-grid-renderer']")).ToList();
+                    if (listVideoBefore.Count == listVideoAffter.Count)
+                    {
+                        // thực hiện thêm dữ liệu vào bảng
+                        foreach (IWebElement field in listVideoBefore)
+                        {
+                            try
+                            {
+                                if (field.TagName == "ytd-grid-video-renderer")
+                                {
+                                    string[] thongtinvideo = field.Text.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+                                    string tenvideo = thongtinvideo[1].ToString();
+                                    string linkvideo = "";
+                                    try
+                                    {
+                                        IWebElement Ivideo = PropretiesCollection.driver.FindElement(By.XPath("//*[@title='" + tenvideo + "']"));
+                                        linkvideo = Ivideo.GetAttribute("href");
+                                    }
+                                    catch { }
+                                    if (linkvideo == "")
+                                    {
+                                        IWebElement videoLink = field.FindElement(By.Id("video-title"));
+                                        linkvideo = videoLink.GetAttribute("href");
+                                    }
+                                    if (tenvideo != null && linkvideo != null)
+                                    {
+                                        dt.Rows.Add(linkvideo.Replace("https://www.youtube.com/watch?v=",""), tenvideo);
+                                    }
+                                    if (linkvideo == linkvideocu)
+                                    {
+                                        break;
+                                    }
+                                }
+                            }
+                            catch { }
+
+                        }
+
+                        break;
+                    }
+                }
+                catch { }
+            }
+
+
+
+            return dt;
+
+
+        }
         #endregion
 
 
 
         #region // lấy link kênh youtube
-        
+
         public string GetLinkChannel(string user, string pass, string mailkhoiphuc)
         {
             string kq = "";

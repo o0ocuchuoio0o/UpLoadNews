@@ -196,7 +196,7 @@ namespace UpLoadNews
                         }
                         else if (radmanagerchannel.Checked == true)
                         {
-                            FormManageChannel manager = new FormManageChannel();
+                            FormManageChannel manager = new FormManageChannel(0,"","","","");
                             manager.Show();
                         }
                         else if (radreupfacebook.Checked == true)
@@ -225,12 +225,51 @@ namespace UpLoadNews
             FormCaiDatSDK sdk = new FormCaiDatSDK();
             sdk.Show();
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        #region // lấy view và sub
+        public DataTable getViewChannel(string m_LinkWeb)
         {
+            DataTable Listlink = new DataTable();
+            Listlink.Columns.Add("View", typeof(string));
+            Listlink.Columns.Add("Sub", typeof(string));
+            Listlink.Columns.Add("NgayTao", typeof(string));
+            try
+            {
 
+                string data = "";
+                string page = m_LinkWeb ;
+                var request = (HttpWebRequest)WebRequest.Create(page);
+                request.Accept = "text/html, application/xhtml+xml, */*";
+                request.UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko";
+                ServicePointManager.Expect100Continue = true;
+                ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls
+                            | SecurityProtocolType.Ssl3;
+                var response = (HttpWebResponse)request.GetResponse();
+
+                using (Stream dataStream = response.GetResponseStream())
+                {
+                    if (dataStream == null)
+                        data = "";
+
+
+                    using (var sr = new StreamReader(dataStream))
+                    {
+                        data = sr.ReadToEnd();
+                    }
+
+                }
+                if (data != "")
+                {
+                    string a = data;
+                }
+            }
+
+            catch (Exception ex) { }
+
+            return Listlink;
         }
-
+        #endregion
+       
         private void button1_Click_1(object sender, EventArgs e)
         {
             ProcessStartInfo oInfo = new ProcessStartInfo();
@@ -264,7 +303,7 @@ namespace UpLoadNews
 
         private void button1_Click_2(object sender, EventArgs e)
         {
-         
+            getViewChannel("https://cobby.jp/choice/page/19/");
         }
         private bool hamkiemtratontaifile(string path, string name)
         {
