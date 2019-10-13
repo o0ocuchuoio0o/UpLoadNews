@@ -19,3 +19,10 @@ D:\THANGLUU\UpLoadNews\CreateVideoEffect\bin\Debug\DaoUploadNews.pdb
 D:\THANGLUU\UpLoadNews\CreateVideoEffect\obj\Debug\CreateVideoEffect.csprojResolveAssemblyReference.cache
 D:\THANGLUU\UpLoadNews\CreateVideoEffect\obj\Debug\CreateVideoEffect.exe
 D:\THANGLUU\UpLoadNews\CreateVideoEffect\obj\Debug\CreateVideoEffect.pdb
+D:\GITHUB\UpLoadNews\UpLoadNews\CreateVideoEffect\bin\Debug\CreateVideoEffect.exe
+D:\GITHUB\UpLoadNews\UpLoadNews\CreateVideoEffect\bin\Debug\CreateVideoEffect.pdb
+D:\GITHUB\UpLoadNews\UpLoadNews\CreateVideoEffect\bin\Debug\DaoUploadNews.dll
+D:\GITHUB\UpLoadNews\UpLoadNews\CreateVideoEffect\bin\Debug\DaoUploadNews.pdb
+D:\GITHUB\UpLoadNews\UpLoadNews\CreateVideoEffect\obj\Debug\CreateVideoEffect.csprojResolveAssemblyReference.cache
+D:\GITHUB\UpLoadNews\UpLoadNews\CreateVideoEffect\obj\Debug\CreateVideoEffect.exe
+D:\GITHUB\UpLoadNews\UpLoadNews\CreateVideoEffect\obj\Debug\CreateVideoEffect.pdb

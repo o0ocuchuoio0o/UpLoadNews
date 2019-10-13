@@ -28,3 +28,13 @@ D:\THANGLUU\UpLoadNews\AutoUpdate\obj\Debug\AutoUpdate.Properties.Resources.reso
 D:\THANGLUU\UpLoadNews\AutoUpdate\obj\Debug\AutoUpdate.csproj.GenerateResource.Cache
 D:\THANGLUU\UpLoadNews\AutoUpdate\obj\Debug\AutoUpdate.exe
 D:\THANGLUU\UpLoadNews\AutoUpdate\obj\Debug\AutoUpdate.pdb
+D:\GITHUB\UpLoadNews\UpLoadNews\AutoUpdate\bin\Debug\AutoUpdate.exe
+D:\GITHUB\UpLoadNews\UpLoadNews\AutoUpdate\bin\Debug\AutoUpdate.pdb
+D:\GITHUB\UpLoadNews\UpLoadNews\AutoUpdate\bin\Debug\DaoUploadNews.dll
+D:\GITHUB\UpLoadNews\UpLoadNews\AutoUpdate\bin\Debug\DaoUploadNews.pdb
+D:\GITHUB\UpLoadNews\UpLoadNews\AutoUpdate\obj\Debug\AutoUpdate.csprojResolveAssemblyReference.cache
+D:\GITHUB\UpLoadNews\UpLoadNews\AutoUpdate\obj\Debug\AutoUpdate.FormAutoUpdate.resources
+D:\GITHUB\UpLoadNews\UpLoadNews\AutoUpdate\obj\Debug\AutoUpdate.Properties.Resources.resources
+D:\GITHUB\UpLoadNews\UpLoadNews\AutoUpdate\obj\Debug\AutoUpdate.csproj.GenerateResource.Cache
+D:\GITHUB\UpLoadNews\UpLoadNews\AutoUpdate\obj\Debug\AutoUpdate.exe
+D:\GITHUB\UpLoadNews\UpLoadNews\AutoUpdate\obj\Debug\AutoUpdate.pdb

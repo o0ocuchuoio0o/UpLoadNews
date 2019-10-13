@@ -16,6 +16,7 @@ using System.Web;
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
+using HtmlAgilityPack;
 
 namespace UpLoadNews
 {
@@ -263,8 +264,7 @@ namespace UpLoadNews
 
         private void button1_Click_2(object sender, EventArgs e)
         {
-            Translator t = new Translator();
-           string  dich = t.Translate("BMW 3 Series 2020 - Glamorous Midsize Sedan!", "English", "Korean");
+         
         }
         private bool hamkiemtratontaifile(string path, string name)
         {

@@ -36,7 +36,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using System.Web;
 using OpenQA.Selenium.Firefox;
-
+using HtmlAgilityPack;
 namespace UpLoadNews
 {
     public partial class FormUpload : Form
@@ -3177,10 +3177,112 @@ namespace UpLoadNews
                 MessageBox.Show(ex.Message);
             }
         }
-      
+
+
+
+        #region // lấy view và sub
+        public DataTable getViewChannel(string m_LinkWeb)
+        {
+            DataTable Listlink = new DataTable();
+            Listlink.Columns.Add("View", typeof(string));
+            Listlink.Columns.Add("Sub", typeof(string));
+            Listlink.Columns.Add("NgayTao", typeof(string));
+            try
+            {
+
+                string data = "";
+                string page = m_LinkWeb + "/about";
+                var request = (HttpWebRequest)WebRequest.Create(page);
+                request.Accept = "text/html, application/xhtml+xml, */*";
+                request.UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko";
+                ServicePointManager.Expect100Continue = true;
+                ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls
+                            | SecurityProtocolType.Ssl3;
+                var response = (HttpWebResponse)request.GetResponse();
+
+                using (Stream dataStream = response.GetResponseStream())
+                {
+                    if (dataStream == null)
+                        data = "";
+
+
+                    using (var sr = new StreamReader(dataStream))
+                    {
+                        data = sr.ReadToEnd();
+                    }
+
+                }
+                if (data != "")
+                {
+                    HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
+                    doc.LoadHtml(data);
+                    HtmlNodeCollection tables = doc.DocumentNode.SelectNodes("//div[@class=\"about-stats\"]");
+                    if (tables != null)
+                    {
+                        string ngay = "";
+                        string sub = "";
+                        string view = "";
+                        foreach (HtmlNode node in tables)
+                        {
+                            string[] kq = node.InnerText.ToString().Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
+                            try
+                            {
+                                view = kq[0].ToString().Replace("&bull;", "").Trim();
+                            }
+                            catch { }
+                            try
+                            {
+                                ngay = kq[2].ToString().Trim();
+                            }
+                            catch { }
+
+                        }
+                        HtmlNodeCollection tablessub = doc.DocumentNode.SelectNodes("//span[@class=\"yt-subscription-button-subscriber-count-branded-horizontal subscribed yt-uix-tooltip\"]");
+                        if (tablessub != null)
+                        {
+                            foreach (HtmlNode node in tablessub)
+                            {
+                                sub = node.InnerText.ToString();
+                            }
+                        }
+
+                        Listlink.Rows.Add(view, sub, ngay);
+                    }
+                }
+            }
+
+            catch (Exception ex) { }
+
+            return Listlink;
+        }
+        #endregion
         private void btnrefeshview_Click(object sender, EventArgs e)
         {
-
+            this.Cursor = Cursors.WaitCursor;
+            DataTable dt = new DataTable();
+            dt = (DataTable)dataGridViewListReup.DataSource;
+            if(dt.Rows.Count>0)
+            {
+                foreach(DataRow r in dt.Rows)
+                {
+                    int idkenh=int.Parse(r["ID"].ToString());
+                    string linkkenh = r["LinkKenh"].ToString();
+                    if(linkkenh!="")
+                    {
+                        DataTable table = new DataTable();
+                        table = getViewChannel(linkkenh);
+                        if(table.Rows.Count>0)
+                        {
+                            DataRow row = table.Rows[0];
+                            daWS_FakeAuto suaview = new daWS_FakeAuto();
+                            suaview.UpdateView(idkenh, row["View"].ToString(), row["Sub"].ToString(), row["NgayTao"].ToString(), false);
+                        }
+                    }
+                }
+            }
+            loadmaildaxuly();
+            this.Cursor = Cursors.Default;
         }
         private string chuyenmp4touotput(string path, string pathoutput)
         {
@@ -3192,7 +3294,7 @@ namespace UpLoadNews
                 //tách tên file ra khỏi đường dẫn (tên file sẽ dùng để tạo đường dẫn đích cần copy đè)
                 string fileName = System.IO.Path.GetFileName(sourceFile);
                 //tạo đường dẫn đích để copy file mới tới
-                if (fileName.IndexOf(".mp4") != -1)
+                if (fileName.IndexOf(".mp4") != -1|| fileName.IndexOf(".mkv") != -1|| fileName.IndexOf(".avi") != -1|| fileName.IndexOf(".webm") != -1)
                 {
                     namefile = fileName;
                     string destinationFile = path + @"\" + fileName;
@@ -3222,6 +3324,21 @@ namespace UpLoadNews
                     namefile = 1;                  
 
                 }
+                if (fileName.IndexOf(".webm") != -1)
+                {
+                    namefile = 1;
+
+                }
+                if (fileName.IndexOf(".avi") != -1)
+                {
+                    namefile = 1;
+
+                }
+                if (fileName.IndexOf(".mkv") != -1)
+                {
+                    namefile = 1;
+
+                }
 
             }
             return namefile;
@@ -3236,9 +3353,9 @@ namespace UpLoadNews
                 //tách tên file ra khỏi đường dẫn (tên file sẽ dùng để tạo đường dẫn đích cần copy đè)
                 string fileName = System.IO.Path.GetFileName(sourceFile);
                 //tạo đường dẫn đích để copy file mới tới
-                if (fileName.IndexOf(".mp4") != -1)
+                if (fileName.IndexOf(".mp4") != -1 || fileName.IndexOf(".mkv") != -1 || fileName.IndexOf(".avi") != -1 || fileName.IndexOf(".webm") != -1)
                 {
-                   
+
                     string destinationFile = path + @"\" + fileName;                 
                     // thực hiện copy
                     System.IO.File.Copy(destinationFile, pathoutput, true);
@@ -3260,7 +3377,7 @@ namespace UpLoadNews
                 //tách tên file ra khỏi đường dẫn (tên file sẽ dùng để tạo đường dẫn đích cần copy đè)
                 string fileName = System.IO.Path.GetFileName(sourceFile);
                 //tạo đường dẫn đích để copy file mới tới
-                if (fileName.IndexOf(".mp4") != -1)
+                if (fileName.IndexOf(".mp4") != -1 || fileName.IndexOf(".mkv") != -1 || fileName.IndexOf(".avi") != -1 || fileName.IndexOf(".webm") != -1)
                 {
                     string destinationFile = pathoutput + @"\" + fileName;                   
                     System.IO.File.Delete(destinationFile);
@@ -3417,7 +3534,7 @@ namespace UpLoadNews
                                                 if (xuly == 1)
                                                 {
                                                     #region // thực hiện copy file download sang forder upload
-                                                    tieude = chuyenmp4touotput(Application.StartupPath, txtfoldervideo.Text).Replace("-" + idlinkvideo, "").Replace(".mp4", "");
+                                                    tieude = chuyenmp4touotput(Application.StartupPath, txtfoldervideo.Text).Replace("-" + idlinkvideo, "").Replace(".mp4", "").Replace(".mkv","").Replace(".avi","").Replace(".webm","");
                                                     lblxuly.Text = "Đã down load xong video" + tieude.ToString();
                                                     string dich = "";
                                                     try
@@ -3498,6 +3615,10 @@ namespace UpLoadNews
                                                         if (themtieude != "")
                                                         {
                                                             _title = _title + "|" + themtieude;
+                                                        }
+                                                        if(_title=="")
+                                                        {
+                                                            _title = tieude;
                                                         }
                                                         string _tag = tieude;
                                                         if (themtag != "")
