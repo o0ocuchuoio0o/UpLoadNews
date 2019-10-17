@@ -209,6 +209,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Blur.cs" />
+    <Compile Include="Class1.cs" />
     <Compile Include="cl_ReadVoice.cs" />
     <Compile Include="Cl_Tag.cs" />
     <Compile Include="CoreDriver.cs" />

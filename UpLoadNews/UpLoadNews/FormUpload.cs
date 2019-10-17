@@ -2315,7 +2315,16 @@ namespace UpLoadNews
                                     //ghep vao video
                                     string _outputvideobg = txtfoldervideo.Text + @"\" + folder + @"\" + k.ToString() + @"\_output" + k.ToString() + ".mp4";
                                     RunFFMPEG ffrunmc = new RunFFMPEG();
-                                    string addmc = string.Format(@" -y -i {0} -i {1} -filter_complex ""[0:v]scale=320:260[v1];movie={2}:loop=999,setpts=N/(FRAME_RATE*TB),scale=854:480,setdar=16/9[v2];[v2][v1]overlay=shortest=1:x=5:y=5[v3];[1:v]scale=854:480[v4];[v3][v4]overlay=0:0"" -vcodec libx264 -pix_fmt yuv420p -r 25 -g 62 -b:v 1200k -shortest -acodec aac -b:a 128k -ar 44100  -preset veryfast {3}", fileFromComputer, pathpicture, filesbg[indexbg].Name, _outputvideobg);
+                                    string addmc = "";
+                                    if (checksmallvids.Checked==true)
+                                    {
+                                         addmc = string.Format(@" -y -i {0} -i {1} -filter_complex ""[0:v]scale=150:150[v1];movie={2}:loop=999,setpts=N/(FRAME_RATE*TB),scale=854:480,setdar=16/9[v2];[v2][v1]overlay=shortest=1:x=5:y=5[v3];[1:v]scale=854:480[v4];[v3][v4]overlay=0:0"" -vcodec libx264 -pix_fmt yuv420p -r 25 -g 62 -b:v 1200k -shortest -acodec aac -b:a 128k -ar 44100  -preset veryfast {3}", fileFromComputer, pathpicture, filesbg[indexbg].Name, _outputvideobg);
+                                    }
+                                    else
+                                    {
+                                         addmc = string.Format(@" -y -i {0} -i {1} -filter_complex ""[0:v]scale=320:260[v1];movie={2}:loop=999,setpts=N/(FRAME_RATE*TB),scale=854:480,setdar=16/9[v2];[v2][v1]overlay=shortest=1:x=5:y=5[v3];[1:v]scale=854:480[v4];[v3][v4]overlay=0:0"" -vcodec libx264 -pix_fmt yuv420p -r 25 -g 62 -b:v 1200k -shortest -acodec aac -b:a 128k -ar 44100  -preset veryfast {3}", fileFromComputer, pathpicture, filesbg[indexbg].Name, _outputvideobg);
+                                    }
+                                  
                                     ffrunmc.RunCommand(addmc, false);
                                     //thực hiện xóa file videobg sau khi xử lý xong
                                     System.IO.File.Delete(Application.StartupPath + @"\" + filesbg[indexbg].Name);
@@ -2979,12 +2988,18 @@ namespace UpLoadNews
                                         daWS_FakeAuto thaydoi = new daWS_FakeAuto();
                                         thaydoi.XuLyMail(mail, passmoi, mailkhoiphucmoi, m_IDTaiKhoan);
                                     }
+                                    
                                     #endregion
                                 }
-                            
+                                else
+                                {
+                                    daWS_FakeAuto thaydoi = new daWS_FakeAuto();
+                                    thaydoi.XuLyMailLoi(mail, passmoi, mailkhoiphucmoi, m_IDTaiKhoan);
+                                }
                             }
                             catch {
                                 ChomeClose().Wait();
+                               
                             }
                             #endregion
                         }
@@ -3306,23 +3321,29 @@ namespace UpLoadNews
             dt = (DataTable)dataGridViewListReup.DataSource;
             if(dt.Rows.Count>0)
             {
-                foreach(DataRow r in dt.Rows)
-                {
-                    int idkenh=int.Parse(r["ID"].ToString());
-                    string linkkenh = r["LinkKenh"].ToString();
-                  
-                    if (linkkenh!="")
+                Task get = new Task(()=> {
+                    foreach (DataRow r in dt.Rows)
                     {
-                        DataTable table = new DataTable();
-                        table = getViewChannel(linkkenh);
-                        if(table.Rows.Count>0)
+                        int idkenh = int.Parse(r["ID"].ToString());
+                        string linkkenh = r["LinkKenh"].ToString();
+                        string mail = r["Mail"].ToString();
+                        string stt = r["STT"].ToString();
+                        lblxuly.Text = "Đang lấy thông tin kênh của mail :"+mail+" STT:"+stt;
+                        if (linkkenh != "")
                         {
-                            DataRow row = table.Rows[0];
-                            daWS_FakeAuto suaview = new daWS_FakeAuto();
-                            suaview.UpdateView(idkenh, row["View"].ToString(), row["Sub"].ToString(), row["NgayTao"].ToString(), false);
+                            DataTable table = new DataTable();
+                            table = getViewChannel(linkkenh);
+                            if (table.Rows.Count > 0)
+                            {
+                                DataRow row = table.Rows[0];
+                                daWS_FakeAuto suaview = new daWS_FakeAuto();
+                                suaview.UpdateView(idkenh, row["View"].ToString().Replace("lượt xem", "").Replace(".",""), row["Sub"].ToString(), row["NgayTao"].ToString(), false);
+                                Thread.Sleep(2000);
+                            }
                         }
                     }
-                }
+                });
+                get.Start();
             }
             loadmaildaxuly();
             this.Cursor = Cursors.Default;
@@ -3573,6 +3594,8 @@ namespace UpLoadNews
                                         case 1:
                                             try
                                             {
+                                              
+
                                                 int xuly = kiemtratontaimp4(Application.StartupPath);
                                                 if (xuly == 1)
                                                 {
@@ -3594,86 +3617,94 @@ namespace UpLoadNews
                                                     #endregion
                                                     DoiTenFileMp4(txtfoldervideo.Text, txtfoldervideo.Text + @"\" + tieude + ".mp4");
                                                     string _path = txtfoldervideo.Text + @"\" + tieude + ".mp4";
-
-                                                    #region // thực hiện upload lên youtube
-                                                    try
+                                                    Proshow gettime = new Proshow();
+                                                    double time = 0;
+                                                    time =(double) gettime.getDuration(_path).Result;
+                                                    if (time != 0)
                                                     {
-                                                        if (radiochome.Checked == true)
+                                                        #region // thực hiện upload lên youtube
+                                                        try
                                                         {
-                                                            string profile_add = "Profile";
-                                                            string profile_new = "Profile\\" + mail.ToString();
-                                                            ChromePerformanceLoggingPreferences perfLogPrefs = new ChromePerformanceLoggingPreferences();
-                                                            perfLogPrefs.AddTracingCategories(new string[] { "devtools.timeline" });
-                                                            ChromeOptions options = new ChromeOptions();
-                                                            if (checkcreateprofire.Checked == true)
+                                                            if (radiochome.Checked == true)
                                                             {
-                                                                if (!Directory.Exists(profile_add)) { Directory.CreateDirectory(profile_add); }
-                                                                options.AddArgument("user-data-dir=" + Application.StartupPath + "\\" + profile_new);
+                                                                string profile_add = "Profile";
+                                                                string profile_new = "Profile\\" + mail.ToString();
+                                                                ChromePerformanceLoggingPreferences perfLogPrefs = new ChromePerformanceLoggingPreferences();
+                                                                perfLogPrefs.AddTracingCategories(new string[] { "devtools.timeline" });
+                                                                ChromeOptions options = new ChromeOptions();
+                                                                if (checkcreateprofire.Checked == true)
+                                                                {
+                                                                    if (!Directory.Exists(profile_add)) { Directory.CreateDirectory(profile_add); }
+                                                                    options.AddArgument("user-data-dir=" + Application.StartupPath + "\\" + profile_new);
+                                                                }
+                                                                options.AddArguments("--disable-notifications");
+                                                                options.AddArguments("--incognito");
+                                                                options.PerformanceLoggingPreferences = perfLogPrefs;
+                                                                options.SetLoggingPreference(LogType.Driver, LogLevel.All);
+                                                                options.SetLoggingPreference("performance", LogLevel.All);
+                                                                options.AddAdditionalCapability(CapabilityType.EnableProfiling, true, true);
+                                                                PropretiesCollection.driver = new ChromeDriver(options);
                                                             }
-                                                            options.AddArguments("--disable-notifications");
-                                                            options.AddArguments("--incognito");
-                                                            options.PerformanceLoggingPreferences = perfLogPrefs;
-                                                            options.SetLoggingPreference(LogType.Driver, LogLevel.All);
-                                                            options.SetLoggingPreference("performance", LogLevel.All);
-                                                            options.AddAdditionalCapability(CapabilityType.EnableProfiling, true, true);
-                                                            PropretiesCollection.driver = new ChromeDriver(options);
-                                                        }
-                                                        else if (radiofirefox.Checked == true)
-                                                        {
-                                                            String torBinaryPath = @"D:\Tor\Tor Browser\Browser\firefox.exe";
-                                                            Process TorProcess = new Process();
-                                                            TorProcess.StartInfo.FileName = torBinaryPath;
-                                                            TorProcess.StartInfo.Arguments = "-n";
-                                                            TorProcess.StartInfo.WindowStyle = ProcessWindowStyle.Maximized;
-                                                            TorProcess.Start();                                                         
-                                                            FirefoxOptions optionsfire = new FirefoxOptions();
-                                                            optionsfire.SetPreference("network.proxy.type", 1);
-                                                            optionsfire.SetPreference("network.proxy.socks", "127.0.0.1");
-                                                            optionsfire.SetPreference("network.proxy.socks_port", 9150);
-                                                            //optionsfire.SetPreference("webdriver.firefox.profile", "default");
-                                                            PropretiesCollection.driver = new FirefoxDriver(optionsfire);
-                                                        }
+                                                            else if (radiofirefox.Checked == true)
+                                                            {
+                                                                String torBinaryPath = @"D:\Tor\Tor Browser\Browser\firefox.exe";
+                                                                Process TorProcess = new Process();
+                                                                TorProcess.StartInfo.FileName = torBinaryPath;
+                                                                TorProcess.StartInfo.Arguments = "-n";
+                                                                TorProcess.StartInfo.WindowStyle = ProcessWindowStyle.Maximized;
+                                                                TorProcess.Start();
+                                                                FirefoxOptions optionsfire = new FirefoxOptions();
+                                                                optionsfire.SetPreference("network.proxy.type", 1);
+                                                                optionsfire.SetPreference("network.proxy.socks", "127.0.0.1");
+                                                                optionsfire.SetPreference("network.proxy.socks_port", 9150);
+                                                                //optionsfire.SetPreference("webdriver.firefox.profile", "default");
+                                                                PropretiesCollection.driver = new FirefoxDriver(optionsfire);
+                                                            }
 
-                                                        
-                                                        PropretiesCollection.driver.Navigate().GoToUrl("https://www.youtube.com/upload?redirect_to_classic=true");
-                                                        UploadYoutube ytb = new UploadYoutube();
-                                                        ytb.LoginAnDanh(mail, pass, mailkhoiphuc, _path).Wait();
-                                                        #region desc
-                                                        string _desc = "";
-                                                        string mota = tieude + "\r\n" + themmota + "\r\n";
-                                                        if (mota.Length > 200) { _desc = chuanHoa(mota.Substring(0, 200)); }
-                                                        else { _desc = chuanHoa(mota); }
-                                                        #endregion
-                                                        #region // title
-                                                        string _title = tieude;
 
-                                                        if (_title.Length > 100)
-                                                        {
-                                                            _title = (_title.Substring(0, 100));
+                                                            PropretiesCollection.driver.Navigate().GoToUrl("https://www.youtube.com/upload?redirect_to_classic=true");
+                                                            UploadYoutube ytb = new UploadYoutube();
+                                                            ytb.LoginAnDanh(mail, pass, mailkhoiphuc, _path).Wait();
+                                                            #region desc
+                                                            string _desc = "";
+                                                            string mota = tieude + "\r\n" + themmota + "\r\n";
+                                                            if (mota.Length > 200) { _desc = chuanHoa(mota.Substring(0, 200)); }
+                                                            else { _desc = chuanHoa(mota); }
+                                                            #endregion
+                                                            #region // title
+                                                            string _title = tieude;
+
+                                                            if (_title.Length > 100)
+                                                            {
+                                                                _title = (_title.Substring(0, 100));
+                                                            }
+                                                            if (bottieude != "")
+                                                            {
+                                                                _title = _title.Replace(bottieude, "");
+                                                            }
+                                                            if (themtieude != "")
+                                                            {
+                                                                _title = _title + "|" + themtieude;
+                                                            }
+                                                            if (_title == "")
+                                                            {
+                                                                _title = tieude;
+                                                            }
+                                                            string _tag = tieude;
+                                                            if (themtag != "")
+                                                            {
+                                                                _tag = _tag + "," + themtag;
+                                                            }
+                                                            #endregion
+                                                            ytb.Upload(_title, _desc, _tag, "", 0).Wait();
+                                                            #region // thực hiện xác nhận đã reup
+                                                            daWS_FakeAuto xacnhan1 = new daWS_FakeAuto();
+                                                            xacnhan1.UpdateDaReup(idvideo);
+                                                            #endregion
                                                         }
-                                                        if (bottieude != "")
-                                                        {
-                                                            _title = _title.Replace(bottieude, "");
-                                                        }
-                                                        if (themtieude != "")
-                                                        {
-                                                            _title = _title + "|" + themtieude;
-                                                        }
-                                                        if(_title=="")
-                                                        {
-                                                            _title = tieude;
-                                                        }
-                                                        string _tag = tieude;
-                                                        if (themtag != "")
-                                                        {
-                                                            _tag = _tag + "," + themtag;
-                                                        }
+                                                        catch { ChomeClose().Wait(); }
                                                         #endregion
-                                                        ytb.Upload(_title, _desc, _tag, "", 0).Wait();
                                                     }
-                                                    catch { ChomeClose().Wait(); }
-                                                    #endregion
-
                                                     #region // thực hiện xác nhận đã reup
                                                     daWS_FakeAuto xacnhan = new daWS_FakeAuto();
                                                     xacnhan.UpdateDaReup(idvideo);
@@ -3777,40 +3808,81 @@ namespace UpLoadNews
         }
         private void bgwchayview_DoWork(object sender, DoWorkEventArgs e)
         {
+            bool flat = false;
             for (int i = 1; i <= int.Parse(txtnumberthread.Value.ToString()); i++)
             {
                 Task startI = new Task(() =>
                 {
-                    String torBinaryPath = @"D:\Tor\Tor Browser\Browser\firefox.exe";
-                    Process TorProcess = new Process();
-                    TorProcess.StartInfo.FileName = torBinaryPath;
-                    TorProcess.StartInfo.Arguments = "-n";
-                    TorProcess.StartInfo.WindowStyle = ProcessWindowStyle.Maximized;
-                    TorProcess.Start();
-                    FirefoxOptions options = new FirefoxOptions();
-                    options.SetPreference("network.proxy.type", 1);
-                    options.SetPreference("network.proxy.socks", "127.0.0.1");
-                    options.SetPreference("network.proxy.socks_port", 9150);
-                    options.SetPreference("webdriver.firefox.profile", "default");
-                    FirefoxDriver _Driver = new FirefoxDriver(options);
-                    _Driver.Navigate().GoToUrl(txtlink.Text);
-                    IWebElement video = _Driver.FindElement(By.CssSelector("#movie_player"));
-                    video.Click();
-                    try
+                    switch (flat)
                     {
-                        TorProcess.Kill();
-                        TorProcess.Close();
-                        TorProcess.Dispose();
-                    }
-                    catch { }
-                    
-                    Thread.Sleep(int.Parse(txttimeview.Value.ToString()) *60* 60 * 1000);
+                        case true:
+                            System.Threading.Thread.Sleep(5000);
+                            goto case false;
+                            break;
+                        case false:
+                            try
+                            {
+                                if (flat == false)
+                                {
+                                    flat = true;
+                                    String torBinaryPath = @"D:\Tor\Tor Browser\Browser\firefox.exe";
+                                    Process TorProcess = new Process();
+                                    TorProcess.StartInfo.FileName = torBinaryPath;
+                                    TorProcess.StartInfo.Arguments = "-n";
+                                    TorProcess.StartInfo.WindowStyle = ProcessWindowStyle.Maximized;
+                                    TorProcess.Start();
+                                    FirefoxOptions options = new FirefoxOptions();
+                                    options.SetPreference("network.proxy.type", 1);
+                                    options.SetPreference("network.proxy.socks", "127.0.0.1");
+                                    options.SetPreference("network.proxy.socks_port", 9150);
+                                    options.SetPreference("webdriver.firefox.profile", "default");
+                                    FirefoxDriver _Driver = new FirefoxDriver(options);
+                                    _Driver.Navigate().GoToUrl(txtlink.Text);
 
-                    _Driver.Close();
-                    _Driver.Dispose();
+                                    IWebElement video = _Driver.FindElement(By.CssSelector("#movie_player"));
+                                    int kiemtra = 0;
+                                    switch (kiemtra)
+                                    {
+                                        case 0:
+                                            System.Threading.Thread.Sleep(2000);
+                                            goto case 1;
+                                            break;
+                                        case 1:
+                                            try
+                                            {
+                                                video.Click();
+
+                                            }
+                                            catch { goto case 0; }
+                                            break;
+
+                                    }
+                                    try
+                                    {
+                                        TorProcess.Kill();
+                                        flat = false;
+                                        TorProcess.Close();
+                                        TorProcess.Dispose();
+                                    }
+                                    catch { }
+
+
+                                    Thread.Sleep(int.Parse(txttimeview.Value.ToString()) * 60 * 60 * 1000);
+
+                                    _Driver.Close();
+                                    _Driver.Dispose();
+                                }
+
+                            }
+                            catch { goto case true; }
+                            break;
+
+                    }
+
+                   
                 });
                 startI.Start();
-                Thread.Sleep(45000);
+                Thread.Sleep(60000);
 
             }
 

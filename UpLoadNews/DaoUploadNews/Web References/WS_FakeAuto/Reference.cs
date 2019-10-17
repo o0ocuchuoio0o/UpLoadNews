@@ -122,6 +122,8 @@ namespace DaoUploadNews.WS_FakeAuto {
         
         private System.Threading.SendOrPostCallback XuLyMailOperationCompleted;
         
+        private System.Threading.SendOrPostCallback XuLyMailLoiOperationCompleted;
+        
         private System.Threading.SendOrPostCallback DanhSachMailChuaXuLyOperationCompleted;
         
         private System.Threading.SendOrPostCallback DanhSachMailDaXuLyOperationCompleted;
@@ -319,6 +321,9 @@ namespace DaoUploadNews.WS_FakeAuto {
         
         /// <remarks/>
         public event XuLyMailCompletedEventHandler XuLyMailCompleted;
+        
+        /// <remarks/>
+        public event XuLyMailLoiCompletedEventHandler XuLyMailLoiCompleted;
         
         /// <remarks/>
         public event DanhSachMailChuaXuLyCompletedEventHandler DanhSachMailChuaXuLyCompleted;
@@ -1735,6 +1740,40 @@ namespace DaoUploadNews.WS_FakeAuto {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/XuLyMailLoi", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void XuLyMailLoi(string mail, string pass, string mailkhoiphuc, int idtaikhoan) {
+            this.Invoke("XuLyMailLoi", new object[] {
+                        mail,
+                        pass,
+                        mailkhoiphuc,
+                        idtaikhoan});
+        }
+        
+        /// <remarks/>
+        public void XuLyMailLoiAsync(string mail, string pass, string mailkhoiphuc, int idtaikhoan) {
+            this.XuLyMailLoiAsync(mail, pass, mailkhoiphuc, idtaikhoan, null);
+        }
+        
+        /// <remarks/>
+        public void XuLyMailLoiAsync(string mail, string pass, string mailkhoiphuc, int idtaikhoan, object userState) {
+            if ((this.XuLyMailLoiOperationCompleted == null)) {
+                this.XuLyMailLoiOperationCompleted = new System.Threading.SendOrPostCallback(this.OnXuLyMailLoiOperationCompleted);
+            }
+            this.InvokeAsync("XuLyMailLoi", new object[] {
+                        mail,
+                        pass,
+                        mailkhoiphuc,
+                        idtaikhoan}, this.XuLyMailLoiOperationCompleted, userState);
+        }
+        
+        private void OnXuLyMailLoiOperationCompleted(object arg) {
+            if ((this.XuLyMailLoiCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.XuLyMailLoiCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/DanhSachMailChuaXuLy", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public System.Data.DataTable DanhSachMailChuaXuLy(int idtaikhoan) {
             object[] results = this.Invoke("DanhSachMailChuaXuLy", new object[] {
@@ -3050,6 +3089,10 @@ namespace DaoUploadNews.WS_FakeAuto {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void XuLyMailCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void XuLyMailLoiCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]

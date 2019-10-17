@@ -72,6 +72,10 @@ namespace UpLoadNews
 
         [FindsBy(How = How.CssSelector, Using = "button[class='yt-uix-button yt-uix-button-size-default save-changes-button yt-uix-tooltip yt-uix-button-primary']")]
         public IWebElement btnsavepublich;
+
+
+        [FindsBy(How = How.XPath, Using = "/html/body/div[2]/div[4]/div/div[5]/div/div[4]/div[2]/div/div[1]/a")]
+        public IWebElement errorupload;
         public void NextUser(string user)
         {
             txtuser.Clear();
@@ -294,7 +298,14 @@ namespace UpLoadNews
                    case 1:
                         try
                         {
-                           string xuly = SeleniumGetMeThor.GetText2(prossesbar);
+                            try { string error= SeleniumGetMeThor.GetText2(errorupload);
+                                if(error== "supported file type")
+                                {
+                                    break;
+                                }
+                            }
+                            catch { }
+                            string xuly = SeleniumGetMeThor.GetText2(prossesbar);
                             if (xuly =="100%")
                             {
                             System.Threading.Thread.Sleep(8000);

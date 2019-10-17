@@ -773,6 +773,19 @@
       <s:element name="XuLyMailResponse">
         <s:complexType />
       </s:element>
+      <s:element name="XuLyMailLoi">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="mail" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pass" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mailkhoiphuc" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="idtaikhoan" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="XuLyMailLoiResponse">
+        <s:complexType />
+      </s:element>
       <s:element name="DanhSachMailChuaXuLy">
         <s:complexType>
           <s:sequence>
@@ -1238,6 +1251,12 @@
   <wsdl:message name="XuLyMailSoapOut">
     <wsdl:part name="parameters" element="tns:XuLyMailResponse" />
   </wsdl:message>
+  <wsdl:message name="XuLyMailLoiSoapIn">
+    <wsdl:part name="parameters" element="tns:XuLyMailLoi" />
+  </wsdl:message>
+  <wsdl:message name="XuLyMailLoiSoapOut">
+    <wsdl:part name="parameters" element="tns:XuLyMailLoiResponse" />
+  </wsdl:message>
   <wsdl:message name="DanhSachMailChuaXuLySoapIn">
     <wsdl:part name="parameters" element="tns:DanhSachMailChuaXuLy" />
   </wsdl:message>
@@ -1576,6 +1595,13 @@
     <wsdl:part name="idtaikhoan" type="s:string" />
   </wsdl:message>
   <wsdl:message name="XuLyMailHttpGetOut" />
+  <wsdl:message name="XuLyMailLoiHttpGetIn">
+    <wsdl:part name="mail" type="s:string" />
+    <wsdl:part name="pass" type="s:string" />
+    <wsdl:part name="mailkhoiphuc" type="s:string" />
+    <wsdl:part name="idtaikhoan" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="XuLyMailLoiHttpGetOut" />
   <wsdl:message name="DanhSachMailChuaXuLyHttpGetIn">
     <wsdl:part name="idtaikhoan" type="s:string" />
   </wsdl:message>
@@ -1919,6 +1945,13 @@
     <wsdl:part name="idtaikhoan" type="s:string" />
   </wsdl:message>
   <wsdl:message name="XuLyMailHttpPostOut" />
+  <wsdl:message name="XuLyMailLoiHttpPostIn">
+    <wsdl:part name="mail" type="s:string" />
+    <wsdl:part name="pass" type="s:string" />
+    <wsdl:part name="mailkhoiphuc" type="s:string" />
+    <wsdl:part name="idtaikhoan" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="XuLyMailLoiHttpPostOut" />
   <wsdl:message name="DanhSachMailChuaXuLyHttpPostIn">
     <wsdl:part name="idtaikhoan" type="s:string" />
   </wsdl:message>
@@ -2175,6 +2208,10 @@
       <wsdl:input message="tns:XuLyMailSoapIn" />
       <wsdl:output message="tns:XuLyMailSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="XuLyMailLoi">
+      <wsdl:input message="tns:XuLyMailLoiSoapIn" />
+      <wsdl:output message="tns:XuLyMailLoiSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="DanhSachMailChuaXuLy">
       <wsdl:input message="tns:DanhSachMailChuaXuLySoapIn" />
       <wsdl:output message="tns:DanhSachMailChuaXuLySoapOut" />
@@ -2405,6 +2442,10 @@
       <wsdl:input message="tns:XuLyMailHttpGetIn" />
       <wsdl:output message="tns:XuLyMailHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="XuLyMailLoi">
+      <wsdl:input message="tns:XuLyMailLoiHttpGetIn" />
+      <wsdl:output message="tns:XuLyMailLoiHttpGetOut" />
+    </wsdl:operation>
     <wsdl:operation name="DanhSachMailChuaXuLy">
       <wsdl:input message="tns:DanhSachMailChuaXuLyHttpGetIn" />
       <wsdl:output message="tns:DanhSachMailChuaXuLyHttpGetOut" />
@@ -2634,6 +2675,10 @@
     <wsdl:operation name="XuLyMail">
       <wsdl:input message="tns:XuLyMailHttpPostIn" />
       <wsdl:output message="tns:XuLyMailHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="XuLyMailLoi">
+      <wsdl:input message="tns:XuLyMailLoiHttpPostIn" />
+      <wsdl:output message="tns:XuLyMailLoiHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="DanhSachMailChuaXuLy">
       <wsdl:input message="tns:DanhSachMailChuaXuLyHttpPostIn" />
@@ -3089,6 +3134,15 @@
     </wsdl:operation>
     <wsdl:operation name="XuLyMail">
       <soap:operation soapAction="http://tempuri.org/XuLyMail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="XuLyMailLoi">
+      <soap:operation soapAction="http://tempuri.org/XuLyMailLoi" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -3612,6 +3666,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="XuLyMailLoi">
+      <soap12:operation soapAction="http://tempuri.org/XuLyMailLoi" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="DanhSachMailChuaXuLy">
       <soap12:operation soapAction="http://tempuri.org/DanhSachMailChuaXuLy" style="document" />
       <wsdl:input>
@@ -4106,6 +4169,13 @@
       </wsdl:input>
       <wsdl:output />
     </wsdl:operation>
+    <wsdl:operation name="XuLyMailLoi">
+      <http:operation location="/XuLyMailLoi" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
     <wsdl:operation name="DanhSachMailChuaXuLy">
       <http:operation location="/DanhSachMailChuaXuLy" />
       <wsdl:input>
@@ -4585,6 +4655,13 @@
     </wsdl:operation>
     <wsdl:operation name="XuLyMail">
       <http:operation location="/XuLyMail" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="XuLyMailLoi">
+      <http:operation location="/XuLyMailLoi" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

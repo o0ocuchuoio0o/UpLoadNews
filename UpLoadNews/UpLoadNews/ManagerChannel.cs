@@ -36,6 +36,11 @@ namespace UpLoadNews
         #region // các biến xác nhận mail khôi phục lúc login
         [FindsBy(How = How.XPath, Using = "/html/body/div[1]/div[1]/div[2]/div[2]/div/div/div[2]/div/div/div/form/span/section/div/div/div/ul/li[1]/div/div[2]")]
         public IWebElement m_xacnhanmailkhoiphuc;
+        [FindsBy(How = How.XPath, Using = "/html/body/div[1]/div[1]/div[2]/div[2]/div/div/div[2]/div/div/div/form/span/section/div/div/div/ul/li[1]/div/div[1]/svg/path[1]")]
+        public IWebElement m_xacnhanmailkhoiphuc2;
+
+        
+
         [FindsBy(How = How.Id, Using = "knowledge-preregistered-email-response")]
         public IWebElement m_txtxacnhanmail;
         [FindsBy(How = How.XPath, Using = "/html/body/div[1]/div[1]/div[2]/div[2]/div/div/div[2]/div/div[2]/div/div[1]/div/span/span")]
@@ -48,6 +53,9 @@ namespace UpLoadNews
 
         [FindsBy(How = How.XPath, Using = "/html/body/c-wiz/div/div[2]/c-wiz/c-wiz/div/div[4]/div/div/c-wiz/section/article/div/div/div[6]/div[2]/a/div/div/div/div[2]/div[2]/div")]
         public IWebElement btnthaypassmail;
+        [FindsBy(How = How.XPath, Using = "/html/body/c-wiz/div/div[2]/c-wiz/c-wiz/div/div[4]/div/div/c-wiz/section/article[1]/div/div/div[7]/div[2]/a/div/div[2]/figure/span")]
+        public IWebElement btnthaypassmail2;
+        
         //xác nhận pass cũ
         [FindsBy(How = How.XPath, Using = "/html/body/div[1]/div[1]/div[2]/div[2]/div/div/div[2]/div/div[1]/div/form/span/section/div/div/div[2]/div[1]/div/div/div/div/div[1]/div/div[1]/input")]
         public IWebElement txtpasscu;
@@ -129,6 +137,11 @@ namespace UpLoadNews
                     m_xacnhanmailkhoiphuc.Click();
                 }
                 catch { }
+                try
+                {
+                    m_xacnhanmailkhoiphuc2.Click();
+                }
+                catch { }
                 System.Threading.Thread.Sleep(4000);
                 try
                 {
@@ -189,6 +202,7 @@ namespace UpLoadNews
                 {
                     txtnhapmailkhoiphuc.Clear();
                     txtnhapmailkhoiphuc.SendKeys(mailkhoiphuc);
+                    kq = 1;
                 }
                 catch { }
                 System.Threading.Thread.Sleep(2000);
@@ -196,6 +210,7 @@ namespace UpLoadNews
                 {
                     btndonesuamailkhoiphuc.Click();
                     kq = 1;
+                    System.Threading.Thread.Sleep(2000);
                 }
                 catch { }
                 System.Threading.Thread.Sleep(2000);
@@ -234,6 +249,11 @@ namespace UpLoadNews
                     m_xacnhanmailkhoiphuc.Click();
                 }
                 catch { }
+                try
+                {
+                    m_xacnhanmailkhoiphuc2.Click();
+                }
+                catch { }
                 System.Threading.Thread.Sleep(4000);
                 try
                 {
@@ -261,6 +281,8 @@ namespace UpLoadNews
             {
                 btnthaypassmail.Click();
             }
+            catch { }
+            try { btnthaypassmail2.Click(); }
             catch { }
             System.Threading.Thread.Sleep(1000);
             try

@@ -268,13 +268,14 @@
             this.btnpathtor = new System.Windows.Forms.Button();
             this.txtpathtor = new System.Windows.Forms.TextBox();
             this.label35 = new System.Windows.Forms.Label();
+            this.tabPage14 = new System.Windows.Forms.TabPage();
             this.bgwlayvoice = new System.ComponentModel.BackgroundWorker();
             this.bgwrendermulti = new System.ComponentModel.BackgroundWorker();
             this.timerrendermulti = new System.Windows.Forms.Timer(this.components);
             this.bgwreup = new System.ComponentModel.BackgroundWorker();
             this.bgwchayview = new System.ComponentModel.BackgroundWorker();
             this.timerchayview = new System.Windows.Forms.Timer(this.components);
-            this.tabPage14 = new System.Windows.Forms.TabPage();
+            this.checksmallvids = new System.Windows.Forms.CheckBox();
             this.groupBox3.SuspendLayout();
             this.tabControl3.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -1482,6 +1483,7 @@
             // 
             // groupBox14
             // 
+            this.groupBox14.Controls.Add(this.checksmallvids);
             this.groupBox14.Controls.Add(this.txtfloderlistpicture);
             this.groupBox14.Controls.Add(this.btnfloderlistpicbg);
             this.groupBox14.Controls.Add(this.txtfloderlistbg);
@@ -3134,6 +3136,16 @@
             this.label35.TabIndex = 40;
             this.label35.Text = "Path Tor :";
             // 
+            // tabPage14
+            // 
+            this.tabPage14.Location = new System.Drawing.Point(4, 22);
+            this.tabPage14.Name = "tabPage14";
+            this.tabPage14.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage14.Size = new System.Drawing.Size(817, 506);
+            this.tabPage14.TabIndex = 8;
+            this.tabPage14.Text = "Tương tác mobile";
+            this.tabPage14.UseVisualStyleBackColor = true;
+            // 
             // bgwlayvoice
             // 
             this.bgwlayvoice.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwlayvoice_DoWork);
@@ -3162,15 +3174,15 @@
             // 
             this.timerchayview.Tick += new System.EventHandler(this.timerchayview_Tick);
             // 
-            // tabPage14
+            // checksmallvids
             // 
-            this.tabPage14.Location = new System.Drawing.Point(4, 22);
-            this.tabPage14.Name = "tabPage14";
-            this.tabPage14.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage14.Size = new System.Drawing.Size(817, 506);
-            this.tabPage14.TabIndex = 8;
-            this.tabPage14.Text = "Tương tác mobile";
-            this.tabPage14.UseVisualStyleBackColor = true;
+            this.checksmallvids.AutoSize = true;
+            this.checksmallvids.Location = new System.Drawing.Point(491, 64);
+            this.checksmallvids.Name = "checksmallvids";
+            this.checksmallvids.Size = new System.Drawing.Size(57, 17);
+            this.checksmallvids.TabIndex = 320;
+            this.checksmallvids.Text = "MC bg";
+            this.checksmallvids.UseVisualStyleBackColor = true;
             // 
             // FormUpload
             // 
@@ -3514,5 +3526,6 @@
         private System.Windows.Forms.Timer timerchayview;
         private System.Windows.Forms.Button btngetlist;
         private System.Windows.Forms.TabPage tabPage14;
+        private System.Windows.Forms.CheckBox checksmallvids;
     }
 }

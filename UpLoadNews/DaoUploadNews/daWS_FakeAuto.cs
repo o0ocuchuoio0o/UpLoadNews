@@ -263,7 +263,11 @@ namespace DaoUploadNews
             WS_FakeAuto.WS_FakeAuto xuly = new  WS_FakeAuto.WS_FakeAuto();
             xuly.XuLyMail(mail, pass, mailkhoiphuc, idtaikhoan);
         }
-       
+        public void XuLyMailLoi(string mail, string pass, string mailkhoiphuc, int idtaikhoan)
+        {
+            WS_FakeAuto.WS_FakeAuto xuly = new WS_FakeAuto.WS_FakeAuto();
+            xuly.XuLyMailLoi(mail, pass, mailkhoiphuc, idtaikhoan);
+        }
         public DataTable DanhSachMailChuaXuLy(int idtaikhoan)
         {
             DataTable dt = new DataTable();
