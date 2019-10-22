@@ -122,6 +122,8 @@ namespace DaoUploadNews.WS_FakeAuto {
         
         private System.Threading.SendOrPostCallback XuLyMailOperationCompleted;
         
+        private System.Threading.SendOrPostCallback UpdateMailKhoiPhucOperationCompleted;
+        
         private System.Threading.SendOrPostCallback XuLyMailLoiOperationCompleted;
         
         private System.Threading.SendOrPostCallback DanhSachMailChuaXuLyOperationCompleted;
@@ -321,6 +323,9 @@ namespace DaoUploadNews.WS_FakeAuto {
         
         /// <remarks/>
         public event XuLyMailCompletedEventHandler XuLyMailCompleted;
+        
+        /// <remarks/>
+        public event UpdateMailKhoiPhucCompletedEventHandler UpdateMailKhoiPhucCompleted;
         
         /// <remarks/>
         public event XuLyMailLoiCompletedEventHandler XuLyMailLoiCompleted;
@@ -1740,6 +1745,40 @@ namespace DaoUploadNews.WS_FakeAuto {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UpdateMailKhoiPhuc", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void UpdateMailKhoiPhuc(string mail, string pass, string mailkhoiphuc, int idtaikhoan) {
+            this.Invoke("UpdateMailKhoiPhuc", new object[] {
+                        mail,
+                        pass,
+                        mailkhoiphuc,
+                        idtaikhoan});
+        }
+        
+        /// <remarks/>
+        public void UpdateMailKhoiPhucAsync(string mail, string pass, string mailkhoiphuc, int idtaikhoan) {
+            this.UpdateMailKhoiPhucAsync(mail, pass, mailkhoiphuc, idtaikhoan, null);
+        }
+        
+        /// <remarks/>
+        public void UpdateMailKhoiPhucAsync(string mail, string pass, string mailkhoiphuc, int idtaikhoan, object userState) {
+            if ((this.UpdateMailKhoiPhucOperationCompleted == null)) {
+                this.UpdateMailKhoiPhucOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateMailKhoiPhucOperationCompleted);
+            }
+            this.InvokeAsync("UpdateMailKhoiPhuc", new object[] {
+                        mail,
+                        pass,
+                        mailkhoiphuc,
+                        idtaikhoan}, this.UpdateMailKhoiPhucOperationCompleted, userState);
+        }
+        
+        private void OnUpdateMailKhoiPhucOperationCompleted(object arg) {
+            if ((this.UpdateMailKhoiPhucCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UpdateMailKhoiPhucCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/XuLyMailLoi", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public void XuLyMailLoi(string mail, string pass, string mailkhoiphuc, int idtaikhoan) {
             this.Invoke("XuLyMailLoi", new object[] {
@@ -3089,6 +3128,10 @@ namespace DaoUploadNews.WS_FakeAuto {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void XuLyMailCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void UpdateMailKhoiPhucCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]

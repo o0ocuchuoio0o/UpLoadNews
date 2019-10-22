@@ -17,6 +17,8 @@ using System.IO;
 using System.Net;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace UpLoadNews
 {
@@ -300,10 +302,18 @@ namespace UpLoadNews
            
 
         }
-
+       
+        public DataTable DerializeDataTable(string json)
+        {
+            DataTable dt = (DataTable)JsonConvert.DeserializeObject("[" + json + "]", (typeof(DataTable)));
+            return dt;
+        }
         private void button1_Click_2(object sender, EventArgs e)
         {
-            getViewChannel("https://cobby.jp/choice/page/19/");
+            string text = File.ReadAllText(@"C:\ChangZhi\LDPlayer\vms\config\leidian1.config");
+            DataTable dt = new DataTable();
+            dt = DerializeDataTable(text);
+
         }
         private bool hamkiemtratontaifile(string path, string name)
         {

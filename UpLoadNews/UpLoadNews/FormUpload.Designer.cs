@@ -134,6 +134,7 @@
             this.cmbfonthardsub = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.checksmallvids = new System.Windows.Forms.CheckBox();
             this.txtfloderlistpicture = new System.Windows.Forms.TextBox();
             this.btnfloderlistpicbg = new System.Windows.Forms.Button();
             this.txtfloderlistbg = new System.Windows.Forms.TextBox();
@@ -227,6 +228,8 @@
             this.btnchangepassall = new System.Windows.Forms.Button();
             this.dataGridViewListKenh = new System.Windows.Forms.DataGridView();
             this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.btnrunsub = new System.Windows.Forms.Button();
+            this.btnreupfolder = new System.Windows.Forms.Button();
             this.btngetlist = new System.Windows.Forms.Button();
             this.btnrefeshview = new System.Windows.Forms.Button();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
@@ -269,13 +272,23 @@
             this.txtpathtor = new System.Windows.Forms.TextBox();
             this.label35 = new System.Windows.Forms.Label();
             this.tabPage14 = new System.Windows.Forms.TabPage();
+            this.btntaoemulator = new System.Windows.Forms.Button();
+            this.btnpathLDplay = new System.Windows.Forms.Button();
+            this.txtpathldplayer = new System.Windows.Forms.TextBox();
+            this.panelmobile = new System.Windows.Forms.Panel();
+            this.btnrunemulator = new System.Windows.Forms.Button();
+            this.btnloginmobile = new System.Windows.Forms.Button();
+            this.dataGridViewListReupMobi = new System.Windows.Forms.DataGridView();
             this.bgwlayvoice = new System.ComponentModel.BackgroundWorker();
             this.bgwrendermulti = new System.ComponentModel.BackgroundWorker();
             this.timerrendermulti = new System.Windows.Forms.Timer(this.components);
             this.bgwreup = new System.ComponentModel.BackgroundWorker();
             this.bgwchayview = new System.ComponentModel.BackgroundWorker();
             this.timerchayview = new System.Windows.Forms.Timer(this.components);
-            this.checksmallvids = new System.Windows.Forms.CheckBox();
+            this.bgwreupfolder = new System.ComponentModel.BackgroundWorker();
+            this.bgwsub = new System.ComponentModel.BackgroundWorker();
+            this.btnrandomconfig = new System.Windows.Forms.Button();
+            this.btnclose = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             this.tabControl3.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -324,6 +337,8 @@
             this.tabPage13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txttimeview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtnumberthread)).BeginInit();
+            this.tabPage14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListReupMobi)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox3
@@ -1495,6 +1510,16 @@
             this.groupBox14.TabIndex = 2;
             this.groupBox14.TabStop = false;
             this.groupBox14.Text = "MC resize bachgroud";
+            // 
+            // checksmallvids
+            // 
+            this.checksmallvids.AutoSize = true;
+            this.checksmallvids.Location = new System.Drawing.Point(491, 64);
+            this.checksmallvids.Name = "checksmallvids";
+            this.checksmallvids.Size = new System.Drawing.Size(57, 17);
+            this.checksmallvids.TabIndex = 320;
+            this.checksmallvids.Text = "MC bg";
+            this.checksmallvids.UseVisualStyleBackColor = true;
             // 
             // txtfloderlistpicture
             // 
@@ -2703,6 +2728,8 @@
             // 
             // tabPage11
             // 
+            this.tabPage11.Controls.Add(this.btnrunsub);
+            this.tabPage11.Controls.Add(this.btnreupfolder);
             this.tabPage11.Controls.Add(this.btngetlist);
             this.tabPage11.Controls.Add(this.btnrefeshview);
             this.tabPage11.Controls.Add(this.groupBox15);
@@ -2715,11 +2742,35 @@
             this.tabPage11.Text = "Mail Reup";
             this.tabPage11.UseVisualStyleBackColor = true;
             // 
+            // btnrunsub
+            // 
+            this.btnrunsub.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnrunsub.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnrunsub.Location = new System.Drawing.Point(548, 404);
+            this.btnrunsub.Name = "btnrunsub";
+            this.btnrunsub.Size = new System.Drawing.Size(96, 33);
+            this.btnrunsub.TabIndex = 341;
+            this.btnrunsub.Text = "RUN SUB";
+            this.btnrunsub.UseVisualStyleBackColor = true;
+            this.btnrunsub.Click += new System.EventHandler(this.btnrunsub_Click);
+            // 
+            // btnreupfolder
+            // 
+            this.btnreupfolder.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnreupfolder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnreupfolder.Location = new System.Drawing.Point(353, 407);
+            this.btnreupfolder.Name = "btnreupfolder";
+            this.btnreupfolder.Size = new System.Drawing.Size(96, 33);
+            this.btnreupfolder.TabIndex = 340;
+            this.btnreupfolder.Text = "REUP FOLDER";
+            this.btnreupfolder.UseVisualStyleBackColor = true;
+            this.btnreupfolder.Click += new System.EventHandler(this.btnreupfolder_Click);
+            // 
             // btngetlist
             // 
             this.btngetlist.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btngetlist.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btngetlist.Location = new System.Drawing.Point(318, 407);
+            this.btngetlist.Location = new System.Drawing.Point(233, 407);
             this.btngetlist.Name = "btngetlist";
             this.btngetlist.Size = new System.Drawing.Size(96, 33);
             this.btngetlist.TabIndex = 339;
@@ -2998,9 +3049,9 @@
             // 
             this.dataGridViewListReup.AllowUserToAddRows = false;
             this.dataGridViewListReup.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewListReup.Location = new System.Drawing.Point(318, 6);
+            this.dataGridViewListReup.Location = new System.Drawing.Point(244, 4);
             this.dataGridViewListReup.Name = "dataGridViewListReup";
-            this.dataGridViewListReup.Size = new System.Drawing.Size(467, 397);
+            this.dataGridViewListReup.Size = new System.Drawing.Size(541, 397);
             this.dataGridViewListReup.TabIndex = 1;
             this.dataGridViewListReup.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewListReup_CellContentClick);
             this.dataGridViewListReup.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewListReup_CellDoubleClick);
@@ -3138,6 +3189,15 @@
             // 
             // tabPage14
             // 
+            this.tabPage14.Controls.Add(this.btnclose);
+            this.tabPage14.Controls.Add(this.btnrandomconfig);
+            this.tabPage14.Controls.Add(this.btntaoemulator);
+            this.tabPage14.Controls.Add(this.btnpathLDplay);
+            this.tabPage14.Controls.Add(this.txtpathldplayer);
+            this.tabPage14.Controls.Add(this.panelmobile);
+            this.tabPage14.Controls.Add(this.btnrunemulator);
+            this.tabPage14.Controls.Add(this.btnloginmobile);
+            this.tabPage14.Controls.Add(this.dataGridViewListReupMobi);
             this.tabPage14.Location = new System.Drawing.Point(4, 22);
             this.tabPage14.Name = "tabPage14";
             this.tabPage14.Padding = new System.Windows.Forms.Padding(3);
@@ -3145,6 +3205,76 @@
             this.tabPage14.TabIndex = 8;
             this.tabPage14.Text = "Tương tác mobile";
             this.tabPage14.UseVisualStyleBackColor = true;
+            // 
+            // btntaoemulator
+            // 
+            this.btntaoemulator.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btntaoemulator.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btntaoemulator.Location = new System.Drawing.Point(345, 47);
+            this.btntaoemulator.Name = "btntaoemulator";
+            this.btntaoemulator.Size = new System.Drawing.Size(106, 41);
+            this.btntaoemulator.TabIndex = 342;
+            this.btntaoemulator.Text = "Create or Open emulator";
+            this.btntaoemulator.UseVisualStyleBackColor = true;
+            this.btntaoemulator.Click += new System.EventHandler(this.buttontaoemulator_Click);
+            // 
+            // btnpathLDplay
+            // 
+            this.btnpathLDplay.Location = new System.Drawing.Point(10, 14);
+            this.btnpathLDplay.Name = "btnpathLDplay";
+            this.btnpathLDplay.Size = new System.Drawing.Size(95, 23);
+            this.btnpathLDplay.TabIndex = 340;
+            this.btnpathLDplay.Text = "&Path LDplayer";
+            this.btnpathLDplay.UseVisualStyleBackColor = true;
+            this.btnpathLDplay.Click += new System.EventHandler(this.btnpathLDplay_Click);
+            // 
+            // txtpathldplayer
+            // 
+            this.txtpathldplayer.BackColor = System.Drawing.Color.Yellow;
+            this.txtpathldplayer.Enabled = false;
+            this.txtpathldplayer.Location = new System.Drawing.Point(111, 14);
+            this.txtpathldplayer.Name = "txtpathldplayer";
+            this.txtpathldplayer.Size = new System.Drawing.Size(223, 20);
+            this.txtpathldplayer.TabIndex = 341;
+            // 
+            // panelmobile
+            // 
+            this.panelmobile.Location = new System.Drawing.Point(457, 14);
+            this.panelmobile.Name = "panelmobile";
+            this.panelmobile.Size = new System.Drawing.Size(335, 480);
+            this.panelmobile.TabIndex = 339;
+            // 
+            // btnrunemulator
+            // 
+            this.btnrunemulator.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnrunemulator.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnrunemulator.Location = new System.Drawing.Point(8, 465);
+            this.btnrunemulator.Name = "btnrunemulator";
+            this.btnrunemulator.Size = new System.Drawing.Size(94, 29);
+            this.btnrunemulator.TabIndex = 338;
+            this.btnrunemulator.Text = "RUN mobile";
+            this.btnrunemulator.UseVisualStyleBackColor = true;
+            // 
+            // btnloginmobile
+            // 
+            this.btnloginmobile.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnloginmobile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnloginmobile.Location = new System.Drawing.Point(345, 163);
+            this.btnloginmobile.Name = "btnloginmobile";
+            this.btnloginmobile.Size = new System.Drawing.Size(106, 41);
+            this.btnloginmobile.TabIndex = 337;
+            this.btnloginmobile.Text = "Login ";
+            this.btnloginmobile.UseVisualStyleBackColor = true;
+            this.btnloginmobile.Click += new System.EventHandler(this.btnloginmobile_Click);
+            // 
+            // dataGridViewListReupMobi
+            // 
+            this.dataGridViewListReupMobi.AllowUserToAddRows = false;
+            this.dataGridViewListReupMobi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewListReupMobi.Location = new System.Drawing.Point(10, 43);
+            this.dataGridViewListReupMobi.Name = "dataGridViewListReupMobi";
+            this.dataGridViewListReupMobi.Size = new System.Drawing.Size(329, 397);
+            this.dataGridViewListReupMobi.TabIndex = 2;
             // 
             // bgwlayvoice
             // 
@@ -3174,15 +3304,39 @@
             // 
             this.timerchayview.Tick += new System.EventHandler(this.timerchayview_Tick);
             // 
-            // checksmallvids
+            // bgwreupfolder
             // 
-            this.checksmallvids.AutoSize = true;
-            this.checksmallvids.Location = new System.Drawing.Point(491, 64);
-            this.checksmallvids.Name = "checksmallvids";
-            this.checksmallvids.Size = new System.Drawing.Size(57, 17);
-            this.checksmallvids.TabIndex = 320;
-            this.checksmallvids.Text = "MC bg";
-            this.checksmallvids.UseVisualStyleBackColor = true;
+            this.bgwreupfolder.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwreupfolder_DoWork);
+            this.bgwreupfolder.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwreupfolder_RunWorkerCompleted);
+            // 
+            // bgwsub
+            // 
+            this.bgwsub.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwsub_DoWork);
+            this.bgwsub.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwsub_RunWorkerCompleted);
+            // 
+            // btnrandomconfig
+            // 
+            this.btnrandomconfig.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnrandomconfig.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnrandomconfig.Location = new System.Drawing.Point(345, 106);
+            this.btnrandomconfig.Name = "btnrandomconfig";
+            this.btnrandomconfig.Size = new System.Drawing.Size(106, 41);
+            this.btnrandomconfig.TabIndex = 343;
+            this.btnrandomconfig.Text = "Random Config";
+            this.btnrandomconfig.UseVisualStyleBackColor = true;
+            this.btnrandomconfig.Click += new System.EventHandler(this.btnrandomconfig_Click);
+            // 
+            // btnclose
+            // 
+            this.btnclose.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnclose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnclose.Location = new System.Drawing.Point(345, 399);
+            this.btnclose.Name = "btnclose";
+            this.btnclose.Size = new System.Drawing.Size(106, 41);
+            this.btnclose.TabIndex = 344;
+            this.btnclose.Text = "Close";
+            this.btnclose.UseVisualStyleBackColor = true;
+            this.btnclose.Click += new System.EventHandler(this.btnclose_Click);
             // 
             // FormUpload
             // 
@@ -3273,6 +3427,9 @@
             this.tabPage13.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txttimeview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtnumberthread)).EndInit();
+            this.tabPage14.ResumeLayout(false);
+            this.tabPage14.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListReupMobi)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3527,5 +3684,18 @@
         private System.Windows.Forms.Button btngetlist;
         private System.Windows.Forms.TabPage tabPage14;
         private System.Windows.Forms.CheckBox checksmallvids;
+        private System.Windows.Forms.Button btnreupfolder;
+        private System.ComponentModel.BackgroundWorker bgwreupfolder;
+        private System.Windows.Forms.DataGridView dataGridViewListReupMobi;
+        private System.Windows.Forms.Button btnloginmobile;
+        private System.Windows.Forms.Button btnrunemulator;
+        private System.Windows.Forms.Button btnrunsub;
+        private System.ComponentModel.BackgroundWorker bgwsub;
+        private System.Windows.Forms.Panel panelmobile;
+        private System.Windows.Forms.Button btnpathLDplay;
+        private System.Windows.Forms.TextBox txtpathldplayer;
+        private System.Windows.Forms.Button btntaoemulator;
+        private System.Windows.Forms.Button btnrandomconfig;
+        private System.Windows.Forms.Button btnclose;
     }
 }

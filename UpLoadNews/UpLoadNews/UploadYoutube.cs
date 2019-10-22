@@ -34,7 +34,7 @@ namespace UpLoadNews
 
         #region // các biến xác nhận mail khôi phục lúc login
         [FindsBy(How = How.XPath, Using = "/html/body/div[1]/div[1]/div[2]/div[2]/div/div/div[2]/div/div/div/form/span/section/div/div/div/ul/li[1]/div/div[2]")]
-        public IWebElement m_xacnhanmailkhoiphuc;
+        public IWebElement m_xacnhanmailkhoiphuc;       
         [FindsBy(How = How.Id, Using = "knowledge-preregistered-email-response")]
         public IWebElement m_txtxacnhanmail;
         [FindsBy(How = How.XPath, Using = "/html/body/div[1]/div[1]/div[2]/div[2]/div/div/div[2]/div/div[2]/div/div[1]/div/span/span")]

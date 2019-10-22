@@ -37,6 +37,8 @@ using OpenQA.Selenium.Remote;
 using System.Web;
 using OpenQA.Selenium.Firefox;
 using HtmlAgilityPack;
+using Newtonsoft.Json;
+
 namespace UpLoadNews
 {
     public partial class FormUpload : Form
@@ -200,6 +202,19 @@ namespace UpLoadNews
                 }
             }
             catch { }
+            try
+            {
+                if (ConfigurationManager.AppSettings["PathLDPlayer"].ToString() == "")
+                {
+                    txtpathtor.Text = "";
+                }
+                else
+                {
+                    txtpathtor.Text = ConfigurationManager.AppSettings["PathLDPlayer"].ToString();
+                }
+            }
+            catch { }
+            
             try
             {
                 if (ConfigurationManager.AppSettings["Listpicture"].ToString() == "")
@@ -2322,7 +2337,7 @@ namespace UpLoadNews
                                     }
                                     else
                                     {
-                                         addmc = string.Format(@" -y -i {0} -i {1} -filter_complex ""[0:v]scale=320:260[v1];movie={2}:loop=999,setpts=N/(FRAME_RATE*TB),scale=854:480,setdar=16/9[v2];[v2][v1]overlay=shortest=1:x=5:y=5[v3];[1:v]scale=854:480[v4];[v3][v4]overlay=0:0"" -vcodec libx264 -pix_fmt yuv420p -r 25 -g 62 -b:v 1200k -shortest -acodec aac -b:a 128k -ar 44100  -preset veryfast {3}", fileFromComputer, pathpicture, filesbg[indexbg].Name, _outputvideobg);
+                                         addmc = string.Format(@" -y -i {0} -i {1} -filter_complex ""[0:v]scale=400:280[v1];movie={2}:loop=999,setpts=N/(FRAME_RATE*TB),scale=854:480,setdar=16/9[v2];[v2][v1]overlay=shortest=1:x=5:y=5[v3];[1:v]scale=854:480[v4];[v3][v4]overlay=0:0"" -vcodec libx264 -pix_fmt yuv420p -r 25 -g 62 -b:v 1200k -shortest -acodec aac -b:a 128k -ar 44100  -preset veryfast {3}", fileFromComputer, pathpicture, filesbg[indexbg].Name, _outputvideobg);
                                     }
                                   
                                     ffrunmc.RunCommand(addmc, false);
@@ -2970,14 +2985,24 @@ namespace UpLoadNews
                                 options.SetLoggingPreference("performance", LogLevel.All);
                                 options.AddAdditionalCapability(CapabilityType.EnableProfiling, true, true);
                                 PropretiesCollection.driver = new ChromeDriver(options);
-                                PropretiesCollection.driver.Navigate().GoToUrl("https://myaccount.google.com/personal-info");
-                                ManagerChannel changemailkhoiphuc = new ManagerChannel();
-                                int kqthaymail = changemailkhoiphuc.ThayMailKhoiPhuc(mail, pass, mailkhoiphuc, mailkhoiphucmoi);
-                                ChomeClose().Wait();
-                                // thay thanh cong mail moi chuyen sang thay pass
-                                if (kqthaymail == 1)
+                                try
                                 {
-                                    PropretiesCollection.driver = new ChromeDriver(options);
+                                    PropretiesCollection.driver.Navigate().GoToUrl("https://myaccount.google.com/personal-info");
+                                    ManagerChannel changemailkhoiphuc = new ManagerChannel();
+                                    int kqthaymail = changemailkhoiphuc.ThayMailKhoiPhuc(mail, pass, mailkhoiphuc, mailkhoiphucmoi);
+                                    ChomeClose().Wait();
+                                    // thay thanh cong mail moi chuyen sang thay pass
+                                    if (kqthaymail == 1)
+                                    {
+                                        daWS_FakeAuto thaydoi = new daWS_FakeAuto();
+                                        thaydoi.UpdateMailKhoiPhuc(mail, passmoi, mailkhoiphucmoi, m_IDTaiKhoan);
+                                    }
+                                    
+                                }
+                                catch
+                                {
+                                }
+                                try {
                                     PropretiesCollection.driver.Navigate().GoToUrl("https://myaccount.google.com/personal-info");
                                     ManagerChannel changepass = new ManagerChannel();
                                     int kq = changepass.ThayPassMoi(mail, pass, mailkhoiphucmoi, passmoi);
@@ -2988,14 +3013,17 @@ namespace UpLoadNews
                                         daWS_FakeAuto thaydoi = new daWS_FakeAuto();
                                         thaydoi.XuLyMail(mail, passmoi, mailkhoiphucmoi, m_IDTaiKhoan);
                                     }
-                                    
+
                                     #endregion
                                 }
-                                else
-                                {
-                                    daWS_FakeAuto thaydoi = new daWS_FakeAuto();
-                                    thaydoi.XuLyMailLoi(mail, passmoi, mailkhoiphucmoi, m_IDTaiKhoan);
+                                catch {
+
+                                    //daWS_FakeAuto thaydoi = new daWS_FakeAuto();
+                                    //thaydoi.XuLyMailLoi(mail, passmoi, mailkhoiphucmoi, m_IDTaiKhoan);
+
                                 }
+
+
                             }
                             catch {
                                 ChomeClose().Wait();
@@ -3017,11 +3045,15 @@ namespace UpLoadNews
             CheckBox chk = new CheckBox();
             CheckboxColumn.Width = 50;
             dataGridViewListReup.Columns.Add(CheckboxColumn);
-
+            DataGridViewCheckBoxColumn CheckboxColumn1 = new DataGridViewCheckBoxColumn();
+            CheckBox chk1 = new CheckBox();
+            CheckboxColumn1.Width = 50;
+            dataGridViewListReupMobi.Columns.Add(CheckboxColumn1);
             daWS_FakeAuto ds = new daWS_FakeAuto();
             DataTable dt = new DataTable();
             dt = ds.DanhSachMailDaXuLy(m_IDTaiKhoan);
             dataGridViewListReup.DataSource = dt;
+            dataGridViewListReupMobi.DataSource = dt;
         }
      
 
@@ -3178,22 +3210,24 @@ namespace UpLoadNews
             try
             {
                   
-                    string task = dataGridViewListReup.Rows[e.RowIndex].Cells[18].Value.ToString();
+                    string task = dataGridViewListReup.Rows[e.RowIndex].Cells[19].Value.ToString();
                     if (task == "Delete")
                     {
                         if (MessageBox.Show("Bạn có chắc chắm muốn xóa không?", "Đang xóa...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
                             int r = e.RowIndex;
-                            int idmail=int.Parse(dataGridViewListReup.Rows[r].Cells["ID"].Value.ToString());
-                        daWS_FakeAuto xoa = new daWS_FakeAuto();
-                        xoa.XoaMail(idmail);
+                            int idmail = int.Parse(dataGridViewListReup.Rows[r].Cells["ID"].Value.ToString());
+                            daWS_FakeAuto xoa = new daWS_FakeAuto();
+                            xoa.XoaMail(idmail);
+                        }
                     }
-            }      
+                 
                
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                return;
             }
         }
         private void dataGridViewListReup_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -3928,8 +3962,600 @@ namespace UpLoadNews
             }
         }
 
+
+
+
         #endregion
 
-       
+        #region // reup floder
+        private void btnreupfolder_Click(object sender, EventArgs e)
+        {
+            if (!bgwreupfolder.IsBusy)
+            {
+                bgwreupfolder.RunWorkerAsync();
+            }
+
+        }
+
+        private void bgwreupfolder_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+        }
+
+        private void bgwreupfolder_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Cancelled)
+            {
+            }
+            else
+            {
+                lblxuly.Text = "Complete!";
+            }
+        }
+        #endregion
+
+        #region // run sub
+        private void btnrunsub_Click(object sender, EventArgs e)
+        {
+            if (!bgwsub.IsBusy)
+            {
+                bgwsub.RunWorkerAsync();
+
+            }
+        }
+        private void bgwsub_DoWork(object sender, DoWorkEventArgs e)
+        {
+            DataTable table = new DataTable();
+            table.Columns.Add("ID", typeof(int));
+            foreach (DataGridViewRow row in dataGridViewListReup.Rows)
+            {
+                int i = row.Index;
+                bool chk = false;
+                try
+                {
+                    chk = bool.Parse(dataGridViewListReup.Rows[i].Cells[0].Value.ToString());
+                }
+                catch { }
+                if (chk == true)
+                {
+                    int id = int.Parse(dataGridViewListReup.Rows[i].Cells["ID"].Value.ToString());
+                    dataGridViewListReup.Rows[i].DefaultCellStyle.BackColor = Color.Beige;
+                    table.Rows.Add(id);
+                }
+
+            }
+            if (table.Rows.Count > 0)
+            {
+
+                #region //chay sub
+                foreach (DataRow row in table.Rows)
+                {
+                    int idmail = int.Parse(row["ID"].ToString());
+                    DataTable thongtinkenh = new DataTable();
+                    daWS_FakeAuto tt = new daWS_FakeAuto();
+                    thongtinkenh = tt.ChiTietMail(idmail);
+                    DataRow rthongtin = thongtinkenh.Rows[0];
+                    string linkkenhreup = rthongtin["LinkKenhReUp"].ToString();
+                    string ngonngugoc = rthongtin["NgonNguGoc"].ToString();
+                    string ngonnguthay = rthongtin["NgonNguThay"].ToString();
+                    string mail = rthongtin["Mail"].ToString();
+                    string pass = rthongtin["Pass"].ToString();
+                    string mailkhoiphuc = rthongtin["MailKhoiPhuc"].ToString();
+                    string themtieude = rthongtin["ThemTieuDe"].ToString();
+                    string bottieude = rthongtin["BotTieuDe"].ToString();
+                    string themmota = rthongtin["ThemMoTa"].ToString();
+                    string themtag = rthongtin["ThemTag"].ToString();
+                    int soluongup = int.Parse(rthongtin["SoLuongVideoUp"].ToString());
+                    try
+                    {
+                        string profile_add = "Profile";
+                        string profile_new = "Profile\\" + mail.ToString();
+                        ChromePerformanceLoggingPreferences perfLogPrefs = new ChromePerformanceLoggingPreferences();
+                        perfLogPrefs.AddTracingCategories(new string[] { "devtools.timeline" });
+                        ChromeOptions options = new ChromeOptions();
+                        if (checkcreateprofire.Checked == true)
+                        {
+                            if (!Directory.Exists(profile_add)) { Directory.CreateDirectory(profile_add); }
+                            options.AddArgument("user-data-dir=" + Application.StartupPath + "\\" + profile_new);
+                        }
+                        options.AddArguments("--disable-notifications");
+                        options.AddArguments("--incognito");
+                        options.PerformanceLoggingPreferences = perfLogPrefs;
+                        options.SetLoggingPreference(LogType.Driver, LogLevel.All);
+                        options.SetLoggingPreference("performance", LogLevel.All);
+                        options.AddAdditionalCapability(CapabilityType.EnableProfiling, true, true);
+                        PropretiesCollection.driver = new ChromeDriver(options);
+                        PropretiesCollection.driver.Navigate().GoToUrl(txtadddesc.Text);
+                        ManagerChannel sub = new ManagerChannel();
+                        sub.SUB(mail,pass,mailkhoiphuc);
+                        Thread.Sleep(2000);
+                        ChomeClose().Wait();
+                    }
+                    catch { ChomeClose().Wait(); }
+                }
+                #endregion
+            }
+            else
+            {
+                MessageBox.Show("Hãy chọn kênh cần sub", "thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            
+         }
+        private void bgwsub_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Cancelled)
+            {
+            }
+            else
+            {
+                lblxuly.Text = "Complete!";
+            }
+        }
+
+        #endregion
+
+
+        #region // mobile
+        [DllImport("user32.dll")]
+        static extern IntPtr SetParent(IntPtr hwc, IntPtr hwp);
+        [DllImport("user32.dll")]
+        public static extern long SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
+        [DllImport("user32.dll", SetLastError = true)]
+        private static extern bool MoveWindow(IntPtr hwnd, int x, int y, int cx, int cy, bool repaint);
+        private const int GWL_STYLE = (-16);
+        private const int WS_VISIBLE = 0x10000000;
+
+        private void buttontaoemulator_Click(object sender, EventArgs e)
+        {
+            DataTable table = new DataTable();
+            table.Columns.Add("ID", typeof(int));
+            foreach (DataGridViewRow row in dataGridViewListReupMobi.Rows)
+            {
+                int i = row.Index;
+                bool chk = false;
+                try
+                {
+                    chk = bool.Parse(dataGridViewListReupMobi.Rows[i].Cells[0].Value.ToString());
+                }
+                catch { }
+                if (chk == true)
+                {
+                    int id = int.Parse(dataGridViewListReupMobi.Rows[i].Cells["ID"].Value.ToString());
+                    dataGridViewListReupMobi.Rows[i].DefaultCellStyle.BackColor = Color.Beige;
+                    table.Rows.Add(id);
+                }
+
+            }
+            if (table.Rows.Count > 0)
+            {
+
+                #region //chay tạo emulator
+                foreach (DataRow row in table.Rows)
+                {
+                    int idmail = int.Parse(row["ID"].ToString());
+                    DataTable thongtinkenh = new DataTable();
+                    daWS_FakeAuto tt = new daWS_FakeAuto();
+                    thongtinkenh = tt.ChiTietMail(idmail);
+                    DataRow rthongtin = thongtinkenh.Rows[0];
+                    string linkkenhreup = rthongtin["LinkKenhReUp"].ToString();
+                    string ngonngugoc = rthongtin["NgonNguGoc"].ToString();
+                    string ngonnguthay = rthongtin["NgonNguThay"].ToString();
+                    string mail = rthongtin["Mail"].ToString();
+                    string pass = rthongtin["Pass"].ToString();
+                    string mailkhoiphuc = rthongtin["MailKhoiPhuc"].ToString();
+                    string themtieude = rthongtin["ThemTieuDe"].ToString();
+                    string bottieude = rthongtin["BotTieuDe"].ToString();
+                    string themmota = rthongtin["ThemMoTa"].ToString();
+                    string themtag = rthongtin["ThemTag"].ToString();
+                    int soluongup = int.Parse(rthongtin["SoLuongVideoUp"].ToString());
+                    try
+                    {
+                        Process p = new Process();
+                        p.StartInfo.FileName =txtpathldplayer.Text;
+                        p.StartInfo.Arguments = "index ="+ idmail.ToString();
+                        p.Start();
+                        Thread.Sleep(2000);
+                        p.WaitForInputIdle();
+                        SetParent(p.MainWindowHandle, this.panelmobile.Handle);
+                        SetWindowLong(p.MainWindowHandle, GWL_STYLE, WS_VISIBLE);
+                        MoveWindow(p.MainWindowHandle, 0, -35, 367, 654, true);
+                        Thread.Sleep(2000);
+
+
+                    }
+                    catch { }
+                }
+                #endregion
+            }
+            else
+            {
+                MessageBox.Show("Hãy chọn kênh cần tạo emulator", "thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
+        #region // config mobile
+        public DataTable DerializeDataTable(string json)
+        {
+            DataTable dt = (DataTable)JsonConvert.DeserializeObject("[" + json + "]", (typeof(DataTable)));
+            return dt;
+        }
+
+       static public void CopyFolder(string sourceFolder, string destFolder)
+
+        {
+            if (!Directory.Exists(destFolder))
+
+                Directory.CreateDirectory(destFolder);
+
+            string[] files = Directory.GetFiles(sourceFolder);
+
+            foreach (string file in files)
+
+            {
+
+                string name = Path.GetFileName(file);
+
+                string dest = Path.Combine(destFolder, name);
+
+                File.Copy(file, dest);
+
+            }
+
+            string[] folders = Directory.GetDirectories(sourceFolder);
+
+            foreach (string folder in folders)
+
+            {
+
+                string name = Path.GetFileName(folder);
+
+                string dest = Path.Combine(destFolder, name);
+
+                CopyFolder(folder, dest);
+
+            }
+
+        }
+
+    
+        private void btnrandomconfig_Click(object sender, EventArgs e)
+        {
+            DataTable table = new DataTable();
+            table.Columns.Add("ID", typeof(int));
+            foreach (DataGridViewRow row in dataGridViewListReupMobi.Rows)
+            {
+                int i = row.Index;
+                bool chk = false;
+                try
+                {
+                    chk = bool.Parse(dataGridViewListReupMobi.Rows[i].Cells[0].Value.ToString());
+                }
+                catch { }
+                if (chk == true)
+                {
+                    int id = int.Parse(dataGridViewListReupMobi.Rows[i].Cells["ID"].Value.ToString());
+                    dataGridViewListReupMobi.Rows[i].DefaultCellStyle.BackColor = Color.Beige;
+                    table.Rows.Add(id);
+                }
+
+            }
+            if (table.Rows.Count > 0)
+            {
+
+                #region //copy template
+                foreach (DataRow row in table.Rows)
+                {
+                    int idmail = int.Parse(row["ID"].ToString());
+                    DataTable thongtinkenh = new DataTable();
+                    daWS_FakeAuto tt = new daWS_FakeAuto();
+                    thongtinkenh = tt.ChiTietMail(idmail);
+                    DataRow rthongtin = thongtinkenh.Rows[0];
+                    string linkkenhreup = rthongtin["LinkKenhReUp"].ToString();
+                    string ngonngugoc = rthongtin["NgonNguGoc"].ToString();
+                    string ngonnguthay = rthongtin["NgonNguThay"].ToString();
+                    string mail = rthongtin["Mail"].ToString();
+                    string pass = rthongtin["Pass"].ToString();
+                    string mailkhoiphuc = rthongtin["MailKhoiPhuc"].ToString();
+                    string themtieude = rthongtin["ThemTieuDe"].ToString();
+                    string bottieude = rthongtin["BotTieuDe"].ToString();
+                    string themmota = rthongtin["ThemMoTa"].ToString();
+                    string themtag = rthongtin["ThemTag"].ToString();
+                    int soluongup = int.Parse(rthongtin["SoLuongVideoUp"].ToString());
+                    try
+                    {
+                        #region // trước khi đọc file tắt hết ứng dụng 
+                        try
+                        {
+                            foreach (Process proc in Process.GetProcessesByName("dnplayer"))
+                            {
+                                proc.Kill();
+                            }
+                        }
+                        catch { }
+                        #endregion
+                        
+                        #region đọc các file config random của hệ thống
+                        string path = txtpathldplayer.Text.Replace("dnplayer.exe", "");
+                        string pathconfig = path + @"vms\config\leidian" + idmail.ToString() + ".config";
+                        //string textconfig = File.ReadAllText(pathconfig);
+                        //DataTable dt = new DataTable();
+                        //dt = DerializeDataTable(textconfig);
+                        //DataRow r = dt.Rows[0];
+                        //string _phoneIMEI = r["propertySettings.phoneIMEI"].ToString();
+                        //string _phoneIMSI = r["propertySettings.phoneIMSI"].ToString();
+                        //string _phoneSimSerial = r["propertySettings.phoneSimSerial"].ToString();
+                        //string _phoneAndroidId = r["propertySettings.phoneAndroidId"].ToString();
+                        //string _phoneModel = r["propertySettings.phoneModel"].ToString();
+                        //string _phoneManufacturer = r["propertySettings.phoneManufacturer"].ToString();
+                        //string _macAddress = r["propertySettings.macAddress"].ToString();
+                        //string _playerName = mail;
+                        #endregion
+                        #region // đọc dữ liệu template config
+                      
+                        string pathtemplate = Application.StartupPath + @"\TemplateEmulator\leidian0.config";
+                        string texttemplate = File.ReadAllText(pathtemplate);
+
+                        //string _phoneIMEIConfig = curl.cull(texttemplate,"\"propertySettings.phoneIMEI\": \"","\",");
+                        //string _phoneIMSIConfig = curl.cull(texttemplate, "\"propertySettings.phoneIMSI\": \"", "\",");
+                        //string _phoneSimSerialConfig = curl.cull(texttemplate, "\"propertySettings.phoneSimSerial\": \"", "\",");
+                        //string _phoneAndroidIdConfig = curl.cull(texttemplate, "\"propertySettings.phoneAndroidId\": \"", "\",");
+                        //string _phoneModelConfig = curl.cull(texttemplate, "\"propertySettings.phoneModel\": \"", "\",");
+                        //string _phoneManufacturerConfig = curl.cull(texttemplate, "\"propertySettings.phoneManufacturer\": \"", "\",");
+                        //string _macAddressConfig = curl.cull(texttemplate, "\"propertySettings.macAddress\": \"", "\",");
+                        //string _playerNameConfig = curl.cull(texttemplate, "\"statusSettings.playerName\": \"", "\",");
+
+                        //texttemplate.Replace(_phoneIMEIConfig, _phoneIMEI).
+                        //    Replace(_phoneIMEIConfig, _phoneIMEI).
+                        //    Replace(_phoneIMSIConfig, _phoneIMSI).
+                        //    Replace(_phoneSimSerialConfig, _phoneSimSerial).
+                        //    Replace(_phoneAndroidIdConfig, _phoneAndroidId).
+                        //    Replace(_phoneModelConfig, _phoneModel).
+                        //    Replace(_phoneManufacturerConfig, _phoneManufacturer).
+                        //    Replace(_macAddressConfig, _macAddress).
+                        //    Replace(_playerNameConfig, mail);
+
+                        //File.Delete(pathconfig);
+                        /*
+                        Thread.Sleep(5000);                      
+                        FileStream fs = new FileStream(pathconfig, FileMode.Create);//Tạo file mới tên là test.txt            
+                        StreamWriter sWriter = new StreamWriter(fs, Encoding.UTF8);//fs là 1 FileStream                        
+                        sWriter.WriteLine(texttemplate);                      
+                        sWriter.Flush();
+                        fs.Close();
+                        */
+                        #endregion
+                        File.Copy(pathtemplate, pathconfig,true);
+
+                        #region // thuc hien copy cac file may ao
+                        string path_vm = path + @"vms\leidian" + idmail.ToString();
+                        hamxoafile(path_vm);
+                        string path_vmconfig = Application.StartupPath + @"\TemplateEmulator\leidian0";
+                        CopyFolder(@path_vmconfig, path_vm);
+                        #endregion                     
+                        if (MessageBox.Show("Done! Can you next login?", "thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                         == DialogResult.Yes)
+                        {
+                            Process p = new Process();
+                            p.StartInfo.FileName = txtpathldplayer.Text;
+                            p.StartInfo.Arguments = "index =" + idmail.ToString();
+                            p.Start();
+                            Thread.Sleep(2000);
+                            p.WaitForInputIdle();
+                            SetParent(p.MainWindowHandle, this.panelmobile.Handle);
+                            SetWindowLong(p.MainWindowHandle, GWL_STYLE, WS_VISIBLE);
+                            MoveWindow(p.MainWindowHandle, 0, -35, 367, 654, true);
+                            Thread.Sleep(2000);
+                        }
+
+                    }
+                    catch(Exception ex) { MessageBox.Show(ex.ToString()); }
+                }
+                #endregion
+            }
+            else
+            {
+                MessageBox.Show("Hãy chọn kênh cần tạo emulator", "thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
+        #endregion
+
+        private void btnloginmobile_Click(object sender, EventArgs e)
+        {
+            DataTable table = new DataTable();
+            table.Columns.Add("ID", typeof(int));
+            foreach (DataGridViewRow row in dataGridViewListReupMobi.Rows)
+            {
+                int i = row.Index;
+                bool chk = false;
+                try
+                {
+                    chk = bool.Parse(dataGridViewListReupMobi.Rows[i].Cells[0].Value.ToString());
+                }
+                catch { }
+                if (chk == true)
+                {
+                    int id = int.Parse(dataGridViewListReupMobi.Rows[i].Cells["ID"].Value.ToString());
+                    dataGridViewListReupMobi.Rows[i].DefaultCellStyle.BackColor = Color.Beige;
+                    table.Rows.Add(id);
+                }
+
+            }
+            if (table.Rows.Count > 0)
+            {
+
+                #region //chay login
+                foreach (DataRow row in table.Rows)
+                {
+                    int idmail = int.Parse(row["ID"].ToString());
+                    DataTable thongtinkenh = new DataTable();
+                    daWS_FakeAuto tt = new daWS_FakeAuto();
+                    thongtinkenh = tt.ChiTietMail(idmail);
+                    DataRow rthongtin = thongtinkenh.Rows[0];
+                    string linkkenhreup = rthongtin["LinkKenhReUp"].ToString();
+                    string ngonngugoc = rthongtin["NgonNguGoc"].ToString();
+                    string ngonnguthay = rthongtin["NgonNguThay"].ToString();
+                    string mail = rthongtin["Mail"].ToString();
+                    string pass = rthongtin["Pass"].ToString();
+                    string mailkhoiphuc = rthongtin["MailKhoiPhuc"].ToString();
+                    string themtieude = rthongtin["ThemTieuDe"].ToString();
+                    string bottieude = rthongtin["BotTieuDe"].ToString();
+                    string themmota = rthongtin["ThemMoTa"].ToString();
+                    string themtag = rthongtin["ThemTag"].ToString();
+                    int soluongup = int.Parse(rthongtin["SoLuongVideoUp"].ToString());
+                    try
+                    {
+                        Task t = new Task(() => {
+                        isStop = false;                                 
+                        Login(mail, pass, mailkhoiphuc);
+                          
+
+                        }
+                        );
+                        t.Start();
+
+
+                    }
+                    catch {  }
+                }
+                #endregion
+            }
+            else
+            {
+                MessageBox.Show("Hãy chọn kênh cần login mobile", "thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+        bool isStop = false;
+        void Delay(int delay)
+        {
+            while (delay > 0)
+            {
+                Thread.Sleep(TimeSpan.FromSeconds(1));
+                delay--;
+                if (isStop)
+                    break;
+            }
+        }
+        void Login(string taikhoan, string matkhau, string mailkhoiphuc)
+        {
+            List<string> devices = new List<string>();
+            devices = KAutoHelper.ADBHelper.GetDevices();
+            foreach (var deviceID in devices)
+            {
+                Task t = new Task(() => {
+                    
+                        if (isStop)
+                            return;
+                      
+                        KAutoHelper.ADBHelper.TapByPercent(deviceID, 69.8, 19.4);
+                        Delay(15);
+                        if (isStop)
+                            return;
+                        KAutoHelper.ADBHelper.TapByPercent(deviceID, 91.2, 7.0);
+                        Delay(15);
+                        if (isStop)
+                            return;
+                        KAutoHelper.ADBHelper.TapByPercent(deviceID, 56.3, 59.4);
+                        Delay(15);
+                        if (isStop)
+                            return;
+                        KAutoHelper.ADBHelper.TapByPercent(deviceID, 81.2, 48.1);
+                        Delay(20);
+                        if (isStop)
+                            return;
+                        KAutoHelper.ADBHelper.TapByPercent(deviceID, 20.8, 44.0);
+                        Delay(4);
+                        if (isStop)
+                            return;
+                        KAutoHelper.ADBHelper.InputText(deviceID, taikhoan);
+                      
+                        if (isStop)
+                            return;
+                        // ennter
+                        KAutoHelper.ADBHelper.Key(deviceID, KAutoHelper.ADBKeyEvent.KEYCODE_ENTER);
+                        Delay(8);
+                        if (isStop)
+                            return;
+                        KAutoHelper.ADBHelper.TapByPercent(deviceID, 19.4, 41.3);
+                        Delay(3);
+                        if (isStop)
+                            return;
+                        KAutoHelper.ADBHelper.InputText(deviceID, matkhau);
+                        Delay(2);
+                        if (isStop)
+                            return;
+                        // ennter
+                        KAutoHelper.ADBHelper.Key(deviceID, KAutoHelper.ADBKeyEvent.KEYCODE_ENTER);
+                        Delay(8);
+                        // thực hiện kéo chuột
+                        if (isStop)
+                            return;
+                        KAutoHelper.ADBHelper.Swipe(deviceID, 350, 1200, 350, 150);
+                        Delay(2);
+                        if (isStop)
+                            return;
+                        KAutoHelper.ADBHelper.TapByPercent(deviceID, 83.2, 84.7);
+                        Delay(2);
+                        if (isStop)
+                            return;
+                        KAutoHelper.ADBHelper.TapByPercent(deviceID, 87.2, 95.5);
+                        Delay(2);
+                        if (isStop)
+                            return;
+                        KAutoHelper.ADBHelper.TapByPercent(deviceID, 81.2, 95.7);
+                        Delay(5);
+                      
+                    
+                });
+                t.Start();
+            }
+        }
+        private void btnpathLDplay_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.CheckFileExists = false;
+            dlg.CheckPathExists = false;
+            dlg.Multiselect = false;
+            dlg.Filter = "Files(*.exe)|*.exe";
+            dlg.Multiselect = true;
+            dlg.SupportMultiDottedExtensions = true;
+            dlg.Title = "Select proshow";
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                //Settings.Default.LastUsedFolder = Path.GetDirectoryName(dlg.FileNames[0]);
+                txtpathldplayer.Text = dlg.FileName;
+                ExeConfigurationFileMap exmap = new ExeConfigurationFileMap();
+                exmap.ExeConfigFilename = @"UpLoadNews.exe.config";
+                //Configuration cf = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                Configuration cf = ConfigurationManager.OpenMappedExeConfiguration(exmap, ConfigurationUserLevel.None);
+                cf.AppSettings.Settings.Remove("PathLDPlayer");
+                cf.AppSettings.Settings.Add("PathLDPlayer", txtpathldplayer.Text);
+                cf.Save(ConfigurationSaveMode.Modified);
+                ConfigurationManager.RefreshSection("appSettings");
+            }
+        }
+
+
+        private void btnclose_Click(object sender, EventArgs e)
+        {
+            #region // tat sau khi dang nhap thanh cong
+            try
+            {
+                foreach (Process proc in Process.GetProcessesByName("dnplayer"))
+                {
+                    proc.Kill();
+                }
+            }
+            catch { }
+            #endregion
+        }
+
+        #endregion
+
+
     }
 }

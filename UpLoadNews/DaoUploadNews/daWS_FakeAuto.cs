@@ -257,11 +257,17 @@ namespace DaoUploadNews
 
 
         #region // các hàm hệ thống quản lý mail và reup
-      
+
         public void XuLyMail(string mail, string pass, string mailkhoiphuc, int idtaikhoan)
         {
-            WS_FakeAuto.WS_FakeAuto xuly = new  WS_FakeAuto.WS_FakeAuto();
+            WS_FakeAuto.WS_FakeAuto xuly = new WS_FakeAuto.WS_FakeAuto();
             xuly.XuLyMail(mail, pass, mailkhoiphuc, idtaikhoan);
+
+        }
+        public void UpdateMailKhoiPhuc(string mail, string pass, string mailkhoiphuc, int idtaikhoan)
+        {
+            WS_FakeAuto.WS_FakeAuto xuly = new WS_FakeAuto.WS_FakeAuto();
+            xuly.UpdateMailKhoiPhuc(mail, pass, mailkhoiphuc, idtaikhoan);
         }
         public void XuLyMailLoi(string mail, string pass, string mailkhoiphuc, int idtaikhoan)
         {

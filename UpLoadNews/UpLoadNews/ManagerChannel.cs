@@ -38,8 +38,9 @@ namespace UpLoadNews
         public IWebElement m_xacnhanmailkhoiphuc;
         [FindsBy(How = How.XPath, Using = "/html/body/div[1]/div[1]/div[2]/div[2]/div/div/div[2]/div/div/div/form/span/section/div/div/div/ul/li[1]/div/div[1]/svg/path[1]")]
         public IWebElement m_xacnhanmailkhoiphuc2;
-
-        
+        [FindsBy(How = How.XPath, Using = "/html/body/div[1]/div[1]/div[2]/div[2]/div/div/div[2]/div/div/div/form/span/section/div/div/div/ul/li[1]/div/div[1]/svg/path[2]")]
+        public IWebElement m_xacnhanmailkhoiphuc3;
+     
 
         [FindsBy(How = How.Id, Using = "knowledge-preregistered-email-response")]
         public IWebElement m_txtxacnhanmail;
@@ -97,6 +98,20 @@ namespace UpLoadNews
         public IWebElement xemkenh;
         #endregion
 
+        #region // sub kênh
+        [FindsBy(How = How.XPath, Using = "/html/body/ytd-app/div/ytd-page-manager/ytd-watch-flexy/div[3]/div[1]/div/div[9]/div[4]/ytd-video-secondary-info-renderer/div/div[2]/div/ytd-button-renderer/a/paper-button/yt-formatted-string")]
+        public IWebElement m_sub;
+
+        [FindsBy(How = How.XPath, Using = "/html/body/ytd-app/div/ytd-page-manager/ytd-watch-flexy/div[3]/div[1]/div/div[9]/div[4]/ytd-video-secondary-info-renderer/div/div[2]/div/ytd-button-renderer/a/paper-button")]
+        public IWebElement m_sub2;
+
+        [FindsBy(How = How.XPath, Using = "/html/body/ytd-app/ytd-popup-container/paper-dialog/yt-confirm-dialog-renderer/div[2]/div/yt-button-renderer[2]/a/paper-button/yt-formatted-string")]
+        public IWebElement m_sub3;
+        
+
+        #endregion
+
+
         public void NextUser(string user)
         {
             txtuser.Clear();
@@ -128,7 +143,7 @@ namespace UpLoadNews
                 NextPass(pass);
             }
             catch { }
-            System.Threading.Thread.Sleep(2000);
+            System.Threading.Thread.Sleep(1000);
             #region // trường hợp bắt xác nhận mail khôi phục
             try
             {
@@ -142,7 +157,12 @@ namespace UpLoadNews
                     m_xacnhanmailkhoiphuc2.Click();
                 }
                 catch { }
-                System.Threading.Thread.Sleep(4000);
+                try
+                {
+                    m_xacnhanmailkhoiphuc3.Click();
+                }
+                catch { }
+                System.Threading.Thread.Sleep(3000);
                 try
                 {
                     m_txtxacnhanmail.SendKeys(mailkhoiphuccu);
@@ -163,7 +183,7 @@ namespace UpLoadNews
             }
             catch { }
             #endregion
-            System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(3000);
 
             #region // thay mail khôi phục
             try
@@ -240,7 +260,7 @@ namespace UpLoadNews
                 NextPass(pass);
             }
             catch { }
-            System.Threading.Thread.Sleep(2000);
+            System.Threading.Thread.Sleep(1000);
             #region // trường hợp bắt xác nhận mail khôi phục
             try
             {
@@ -252,6 +272,11 @@ namespace UpLoadNews
                 try
                 {
                     m_xacnhanmailkhoiphuc2.Click();
+                }
+                catch { }
+                try
+                {
+                    m_xacnhanmailkhoiphuc3.Click();
                 }
                 catch { }
                 System.Threading.Thread.Sleep(4000);
@@ -275,7 +300,7 @@ namespace UpLoadNews
             }
             catch { }
             #endregion
-            System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(3000);
 
             try
             {
@@ -506,6 +531,16 @@ namespace UpLoadNews
                     m_xacnhanmailkhoiphuc.Click();
                 }
                 catch { }
+                try
+                {
+                    m_xacnhanmailkhoiphuc2.Click();
+                }
+                catch { }
+                try
+                {
+                    m_xacnhanmailkhoiphuc3.Click();
+                }
+                catch { }
                 System.Threading.Thread.Sleep(4000);
                 try
                 {
@@ -536,9 +571,86 @@ namespace UpLoadNews
         }
 
 
-
         #endregion
 
 
+        #region // chay sub
+        public void SUB(string user, string pass, string mailkhoiphuc)
+        {
+          
+            try
+            {
+                m_sub.Click();
+            }
+            catch { }
+            try { m_sub2.Click(); }
+            catch { }
+            try { m_sub3.Click(); }
+            catch { }
+            System.Threading.Thread.Sleep(6000);
+            try
+            {
+                NextUser(user);
+            }
+            catch { }
+            System.Threading.Thread.Sleep(2000);
+            try
+            {
+                NextPass(pass);
+            }
+            catch { }
+            System.Threading.Thread.Sleep(2000);
+            #region // trường hợp bắt xác nhận mail khôi phục
+            try
+            {
+                try
+                {
+                    m_xacnhanmailkhoiphuc.Click();
+                }
+                catch { }
+                try
+                {
+                    m_xacnhanmailkhoiphuc2.Click();
+                }
+                catch { }
+                try
+                {
+                    m_xacnhanmailkhoiphuc3.Click();
+                }
+                catch { }
+                System.Threading.Thread.Sleep(4000);
+                try
+                {
+                    m_txtxacnhanmail.SendKeys(mailkhoiphuc);
+                }
+                catch { }
+                System.Threading.Thread.Sleep(1000);
+                try
+                {
+                    m_nexxacnhanmail.Click();
+                }
+                catch { }
+                System.Threading.Thread.Sleep(6000);
+                try
+                {
+                    btndonexacnhanmail.Click();
+                }
+                catch { }
+            }
+            catch { }
+            #endregion
+            System.Threading.Thread.Sleep(5000);
+            try
+            {
+                m_sub.Click();
+            }
+            catch { }
+            try { m_sub2.Click(); }
+            catch { }
+            try { m_sub3.Click(); }
+            catch { }
+            System.Threading.Thread.Sleep(5000);
+        }
+        #endregion
     }
 }
