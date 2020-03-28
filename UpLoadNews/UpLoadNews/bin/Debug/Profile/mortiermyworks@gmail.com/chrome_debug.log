@@ -1,4 +1,0 @@
-[14452:3992:1006/111509.071:WARNING:CONSOLE(0)] "HTML Imports is deprecated and will be removed in M80, around February 2020. Please use ES modules instead. See https://www.chromestatus.com/features/5144752345317376 and https://developers.google.com/web/updates/2019/07/web-components-time-to-upgrade for more details.", source:  (0)
-[14452:3992:1006/111740.383:WARNING:pref_notifier_impl.cc(36)] Pref observer for third_party_blocking_enabled found at shutdown.
-[14452:3992:1006/111740.383:WARNING:pref_notifier_impl.cc(36)] Pref observer for browser.relaunch_notification_period found at shutdown.
-[14452:3992:1006/111740.383:WARNING:pref_notifier_impl.cc(36)] Pref observer for media_router.cast_allow_all_ips found at shutdown.

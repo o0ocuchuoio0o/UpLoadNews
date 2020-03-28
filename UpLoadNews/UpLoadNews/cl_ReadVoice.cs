@@ -120,7 +120,7 @@ namespace UpLoadNews
             [FindsBy(How = How.XPath, Using = "/html/body/div/div[2]/div/form/div/div[2]/div/dl[2]/dd/ul/li[10]/span/a")]
             public IWebElement m_mcJihun;
             [FindsBy(How = How.XPath, Using = "/html/body/div/div[2]/div/form/div/div[2]/div/dl[2]/dd/ul/li[11]/span/a")]
-            public IWebElement m_mcJunwoo;
+            public IWebElement m_mcJunwoo;        
             [FindsBy(How = How.XPath, Using = "/html/body/div/div[2]/div/form/div/div[2]/div/dl[2]/dd/ul/li[12]/span/a")]
             public IWebElement m_mcMaru;
 
@@ -213,6 +213,9 @@ namespace UpLoadNews
         public IWebElement m_btnsize;
         [FindsBy(How = How.XPath, Using = "//*[@id='nekr_pop_content1']/form[1]/div[1]/div[2]/div[1]/dl[3]/dd[1]/div[1]/ul[1]/li[2]/a[1]")]
         public IWebElement m_selectsize;
+        [FindsBy(How = How.XPath, Using = "//*[@id='nekr_pop_content1']/form[1]/div[1]/div[2]/div[1]/dl[3]/dd[1]/div[1]/ul[1]/li[1]/a[1]")]
+        public IWebElement m_selectsize0;
+
 
         [FindsBy(How = How.Id, Using = "content")]
         public IWebElement m_text2;      
@@ -378,6 +381,18 @@ namespace UpLoadNews
             }
             catch { }
         }
+
+        public void checklager()
+        {
+            try
+            {
+                Thread.Sleep(500);
+                m_btnsize.Click();
+                Thread.Sleep(1000);
+                m_selectsize0.Click();
+            }
+            catch { }
+        }
         public string getURLMp3_V2(string _urlvoicecu, string text)
         {
             string ex = _urlvoicecu;
@@ -415,13 +430,170 @@ namespace UpLoadNews
 
                 return ex;
             }
-            catch(Exception exs)
+            catch
             {
-                MessageBox.Show(exs.ToString());              
+                    
             }
            return ex;
         }
+        public void selectV2_TiengHan(string ngonngu, string mcvoice)
+        {
+            m_demo.Click();
+            Thread.Sleep(1000);
+            m_btnngonngu.Click();
+            Thread.Sleep(1000);
+            if (ngonngu == "English")
+            {
+                m_ngonngukorean.Click();
+            }
+            else if (ngonngu == "Korean")
+            {
+               
+                m_ngonnguenglish.Click();
+                #region // click mc voice
+                if (mcvoice == "Dayoung")
+                {
+                    m_mcDayoung.Click();
+                }
+                if (mcvoice == "Dayoung")
+                {
+                    m_mcDayoung.Click();
+                }
+                if (mcvoice == "Hyeryun")
+                {
+                    m_mcHyeryun.Click();
+                }
+                if (mcvoice == "Hyuna")
+                {
+                    m_mcHyuna.Click();
+                }
+                if (mcvoice == "Jihun")
+                {
+                    m_mcJihun.Click();
+                }
+                if (mcvoice == "Jimin")
+                {
+                    m_mcJimin.Click();
+                }
+                if (mcvoice == "Junwoo")
+                {
+                    m_mcJunwoo.Click();
+                }
+                if (mcvoice == "Sena")
+                {
+                    m_mcSena.Click();
+                }
+                if (mcvoice == "Yumi")
+                {
+                    m_mcYumi.Click();
+                }
+                if (mcvoice == "Yura")
+                {
+                    m_mcYura.Click();
+                }
+                #endregion 
+            }
+            else if (ngonngu == "Chinese")
+            {
+                m_ngonnguchinese.Click();
+                #region // click mc voice
+                if (mcvoice == "Hui (Mandarin)")
+                {
+                    m_mcHui.Click();
+                }
+                if (mcvoice == "Linlin (Mandarin)")
+                {
+                    m_mcHong.Click();
+                }
+                if (mcvoice == "Yafang (Taiwanese)")
+                {
+                    m_mcQiang.Click();
+                }
+                if (mcvoice == "Liang (Mandarin)")
+                {
+                    m_mcLiang.Click();
+                }
+                #endregion
+            }
+            else if (ngonngu == "Japanese")
+            {
+                m_ngonngujapan.Click();
+                #region // click mc voice
+                if (mcvoice == "Haruka")
+                {
+                    m_mcHaruka.Click();
+                }
 
+                if (mcvoice == "Hikari")
+                {
+                    m_mcHikari.Click();
+                }
+                if (mcvoice == "Misaki")
+                {
+                    m_mcMisaki.Click();
+                }
+                if (mcvoice == "Ryo")
+                {
+                    m_mcRyo.Click();
+                }
+                if (mcvoice == "Sayaka")
+                {
+                    m_mcSayaka.Click();
+                }
+                if (mcvoice == "Show")
+                {
+                    m_mcShow.Click();
+                }
+                if (mcvoice == "Takeru")
+                {
+                    m_mcTakeru.Click();
+                }
+                #endregion
+
+            }
+            else if (ngonngu == "German")
+            {
+                m_ngonnguGerman.Click();
+            }
+            else if (ngonngu == "Spanish")
+            {
+                m_ngonnguEuropeanSpanish.Click();
+                #region // click mc voice
+                if (mcvoice == "Soledad (American)")
+                {
+                    m_mcManuel.Click();
+                }
+                if (mcvoice == "Lola (Castilian)")
+                {
+                    m_mcLola.Click();
+                }
+                #endregion
+            }
+            else if (ngonngu == "Thai")
+            {
+                m_ngonnguThai.Click();
+            }
+            else if (ngonngu == "Russian")
+            {
+                m_ngonnguRussian.Click();
+            }
+            else if (ngonngu == "French")
+            {
+                m_ngonnguEuropeanFrench.Click();
+            }
+            else if (ngonngu == "Italian")
+            {
+                m_ngonnguItalian.Click();
+            }
+            try
+            {
+                Thread.Sleep(500);
+                m_btnsize.Click();
+                Thread.Sleep(1000);
+                m_selectsize.Click();
+            }
+            catch { }
+        }
         #endregion
 
         #region readspeak 3
@@ -442,7 +614,7 @@ namespace UpLoadNews
         [FindsBy(How = How.XPath, Using = "/html/body/div/div/div[2]/div/div/ul[2]/li[3]")]
         public IWebElement m_chonngonngumadarin;
         [FindsBy(How = How.XPath, Using = "/html/body/div/div/div[2]/div/div/ul[2]/li[4]")]
-        public IWebElement m_chonngonngukorean;
+        public IWebElement m_chonngonngukorean;    
         [FindsBy(How = How.XPath, Using = "/html/body/div/div/div[2]/div/div/ul[2]/li[5]")]
         public IWebElement m_chonngonngujapan;
         [FindsBy(How = How.XPath, Using = "/html/body/div/div/div[2]/div/div/ul[2]/li[6]")]
@@ -509,6 +681,8 @@ namespace UpLoadNews
             }
             Thread.Sleep(5000);
         }
+
+     
 
         public string getURLMp3_V3(string _urlvoicecu,string text)
         {
@@ -967,7 +1141,411 @@ namespace UpLoadNews
 
         #endregion
 
-            #region // get tag       
+
+        #region // lấy voice ở trang https://tts.reallusion.com/en/Home/TTS
+        [FindsBy(How = How.XPath, Using = "/html/body/div[2]/div[3]/div/div[2]/div/div/ul/li[8]")]
+        public IWebElement m_reall_korean;
+        [FindsBy(How = How.XPath, Using = "/html/body/div[2]/div[3]/div/div[2]/div/div/ul/li[7]")]
+        public IWebElement m_reall_japan;
+        [FindsBy(How = How.XPath, Using = "/html/body/div[2]/div[3]/div/div[2]/div/div/ul/li[11]")]
+        public IWebElement m_reall_french;
+        [FindsBy(How = How.XPath, Using = "/html/body/div[2]/div[3]/div/div[2]/div/div/ul/li[3]")]
+        public IWebElement m_reall_german;
+        [FindsBy(How = How.Id, Using = "txtTTS")]
+        public IWebElement m_reall_text;
+        [FindsBy(How = How.XPath, Using = "/html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[2]/table/tbody/tr/td[3]/a")]
+        public IWebElement btn_reall_listen;
+        [FindsBy(How = How.XPath, Using = "//source")]
+        public IWebElement link_reall;
+        public void select_voice_reall(string ngonngu)
+        {
+           
+            if (ngonngu == "Korean")
+            {
+                m_reall_korean.Click();
+              
+            }
+            else if (ngonngu == "German")
+            {
+                m_reall_german.Click();
+            }
+            else if (ngonngu == "French")
+            {
+                m_reall_french.Click();
+            }
+            else if (ngonngu == "Japanese")     
+
+            {
+                m_reall_japan.Click();             
+
+            }           
+        }
+        public string getURLMp3_Voice_Reall(string _urlvoicecu, string text)
+        {
+            string ex = _urlvoicecu;
+            try
+            {
+                System.Threading.Thread.Sleep(2000);
+                m_reall_text.Clear();
+                m_reall_text.SendKeys(text);
+                btn_reall_listen.Click();
+                Thread.Sleep(2000);
+                int kiemtra = 0;
+                switch (kiemtra)
+                {
+                    case 0:             // label case 1
+                        System.Threading.Thread.Sleep(2000);
+                        goto case 1;
+                        break;
+                    case 1:
+                        try
+                        {
+                            ex = SeleniumGetMeThor.GetTextLink(link_reall);
+                            if (ex != _urlvoicecu)
+                            {
+                                return ex;
+                            }
+                            else
+                            {
+                                goto case 0;
+                            }
+                        }
+                        catch { goto case 0; }
+                        break;
+
+                }
+
+                return ex;
+            }
+            catch 
+            {
+              
+            }
+            return ex;
+        }
+
+        #endregion
+
+
+        #region // lấy voice ở trang https://www.cereproc.com/en/products/cloud
+        [FindsBy(How = How.XPath, Using = "/html/body/main/div[1]/div[1]/a")]
+        public IWebElement m_cereproc;
+        [FindsBy(How = How.XPath, Using = "/html/body/main/div[1]/div[1]/div/div/div/div/div/div[2]/form/div[2]/div[1]/a/span")]
+        public IWebElement m_cereproc_ngonngu;
+        [FindsBy(How = How.XPath, Using = "/html/body/main/div[1]/div[1]/div/div/div/div/div/div[2]/form/div[2]/div[2]/a/span")]
+        public IWebElement m_cereproc_giong;   
+        
+
+        
+        [FindsBy(How = How.XPath, Using = "/html/body/main/div[1]/div[1]/div/div/div/div/div/div[2]/form/div[2]/div[2]/ul/li[2]")]
+        public IWebElement m_cereproc_englishnam;
+
+        [FindsBy(How = How.XPath, Using = "/html/body/main/div[1]/div[1]/div/div/div/div/div/div[2]/form/div[2]/div[1]/ul/li[16]")]
+        public IWebElement m_cereproc_japan;
+        [FindsBy(How = How.XPath, Using = "/html/body/main/div[1]/div[1]/div/div/div/div/div/div[2]/form/div[2]/div[1]/ul/li[8]")]
+        public IWebElement m_cereproc_french;
+        [FindsBy(How = How.XPath, Using = "/html/body/main/div[1]/div[1]/div/div/div/div/div/div[2]/form/div[2]/div[2]/ul/li[4]")]
+        public IWebElement m_cereproc_frenchnam;
+        
+
+        [FindsBy(How = How.XPath, Using = "/html/body/main/div[1]/div[1]/div/div/div/div/div/div[2]/form/div[2]/div[1]/ul/li[3]")]
+        public IWebElement m_cereproc_german;
+        [FindsBy(How = How.XPath, Using = "/html/body/main/div[1]/div[1]/div/div/div/div/div/div[2]/form/div[1]/textarea")]
+        public IWebElement m_cereproc_text;
+       
+        [FindsBy(How = How.XPath, Using = "/html/body/main/div[1]/div[1]/div/div/div/div/div/div[2]/form")]
+        public IWebElement m_cereproc_from;
+        [FindsBy(How = How.XPath, Using = "/html/body/main/div[1]/div[1]/div/div/div/div/div/div[2]/form/div[2]/div[3]/input")]
+        public IWebElement btn_cereproc_listen;
+        [FindsBy(How = How.XPath, Using = "//audio")]
+        public IWebElement link_cereproc;
+        public void select_voice_cereproc(string ngonngu,bool giongnam)
+        {
+            m_cereproc.Click();
+            Thread.Sleep(2000);
+            m_cereproc_ngonngu.Click();
+            Thread.Sleep(1000);
+            if (ngonngu == "English")
+            {
+                if (giongnam == true)
+                {
+                    m_cereproc_giong.Click();
+                    Thread.Sleep(1000);
+                    m_cereproc_englishnam.Click();
+                }
+            }
+            if (ngonngu == "German")
+            {
+                m_cereproc_german.Click();
+            }
+            else if (ngonngu == "French")
+            {
+                m_cereproc_french.Click();
+                if (giongnam == true)
+                {
+                    m_cereproc_giong.Click();
+                    Thread.Sleep(1000);
+                    m_cereproc_frenchnam.Click();
+                }
+               
+            }
+            else if (ngonngu == "Japanese")
+
+            {
+                m_cereproc_japan.Click();
+
+            }
+        }
+        public string getURLMp3_Voice_cereproc(string _urlvoicecu, string text)
+        {
+            string ex = _urlvoicecu;
+            try
+            {
+                Thread.Sleep(2000);
+                m_cereproc_text.Clear();
+                m_cereproc_text.SendKeys(text);
+                Thread.Sleep(3000);
+
+               
+
+                int kiemtraclick = 0;
+                switch (kiemtraclick)
+                {
+                    case 0:             // label case 1
+                        System.Threading.Thread.Sleep(2000);
+                        goto case 1;
+                        break;
+                    case 1:
+                        try
+                        {
+                            if (SeleniumGetMeThor.GetTextClass(m_cereproc_from) == "voice-demo-form flex mfs mfs-enabled")
+                            {
+                                btn_cereproc_listen.Click();
+                            }
+                            else
+                            {
+                                goto case 0;
+                            }
+                        }
+                        catch { goto case 0; }
+                        break;
+
+                }
+
+
+                Thread.Sleep(1000);
+                int kiemtra = 0;
+                switch (kiemtra)
+                {
+                    case 0:             // label case 1
+                        System.Threading.Thread.Sleep(2000);
+                        goto case 1;
+                        break;
+                    case 1:
+                        try
+                        {
+                            ex = SeleniumGetMeThor.GetTextLink(link_cereproc);
+                            if (ex != _urlvoicecu)
+                            {
+                                return ex;
+                            }
+                            else
+                            {
+                                goto case 0;
+                            }
+                        }
+                        catch { goto case 0; }
+                        break;
+
+                }
+
+                return ex;
+            }
+            catch
+            {
+
+            }
+            return ex;
+        }
+
+        #endregion
+
+
+
+        #region // lay voice o trang : https://wideo.co/text-to-speech/
+
+        [FindsBy(How = How.XPath, Using = "//textarea")]
+        public IWebElement m_textwideo;      
+        [FindsBy(How = How.CssSelector, Using = "MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input MuiInputBase-inputSelect")]
+        public IWebElement m_chonngonnguwideo;  
+        [FindsBy(How = How.XPath, Using = "/html/body/div/div/div[3]/div[1]/button/span[1]")]
+        public IWebElement m_listenwideo;
+        [FindsBy(How = How.Id, Using = "audio-src")]
+        public IWebElement m_linkwideo;
+        
+
+        public string getURLMp3_Wideo(string _urlvoicecu,  string voice,string text)
+        {
+            string ex = _urlvoicecu;
+            SeleniumSetMeThor.SelectDropDown(m_chonngonnguwideo, voice);
+            m_textwideo.Clear();
+            m_textwideo.SendKeys(text);
+            Thread.Sleep(1000);
+            m_listenwideo.Click();
+            int kiemtra = 0;
+            switch (kiemtra)
+            {
+                case 0:             // label case 1
+                    System.Threading.Thread.Sleep(2000);
+                    goto case 1;
+                    break;
+                case 1:
+                    try
+                    {
+                        ex = SeleniumGetMeThor.GetTextLink(m_linkwideo);
+                        if (ex != _urlvoicecu)
+                        {
+                            System.Threading.Thread.Sleep(5000);
+                            return ex;
+                        }
+                        else
+                        {
+                            goto case 0;
+                        }
+                    }
+                    catch { goto case 0; }
+                    break;
+
+            }
+            return ex;
+        }
+        #endregion
+
+
+        #region // lấy voice ở trang : https://www.linguatec.de/en/voice-reader-studio-15-test/
+        [FindsBy(How = How.Id, Using = "vr_LanguageSelector")]
+        public IWebElement m_ling_ngonngu;
+        [FindsBy(How = How.Id, Using = "vr_VoiceSelector")]
+        public IWebElement m_ling_voice;
+        [FindsBy(How = How.Id, Using = "vr_SampleText")]
+        public IWebElement m_ling_text;
+        [FindsBy(How = How.Id, Using = "vr_ReadButton")]
+        public IWebElement btn_ling_listen;
+        [FindsBy(How = How.Id, Using = "vr_PlayButton")]
+        public IWebElement btn_ling_listen2;
+        [FindsBy(How = How.Id, Using = "vr_PauseButton")]
+        public IWebElement btn_ling_Pause;
+        
+        [FindsBy(How = How.XPath, Using = "//audio")]
+        public IWebElement ling_link;
+        public string getURLMp3_Ling(string _urlvoicecu, string ngonngu, string voice,string text)
+        {
+            string ex = _urlvoicecu;
+            SeleniumSetMeThor.SelectDropDown(m_ling_ngonngu, ngonngu);
+            SeleniumSetMeThor.SelectDropDown(m_ling_voice, voice);
+
+            m_ling_text.Clear();
+            m_ling_text.SendKeys(text);
+            Thread.Sleep(1000);
+            try {
+                btn_ling_Pause.Click();
+            }
+            catch { }
+            try
+            {
+                if (_urlvoicecu == "")
+                { btn_ling_listen.Click(); }
+                else
+                {
+                    btn_ling_listen2.Click();
+                }
+            }
+            catch { btn_ling_listen.Click(); }
+            int kiemtra = 0;
+            switch (kiemtra)
+            {
+                case 0:             // label case 1
+                    System.Threading.Thread.Sleep(5000);
+                    goto case 1;
+                    break;
+                case 1:
+                    try
+                    {
+                        ex = SeleniumGetMeThor.GetTextLink(ling_link);
+                        if (ex != _urlvoicecu)
+                        {
+                            System.Threading.Thread.Sleep(1000);
+                            return ex;
+                        }
+                        else
+                        {
+                            goto case 0;
+                        }
+                    }
+                    catch { goto case 0; }
+                    break;
+
+            }
+            return ex;
+        }
+
+        #endregion
+
+
+        #region // lấy voice ở trang : https://www.sestek.com/text-to-speech/tts-demo/
+        [FindsBy(How = How.Id, Using = "ddlVoices")]
+        public IWebElement m_sestek_ngonngu;     
+        [FindsBy(How = How.Id, Using = "TextBox1")]
+        public IWebElement m_sestek_text;
+        [FindsBy(How = How.Id, Using = "vr_PlayButton")]
+        public IWebElement btn_sestek_listen;
+        [FindsBy(How = How.XPath, Using = "/html/body/form/div[4]/div/audio/source")]
+        public IWebElement sestek_link;
+        public string getURLMp3_sestek(string _urlvoicecu, string ngonngu,string text)
+        {
+            string ex = _urlvoicecu;
+            SeleniumSetMeThor.SelectDropDown(m_sestek_ngonngu, ngonngu);
+
+            m_sestek_text.Clear();
+            m_sestek_text.SendKeys(text);
+            Thread.Sleep(1000);
+            btn_sestek_listen.Click();
+            int kiemtra = 0;
+            switch (kiemtra)
+            {
+                case 0:             // label case 1
+                    System.Threading.Thread.Sleep(2000);
+                    goto case 1;
+                    break;
+                case 1:
+                    try
+                    {
+                        ex = SeleniumGetMeThor.GetTextLink(sestek_link);
+                        if (ex != _urlvoicecu)
+                        {
+                            System.Threading.Thread.Sleep(5000);
+                            return "https://ttsdemo.sestek.com" + ex;
+                        }
+                        else
+                        {
+                            goto case 0;
+                        }
+                    }
+                    catch { goto case 0; }
+                    break;
+
+            }
+            return ex;
+        }
+
+
+
+        #endregion
+
+
+
+
+        #region // get tag       
         [FindsBy(How = How.CssSelector, Using = "pre[style='word-wrap: break-word; white-space: pre-wrap;']")]
         public IWebElement listtag;
         public static String chuanHoa(String _string)

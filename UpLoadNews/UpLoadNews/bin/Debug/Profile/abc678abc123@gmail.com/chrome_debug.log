@@ -1,3 +1,0 @@
-[31064:25340:1022/111448.762:WARNING:pref_notifier_impl.cc(36)] Pref observer for third_party_blocking_enabled found at shutdown.
-[31064:25340:1022/111448.763:WARNING:pref_notifier_impl.cc(36)] Pref observer for browser.relaunch_notification_period found at shutdown.
-[31064:25340:1022/111448.763:WARNING:pref_notifier_impl.cc(36)] Pref observer for media_router.cast_allow_all_ips found at shutdown.

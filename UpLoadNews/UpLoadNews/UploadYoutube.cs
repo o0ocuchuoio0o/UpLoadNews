@@ -9,6 +9,7 @@ using OpenQA.Selenium.Support.PageObjects;
 using System.Windows.Forms;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 
 namespace UpLoadNews
 {
@@ -76,6 +77,12 @@ namespace UpLoadNews
 
         [FindsBy(How = How.XPath, Using = "/html/body/div[2]/div[4]/div/div[5]/div/div[4]/div[2]/div/div[1]/a")]
         public IWebElement errorupload;
+
+        [FindsBy(How = How.XPath, Using = "/html/body/ytcp-uploads-dialog/paper-dialog/div/div[1]/div/div[2]/ytcp-button/div")]
+        public IWebElement btnuploadcu;
+        [FindsBy(How = How.XPath, Using = "/html/body/ytcp-survey-dialog/ytcp-dialog/paper-dialog/div[3]/div/ytcp-button[2]/div")]
+        public IWebElement btnboqua;
+        
         public void NextUser(string user)
         {
             txtuser.Clear();
@@ -126,12 +133,14 @@ namespace UpLoadNews
                 NextPass(pass);
             }
             catch { }
-            System.Threading.Thread.Sleep(10000);
+            System.Threading.Thread.Sleep(6000);
             try
             {
-                btnupload.SendKeys(path);
+                btnuploadcu.Click();
+                System.Threading.Thread.Sleep(3000);
+                btnboqua.Click();
             }
-            catch { }
+            catch { }           
             System.Threading.Thread.Sleep(2000);
             #region // trường hợp bắt xác nhận mail khôi phục
             try
@@ -162,7 +171,7 @@ namespace UpLoadNews
             }
             catch { }
             #endregion
-            System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(10000);
             try
             {
                 btnupload.SendKeys(path);
@@ -172,7 +181,13 @@ namespace UpLoadNews
 
         }
         public async Task UploadFroFile(string path,string tieude, string mota, string tag, string paththumnail,int batkiemtien)
-        {           
+        {
+            try { btnuploadcu.Click();
+                System.Threading.Thread.Sleep(3000);
+                btnboqua.Click();
+            }
+            catch { }   
+
             System.Threading.Thread.Sleep(10000);
             btnupload.SendKeys(path);
             System.Threading.Thread.Sleep(5000);
@@ -321,9 +336,305 @@ namespace UpLoadNews
                     break;         
                
             }
-          
+
         }
 
+
+
+        #region Upload Vession beta   
+        [FindsBy(How = How.XPath, Using = "/html/body/ytcp-uploads-dialog/paper-dialog/div/ytcp-uploads-file-picker/div/ytcp-button/div")]
+        public IWebElement clickupload;
+        [FindsBy(How = How.XPath, Using = "/html/body/ytcp-uploads-dialog/paper-dialog/div/ytcp-animatable[1]/ytcp-uploads-details/div/ytcp-uploads-basics/ytcp-mention-textbox[1]/ytcp-form-input-container/div[1]/div[2]/ytcp-mention-input/div")]
+        public IWebElement txttieudebeta;
+        [FindsBy(How = How.XPath, Using = "/html/body/ytcp-uploads-dialog/paper-dialog/div/ytcp-animatable[1]/ytcp-uploads-details/div/ytcp-uploads-basics/ytcp-mention-textbox[2]/ytcp-form-input-container/div[1]/div[2]/ytcp-mention-input/div")]
+        public IWebElement txtmotabeta;
+        [FindsBy(How = How.XPath, Using = "/html/body/ytcp-uploads-dialog/paper-dialog/div/ytcp-animatable[1]/ytcp-uploads-details/div/ytcp-uploads-basics/ytcp-thumbnails-compact-editor/div[3]/ytcp-thumbnails-compact-editor-uploader/div/button")]
+        public IWebElement btnthumnailbeta;
+
+        
+        [FindsBy(How = How.XPath, Using = "/html/body/ytcp-uploads-dialog/paper-dialog/div/ytcp-animatable[1]/ytcp-uploads-details/div/div/ytcp-button/div")]
+        public IWebElement btnluachonkhac;
+        [FindsBy(How = How.XPath, Using = "/html/body/ytcp-uploads-dialog/paper-dialog/div/ytcp-animatable[1]/ytcp-uploads-details/div/ytcp-uploads-advanced/ytcp-form-input-container/div[1]/div[2]/ytcp-free-text-chip-bar/ytcp-chip-bar/div/input")]
+        public IWebElement txttagbeta;
+        
+
+
+        [FindsBy(How = How.XPath, Using = "/html/body/ytcp-uploads-dialog/paper-dialog/div/div[1]/ytcp-animatable/ytcp-stepper/div/button[2]/div[1]/span")]
+        public IWebElement clickmanhinhketthuc;     
+
+        [FindsBy(How = How.XPath, Using = "/html/body/ytcp-uploads-dialog/paper-dialog/div/ytcp-animatable[1]/ytcp-uploads-video-elements/div[3]/ytcp-button/div")]
+        public IWebElement themmanhinhketthuc;  
+        [FindsBy(How = How.XPath, Using = "/html/body/ytve-endscreen-modal/ytve-modal-host/ytcp-dialog/paper-dialog/div[2]/div/ytve-editor/div[1]/div/ytve-endscreen-editor-options-panel/div[2]/div/ytve-endscreen-template-picker/div/div/div/div[1]/div[1]")]
+        public IWebElement addmanhinhketthuc;
+        [FindsBy(How = How.XPath, Using = "/html/body/ytve-endscreen-modal/ytve-modal-host/ytcp-dialog/paper-dialog/div[1]/div/div[2]/div[2]/ytcp-button/div")]
+        public IWebElement luumanhinhketthuc;
+
+        [FindsBy(How = How.XPath, Using = "/html/body/ytcp-uploads-dialog/paper-dialog/div/ytcp-animatable[1]/ytcp-uploads-video-elements/div[4]/ytcp-button/div")]
+        public IWebElement themmanhinhcard;
+        [FindsBy(How = How.XPath, Using = "/html/body/div[2]/div[2]/div/div/div[2]/a/span")]
+        public IWebElement quaylaiupload;
+      
+        
+
+
+
+        [FindsBy(How = How.XPath, Using = "/html/body/ytcp-uploads-dialog/paper-dialog/div/div[1]/ytcp-animatable/ytcp-stepper/div/button[3]/div[1]/span")]
+        public IWebElement buoc3;
+
+        [FindsBy(How = How.XPath, Using = "/html/body/ytcp-uploads-dialog/paper-dialog/div/div[1]/ytcp-animatable/ytcp-stepper/div/button[4]/div[1]/span")]
+        public IWebElement buoc4;
+        [FindsBy(How = How.XPath, Using = "/html/body/ytcp-uploads-dialog/paper-dialog/div/ytcp-animatable[1]/ytcp-uploads-review/div[2]/div[1]/ytcp-video-visibility-select-v2/div[1]/paper-radio-group/paper-radio-button[1]/div[1]/div[1]")]
+        public IWebElement clickpublich;
+        
+
+        [FindsBy(How = How.XPath, Using = "/html/body/ytcp-uploads-dialog/paper-dialog/div/ytcp-animatable[2]/div/div[2]/ytcp-button[3]/div")]
+        public IWebElement xuatban; 
+        
+
+        [FindsBy(How = How.XPath, Using = "/html/body/ytcp-uploads-dialog/paper-dialog/div/ytcp-animatable[2]/div/div[2]/ytcp-button[2]/div")]
+        public IWebElement btnnext;
+
+        [FindsBy(How = How.XPath, Using = "/html/body/ytcp-uploads-dialog/paper-dialog/div/ytcp-animatable/ytcp-uploads-extras/div[1]/div[1]/ytcp-expansion-panel[2]/div/ytcp-ve/button/div[2]/div/iron-icon")]
+        public IWebElement clicktag;
+      
+
+
+        [FindsBy(How = How.XPath, Using = "/html/body/ytcp-uploads-dialog/paper-dialog/div/ytcp-animatable/ytcp-uploads-review/div[2]/div[1]/ytcp-video-visibility-select-v2/div[1]/ytcp-expansion-panel/div/div/paper-radio-group/paper-radio-button[1]/div[1]/div[1]")]
+        public IWebElement checkpublich;
+
+        [FindsBy(How = How.XPath, Using = "/html/body/ytcp-uploads-dialog/paper-dialog/div/div[3]/div/div[2]/ytcp-animatable/ytcp-button[3]")]
+        public IWebElement btndone;
+        [FindsBy(How = How.XPath, Using = "/html/body/ytcp-uploads-dialog/paper-dialog/div/ytcp-animatable[2]/div/div[1]/ytcp-video-upload-progress/span")]
+        public IWebElement prossesbarbeta;
+
+        [DllImport("user32.dll", SetLastError = true)]
+        static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
+        [DllImport("user32.dll")]
+        static extern bool SetForegroundWindow(IntPtr hWnd);
+
+        public async Task UploadFroFileBeta(string path, string tieude, string mota, string tag, string paththumnail, int batkiemtien,bool m_private)
+        {
+
+            clickupload.Click();
+            Thread.Sleep(TimeSpan.FromSeconds(2));
+            var dialogHWnd = FindWindow(null, "Open"); // Here goes the title of the dialog window
+            var setFocus = SetForegroundWindow(dialogHWnd);
+            if (setFocus)
+            {
+
+                Thread.Sleep(TimeSpan.FromSeconds(2));
+                System.Windows.Forms.SendKeys.SendWait(path);
+                System.Windows.Forms.SendKeys.SendWait("{DOWN}");
+                System.Windows.Forms.SendKeys.SendWait("{TAB}");
+                System.Windows.Forms.SendKeys.SendWait("{TAB}");
+                System.Windows.Forms.SendKeys.SendWait("{ENTER}");
+            }
+           // clickupload.SendKeys(path);
+            System.Threading.Thread.Sleep(9000);
+            txttieudebeta.Clear();
+            txttieudebeta.SendKeys(tieude);
+            System.Threading.Thread.Sleep(2000);
+            txtmotabeta.Clear();
+            txtmotabeta.SendKeys(mota);
+            System.Threading.Thread.Sleep(4000);
+           
+          
+            try
+            {
+                if (System.IO.File.Exists(paththumnail))
+                {
+                    try
+                    {
+                        btnthumnailbeta.Click();
+                        Thread.Sleep(TimeSpan.FromSeconds(2));
+                        var dialogThumnail = FindWindow(null, "Open"); // Here goes the title of the dialog window
+                        var setFocusthumnail = SetForegroundWindow(dialogThumnail);
+                        if (setFocusthumnail)
+                        {
+
+                            Thread.Sleep(TimeSpan.FromSeconds(2));
+                            System.Windows.Forms.SendKeys.SendWait(paththumnail);
+                            System.Windows.Forms.SendKeys.SendWait("{DOWN}");
+                            System.Windows.Forms.SendKeys.SendWait("{TAB}");
+                            System.Windows.Forms.SendKeys.SendWait("{TAB}");
+                            System.Windows.Forms.SendKeys.SendWait("{ENTER}");
+                        }
+                    }
+                    catch { }
+                }
+            }
+            catch { }
+            try {
+                IJavaScriptExecutor jse = (IJavaScriptExecutor)PropretiesCollection.driver;
+                jse.ExecuteScript("window.scrollTo(0," + 300 + ")", "");
+                btnluachonkhac.Click();
+                System.Threading.Thread.Sleep(2000);
+                IJavaScriptExecutor jse2 = (IJavaScriptExecutor)PropretiesCollection.driver;
+                jse2.ExecuteScript("window.scrollTo(0," + 200 + ")", "");
+                txttagbeta.SendKeys(tag);
+                System.Threading.Thread.Sleep(2000);
+            }
+            catch { }
+
+            System.Threading.Thread.Sleep(3000);
+            int kiemtrabkt = 0;
+            try {
+                buoc4.Click();
+                kiemtrabkt = 1;             
+            }
+            catch { }
+            if(kiemtrabkt == 1)
+            {
+                #region // trường hợp kênh đã bật kiếm tiền
+                buoc3.Click();
+                int kiemtra = 0;
+                switch (kiemtra)
+                {
+                    case 0:             // label case 1
+                        System.Threading.Thread.Sleep(15000);
+                        goto case 1;
+                        break;
+                    case 1:
+                        try
+                        {
+                            int xuly = 0;
+                            try
+                            {
+                                themmanhinhketthuc.Click();
+                                xuly = 1;
+                            }
+                            catch
+                            {
+                                try
+                                {
+                                    themmanhinhcard.Click();
+                                    xuly = 2;
+                                }
+                                catch
+                                {
+                                    xuly = 0;
+                                }
+                            }
+                           
+                            if (xuly == 1)
+                            {
+                                System.Threading.Thread.Sleep(10000);
+                                addmanhinhketthuc.Click();
+                                System.Threading.Thread.Sleep(8000);
+                                luumanhinhketthuc.Click();
+                                System.Threading.Thread.Sleep(3000);
+                                buoc4.Click();
+                                System.Threading.Thread.Sleep(2000);
+                                if (m_private == true)
+                                {
+                                    
+                                }
+                                else
+                                {
+                                    clickpublich.Click();
+                                }
+                                System.Threading.Thread.Sleep(2000);
+                                xuatban.Click();
+                                System.Threading.Thread.Sleep(2000);
+                            }
+                            else if(xuly==2)
+                            {
+                                quaylaiupload.Click();
+                                System.Threading.Thread.Sleep(3000);
+                                buoc4.Click();
+                                System.Threading.Thread.Sleep(2000);
+                                if (m_private == true)
+                                {
+
+                                }
+                                else
+                                {
+                                    clickpublich.Click();
+                                }
+                                System.Threading.Thread.Sleep(2000);
+                                xuatban.Click();
+                                System.Threading.Thread.Sleep(2000);
+                            }
+                            else
+                            {
+                                goto case 0;
+                            }
+                        }
+                        catch { goto case 0; }
+                        break;
+
+                }
+                #endregion
+
+            }
+            else
+            {
+                #region // trường hợp không có bước bật kiếm tiền
+                clickmanhinhketthuc.Click();
+                int kiemtra = 0;
+                switch (kiemtra)
+                {
+                    case 0:             // label case 1
+                        System.Threading.Thread.Sleep(15000);
+                        goto case 1;
+                        break;
+                    case 1:
+                        try
+                        {
+                            int xuly = 0;
+                            try
+                            {
+                                themmanhinhketthuc.Click();
+                                xuly = 1;
+                            }
+                            catch
+                            {
+                                try
+                                {
+                                    themmanhinhcard.Click();
+                                    xuly = 2;
+                                }
+                                catch
+                                {
+                                    xuly = 0;
+                                }
+                            }
+                          
+                            if (xuly == 1)
+                            {
+                                System.Threading.Thread.Sleep(10000);
+                                addmanhinhketthuc.Click();
+                                System.Threading.Thread.Sleep(8000);
+                                luumanhinhketthuc.Click();
+                                System.Threading.Thread.Sleep(3000);
+                                buoc3.Click();
+                                System.Threading.Thread.Sleep(3000);
+                                xuatban.Click();
+                                System.Threading.Thread.Sleep(2000);
+                            }
+                            else if (xuly == 2)
+                            {
+                                System.Threading.Thread.Sleep(3000);
+                                buoc3.Click();
+                                System.Threading.Thread.Sleep(3000);
+                                xuatban.Click();
+                                System.Threading.Thread.Sleep(2000);
+                            }
+                            else
+                            {
+                                goto case 0;
+                            }
+                        }
+                        catch { goto case 0; }
+                        break;
+
+                }
+                #endregion
+
+            }
+
+        }
+        #endregion
 
     }
 }

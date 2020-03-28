@@ -75,24 +75,24 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\Geckofx-Winforms.dll</HintPath>
     </Reference>
-    <Reference Include="Google.Apis, Version=1.10.0.25332, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
-      <HintPath>..\packages\Google.Apis.1.10.0\lib\net40\Google.Apis.dll</HintPath>
+    <Reference Include="Google.Apis, Version=1.34.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.1.34.0\lib\net45\Google.Apis.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Google.Apis.Auth, Version=1.10.0.25333, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
-      <HintPath>..\packages\Google.Apis.Auth.1.10.0\lib\net40\Google.Apis.Auth.dll</HintPath>
+    <Reference Include="Google.Apis.Auth, Version=1.34.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Auth.1.34.0\lib\net45\Google.Apis.Auth.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Google.Apis.Auth.PlatformServices, Version=1.10.0.25333, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
-      <HintPath>..\packages\Google.Apis.Auth.1.10.0\lib\net40\Google.Apis.Auth.PlatformServices.dll</HintPath>
+    <Reference Include="Google.Apis.Auth.PlatformServices, Version=1.34.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Auth.1.34.0\lib\net45\Google.Apis.Auth.PlatformServices.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Google.Apis.Core, Version=1.10.0.25331, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
-      <HintPath>..\packages\Google.Apis.Core.1.10.0\lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Core.dll</HintPath>
+    <Reference Include="Google.Apis.Core, Version=1.34.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Core.1.34.0\lib\net45\Google.Apis.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Google.Apis.PlatformServices, Version=1.10.0.25332, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
-      <HintPath>..\packages\Google.Apis.1.10.0\lib\net40\Google.Apis.PlatformServices.dll</HintPath>
+    <Reference Include="Google.Apis.PlatformServices, Version=1.34.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.1.34.0\lib\net45\Google.Apis.PlatformServices.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Google.Apis.YouTube.v3, Version=1.34.0.1226, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
@@ -115,6 +115,14 @@
     <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="LtGt, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\LtGt.1.0.1\lib\net45\LtGt.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ManagedWinapi, Version=0.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\ManagedWinapi.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
@@ -146,13 +154,17 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\NAudio.Lame.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="RestSharp, Version=105.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Sprache, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sprache.2.2.0\lib\net45\Sprache.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration">
@@ -206,18 +218,24 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\xNet.dll</HintPath>
     </Reference>
+    <Reference Include="YoutubeExplode, Version=4.7.10.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\YoutubeExplode.4.7.10\lib\net45\YoutubeExplode.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Zlib.Portable, Version=1.11.0.0, Culture=neutral, PublicKeyToken=431cba815f6a8b5b, processorArchitecture=MSIL">
       <HintPath>..\packages\Zlib.Portable.Signed.1.11.0\lib\portable-net4+sl5+wp8+win8+wpa81+MonoTouch+MonoAndroid\Zlib.Portable.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BitviseHandle.cs" />
     <Compile Include="Blur.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="cl_ReadVoice.cs" />
     <Compile Include="Cl_Tag.cs" />
     <Compile Include="CoreDriver.cs" />
     <Compile Include="CreateVideoNotEffects.cs" />
+    <Compile Include="Devices.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -235,6 +253,12 @@
     </Compile>
     <Compile Include="FormCauHinhAPIAMZ.Designer.cs">
       <DependentUpon>FormCauHinhAPIAMZ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEmulator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEmulator.Designer.cs">
+      <DependentUpon>FormEmulator.cs</DependentUpon>
     </Compile>
     <Compile Include="FormManageChannel.cs">
       <SubType>Form</SubType>
@@ -267,6 +291,7 @@
       <DependentUpon>FormUploadNews.cs</DependentUpon>
     </Compile>
     <Compile Include="HardSubText.cs" />
+    <Compile Include="HideMyAssHandle.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -286,6 +311,12 @@
     <Compile Include="thumnail.cs" />
     <Compile Include="TimesFile.cs" />
     <Compile Include="Translator.cs" />
+    <Compile Include="UC_Emulator.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Emulator.Designer.cs">
+      <DependentUpon>UC_Emulator.cs</DependentUpon>
+    </Compile>
     <Compile Include="UploadDailymotion.cs" />
     <Compile Include="UploadFacebook.cs" />
     <Compile Include="UploadYoutube.cs" />
@@ -311,6 +342,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormCauHinhAPIAMZ.resx">
       <DependentUpon>FormCauHinhAPIAMZ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEmulator.resx">
+      <DependentUpon>FormEmulator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormManageChannel.resx">
       <DependentUpon>FormManageChannel.cs</DependentUpon>
@@ -340,6 +374,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UC_Emulator.resx">
+      <DependentUpon>UC_Emulator.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WebAutomation.resx">
       <DependentUpon>WebAutomation.cs</DependentUpon>
     </EmbeddedResource>

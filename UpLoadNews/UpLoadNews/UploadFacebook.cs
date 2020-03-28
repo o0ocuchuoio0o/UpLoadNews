@@ -33,6 +33,21 @@ namespace UpLoadNews
         [FindsBy(How = How.CssSelector, Using = "#video_upload_complete_bar > div._6equ _6eqv _3qn7 _61-3 _2fyi _3qng > div._3qn7 _61-0 _2fyi _3qng > div")]
         public IWebElement prossesbar;
 
+        
+        [FindsBy(How = How.XPath, Using = "/html/body/div[11]/div[2]/div/div/div/div/div/div/div/div[3]/div[1]/div/div/div/div[1]/div[1]/div/div/label")]
+        public IWebElement clicktieude;
+        [FindsBy(How = How.XPath, Using = "/html/body/div[25]/div[2]/div/div/div/div/div/div/div/div[3]/div[1]/div/div/div/div[1]/div[1]/div/div/label/input")]
+        public IWebElement txttieude2;
+
+        
+             [FindsBy(How = How.XPath, Using = "/html/body/div[11]/div[2]/div/div/div/div/div/div/div/div[3]/div[1]/div/div/div/div[1]/div[2]/div/div[1]/div[1]/div/img")]
+        public IWebElement clickmota;
+        [FindsBy(How = How.XPath, Using = "/html/body/div[25]/div[2]/div/div/div/div/div/div/div/div[3]/div[1]/div/div/div/div[1]/div[2]/div/div[1]/div[2]/div/div/div[2]/div/div/div/div/span")]
+        public IWebElement txtmota2;
+        [FindsBy(How = How.XPath, Using = "/html/body/div[12]/div[2]/div/div/div/div/div/div/div/div[4]/div[1]/div[1]/div/div[3]/div/div")]
+        public IWebElement prossesbarbeta;
+        [FindsBy(How = How.XPath, Using = "/html/body/div[12]/div[2]/div/div/div/div/div/div/div/div[4]/div[2]/div/div/span/button/div/div")]
+        public IWebElement btndone;
         private int IsElementPresent(By elementcheck)
         {
             int kq = 0;
@@ -48,79 +63,52 @@ namespace UpLoadNews
         public async Task Upload(string path,string tieude,string mota,string tag,string paththumnail)
         {   
             btnuploadvideo.SendKeys(path);
-            Thread.Sleep(1000);          
-            int indexframe = 0;
+            Thread.Sleep(1000);
+            clicktieude.Click();
+            Thread.Sleep(2000);           
+            try {
+                txttieude2.Clear();
+                txttieude2.SendKeys(tieude);
+            }
+            catch { }
+            Thread.Sleep(1000);
+            clickmota.Click();
+            Thread.Sleep(1000);
+           
+            try
+            {
+                txtmota2.Clear();
+                txtmota2.SendKeys(mota);
+            }
+            catch { }
             Thread.Sleep(2000);
-            for (int i = 8; i < 13; i++)
+            int kiemtra = 0;
+            switch (kiemtra)
             {
-                if (IsElementPresent(By.XPath("//*[@id='facebook']/body/div[" + i + "]/div[2]/div/div/div/div/div/div/div/div[1]/div[2]/div[1]/div/div")) != 0)
-                {
-                    string tex = PropretiesCollection.driver.FindElement(By.XPath("//*[@id='facebook']/body/div[" + i + "]/div[2]/div/div/div/div/div/div/div/div[1]/div[2]/div[1]/div/div")).Text;
-                    if (tex.Contains("video"))
-                    {
-                        indexframe = i;
-                        break;
-                    }
-                }
-            }
-            Thread.Sleep(3000);
-            if (IsElementPresent(By.XPath("//*[@id='facebook']/body/div[" + indexframe + "]/div[2]/div/div/div/div/div/div/div/div[1]/div[1]/div[1]/div[1]/div/label/input")) != 0)
-            {
-                PropretiesCollection.driver.FindElement(By.XPath("//*[@id='facebook']/body/div[" + indexframe + "]/div[2]/div/div/div/div/div/div/div/div[1]/div[1]/div[1]/div[1]/div/label/input")).SendKeys(tieude);
-                if (IsElementPresent(By.XPath("//*[@id='facebook']/body/div[" + indexframe + "]/ div[2]/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div/div/div[1]/div[1]/div/div[1]/div[2]/div/div/div[2]/div")) != 0)
-                {
-                    PropretiesCollection.driver.FindElement(By.XPath("//*[@id='facebook']/body/div[" + indexframe + "]/ div[2]/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div/div/div[1]/div[1]/div/div[1]/div[2]/div/div/div[2]/div")).SendKeys(mota);
-                    //if (IsElementPresent(By.XPath("//*[@id='entire-tag-area']/div/div/div[2]/div/span/label/input")) != 0)
-                    //{
-                    //    driver.FindElementByXPath("//*[@id='entire-tag-area']/div/div/div[2]/div/span/label/input").SendKeys("tukhoa,");
-                    //}
-                }
-            }
-            Thread.Sleep(2000);
-            if (paththumnail != "")
-            {
-                if (IsElementPresent(By.XPath("//*[@id='facebook']/body/div[" + indexframe + "]/div[2]/div/div/div/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[2]/div/div[1]")) != 0)
-                {
-                    PropretiesCollection.driver.FindElement(By.XPath("//*[@id='facebook']/body/div[" + indexframe + "]/div[2]/div/div/div/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[2]/div/div[1]")).Click();
-                    if (IsElementPresent(By.XPath("//*[@id='facebook']/body/div[" + indexframe + "]/div[2]/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div/div/div[4]/div[1]/div/div/div[2]/div/a/div")) != 0)
-                    {
-                        PropretiesCollection.driver.FindElement(By.XPath("//*[@id='facebook']/body/div[" + indexframe + "]/div[2]/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div/div/div[4]/div[1]/div/div/div[2]/div/a/div")).Click();
-                    }
-                    Thread.Sleep(1000);
-                    SendKeys.SendWait(paththumnail);
-                    SendKeys.SendWait("{Enter}");
-                }
-            }
-            while (true)
-            {
-                string stt = PropretiesCollection.driver.FindElement(By.XPath("//*[@id='facebook']/body/div[" + indexframe + "]/div[2]/div/div/div/div/div/div/div/div[1]/div[1]/div[1]/div[1]/div[2]/div/div[3]/div/div")).Text;
-                if (stt.Contains("100"))
-                {
+                case 0:             // label case 1
+                    System.Threading.Thread.Sleep(15000);
+                    goto case 1;
                     break;
-                }
-                Thread.Sleep(3000);
-            }
-            if (IsElementPresent(By.XPath("//*[@id='facebook']/body/div[" + indexframe + "]/div[2]/div/div/div/div/div/div/div/div[2]/div[2]/div/a/div/div")) != 0)
-            {
-                PropretiesCollection.driver.FindElement(By.XPath("//*[@id='facebook']/body/div[" + indexframe + "]/div[2]/div/div/div/div/div/div/div/div[2]/div[2]/div/a/div/div")).Click();
-                Thread.Sleep(5000);
-                if (IsElementPresent(By.XPath("//*[@id='facebook']/body/div[" + indexframe + "]/div[2]/div/div/div/div/div/div/div/div[2]/div[2]/div[2]/div/div/div[2]/div[2]/a[2]/div")) != 0)
-                {
-                    PropretiesCollection.driver.FindElement(By.XPath("//*[@id='facebook']/body/div[" + indexframe + "]/div[2]/div/div/div/div/div/div/div/div[2]/div[2]/div[2]/div/div/div[2]/div[2]/a[2]/div")).Click();
-                }
-            }
-            while (true)
-            {
-                if (IsElementPresent(By.XPath("//*[@id='facebook']/body/div[" + indexframe + "]/div[2]/div/div/div/div/div/div/div/div[1]/div[2]/div[1]/div/div")) != 0)
-                {
-                }
-                else
-                {
+                case 1:
+                    try
+                    {
+                        string xuly = SeleniumGetMeThor.GetText2(prossesbarbeta);
+                        if (xuly == "100%")
+                        {
+                            System.Threading.Thread.Sleep(8000);
+                            btndone.Click();
+                            System.Threading.Thread.Sleep(5000);
+                        }
+                        else
+                        {
+                            goto case 0;
+                        }
+                    }
+                    catch { goto case 0; }
                     break;
-                }
-                Thread.Sleep(2000);
 
             }
+
         }
     }
 }

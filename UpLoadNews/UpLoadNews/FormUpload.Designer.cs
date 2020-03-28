@@ -29,6 +29,18 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.checkrendervoiceoffline = new System.Windows.Forms.CheckBox();
             this.btnrendermulti = new System.Windows.Forms.Button();
@@ -148,6 +160,7 @@
             this.btnloadmc = new System.Windows.Forms.Button();
             this.checkjoinmc = new System.Windows.Forms.CheckBox();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.checkprivate = new System.Windows.Forms.CheckBox();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
             this.cmbcategory = new System.Windows.Forms.ComboBox();
             this.label19 = new System.Windows.Forms.Label();
@@ -161,6 +174,7 @@
             this.checklistgmail = new System.Windows.Forms.CheckBox();
             this.checksetmotizeion = new System.Windows.Forms.CheckBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.raduploadchomebeta = new System.Windows.Forms.RadioButton();
             this.raduploadchome = new System.Windows.Forms.RadioButton();
             this.raduploadapi = new System.Windows.Forms.RadioButton();
             this.btnsavecfupload = new System.Windows.Forms.Button();
@@ -174,6 +188,23 @@
             this.txtuotdownloads = new System.Windows.Forms.TextBox();
             this.cmbvoicevietnam = new System.Windows.Forms.ComboBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.checkdownxnet = new System.Windows.Forms.CheckBox();
+            this.cmbsestek = new System.Windows.Forms.ComboBox();
+            this.radiovoicesestek = new System.Windows.Forms.RadioButton();
+            this.label39 = new System.Windows.Forms.Label();
+            this.label47 = new System.Windows.Forms.Label();
+            this.cmblaguageling = new System.Windows.Forms.ComboBox();
+            this.cmbvoiceling = new System.Windows.Forms.ComboBox();
+            this.radiovoicelinguatec = new System.Windows.Forms.RadioButton();
+            this.cmbwideo = new System.Windows.Forms.ComboBox();
+            this.radiovoicewideo = new System.Windows.Forms.RadioButton();
+            this.checkgiongnamcereproc = new System.Windows.Forms.CheckBox();
+            this.radiovoicecereproc = new System.Windows.Forms.RadioButton();
+            this.checklager = new System.Windows.Forms.CheckBox();
+            this.checktangtimevoice = new System.Windows.Forms.CheckBox();
+            this.radiovoicereallusion = new System.Windows.Forms.RadioButton();
+            this.checktienghan = new System.Windows.Forms.CheckBox();
+            this.radiovoicenotevibes = new System.Windows.Forms.RadioButton();
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.ddlLaguagemicrosoft = new System.Windows.Forms.ComboBox();
@@ -210,6 +241,9 @@
             this.tblogothumnail = new System.Windows.Forms.TextBox();
             this.label42 = new System.Windows.Forms.Label();
             this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.checkdefaultchome = new System.Windows.Forms.CheckBox();
+            this.checkaddclaim = new System.Windows.Forms.CheckBox();
+            this.checkYoutubeExplode = new System.Windows.Forms.CheckBox();
             this.btnrefresh = new System.Windows.Forms.Button();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
             this.radiofirefox = new System.Windows.Forms.RadioButton();
@@ -228,8 +262,9 @@
             this.btnchangepassall = new System.Windows.Forms.Button();
             this.dataGridViewListKenh = new System.Windows.Forms.DataGridView();
             this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.btncreateFB = new System.Windows.Forms.Button();
             this.btnrunsub = new System.Windows.Forms.Button();
-            this.btnreupfolder = new System.Windows.Forms.Button();
+            this.btnxoavideodau = new System.Windows.Forms.Button();
             this.btngetlist = new System.Windows.Forms.Button();
             this.btnrefeshview = new System.Windows.Forms.Button();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
@@ -260,6 +295,7 @@
             this.txtmailreup = new System.Windows.Forms.TextBox();
             this.dataGridViewListReup = new System.Windows.Forms.DataGridView();
             this.tabPage12 = new System.Windows.Forms.TabPage();
+            this.panelthongbaoreup = new System.Windows.Forms.Panel();
             this.tabPage13 = new System.Windows.Forms.TabPage();
             this.txttimeview = new System.Windows.Forms.NumericUpDown();
             this.label38 = new System.Windows.Forms.Label();
@@ -272,6 +308,8 @@
             this.txtpathtor = new System.Windows.Forms.TextBox();
             this.label35 = new System.Windows.Forms.Label();
             this.tabPage14 = new System.Windows.Forms.TabPage();
+            this.btnclose = new System.Windows.Forms.Button();
+            this.btnrandomconfig = new System.Windows.Forms.Button();
             this.btntaoemulator = new System.Windows.Forms.Button();
             this.btnpathLDplay = new System.Windows.Forms.Button();
             this.txtpathldplayer = new System.Windows.Forms.TextBox();
@@ -287,8 +325,6 @@
             this.timerchayview = new System.Windows.Forms.Timer(this.components);
             this.bgwreupfolder = new System.ComponentModel.BackgroundWorker();
             this.bgwsub = new System.ComponentModel.BackgroundWorker();
-            this.btnrandomconfig = new System.Windows.Forms.Button();
-            this.btnclose = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             this.tabControl3.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -334,6 +370,7 @@
             this.groupBox15.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtsoluongup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListReup)).BeginInit();
+            this.tabPage12.SuspendLayout();
             this.tabPage13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txttimeview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtnumberthread)).BeginInit();
@@ -354,7 +391,7 @@
             this.groupBox3.Controls.Add(this.lblthongbao);
             this.groupBox3.Controls.Add(this.btninputfolder);
             this.groupBox3.Controls.Add(this.txtfoldervideo);
-            this.groupBox3.Location = new System.Drawing.Point(828, 16);
+            this.groupBox3.Location = new System.Drawing.Point(866, 16);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(335, 563);
             this.groupBox3.TabIndex = 282;
@@ -912,7 +949,7 @@
             this.radiovoiceselenium.Size = new System.Drawing.Size(68, 17);
             this.radiovoiceselenium.TabIndex = 249;
             this.radiovoiceselenium.TabStop = true;
-            this.radiovoiceselenium.Text = "Selenium";
+            this.radiovoiceselenium.Text = "voice api";
             this.radiovoiceselenium.UseVisualStyleBackColor = true;
             // 
             // radiovoicetts
@@ -971,7 +1008,7 @@
             this.groupBox1.Controls.Add(this.checkuploadvideo);
             this.groupBox1.Location = new System.Drawing.Point(5, 407);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(801, 96);
+            this.groupBox1.Size = new System.Drawing.Size(836, 96);
             this.groupBox1.TabIndex = 286;
             this.groupBox1.TabStop = false;
             // 
@@ -1186,17 +1223,41 @@
             this.groupBox2.Controls.Add(this.dataGridViewList);
             this.groupBox2.Location = new System.Drawing.Point(10, 266);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(794, 142);
+            this.groupBox2.Size = new System.Drawing.Size(829, 142);
             this.groupBox2.TabIndex = 311;
             this.groupBox2.TabStop = false;
             // 
             // dataGridViewList
             // 
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dataGridViewList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewList.DefaultCellStyle = dataGridViewCellStyle14;
             this.dataGridViewList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewList.Location = new System.Drawing.Point(3, 16);
             this.dataGridViewList.Name = "dataGridViewList";
-            this.dataGridViewList.Size = new System.Drawing.Size(788, 123);
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewList.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            this.dataGridViewList.Size = new System.Drawing.Size(823, 123);
             this.dataGridViewList.TabIndex = 7;
             // 
             // statusStrip1
@@ -1207,7 +1268,7 @@
             this.toolStripProgressBar1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 582);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1172, 36);
+            this.statusStrip1.Size = new System.Drawing.Size(1207, 36);
             this.statusStrip1.TabIndex = 313;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -1245,7 +1306,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 47);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(825, 532);
+            this.tabControl1.Size = new System.Drawing.Size(860, 532);
             this.tabControl1.TabIndex = 311;
             // 
             // tabPage3
@@ -1267,7 +1328,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(817, 506);
+            this.tabPage3.Size = new System.Drawing.Size(852, 506);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Intro and outtro";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1425,7 +1486,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(817, 506);
+            this.tabPage1.Size = new System.Drawing.Size(852, 506);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Slide Options";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1449,7 +1510,7 @@
             this.groupBox6.Controls.Add(this.txtsizetext);
             this.groupBox6.Location = new System.Drawing.Point(5, 56);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(806, 204);
+            this.groupBox6.Size = new System.Drawing.Size(841, 204);
             this.groupBox6.TabIndex = 3;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Sub";
@@ -1491,7 +1552,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(817, 506);
+            this.tabPage2.Size = new System.Drawing.Size(852, 506);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Config MC";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -1642,6 +1703,7 @@
             // 
             // tabPage6
             // 
+            this.tabPage6.Controls.Add(this.checkprivate);
             this.tabPage6.Controls.Add(this.groupBox13);
             this.tabPage6.Controls.Add(this.groupBox12);
             this.tabPage6.Controls.Add(this.checklistgmail);
@@ -1656,10 +1718,22 @@
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(817, 506);
+            this.tabPage6.Size = new System.Drawing.Size(852, 506);
             this.tabPage6.TabIndex = 3;
             this.tabPage6.Text = "Config Upload";
             this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // checkprivate
+            // 
+            this.checkprivate.AutoSize = true;
+            this.checkprivate.ForeColor = System.Drawing.Color.Blue;
+            this.checkprivate.Location = new System.Drawing.Point(476, 249);
+            this.checkprivate.Name = "checkprivate";
+            this.checkprivate.Size = new System.Drawing.Size(57, 18);
+            this.checkprivate.TabIndex = 357;
+            this.checkprivate.Text = "private";
+            this.checkprivate.UseCompatibleTextRendering = true;
+            this.checkprivate.UseVisualStyleBackColor = true;
             // 
             // groupBox13
             // 
@@ -1807,18 +1881,31 @@
             // 
             // groupBox10
             // 
+            this.groupBox10.Controls.Add(this.raduploadchomebeta);
             this.groupBox10.Controls.Add(this.raduploadchome);
             this.groupBox10.Controls.Add(this.raduploadapi);
             this.groupBox10.Location = new System.Drawing.Point(78, 209);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(392, 34);
+            this.groupBox10.Size = new System.Drawing.Size(678, 34);
             this.groupBox10.TabIndex = 318;
             this.groupBox10.TabStop = false;
+            // 
+            // raduploadchomebeta
+            // 
+            this.raduploadchomebeta.AutoSize = true;
+            this.raduploadchomebeta.Checked = true;
+            this.raduploadchomebeta.Location = new System.Drawing.Point(394, 11);
+            this.raduploadchomebeta.Name = "raduploadchomebeta";
+            this.raduploadchomebeta.Size = new System.Drawing.Size(118, 17);
+            this.raduploadchomebeta.TabIndex = 2;
+            this.raduploadchomebeta.TabStop = true;
+            this.raduploadchomebeta.Text = "Upload chome beta";
+            this.raduploadchomebeta.UseVisualStyleBackColor = true;
             // 
             // raduploadchome
             // 
             this.raduploadchome.AutoSize = true;
-            this.raduploadchome.Location = new System.Drawing.Point(190, 12);
+            this.raduploadchome.Location = new System.Drawing.Point(160, 11);
             this.raduploadchome.Name = "raduploadchome";
             this.raduploadchome.Size = new System.Drawing.Size(149, 17);
             this.raduploadchome.TabIndex = 1;
@@ -1828,12 +1915,10 @@
             // raduploadapi
             // 
             this.raduploadapi.AutoSize = true;
-            this.raduploadapi.Checked = true;
-            this.raduploadapi.Location = new System.Drawing.Point(60, 12);
+            this.raduploadapi.Location = new System.Drawing.Point(19, 12);
             this.raduploadapi.Name = "raduploadapi";
             this.raduploadapi.Size = new System.Drawing.Size(93, 17);
             this.raduploadapi.TabIndex = 0;
-            this.raduploadapi.TabStop = true;
             this.raduploadapi.Text = "Upload by API";
             this.raduploadapi.UseVisualStyleBackColor = true;
             // 
@@ -1904,7 +1989,7 @@
             this.tabPage7.Location = new System.Drawing.Point(4, 22);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(817, 506);
+            this.tabPage7.Size = new System.Drawing.Size(852, 506);
             this.tabPage7.TabIndex = 4;
             this.tabPage7.Text = "Config voice";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -1943,6 +2028,23 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.checkdownxnet);
+            this.groupBox7.Controls.Add(this.cmbsestek);
+            this.groupBox7.Controls.Add(this.radiovoicesestek);
+            this.groupBox7.Controls.Add(this.label39);
+            this.groupBox7.Controls.Add(this.label47);
+            this.groupBox7.Controls.Add(this.cmblaguageling);
+            this.groupBox7.Controls.Add(this.cmbvoiceling);
+            this.groupBox7.Controls.Add(this.radiovoicelinguatec);
+            this.groupBox7.Controls.Add(this.cmbwideo);
+            this.groupBox7.Controls.Add(this.radiovoicewideo);
+            this.groupBox7.Controls.Add(this.checkgiongnamcereproc);
+            this.groupBox7.Controls.Add(this.radiovoicecereproc);
+            this.groupBox7.Controls.Add(this.checklager);
+            this.groupBox7.Controls.Add(this.checktangtimevoice);
+            this.groupBox7.Controls.Add(this.radiovoicereallusion);
+            this.groupBox7.Controls.Add(this.checktienghan);
+            this.groupBox7.Controls.Add(this.radiovoicenotevibes);
             this.groupBox7.Controls.Add(this.label22);
             this.groupBox7.Controls.Add(this.label23);
             this.groupBox7.Controls.Add(this.ddlLaguagemicrosoft);
@@ -1967,14 +2069,469 @@
             this.groupBox7.Controls.Add(this.radvoicedefault);
             this.groupBox7.Location = new System.Drawing.Point(14, 22);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(787, 410);
+            this.groupBox7.Size = new System.Drawing.Size(832, 410);
             this.groupBox7.TabIndex = 340;
             this.groupBox7.TabStop = false;
+            // 
+            // checkdownxnet
+            // 
+            this.checkdownxnet.AutoSize = true;
+            this.checkdownxnet.Checked = true;
+            this.checkdownxnet.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkdownxnet.Location = new System.Drawing.Point(392, 187);
+            this.checkdownxnet.Name = "checkdownxnet";
+            this.checkdownxnet.Size = new System.Drawing.Size(108, 17);
+            this.checkdownxnet.TabIndex = 359;
+            this.checkdownxnet.Text = "check down xnet";
+            this.checkdownxnet.UseVisualStyleBackColor = true;
+            // 
+            // cmbsestek
+            // 
+            this.cmbsestek.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbsestek.FormattingEnabled = true;
+            this.cmbsestek.Items.AddRange(new object[] {
+            "Annabella (German Female)",
+            "Athena (British English Female)",
+            "Cigdem (Turkish Female)",
+            "Craig (American English Male)",
+            "Daniel (American English Male)",
+            "Delal (Arabic Female)",
+            "Delal Eng (Arabic English Female)",
+            "Elif (Turkish Female)",
+            "Gladys (Spanish Female)",
+            "Gul Premium (Turkish Female)",
+            "Guldestan (Kurdish Female)",
+            "Johannes (German Male)",
+            "Kristina (Russian Female)",
+            "Marie (French Female)",
+            "Melissa (American English Female)",
+            "Muntaha (Urdu Female-beta)",
+            "Murad (Azeri Male)",
+            "Rae (American English Female)",
+            "Tarik (Arabic Male)",
+            "Ulviye (Azeri Female)",
+            "Yasmin (Arabic Female)",
+            "Yousef (Arabic Male)"});
+            this.cmbsestek.Location = new System.Drawing.Point(131, 230);
+            this.cmbsestek.MaxDropDownItems = 20;
+            this.cmbsestek.Name = "cmbsestek";
+            this.cmbsestek.Size = new System.Drawing.Size(217, 21);
+            this.cmbsestek.Sorted = true;
+            this.cmbsestek.TabIndex = 358;
+            // 
+            // radiovoicesestek
+            // 
+            this.radiovoicesestek.AutoSize = true;
+            this.radiovoicesestek.Location = new System.Drawing.Point(10, 230);
+            this.radiovoicesestek.Name = "radiovoicesestek";
+            this.radiovoicesestek.Size = new System.Drawing.Size(109, 17);
+            this.radiovoicesestek.TabIndex = 357;
+            this.radiovoicesestek.Text = "Voice sestek.com";
+            this.radiovoicesestek.UseVisualStyleBackColor = true;
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(462, 166);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(58, 13);
+            this.label39.TabIndex = 353;
+            this.label39.Text = "Language:";
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Location = new System.Drawing.Point(644, 166);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(37, 13);
+            this.label47.TabIndex = 355;
+            this.label47.Text = "Voice:";
+            // 
+            // cmblaguageling
+            // 
+            this.cmblaguageling.FormattingEnabled = true;
+            this.cmblaguageling.Items.AddRange(new object[] {
+            "Arabic",
+            "Basque",
+            "Catalan",
+            "Cantonese (Hong Kong)",
+            "Czech",
+            "Danish",
+            "Dutch (Netherlands)",
+            "Dutch (Belgium)",
+            "English (Australian)",
+            "English (Irish)",
+            "English (British)",
+            "English (Indian)",
+            "English (Scottisch)",
+            "English (American)",
+            "English (South African)",
+            "Finnish",
+            "French (Canadian)",
+            "French",
+            "German",
+            "Galician",
+            "Greek",
+            "Hebrew",
+            "Hindi",
+            "Hungarian",
+            "Indonesian",
+            "Italian",
+            "Japanese",
+            "Korean",
+            "Mandarin (China)",
+            "Mandarin (Taiwan)",
+            "Norwegian",
+            "Polish",
+            "Portuguese (Brazilian)",
+            "Portuguese",
+            "Romanian",
+            "Russian",
+            "Slovak",
+            "Spanish (Argentine)",
+            "Spanish (Colombian)",
+            "Spanish",
+            "Spanish (Mexican)",
+            "Swedish",
+            "Thai",
+            "Turkish",
+            "Valencian"});
+            this.cmblaguageling.Location = new System.Drawing.Point(521, 160);
+            this.cmblaguageling.Name = "cmblaguageling";
+            this.cmblaguageling.Size = new System.Drawing.Size(116, 21);
+            this.cmblaguageling.TabIndex = 356;
+            this.cmblaguageling.SelectedIndexChanged += new System.EventHandler(this.cmblaguageling_SelectedIndexChanged);
+            // 
+            // cmbvoiceling
+            // 
+            this.cmbvoiceling.FormattingEnabled = true;
+            this.cmbvoiceling.Location = new System.Drawing.Point(687, 161);
+            this.cmbvoiceling.Name = "cmbvoiceling";
+            this.cmbvoiceling.Size = new System.Drawing.Size(117, 21);
+            this.cmbvoiceling.TabIndex = 354;
+            // 
+            // radiovoicelinguatec
+            // 
+            this.radiovoicelinguatec.AutoSize = true;
+            this.radiovoicelinguatec.Location = new System.Drawing.Point(363, 164);
+            this.radiovoicelinguatec.Name = "radiovoicelinguatec";
+            this.radiovoicelinguatec.Size = new System.Drawing.Size(98, 17);
+            this.radiovoicelinguatec.TabIndex = 352;
+            this.radiovoicelinguatec.Text = "Voice linguatec";
+            this.radiovoicelinguatec.UseVisualStyleBackColor = true;
+            // 
+            // cmbwideo
+            // 
+            this.cmbwideo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbwideo.FormattingEnabled = true;
+            this.cmbwideo.Items.AddRange(new object[] {
+            "[ar-XA] Amanda Rose -S",
+            "[ar-XA] Amanda Rose -S",
+            "[ar-XA] Jack Bailey -S",
+            "[ar-XA] Jack Bailey -W",
+            "[ar-XA] Maria Henderson -S",
+            "[ar-XA] Maria Henderson -W",
+            "[ar-XA] Maria Henderson -W",
+            "[ar-XA] Peter Moore -S",
+            "[ar-XA] Peter Moore -W",
+            "[cmn-CN] Amanda Rose -S",
+            "[cmn-CN] Amanda Rose -W",
+            "[cmn-CN] Jack Bailey -S",
+            "[cmn-CN] Jack Bailey -W",
+            "[cmn-CN] Maria Henderson -S",
+            "[cmn-CN] Maria Henderson -W",
+            "[cmn-CN] Peter Moore -S",
+            "[cmn-CN] Peter Moore -W",
+            "[cmn-TW] Maria Henderson -S",
+            "[cmn-TW] Maria Henderson -W",
+            "[cmn-TW] Tom Fraser -S",
+            "[cmn-TW] Tom Fraser -S",
+            "[cmn-TW] Tom Fraser -W",
+            "[cmn-TW] Tom Fraser -W",
+            "[cs-CZ] Maria Henderson -S",
+            "[cs-CZ] Maria Henderson -W",
+            "[da-DK] Maria Henderson -S",
+            "[da-DK] Maria Henderson -W",
+            "[de-DE] Alisha Howard -W",
+            "[de-DE] Jack Bailey -S",
+            "[de-DE] Jack Bailey -W",
+            "[de-DE] Lisa Fisher -S",
+            "[de-DE] Lisa Fisher -W",
+            "[de-DE] Maria Henderson -S",
+            "[de-DE] Maria Henderson -W",
+            "[de-DE] Mike Stevens -W",
+            "[de-DE] Nick Ross -S",
+            "[de-DE] Nick Ross -W",
+            "[el-GR] Maria Henderson -S",
+            "[el-GR] Maria Henderson -W",
+            "[en-AU] Alisha Howard -S",
+            "[en-AU] Alisha Howard -W",
+            "[en-AU] Jack Bailey -S",
+            "[en-AU] Jack Bailey -W",
+            "[en-AU] Maria Henderson -S",
+            "[en-AU] Maria Henderson -W",
+            "[en-AU] Mike Stevens -S",
+            "[en-AU] Mike Stevens -W",
+            "[en-GB] Alisha Howard -S",
+            "[en-GB] Alisha Howard -W",
+            "[en-GB] Jack Bailey -S",
+            "[en-GB] Jack Bailey -W",
+            "[en-GB] Maria Henderson -S",
+            "[en-GB] Maria Henderson -W",
+            "[en-GB] Mike Stevens -S",
+            "[en-GB] Mike Stevens -W",
+            "[en-IN] Jack Bailey -S",
+            "[en-IN] Jack Bailey -W",
+            "[en-IN] Maria Henderson -S",
+            "[en-IN] Maria Henderson -W",
+            "[en-IN] Peter Moore -S",
+            "[en-IN] Peter Moore -W",
+            "[en-US] Alisha Howard -S",
+            "[en-US] Alisha Howard -W",
+            "[en-US] Jack Bailey -S",
+            "[en-US] Jack Bailey -W",
+            "[en-US] Lisa Fisher -W",
+            "[en-US] Mike Stevens -S",
+            "[en-US] Mike Stevens -W",
+            "[en-US] Tom Fraser -W",
+            "[en-US] Virginia Harper -S",
+            "[en-US] Virginia Harper -W",
+            "[es-ES] Maria Henderson -S",
+            "[fi-FI] Maria Henderson -S",
+            "[fi-FI] Maria Henderson -W",
+            "[fil-PH] Maria Henderson -S",
+            "[fil-PH] Maria Henderson -W",
+            "[fr-CA] Alisha Howard -S",
+            "[fr-CA] Alisha Howard -W",
+            "[fr-CA] Jack Bailey -S",
+            "[fr-CA] Jack Bailey -W",
+            "[fr-CA] Maria Henderson -S",
+            "[fr-CA] Maria Henderson -W",
+            "[fr-CA] Mike Stevens -S",
+            "[fr-CA] Mike Stevens -W",
+            "[fr-FR] Alisha Howard -S",
+            "[fr-FR] Alisha Howard -W",
+            "[fr-FR] Jack Bailey -S",
+            "[fr-FR] Jack Bailey -W",
+            "[fr-FR] Maria Henderson -S",
+            "[fr-FR] Maria Henderson -W",
+            "[fr-FR] Mike Stevens -S",
+            "[fr-FR] Mike Stevens -W",
+            "[fr-FR] Virginia Harper -S",
+            "[fr-FR] Virginia Harper -W",
+            "[hi-IN] Jack Bailey -S",
+            "[hi-IN] Jack Bailey -W",
+            "[hi-IN] Maria Henderson -S",
+            "[hi-IN] Maria Henderson -W",
+            "[hi-IN] Peter Moore -S",
+            "[hi-IN] Peter Moore -W",
+            "[hu-HU] Maria Henderson -S",
+            "[hu-HU] Maria Henderson -W",
+            "[id-ID] Amanda Rose -S",
+            "[id-ID] Amanda Rose -W",
+            "[id-ID] Jack Bailey -S",
+            "[id-ID] Jack Bailey -W",
+            "[id-ID] Maria Henderson -S",
+            "[id-ID] Maria Henderson -W",
+            "[id-ID] Peter Moore -S",
+            "[id-ID] Peter Moore -W",
+            "[it-IT] Cheryl Lowe -S",
+            "[it-IT] Cheryl Lowe -W",
+            "[it-IT] Maria Henderson -S",
+            "[it-IT] Maria Henderson -W",
+            "[it-IT] Mike Stevens -S",
+            "[it-IT] Mike Stevens -W",
+            "[it-IT] Peter Moore -S",
+            "[it-IT] Peter Moore -W",
+            "[ja-JP] Cheryl Lowe -S",
+            "[ja-JP] Cheryl Lowe -W",
+            "[ja-JP] Maria Henderson -S",
+            "[ja-JP] Maria Henderson -W",
+            "[ja-JP] Mike Stevens -S",
+            "[ja-JP] Mike Stevens -W",
+            "[ja-JP] Peter Moore -S",
+            "[ja-JP] Peter Moore -W",
+            "[ko-KR] Cheryl Lowe -S",
+            "[ko-KR] Cheryl Lowe -W",
+            "[ko-KR] Maria Henderson -S",
+            "[ko-KR] Maria Henderson -W",
+            "[ko-KR] Mike Stevens -S",
+            "[ko-KR] Mike Stevens -W",
+            "[ko-KR] Peter Moore -S",
+            "[ko-KR] Peter Moore -W",
+            "[nb-NO] Alisha Howard -S",
+            "[nb-NO] Alisha Howard -W",
+            "[nb-NO] Jack Bailey -S",
+            "[nb-NO] Jack Bailey -W",
+            "[nb-NO] Maria Henderson -S",
+            "[nb-NO] Maria Henderson -W",
+            "[nb-NO] Mike Stevens -S",
+            "[nb-NO] Mike Stevens -W",
+            "[nb-no] Virginia Harper -S",
+            "[nb-no] Virginia Harper -W",
+            "[nl-NL] Amanda Rose -S",
+            "[nl-NL] Amanda Rose -W",
+            "[nl-NL] Jack Bailey -S",
+            "[nl-NL] Jack Bailey -W",
+            "[nl-NL] Maria Henderson -S",
+            "[nl-NL] Maria Henderson -W",
+            "[nl-NL] Peter Moore -S",
+            "[nl-NL] Peter Moore -W",
+            "[nl-NL] Virginia Harper -S",
+            "[nl-NL] Virginia Harper -W",
+            "[pl-PL] Amanda Rose -S",
+            "[pl-PL] Amanda Rose -W",
+            "[pl-PL] Jack Bailey -S",
+            "[pl-PL] Jack Bailey -W",
+            "[pl-PL] Maria Henderson -S",
+            "[pl-PL] Maria Henderson -W",
+            "[pl-PL] Peter Moore -S",
+            "[pl-PL] Peter Moore -W",
+            "[pl-PL] Virginia Harper -S",
+            "[pl-PL] Virginia Harper -W",
+            "[pt-BR] Maria Henderson -S",
+            "[pt-BR] Maria Henderson -W",
+            "[pt-PT] Amanda Rose -S",
+            "[pt-PT] Amanda Rose -W",
+            "[pt-PT] Jack Bailey -S",
+            "[pt-PT] Jack Bailey -W",
+            "[pt-PT] Maria Henderson -S",
+            "[pt-PT] Maria Henderson -W",
+            "[pt-PT] Peter Moore -S",
+            "[pt-PT] Peter Moore -W",
+            "[ru-RU] Alisha Howard -S",
+            "[ru-RU] Alisha Howard -W",
+            "[ru-RU] Jack Bailey -S",
+            "[ru-RU] Jack Bailey -W",
+            "[ru-RU] Maria Henderson -S",
+            "[ru-RU] Maria Henderson -W",
+            "[ru-RU] Mike Stevens -S",
+            "[ru-RU] Mike Stevens -W",
+            "[ru-RU] Virginia Harper -S",
+            "[ru-RU] Virginia Harper -W",
+            "[sk-SK] Maria Henderson -S",
+            "[sk-SK] Maria Henderson -W",
+            "[sv-SE] Maria Henderson -S",
+            "[sv-SE] Maria Henderson -W",
+            "[tr-TR] Alisha Howard -S",
+            "[tr-TR] Alisha Howard -W",
+            "[tr-TR] Amanda Rose -S",
+            "[tr-TR] Amanda Rose -W",
+            "[tr-TR] Jack Bailey -S",
+            "[tr-TR] Jack Bailey -W",
+            "[tr-TR] Maria Henderson -S",
+            "[tr-TR] Maria Henderson -W",
+            "[tr-TR] Nick Ross -S",
+            "[tr-TR] Nick Ross -W",
+            "[uk-UA] Maria Henderson -S",
+            "[uk-UA] Maria Henderson -W",
+            "[vi-VN] Alisha Howard -S",
+            "[vi-VN] Alisha Howard -W",
+            "[vi-VN] Jack Bailey -S",
+            "[vi-VN] Jack Bailey -W",
+            "[vi-VN] Maria Henderson -S",
+            "[vi-VN] Maria Henderson -W",
+            "[vi-VN] Mike Stevens -S",
+            "[vi-VN] Mike Stevens -W"});
+            this.cmbwideo.Location = new System.Drawing.Point(131, 202);
+            this.cmbwideo.MaxDropDownItems = 20;
+            this.cmbwideo.Name = "cmbwideo";
+            this.cmbwideo.Size = new System.Drawing.Size(217, 21);
+            this.cmbwideo.Sorted = true;
+            this.cmbwideo.TabIndex = 351;
+            // 
+            // radiovoicewideo
+            // 
+            this.radiovoicewideo.AutoSize = true;
+            this.radiovoicewideo.Location = new System.Drawing.Point(11, 203);
+            this.radiovoicewideo.Name = "radiovoicewideo";
+            this.radiovoicewideo.Size = new System.Drawing.Size(98, 17);
+            this.radiovoicewideo.TabIndex = 350;
+            this.radiovoicewideo.Text = "Voice wideo.co";
+            this.radiovoicewideo.UseVisualStyleBackColor = true;
+            // 
+            // checkgiongnamcereproc
+            // 
+            this.checkgiongnamcereproc.AutoSize = true;
+            this.checkgiongnamcereproc.Checked = true;
+            this.checkgiongnamcereproc.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkgiongnamcereproc.Location = new System.Drawing.Point(489, 135);
+            this.checkgiongnamcereproc.Name = "checkgiongnamcereproc";
+            this.checkgiongnamcereproc.Size = new System.Drawing.Size(108, 17);
+            this.checkgiongnamcereproc.TabIndex = 349;
+            this.checkgiongnamcereproc.Text = "check giọng nam";
+            this.checkgiongnamcereproc.UseVisualStyleBackColor = true;
+            // 
+            // radiovoicecereproc
+            // 
+            this.radiovoicecereproc.AutoSize = true;
+            this.radiovoicecereproc.Location = new System.Drawing.Point(364, 136);
+            this.radiovoicecereproc.Name = "radiovoicecereproc";
+            this.radiovoicecereproc.Size = new System.Drawing.Size(120, 17);
+            this.radiovoicecereproc.TabIndex = 348;
+            this.radiovoicecereproc.Text = "Voice cereproc.com";
+            this.radiovoicecereproc.UseVisualStyleBackColor = true;
+            // 
+            // checklager
+            // 
+            this.checklager.AutoSize = true;
+            this.checklager.Checked = true;
+            this.checklager.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checklager.Location = new System.Drawing.Point(262, 36);
+            this.checklager.Name = "checklager";
+            this.checklager.Size = new System.Drawing.Size(82, 17);
+            this.checklager.TabIndex = 347;
+            this.checklager.Text = "check lager";
+            this.checklager.UseVisualStyleBackColor = true;
+            // 
+            // checktangtimevoice
+            // 
+            this.checktangtimevoice.AutoSize = true;
+            this.checktangtimevoice.Checked = true;
+            this.checktangtimevoice.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checktangtimevoice.Location = new System.Drawing.Point(679, 385);
+            this.checktangtimevoice.Name = "checktangtimevoice";
+            this.checktangtimevoice.Size = new System.Drawing.Size(102, 17);
+            this.checktangtimevoice.TabIndex = 346;
+            this.checktangtimevoice.Text = "Tăng time voice";
+            this.checktangtimevoice.UseVisualStyleBackColor = true;
+            // 
+            // radiovoicereallusion
+            // 
+            this.radiovoicereallusion.AutoSize = true;
+            this.radiovoicereallusion.Location = new System.Drawing.Point(364, 112);
+            this.radiovoicereallusion.Name = "radiovoicereallusion";
+            this.radiovoicereallusion.Size = new System.Drawing.Size(136, 17);
+            this.radiovoicereallusion.TabIndex = 345;
+            this.radiovoicereallusion.Text = "Voice tts.reallusion.com";
+            this.radiovoicereallusion.UseVisualStyleBackColor = true;
+            // 
+            // checktienghan
+            // 
+            this.checktienghan.AutoSize = true;
+            this.checktienghan.Checked = true;
+            this.checktienghan.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checktienghan.Location = new System.Drawing.Point(165, 36);
+            this.checktienghan.Name = "checktienghan";
+            this.checktienghan.Size = new System.Drawing.Size(70, 17);
+            this.checktienghan.TabIndex = 344;
+            this.checktienghan.Text = "tiếng hàn";
+            this.checktienghan.UseVisualStyleBackColor = true;
+            // 
+            // radiovoicenotevibes
+            // 
+            this.radiovoicenotevibes.AutoSize = true;
+            this.radiovoicenotevibes.Location = new System.Drawing.Point(363, 82);
+            this.radiovoicenotevibes.Name = "radiovoicenotevibes";
+            this.radiovoicenotevibes.Size = new System.Drawing.Size(124, 17);
+            this.radiovoicenotevibes.TabIndex = 343;
+            this.radiovoicenotevibes.Text = "Voice notevibes.com";
+            this.radiovoicenotevibes.UseVisualStyleBackColor = true;
             // 
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(128, 232);
+            this.label22.Location = new System.Drawing.Point(460, 56);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(58, 13);
             this.label22.TabIndex = 339;
@@ -1983,7 +2540,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(310, 232);
+            this.label23.Location = new System.Drawing.Point(642, 56);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(37, 13);
             this.label23.TabIndex = 341;
@@ -2013,7 +2570,7 @@
             "Swedish",
             "Turkish",
             "Vietnamese"});
-            this.ddlLaguagemicrosoft.Location = new System.Drawing.Point(187, 226);
+            this.ddlLaguagemicrosoft.Location = new System.Drawing.Point(519, 50);
             this.ddlLaguagemicrosoft.Name = "ddlLaguagemicrosoft";
             this.ddlLaguagemicrosoft.Size = new System.Drawing.Size(116, 21);
             this.ddlLaguagemicrosoft.TabIndex = 342;
@@ -2022,7 +2579,7 @@
             // cmbvoicemicrosoft
             // 
             this.cmbvoicemicrosoft.FormattingEnabled = true;
-            this.cmbvoicemicrosoft.Location = new System.Drawing.Point(353, 227);
+            this.cmbvoicemicrosoft.Location = new System.Drawing.Point(685, 51);
             this.cmbvoicemicrosoft.Name = "cmbvoicemicrosoft";
             this.cmbvoicemicrosoft.Size = new System.Drawing.Size(117, 21);
             this.cmbvoicemicrosoft.TabIndex = 340;
@@ -2030,7 +2587,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(128, 201);
+            this.label20.Location = new System.Drawing.Point(460, 25);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(58, 13);
             this.label20.TabIndex = 335;
@@ -2039,7 +2596,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(310, 201);
+            this.label21.Location = new System.Drawing.Point(642, 25);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(37, 13);
             this.label21.TabIndex = 337;
@@ -2067,7 +2624,7 @@
             "Swedish",
             "Turkish",
             "Welsh"});
-            this.ddlLaguageamazon.Location = new System.Drawing.Point(187, 195);
+            this.ddlLaguageamazon.Location = new System.Drawing.Point(519, 19);
             this.ddlLaguageamazon.Name = "ddlLaguageamazon";
             this.ddlLaguageamazon.Size = new System.Drawing.Size(116, 21);
             this.ddlLaguageamazon.TabIndex = 338;
@@ -2076,7 +2633,7 @@
             // cmbvoiceamazon
             // 
             this.cmbvoiceamazon.FormattingEnabled = true;
-            this.cmbvoiceamazon.Location = new System.Drawing.Point(353, 196);
+            this.cmbvoiceamazon.Location = new System.Drawing.Point(685, 20);
             this.cmbvoiceamazon.Name = "cmbvoiceamazon";
             this.cmbvoiceamazon.Size = new System.Drawing.Size(117, 21);
             this.cmbvoiceamazon.TabIndex = 336;
@@ -2084,22 +2641,20 @@
             // radiovoiceMicrosoft
             // 
             this.radiovoiceMicrosoft.AutoSize = true;
-            this.radiovoiceMicrosoft.Location = new System.Drawing.Point(10, 226);
+            this.radiovoiceMicrosoft.Location = new System.Drawing.Point(364, 50);
             this.radiovoiceMicrosoft.Name = "radiovoiceMicrosoft";
             this.radiovoiceMicrosoft.Size = new System.Drawing.Size(98, 17);
             this.radiovoiceMicrosoft.TabIndex = 269;
-            this.radiovoiceMicrosoft.TabStop = true;
             this.radiovoiceMicrosoft.Text = "Voice Microsoft";
             this.radiovoiceMicrosoft.UseVisualStyleBackColor = true;
             // 
             // radiovoiceamazon
             // 
             this.radiovoiceamazon.AutoSize = true;
-            this.radiovoiceamazon.Location = new System.Drawing.Point(10, 199);
+            this.radiovoiceamazon.Location = new System.Drawing.Point(364, 23);
             this.radiovoiceamazon.Name = "radiovoiceamazon";
             this.radiovoiceamazon.Size = new System.Drawing.Size(93, 17);
             this.radiovoiceamazon.TabIndex = 268;
-            this.radiovoiceamazon.TabStop = true;
             this.radiovoiceamazon.Text = "Voice Amazon";
             this.radiovoiceamazon.UseVisualStyleBackColor = true;
             // 
@@ -2165,10 +2720,10 @@
             "US Spanish / Miguel",
             "Welsh / Gwyneth",
             "Welsh English / Geraint"});
-            this.cmbttsmp3.Location = new System.Drawing.Point(131, 136);
+            this.cmbttsmp3.Location = new System.Drawing.Point(131, 130);
             this.cmbttsmp3.MaxDropDownItems = 20;
             this.cmbttsmp3.Name = "cmbttsmp3";
-            this.cmbttsmp3.Size = new System.Drawing.Size(339, 21);
+            this.cmbttsmp3.Size = new System.Drawing.Size(216, 21);
             this.cmbttsmp3.Sorted = true;
             this.cmbttsmp3.TabIndex = 267;
             // 
@@ -2179,7 +2734,6 @@
             this.radttsmp3.Name = "radttsmp3";
             this.radttsmp3.Size = new System.Drawing.Size(99, 17);
             this.radttsmp3.TabIndex = 266;
-            this.radttsmp3.TabStop = true;
             this.radttsmp3.Text = "Voice TTS mp3";
             this.radttsmp3.UseVisualStyleBackColor = true;
             // 
@@ -2220,7 +2774,7 @@
             this.cmbispeech.Location = new System.Drawing.Point(131, 59);
             this.cmbispeech.MaxDropDownItems = 20;
             this.cmbispeech.Name = "cmbispeech";
-            this.cmbispeech.Size = new System.Drawing.Size(339, 21);
+            this.cmbispeech.Size = new System.Drawing.Size(216, 21);
             this.cmbispeech.Sorted = true;
             this.cmbispeech.TabIndex = 265;
             // 
@@ -2270,7 +2824,7 @@
             this.cmbnotevibes.Location = new System.Drawing.Point(131, 94);
             this.cmbnotevibes.MaxDropDownItems = 20;
             this.cmbnotevibes.Name = "cmbnotevibes";
-            this.cmbnotevibes.Size = new System.Drawing.Size(339, 21);
+            this.cmbnotevibes.Size = new System.Drawing.Size(216, 21);
             this.cmbnotevibes.Sorted = true;
             this.cmbnotevibes.TabIndex = 264;
             // 
@@ -2281,7 +2835,6 @@
             this.radnotevibes.Name = "radnotevibes";
             this.radnotevibes.Size = new System.Drawing.Size(101, 17);
             this.radnotevibes.TabIndex = 263;
-            this.radnotevibes.TabStop = true;
             this.radnotevibes.Text = "Voice notevibes";
             this.radnotevibes.UseVisualStyleBackColor = true;
             // 
@@ -2292,7 +2845,6 @@
             this.radispeech.Name = "radispeech";
             this.radispeech.Size = new System.Drawing.Size(109, 17);
             this.radispeech.TabIndex = 262;
-            this.radispeech.TabStop = true;
             this.radispeech.Text = "voice ispeech.org";
             this.radispeech.UseVisualStyleBackColor = true;
             // 
@@ -2324,7 +2876,7 @@
             this.cmbngonnguIBM.Location = new System.Drawing.Point(130, 163);
             this.cmbngonnguIBM.MaxDropDownItems = 20;
             this.cmbngonnguIBM.Name = "cmbngonnguIBM";
-            this.cmbngonnguIBM.Size = new System.Drawing.Size(340, 21);
+            this.cmbngonnguIBM.Size = new System.Drawing.Size(217, 21);
             this.cmbngonnguIBM.Sorted = true;
             this.cmbngonnguIBM.TabIndex = 261;
             // 
@@ -2335,7 +2887,6 @@
             this.radvoiceibm.Name = "radvoiceibm";
             this.radvoiceibm.Size = new System.Drawing.Size(74, 17);
             this.radvoiceibm.TabIndex = 4;
-            this.radvoiceibm.TabStop = true;
             this.radvoiceibm.Text = "Voice IBM";
             this.radvoiceibm.UseVisualStyleBackColor = true;
             // 
@@ -2346,7 +2897,6 @@
             this.radvoice3.Name = "radvoice3";
             this.radvoice3.Size = new System.Drawing.Size(107, 17);
             this.radvoice3.TabIndex = 3;
-            this.radvoice3.TabStop = true;
             this.radvoice3.Text = "voice neospeech";
             this.radvoice3.UseVisualStyleBackColor = true;
             // 
@@ -2357,30 +2907,28 @@
             this.radiovoice3.Name = "radiovoice3";
             this.radiovoice3.Size = new System.Drawing.Size(112, 17);
             this.radiovoice3.TabIndex = 2;
-            this.radiovoice3.TabStop = true;
             this.radiovoice3.Text = "get voice viet nam";
             this.radiovoice3.UseVisualStyleBackColor = true;
             // 
             // radvoice2
             // 
             this.radvoice2.AutoSize = true;
+            this.radvoice2.Checked = true;
             this.radvoice2.Location = new System.Drawing.Point(10, 36);
             this.radvoice2.Name = "radvoice2";
-            this.radvoice2.Size = new System.Drawing.Size(130, 17);
+            this.radvoice2.Size = new System.Drawing.Size(118, 17);
             this.radvoice2.TabIndex = 1;
             this.radvoice2.TabStop = true;
-            this.radvoice2.Text = "voice voiceware.co.kr";
+            this.radvoice2.Text = "voice voiceware v2";
             this.radvoice2.UseVisualStyleBackColor = true;
             // 
             // radvoicedefault
             // 
             this.radvoicedefault.AutoSize = true;
-            this.radvoicedefault.Checked = true;
             this.radvoicedefault.Location = new System.Drawing.Point(10, 13);
             this.radvoicedefault.Name = "radvoicedefault";
             this.radvoicedefault.Size = new System.Drawing.Size(126, 17);
             this.radvoicedefault.TabIndex = 0;
-            this.radvoicedefault.TabStop = true;
             this.radvoicedefault.Text = "voice vocalware.com";
             this.radvoicedefault.UseVisualStyleBackColor = true;
             // 
@@ -2401,7 +2949,7 @@
             this.tabPage8.Location = new System.Drawing.Point(4, 22);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(817, 506);
+            this.tabPage8.Size = new System.Drawing.Size(852, 506);
             this.tabPage8.TabIndex = 5;
             this.tabPage8.Text = "Config thumnail";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -2498,7 +3046,7 @@
             // btnlogothumnail
             // 
             this.btnlogothumnail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnlogothumnail.Location = new System.Drawing.Point(642, 28);
+            this.btnlogothumnail.Location = new System.Drawing.Point(677, 28);
             this.btnlogothumnail.Name = "btnlogothumnail";
             this.btnlogothumnail.Size = new System.Drawing.Size(24, 23);
             this.btnlogothumnail.TabIndex = 318;
@@ -2514,7 +3062,7 @@
             this.tblogothumnail.Location = new System.Drawing.Point(208, 30);
             this.tblogothumnail.Name = "tblogothumnail";
             this.tblogothumnail.ReadOnly = true;
-            this.tblogothumnail.Size = new System.Drawing.Size(428, 20);
+            this.tblogothumnail.Size = new System.Drawing.Size(463, 20);
             this.tblogothumnail.TabIndex = 317;
             // 
             // label42
@@ -2528,6 +3076,9 @@
             // 
             // tabPage9
             // 
+            this.tabPage9.Controls.Add(this.checkdefaultchome);
+            this.tabPage9.Controls.Add(this.checkaddclaim);
+            this.tabPage9.Controls.Add(this.checkYoutubeExplode);
             this.tabPage9.Controls.Add(this.btnrefresh);
             this.tabPage9.Controls.Add(this.groupBox16);
             this.tabPage9.Controls.Add(this.checkcreateprofire);
@@ -2538,10 +3089,49 @@
             this.tabPage9.Location = new System.Drawing.Point(4, 22);
             this.tabPage9.Name = "tabPage9";
             this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage9.Size = new System.Drawing.Size(817, 506);
+            this.tabPage9.Size = new System.Drawing.Size(852, 506);
             this.tabPage9.TabIndex = 6;
             this.tabPage9.Text = "Manager list channel";
             this.tabPage9.UseVisualStyleBackColor = true;
+            // 
+            // checkdefaultchome
+            // 
+            this.checkdefaultchome.AutoSize = true;
+            this.checkdefaultchome.Checked = true;
+            this.checkdefaultchome.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkdefaultchome.ForeColor = System.Drawing.Color.Red;
+            this.checkdefaultchome.Location = new System.Drawing.Point(376, 25);
+            this.checkdefaultchome.Name = "checkdefaultchome";
+            this.checkdefaultchome.Size = new System.Drawing.Size(93, 17);
+            this.checkdefaultchome.TabIndex = 347;
+            this.checkdefaultchome.Text = "default chome";
+            this.checkdefaultchome.UseVisualStyleBackColor = true;
+            // 
+            // checkaddclaim
+            // 
+            this.checkaddclaim.AutoSize = true;
+            this.checkaddclaim.Checked = true;
+            this.checkaddclaim.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkaddclaim.ForeColor = System.Drawing.Color.Red;
+            this.checkaddclaim.Location = new System.Drawing.Point(624, 10);
+            this.checkaddclaim.Name = "checkaddclaim";
+            this.checkaddclaim.Size = new System.Drawing.Size(71, 17);
+            this.checkaddclaim.TabIndex = 346;
+            this.checkaddclaim.Text = "add claim";
+            this.checkaddclaim.UseVisualStyleBackColor = true;
+            // 
+            // checkYoutubeExplode
+            // 
+            this.checkYoutubeExplode.AutoSize = true;
+            this.checkYoutubeExplode.Checked = true;
+            this.checkYoutubeExplode.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkYoutubeExplode.ForeColor = System.Drawing.Color.Red;
+            this.checkYoutubeExplode.Location = new System.Drawing.Point(6, 4);
+            this.checkYoutubeExplode.Name = "checkYoutubeExplode";
+            this.checkYoutubeExplode.Size = new System.Drawing.Size(104, 17);
+            this.checkYoutubeExplode.TabIndex = 345;
+            this.checkYoutubeExplode.Text = "YoutubeExplode";
+            this.checkYoutubeExplode.UseVisualStyleBackColor = true;
             // 
             // btnrefresh
             // 
@@ -2600,7 +3190,7 @@
             // 
             this.checkloadvideomoi.AutoSize = true;
             this.checkloadvideomoi.ForeColor = System.Drawing.Color.Red;
-            this.checkloadvideomoi.Location = new System.Drawing.Point(179, 6);
+            this.checkloadvideomoi.Location = new System.Drawing.Point(110, 4);
             this.checkloadvideomoi.Name = "checkloadvideomoi";
             this.checkloadvideomoi.Size = new System.Drawing.Size(89, 17);
             this.checkloadvideomoi.TabIndex = 325;
@@ -2611,7 +3201,7 @@
             // 
             this.btnbeginreup.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnbeginreup.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnbeginreup.Location = new System.Drawing.Point(274, 3);
+            this.btnbeginreup.Location = new System.Drawing.Point(274, 0);
             this.btnbeginreup.Name = "btnbeginreup";
             this.btnbeginreup.Size = new System.Drawing.Size(96, 33);
             this.btnbeginreup.TabIndex = 338;
@@ -2720,16 +3310,41 @@
             // 
             // dataGridViewListKenh
             // 
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewListKenh.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.dataGridViewListKenh.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewListKenh.DefaultCellStyle = dataGridViewCellStyle17;
             this.dataGridViewListKenh.Location = new System.Drawing.Point(3, 96);
             this.dataGridViewListKenh.Name = "dataGridViewListKenh";
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewListKenh.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
             this.dataGridViewListKenh.Size = new System.Drawing.Size(781, 325);
             this.dataGridViewListKenh.TabIndex = 0;
             // 
             // tabPage11
             // 
+            this.tabPage11.Controls.Add(this.btncreateFB);
             this.tabPage11.Controls.Add(this.btnrunsub);
-            this.tabPage11.Controls.Add(this.btnreupfolder);
+            this.tabPage11.Controls.Add(this.btnxoavideodau);
             this.tabPage11.Controls.Add(this.btngetlist);
             this.tabPage11.Controls.Add(this.btnrefeshview);
             this.tabPage11.Controls.Add(this.groupBox15);
@@ -2742,11 +3357,23 @@
             this.tabPage11.Text = "Mail Reup";
             this.tabPage11.UseVisualStyleBackColor = true;
             // 
+            // btncreateFB
+            // 
+            this.btncreateFB.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btncreateFB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btncreateFB.Location = new System.Drawing.Point(579, 407);
+            this.btncreateFB.Name = "btncreateFB";
+            this.btncreateFB.Size = new System.Drawing.Size(96, 33);
+            this.btncreateFB.TabIndex = 342;
+            this.btncreateFB.Text = "Create FB";
+            this.btncreateFB.UseVisualStyleBackColor = true;
+            this.btncreateFB.Click += new System.EventHandler(this.btncreateFB_Click);
+            // 
             // btnrunsub
             // 
             this.btnrunsub.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnrunsub.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnrunsub.Location = new System.Drawing.Point(548, 404);
+            this.btnrunsub.Location = new System.Drawing.Point(463, 407);
             this.btnrunsub.Name = "btnrunsub";
             this.btnrunsub.Size = new System.Drawing.Size(96, 33);
             this.btnrunsub.TabIndex = 341;
@@ -2754,17 +3381,17 @@
             this.btnrunsub.UseVisualStyleBackColor = true;
             this.btnrunsub.Click += new System.EventHandler(this.btnrunsub_Click);
             // 
-            // btnreupfolder
+            // btnxoavideodau
             // 
-            this.btnreupfolder.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnreupfolder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnreupfolder.Location = new System.Drawing.Point(353, 407);
-            this.btnreupfolder.Name = "btnreupfolder";
-            this.btnreupfolder.Size = new System.Drawing.Size(96, 33);
-            this.btnreupfolder.TabIndex = 340;
-            this.btnreupfolder.Text = "REUP FOLDER";
-            this.btnreupfolder.UseVisualStyleBackColor = true;
-            this.btnreupfolder.Click += new System.EventHandler(this.btnreupfolder_Click);
+            this.btnxoavideodau.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnxoavideodau.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnxoavideodau.Location = new System.Drawing.Point(353, 407);
+            this.btnxoavideodau.Name = "btnxoavideodau";
+            this.btnxoavideodau.Size = new System.Drawing.Size(96, 33);
+            this.btnxoavideodau.TabIndex = 340;
+            this.btnxoavideodau.Text = "Xóa video đầu";
+            this.btnxoavideodau.UseVisualStyleBackColor = true;
+            this.btnxoavideodau.Click += new System.EventHandler(this.btnreupfolder_Click);
             // 
             // btngetlist
             // 
@@ -3048,9 +3675,33 @@
             // dataGridViewListReup
             // 
             this.dataGridViewListReup.AllowUserToAddRows = false;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewListReup.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
             this.dataGridViewListReup.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewListReup.DefaultCellStyle = dataGridViewCellStyle20;
             this.dataGridViewListReup.Location = new System.Drawing.Point(244, 4);
             this.dataGridViewListReup.Name = "dataGridViewListReup";
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewListReup.RowHeadersDefaultCellStyle = dataGridViewCellStyle21;
             this.dataGridViewListReup.Size = new System.Drawing.Size(541, 397);
             this.dataGridViewListReup.TabIndex = 1;
             this.dataGridViewListReup.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewListReup_CellContentClick);
@@ -3058,13 +3709,22 @@
             // 
             // tabPage12
             // 
+            this.tabPage12.Controls.Add(this.panelthongbaoreup);
             this.tabPage12.Location = new System.Drawing.Point(4, 22);
             this.tabPage12.Name = "tabPage12";
             this.tabPage12.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage12.Size = new System.Drawing.Size(800, 448);
             this.tabPage12.TabIndex = 2;
-            this.tabPage12.Text = "Fake IP";
+            this.tabPage12.Text = "Thông báo";
             this.tabPage12.UseVisualStyleBackColor = true;
+            // 
+            // panelthongbaoreup
+            // 
+            this.panelthongbaoreup.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelthongbaoreup.Location = new System.Drawing.Point(3, 3);
+            this.panelthongbaoreup.Name = "panelthongbaoreup";
+            this.panelthongbaoreup.Size = new System.Drawing.Size(794, 442);
+            this.panelthongbaoreup.TabIndex = 0;
             // 
             // tabPage13
             // 
@@ -3081,7 +3741,7 @@
             this.tabPage13.Location = new System.Drawing.Point(4, 22);
             this.tabPage13.Name = "tabPage13";
             this.tabPage13.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage13.Size = new System.Drawing.Size(817, 506);
+            this.tabPage13.Size = new System.Drawing.Size(852, 506);
             this.tabPage13.TabIndex = 7;
             this.tabPage13.Text = "Chạy view";
             this.tabPage13.UseVisualStyleBackColor = true;
@@ -3201,10 +3861,34 @@
             this.tabPage14.Location = new System.Drawing.Point(4, 22);
             this.tabPage14.Name = "tabPage14";
             this.tabPage14.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage14.Size = new System.Drawing.Size(817, 506);
+            this.tabPage14.Size = new System.Drawing.Size(852, 506);
             this.tabPage14.TabIndex = 8;
             this.tabPage14.Text = "Tương tác mobile";
             this.tabPage14.UseVisualStyleBackColor = true;
+            // 
+            // btnclose
+            // 
+            this.btnclose.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnclose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnclose.Location = new System.Drawing.Point(345, 399);
+            this.btnclose.Name = "btnclose";
+            this.btnclose.Size = new System.Drawing.Size(106, 41);
+            this.btnclose.TabIndex = 344;
+            this.btnclose.Text = "Close";
+            this.btnclose.UseVisualStyleBackColor = true;
+            this.btnclose.Click += new System.EventHandler(this.btnclose_Click);
+            // 
+            // btnrandomconfig
+            // 
+            this.btnrandomconfig.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnrandomconfig.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnrandomconfig.Location = new System.Drawing.Point(345, 106);
+            this.btnrandomconfig.Name = "btnrandomconfig";
+            this.btnrandomconfig.Size = new System.Drawing.Size(106, 41);
+            this.btnrandomconfig.TabIndex = 343;
+            this.btnrandomconfig.Text = "Random Config";
+            this.btnrandomconfig.UseVisualStyleBackColor = true;
+            this.btnrandomconfig.Click += new System.EventHandler(this.btnrandomconfig_Click);
             // 
             // btntaoemulator
             // 
@@ -3254,6 +3938,7 @@
             this.btnrunemulator.TabIndex = 338;
             this.btnrunemulator.Text = "RUN mobile";
             this.btnrunemulator.UseVisualStyleBackColor = true;
+            this.btnrunemulator.Click += new System.EventHandler(this.btnrunemulator_Click);
             // 
             // btnloginmobile
             // 
@@ -3270,9 +3955,33 @@
             // dataGridViewListReupMobi
             // 
             this.dataGridViewListReupMobi.AllowUserToAddRows = false;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewListReupMobi.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
             this.dataGridViewListReupMobi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewListReupMobi.DefaultCellStyle = dataGridViewCellStyle23;
             this.dataGridViewListReupMobi.Location = new System.Drawing.Point(10, 43);
             this.dataGridViewListReupMobi.Name = "dataGridViewListReupMobi";
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewListReupMobi.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
             this.dataGridViewListReupMobi.Size = new System.Drawing.Size(329, 397);
             this.dataGridViewListReupMobi.TabIndex = 2;
             // 
@@ -3314,35 +4023,11 @@
             this.bgwsub.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwsub_DoWork);
             this.bgwsub.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwsub_RunWorkerCompleted);
             // 
-            // btnrandomconfig
-            // 
-            this.btnrandomconfig.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnrandomconfig.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnrandomconfig.Location = new System.Drawing.Point(345, 106);
-            this.btnrandomconfig.Name = "btnrandomconfig";
-            this.btnrandomconfig.Size = new System.Drawing.Size(106, 41);
-            this.btnrandomconfig.TabIndex = 343;
-            this.btnrandomconfig.Text = "Random Config";
-            this.btnrandomconfig.UseVisualStyleBackColor = true;
-            this.btnrandomconfig.Click += new System.EventHandler(this.btnrandomconfig_Click);
-            // 
-            // btnclose
-            // 
-            this.btnclose.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnclose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnclose.Location = new System.Drawing.Point(345, 399);
-            this.btnclose.Name = "btnclose";
-            this.btnclose.Size = new System.Drawing.Size(106, 41);
-            this.btnclose.TabIndex = 344;
-            this.btnclose.Text = "Close";
-            this.btnclose.UseVisualStyleBackColor = true;
-            this.btnclose.Click += new System.EventHandler(this.btnclose_Click);
-            // 
             // FormUpload
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1172, 618);
+            this.ClientSize = new System.Drawing.Size(1207, 618);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.checkhideffmpeg1);
@@ -3423,6 +4108,7 @@
             this.groupBox15.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtsoluongup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListReup)).EndInit();
+            this.tabPage12.ResumeLayout(false);
             this.tabPage13.ResumeLayout(false);
             this.tabPage13.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txttimeview)).EndInit();
@@ -3684,7 +4370,7 @@
         private System.Windows.Forms.Button btngetlist;
         private System.Windows.Forms.TabPage tabPage14;
         private System.Windows.Forms.CheckBox checksmallvids;
-        private System.Windows.Forms.Button btnreupfolder;
+        private System.Windows.Forms.Button btnxoavideodau;
         private System.ComponentModel.BackgroundWorker bgwreupfolder;
         private System.Windows.Forms.DataGridView dataGridViewListReupMobi;
         private System.Windows.Forms.Button btnloginmobile;
@@ -3697,5 +4383,29 @@
         private System.Windows.Forms.Button btntaoemulator;
         private System.Windows.Forms.Button btnrandomconfig;
         private System.Windows.Forms.Button btnclose;
+        private System.Windows.Forms.Panel panelthongbaoreup;
+        private System.Windows.Forms.RadioButton radiovoicenotevibes;
+        private System.Windows.Forms.CheckBox checktienghan;
+        private System.Windows.Forms.CheckBox checkYoutubeExplode;
+        private System.Windows.Forms.RadioButton raduploadchomebeta;
+        private System.Windows.Forms.RadioButton radiovoicereallusion;
+        private System.Windows.Forms.CheckBox checktangtimevoice;
+        private System.Windows.Forms.CheckBox checklager;
+        private System.Windows.Forms.Button btncreateFB;
+        private System.Windows.Forms.CheckBox checkaddclaim;
+        private System.Windows.Forms.RadioButton radiovoicecereproc;
+        private System.Windows.Forms.CheckBox checkprivate;
+        private System.Windows.Forms.CheckBox checkgiongnamcereproc;
+        private System.Windows.Forms.RadioButton radiovoicewideo;
+        private System.Windows.Forms.ComboBox cmbwideo;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.ComboBox cmblaguageling;
+        private System.Windows.Forms.ComboBox cmbvoiceling;
+        private System.Windows.Forms.RadioButton radiovoicelinguatec;
+        private System.Windows.Forms.ComboBox cmbsestek;
+        private System.Windows.Forms.RadioButton radiovoicesestek;
+        private System.Windows.Forms.CheckBox checkdefaultchome;
+        private System.Windows.Forms.CheckBox checkdownxnet;
     }
 }

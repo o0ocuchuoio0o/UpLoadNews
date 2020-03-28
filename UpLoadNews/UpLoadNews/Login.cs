@@ -310,9 +310,10 @@ namespace UpLoadNews
         }
         private void button1_Click_2(object sender, EventArgs e)
         {
-            string text = File.ReadAllText(@"C:\ChangZhi\LDPlayer\vms\config\leidian1.config");
-            DataTable dt = new DataTable();
-            dt = DerializeDataTable(text);
+            //string text = File.ReadAllText(@"C:\ChangZhi\LDPlayer\vms\config\leidian1.config");
+            //DataTable dt = new DataTable();
+            //dt = DerializeDataTable(text);
+
 
         }
         private bool hamkiemtratontaifile(string path, string name)

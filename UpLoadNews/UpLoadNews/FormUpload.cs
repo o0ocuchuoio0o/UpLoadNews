@@ -38,6 +38,8 @@ using System.Web;
 using OpenQA.Selenium.Firefox;
 using HtmlAgilityPack;
 using Newtonsoft.Json;
+using YoutubeExplode;
+using YoutubeExplode.Models.MediaStreams;
 
 namespace UpLoadNews
 {
@@ -1242,12 +1244,26 @@ namespace UpLoadNews
                 wc.DownloadFileAsync(new Uri(url), path);
             }
         }
+        private async Task downloadFileV2_Ex(string url, string path)
+        {
+            xNet.HttpRequest http = new xNet.HttpRequest();
+            http.ConnectTimeout = 99999999;
+            http.KeepAliveTimeout = 99999999;
+            http.ReadWriteTimeout = 99999999;
+            var binImg = http.Get(url).ToMemoryStream().ToArray();
+            File.WriteAllBytes(path, binImg);
+        }
+
         private async Task ChomeClose()
         {
             try
             {
-                PropretiesCollection.driver.Close();
-                PropretiesCollection.driver.Quit();
+                try
+                {
+                    PropretiesCollection.driver.Close();
+                    PropretiesCollection.driver.Quit();
+                }
+                catch { }
                 System.Threading.Thread.Sleep(2000);
                 try
                 {
@@ -1260,6 +1276,14 @@ namespace UpLoadNews
                 try
                 {
                     foreach (Process proc in Process.GetProcessesByName("chrome"))
+                    {
+                        proc.Kill();
+                    }
+                }
+                catch { }
+                try
+                {
+                    foreach (Process proc in Process.GetProcessesByName("chrome.exe"))
                     {
                         proc.Kill();
                     }
@@ -1722,9 +1746,11 @@ namespace UpLoadNews
                                         {
                                             #region // xử lý voice offline
                                             ChromeOptions options = new ChromeOptions();
+                                            options.AddArgument("--disable-blink-features=AutomationControlled");
+                                            ChromeDriverService service = ChromeDriverService.CreateDefaultService();
+                                            service.HideCommandPromptWindow = true;
                                             // options.AddArgument("headless");
-                                            // PropretiesCollection.driver = new ChromeDriver(service,options);
-                                            PropretiesCollection.driver = new ChromeDriver(options);
+                                            PropretiesCollection.driver = new ChromeDriver(service,options);                                          
                                             if (radvoicedefault.Checked == true)
                                             {
                                                 PropretiesCollection.driver.Navigate().GoToUrl("https://www.vocalware.com/index/demo");
@@ -1735,7 +1761,15 @@ namespace UpLoadNews
                                             }
                                             else if (radvoice2.Checked == true)
                                             {
-                                                PropretiesCollection.driver.Navigate().GoToUrl("http://www.voiceware.co.kr/eng/product/product1.php?fbclid=IwAR3uoWfvMJ6g53aNRf6o3WSm8A4fbq3hg7OVjXRD4K43ktPh9SsyP_zDnQ0");
+                                                //if(checktienghan.Checked==true)
+                                                //{
+                                                    PropretiesCollection.driver.Navigate().GoToUrl("http://www.voiceware.co.kr/kor/product/product1.php");
+                                                //}
+                                                //else
+                                                //{
+                                                //    //PropretiesCollection.driver.Navigate().GoToUrl("http://www.voiceware.co.kr/eng/product/product1.php?fbclid=IwAR3uoWfvMJ6g53aNRf6o3WSm8A4fbq3hg7OVjXRD4K43ktPh9SsyP_zDnQ0");
+                                                //}
+
                                             }
                                             else if (radvoice3.Checked == true)
                                             {
@@ -1765,6 +1799,28 @@ namespace UpLoadNews
                                             {
                                                 PropretiesCollection.driver.Navigate().GoToUrl("https://ttstool.com/");
                                             }
+                                            else if (radiovoicereallusion.Checked == true)
+                                            {
+                                                PropretiesCollection.driver.Navigate().GoToUrl("https://tts.reallusion.com/en/Home/TTS");
+                                            }
+                                            else if (radiovoicecereproc.Checked == true)
+                                            {
+                                                PropretiesCollection.driver.Navigate().GoToUrl("https://www.cereproc.com/en/products/cloud");
+                                            }
+                                            else if (radiovoicewideo.Checked == true)
+                                            {
+                                                PropretiesCollection.driver.Navigate().GoToUrl("https://wideo.co/text-to-speech/");
+                                            }
+                                            else if (radiovoicelinguatec.Checked == true)
+                                            {
+                                                PropretiesCollection.driver.Navigate().GoToUrl("https://www.linguatec.de/en/voice-reader-studio-15-test/");
+                                                IJavaScriptExecutor jse = (IJavaScriptExecutor)PropretiesCollection.driver;
+                                                jse.ExecuteScript("window.scrollTo(0," + 300 + ")", "");
+                                            }
+                                            else if (radiovoicesestek.Checked == true)
+                                            {
+                                                PropretiesCollection.driver.Navigate().GoToUrl("https://www.sestek.com/text-to-speech/tts-demo/");
+                                            }
                                             int count = listslide.Rows.Count;
                                             if (count > 0 && radvoice2.Checked == true)
                                             {
@@ -1772,7 +1828,39 @@ namespace UpLoadNews
                                                 string ngonngu2 = row1["NgonNguSelenium"].ToString();
                                                 string mcvoice = row1["MCVoiceSelenium"].ToString();
                                                 cl_ReadVoice read = new cl_ReadVoice();
-                                                read.selectV2(ngonngu2, mcvoice);
+                                                if (checktienghan.Checked == true)
+                                                {                                                    
+                                                   read.selectV2_TiengHan(ngonngu2, mcvoice);
+                                                }
+                                                else
+                                                {
+                                                    read.selectV2(ngonngu2, mcvoice);
+                                                }
+                                                if(checklager.Checked==true)
+                                                {
+                                                    read.checklager();
+                                                }
+                                            }
+                                            if (count > 0 && radiovoicereallusion.Checked == true)
+                                            {
+                                                DataRow row1 = listslide.Rows[0];
+                                                string ngonngu2 = row1["NgonNguSelenium"].ToString();
+                                                string mcvoice = row1["MCVoiceSelenium"].ToString();
+                                                cl_ReadVoice read = new cl_ReadVoice();                                               
+                                                 read.select_voice_reall(ngonngu2);                                                
+                                            }
+                                            if (count > 0 && radiovoicecereproc.Checked == true)
+                                            {
+                                                DataRow row1 = listslide.Rows[0];
+                                                string ngonngu2 = row1["NgonNguSelenium"].ToString();
+                                                string mcvoice = row1["MCVoiceSelenium"].ToString();
+                                                cl_ReadVoice read = new cl_ReadVoice();
+                                                bool giong = false;
+                                                if(checkgiongnamcereproc.Checked==true)
+                                                {
+                                                    giong = true;
+                                                }
+                                                read.select_voice_cereproc(ngonngu2,giong);
                                             }
                                             else if (count > 0 && radvoice3.Checked == true)
                                             {
@@ -1950,7 +2038,7 @@ namespace UpLoadNews
                                                             _voice = txtfoldervideo.Text + @"\" + folder + @"\" + k.ToString() + @"\" + idchitiet.ToString() + ".mp3";
                                                             _voicetemp = txtfoldervideo.Text + @"\" + folder + @"\" + k.ToString() + @"\" + idchitiet.ToString() + ".wav";
 
-
+                                                            #region // lấy link voice
 
                                                             if (radvoicedefault.Checked == true)
                                                             {
@@ -1970,6 +2058,34 @@ namespace UpLoadNews
                                                                     _urlvoicecu = url;
                                                                 }
 
+
+                                                            }
+                                                            else if (radiovoicereallusion.Checked == true)
+                                                            {
+                                                                if (noidung.Length >= 200)
+                                                                {
+                                                                    url = read.getURLMp3_Voice_Reall(_urlvoicecu, noidung.Trim().Substring(0, 199));
+                                                                    _urlvoicecu = url;
+                                                                }
+                                                                else
+                                                                {
+                                                                    url = read.getURLMp3_Voice_Reall(_urlvoicecu, noidung.Trim());
+                                                                    _urlvoicecu = url;
+                                                                }
+
+                                                            }
+                                                            else if (radiovoicecereproc.Checked == true)
+                                                            {
+                                                                if (noidung.Length >= 200)
+                                                                {
+                                                                    url = read.getURLMp3_Voice_cereproc(_urlvoicecu, noidung.Trim().Substring(0, 199));
+                                                                    _urlvoicecu = url;
+                                                                }
+                                                                else
+                                                                {
+                                                                    url = read.getURLMp3_Voice_cereproc(_urlvoicecu, noidung.Trim());
+                                                                    _urlvoicecu = url;
+                                                                }
 
                                                             }
                                                             else if (radvoice3.Checked == true)
@@ -2038,7 +2154,48 @@ namespace UpLoadNews
                                                                     _voiceaudio = _voice;
 
                                                                 }
+
                                                             }
+                                                            else if (radiovoicewideo.Checked == true)
+                                                            {
+                                                                if (noidung.Length >= 200)
+                                                                {
+                                                                    url = read.getURLMp3_Wideo(_urlvoicecu,cmbwideo.Text, noidung.Trim().Substring(0, 199));
+                                                                    _urlvoicecu = url;
+                                                                }
+                                                                else
+                                                                {
+                                                                    url = read.getURLMp3_Wideo(_urlvoicecu, cmbwideo.Text, noidung.Trim());
+                                                                    _urlvoicecu = url;
+                                                                }
+                                                            }
+                                                            else if (radiovoicelinguatec.Checked == true)
+                                                            {
+                                                                if (noidung.Length >= 200)
+                                                                {
+                                                                    url = read.getURLMp3_Ling(_urlvoicecu, cmblaguageling.Text,cmbvoiceling.Text, noidung.Trim().Substring(0, 199));
+                                                                    _urlvoicecu = url;
+                                                                }
+                                                                else
+                                                                {
+                                                                    url = read.getURLMp3_Ling(_urlvoicecu, cmblaguageling.Text, cmbvoiceling.Text, noidung.Trim());
+                                                                    _urlvoicecu = url;
+                                                                }
+                                                            }
+                                                            else if (radiovoicesestek.Checked == true)
+                                                            {
+                                                                if (noidung.Length >= 200)
+                                                                {
+                                                                    url = read.getURLMp3_sestek(_urlvoicecu, cmbsestek.Text,noidung.Trim().Substring(0, 199));
+                                                                    _urlvoicecu = url;
+                                                                }
+                                                                else
+                                                                {
+                                                                    url = read.getURLMp3_sestek(_urlvoicecu, cmbsestek.Text, noidung.Trim());
+                                                                    _urlvoicecu = url;
+                                                                }
+                                                            }
+                                                            #endregion
                                                             lblxuly.Text = "Lấy voice ok url=" + url.ToString();
                                                             //lấy để upload lên server
 
@@ -2083,7 +2240,34 @@ namespace UpLoadNews
                                                                     _voiceaudio = voicexulytamam;
                                                                     // _voiceaudio = _voicetemp;
                                                                 }
-                                                              
+                                                                // if (checkdownxnet.Checked == true) { 
+                                                                else if (radiovoicereallusion.Checked == true)
+                                                                    {
+                                                                        downloadFileV2_Ex(url, _voice).Wait();
+                                                                        _voiceaudio = _voice;
+                                                                    }
+                                                                    else if (radiovoicelinguatec.Checked == true)
+                                                                    {
+                                                                        downloadFileV2_Ex(url, _voice).Wait();
+                                                                        _voiceaudio = _voice;
+                                                                    }
+                                                               // }
+                                                                //else if (radiovoicecereproc.Checked == true)
+                                                                //{
+                                                                //    downloadFileV2_Ex(url, _voice).Wait();
+                                                                //    _voiceaudio = _voice;
+                                                                //}
+                                                                else if (radiovoicewideo.Checked == true)
+                                                                {
+                                                                    downloadFileV2_Ex(url, _voice).Wait();
+                                                                    _voiceaudio = _voice;
+                                                                }
+
+                                                                else if (radiovoicesestek.Checked == true)
+                                                                {
+                                                                    downloadFileV2_Ex(url, _voice).Wait();
+                                                                    _voiceaudio = _voice;
+                                                                }
                                                                 else
                                                                 {
 
@@ -2178,6 +2362,10 @@ namespace UpLoadNews
                                                     }
                                                 }
                                                 catch { times = 15; }
+                                                if (checktangtimevoice.Checked == true)
+                                                {
+                                                    times = times + 4;
+                                                }
                                                 #endregion
 
                                                 #endregion
@@ -2274,7 +2462,14 @@ namespace UpLoadNews
                                                 File.Delete(txtfoldervideo.Text + @"\" + folder + @"\" + k.ToString() + ".pxc");
                                             }
                                             catch { }
-
+                                            #region // tách
+                                            //string filemp3 = txtfoldervideo.Text + @"\" + folder + @"\" + k.ToString() + @"\_VideoUp.mp3";
+                                            //RunFFMPEG fftaomp3 = new RunFFMPEG();
+                                            //string taomp3 = string.Format(@"-i {0} -vn -acodec mp3 {1}", filevideo, filemp3);
+                                            //fftaomp3.RunCommandLoad(taomp3, true).Wait();
+                                            //string filevideotitle = txtfoldervideo.Text + @"\" + folder + @"\" + k.ToString() + @"\"+title+".mp4";
+                                            //System.IO.File.Move(filevideo, filevideotitle);
+                                            #endregion
                                         }
                                         #endregion
 
@@ -2363,9 +2558,9 @@ namespace UpLoadNews
 
                                             if (title.Length > 89)
                                             {
-                                                _title = (title.Substring(0, 89));
+                                                _title = (title.Trim().Substring(0, 89));
                                             }
-                                            else { _title = title; }
+                                            else { _title = title.Trim(); }
 
                                             #endregion
                                             #region desc
@@ -2383,9 +2578,12 @@ namespace UpLoadNews
                                                 {
                                                     try
                                                     {
+                                                        ChromeOptions options = new ChromeOptions();
+                                                        options.AddArgument("--disable-blink-features=AutomationControlled");
                                                         ChromeDriverService service = ChromeDriverService.CreateDefaultService();
-                                                        service.HideCommandPromptWindow = false;
-                                                        PropretiesCollection.driver = new ChromeDriver(service);
+                                                        service.HideCommandPromptWindow = true;
+
+                                                        PropretiesCollection.driver = new ChromeDriver(service, options);
                                                         PropretiesCollection.driver.Navigate().GoToUrl("https://rapidtags.io/api/index.php?tool=tag-generator&input=" + HttpUtility.UrlEncode(_title));
                                                         cl_ReadVoice tag = new cl_ReadVoice();
                                                         tag._tag().Wait();
@@ -2450,6 +2648,7 @@ namespace UpLoadNews
                                             {
                                                 if (raduploadapi.Checked == true)
                                                 {
+                                                    #region // upload by API
                                                     RunUpload(_path, _title, _desc.Replace("<", "").Replace(">", ""), _tag, flat).Wait();
                                                     if (checkborderthumnail.Checked == true)
                                                     {
@@ -2461,10 +2660,11 @@ namespace UpLoadNews
                                                     {
                                                         setThumnail(thumnail, m_IDVideoUpload).Wait();
                                                     }
+                                                    #endregion
                                                 }
                                                 else if (raduploadchome.Checked == true)
                                                 {
-
+                                                    #region // upload chome
                                                     if (checkdefaulprofile.Checked == true)
                                                     {
                                                         try
@@ -2473,7 +2673,7 @@ namespace UpLoadNews
                                                             options.AddArguments("user-data-dir=C:/Users/" + Environment.GetEnvironmentVariable("UserName") + "/AppData/Local/Google/Chrome/User Data");
                                                             options.AddArguments("--start-maximized");
                                                             ChromeDriverService service = ChromeDriverService.CreateDefaultService();
-                                                            service.HideCommandPromptWindow = false;
+                                                            service.HideCommandPromptWindow = true;
                                                             PropretiesCollection.driver = new ChromeDriver(service, options);
                                                             PropretiesCollection.driver.Navigate().GoToUrl("https://www.youtube.com/upload?redirect_to_classic=true");
                                                             UploadYoutube ytb = new UploadYoutube();
@@ -2481,7 +2681,7 @@ namespace UpLoadNews
                                                             if (checksetmotizeion.Checked == true)
                                                             {
                                                                 bkt = 1;
-                                                            }
+                                                            }                                                          
                                                             ytb.UploadFroFile(_path, title, _desc.Replace("<", "").Replace(">", ""), _tag, thumnail, bkt).Wait();
                                                         }
                                                         catch { }
@@ -2515,6 +2715,37 @@ namespace UpLoadNews
                                                         }
                                                         catch { }
                                                     }
+                                                    #endregion
+                                                }
+                                                else if (raduploadchomebeta.Checked == true)
+                                                {
+                                                    #region // upload chome
+                                                  
+                                                        try
+                                                        {
+                                                            ChromeOptions options = new ChromeOptions();
+                                                            options.AddArguments("user-data-dir=C:/Users/" + Environment.GetEnvironmentVariable("UserName") + "/AppData/Local/Google/Chrome/User Data");
+                                                            options.AddArguments("--start-maximized");
+                                                            options.AddArgument("--disable-blink-features=AutomationControlled");
+                                                            ChromeDriverService service = ChromeDriverService.CreateDefaultService();
+                                                            service.HideCommandPromptWindow = false;
+                                                            PropretiesCollection.driver = new ChromeDriver(service, options);
+                                                            PropretiesCollection.driver.Navigate().GoToUrl("https://www.youtube.com/upload?redirect_to_classic=true");
+                                                            UploadYoutube ytb = new UploadYoutube();
+                                                            int bkt = 0;
+                                                            if (checksetmotizeion.Checked == true)
+                                                            {
+                                                                bkt = 1;
+                                                            }
+                                                            bool m_private = false;
+                                                            if(checkprivate.Checked==true)
+                                                            { m_private = true; }
+                                                            ytb.UploadFroFileBeta(_path, title, _desc.Replace("<", "").Replace(">", ""), _tag, thumnail, bkt, m_private).Wait();
+                                                        }
+                                                        catch { }
+                                                   
+                                                   
+                                                    #endregion
                                                 }
                                             }
                                             catch { }
@@ -3059,25 +3290,29 @@ namespace UpLoadNews
 
         private void btngetlinkkenh_Click(object sender, EventArgs e)
         {
-            Thread getlinkkenh = new Thread(() =>
+            try
             {
-                ChromePerformanceLoggingPreferences perfLogPrefs = new ChromePerformanceLoggingPreferences();
-                perfLogPrefs.AddTracingCategories(new string[] { "devtools.timeline" });
-                ChromeOptions options = new ChromeOptions();
-                options.AddArguments("--disable-notifications");
-                options.AddArguments("--incognito");
-                options.PerformanceLoggingPreferences = perfLogPrefs;
-                options.SetLoggingPreference(LogType.Driver, LogLevel.All);
-                options.SetLoggingPreference("performance", LogLevel.All);
-                options.AddAdditionalCapability(CapabilityType.EnableProfiling, true, true);
-                PropretiesCollection.driver = new ChromeDriver(options);
-                PropretiesCollection.driver.Navigate().GoToUrl("https://accounts.google.com/signin/v2/identifier?service=youtube&uilel=3&passive=true&continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26hl%3Dvi%26next%3D%252F&hl=vi&ec=65620&flowName=GlifWebSignIn&flowEntry=ServiceLogin");
-                ManagerChannel getlinkenh = new ManagerChannel();
-                txtlinkkenh.Text = getlinkenh.GetLinkChannel(txtmailreup.Text,lblpass.Text,lblmailkhoiphuc.Text);
-                ChomeClose().Wait();
+                Thread getlinkkenh = new Thread(() =>
+                {
+                    ChromePerformanceLoggingPreferences perfLogPrefs = new ChromePerformanceLoggingPreferences();
+                    perfLogPrefs.AddTracingCategories(new string[] { "devtools.timeline" });
+                    ChromeOptions options = new ChromeOptions();
+                    options.AddArguments("--disable-notifications");
+                    options.AddArguments("--incognito");
+                    options.PerformanceLoggingPreferences = perfLogPrefs;
+                    options.SetLoggingPreference(LogType.Driver, LogLevel.All);
+                    options.SetLoggingPreference("performance", LogLevel.All);
+                    options.AddAdditionalCapability(CapabilityType.EnableProfiling, true, true);
+                    PropretiesCollection.driver = new ChromeDriver(options);
+                    PropretiesCollection.driver.Navigate().GoToUrl("https://accounts.google.com/signin/v2/identifier?service=youtube&uilel=3&passive=true&continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26hl%3Dvi%26next%3D%252F&hl=vi&ec=65620&flowName=GlifWebSignIn&flowEntry=ServiceLogin");
+                    ManagerChannel getlinkenh = new ManagerChannel();
+                    txtlinkkenh.Text = getlinkenh.GetLinkChannel(txtmailreup.Text, lblpass.Text, lblmailkhoiphuc.Text);
+                    ChomeClose().Wait();
+                }
+                );
+                getlinkkenh.Start();
             }
-            );
-            getlinkkenh.Start();
+            catch { }
         }
 
         private void btngetlistvideo_Click(object sender, EventArgs e)
@@ -3548,6 +3783,7 @@ namespace UpLoadNews
                     ChromeOptions options = new ChromeOptions();
                     options.AddArguments("--disable-notifications");
                     options.AddArguments("--incognito");
+                    options.AddArguments("--disable-blink-fratures=AutomationControlled");
                     options.PerformanceLoggingPreferences = perfLogPrefs;
                     options.SetLoggingPreference(LogType.Driver, LogLevel.All);
                     options.SetLoggingPreference("performance", LogLevel.All);
@@ -3600,6 +3836,7 @@ namespace UpLoadNews
 
                             if (k <= soluongup)
                             {
+                                ChomeClose().Wait();
                                 try
                                 {
                                     #region // thuc hien xoa fordel luu tru video
@@ -3610,25 +3847,57 @@ namespace UpLoadNews
                                     string linkvideo = rvids["Link"].ToString();
                                     string tieude = rvids["TieuDe"].ToString();
                                     string idlinkvideo = linkvideo.Replace("https://www.youtube.com/watch?v=", "");
+                                    #region // thực hiện xác nhận đã reup
+                                    daWS_FakeAuto xacnhan = new daWS_FakeAuto();
+                                    xacnhan.UpdateDaReup(idvideo);
+                                    #endregion
+
                                     #region // thực hiện chạy download
-                                    System.Diagnostics.Process process = new System.Diagnostics.Process();
-                                    System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
-                                    startInfo.FileName = @"youtube-dl.exe";
-                                    startInfo.Arguments = linkvideo;
-                                    process.StartInfo = startInfo;
-                                    process.Start();
+                                    
+                                    if (checkYoutubeExplode.Checked== true)
+                                    {
+                                        try
+                                        {
+                                            var client = new YoutubeClient();
+                                            var streamInfoSet = client.GetVideoMediaStreamInfosAsync(idlinkvideo).Result;
+                                            var streamInfo = streamInfoSet.Muxed.WithHighestVideoQuality();
+                                            var video = client.GetVideoAsync(idlinkvideo).Result;                                           
+                                            var ext = streamInfo.Container.GetFileExtension();
+                                            client.DownloadMediaStreamAsync(streamInfo, $"{video.Title}.{ext}").Wait();
+                                            
+                                        }
+                                        catch 
+                                        {
+                                           
+                                        }
+                                    }
+                                    else
+                                    {
+                                        System.Diagnostics.Process process = new System.Diagnostics.Process();
+                                        System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+                                        startInfo.FileName = @"youtube-dl.exe";
+                                        startInfo.Arguments = linkvideo;
+                                        process.StartInfo = startInfo;
+                                        process.Start();
+                                    }
+                                    Thread.Sleep(3000);
+                                    
                                     #endregion
                                     int kiemtra = 0;
                                     switch (kiemtra)
                                     {
                                         case 0:
+                                            if(checkYoutubeExplode.Checked==true)
+                                            {
+                                                goto case 1;
+                                            }
                                             System.Threading.Thread.Sleep(6000);
                                             goto case 1;
                                             break;
                                         case 1:
                                             try
                                             {
-                                              
+
 
                                                 int xuly = kiemtratontaimp4(Application.StartupPath);
                                                 if (xuly == 1)
@@ -3651,33 +3920,85 @@ namespace UpLoadNews
                                                     #endregion
                                                     DoiTenFileMp4(txtfoldervideo.Text, txtfoldervideo.Text + @"\" + tieude + ".mp4");
                                                     string _path = txtfoldervideo.Text + @"\" + tieude + ".mp4";
+
+                                                    #region // xử lý gắn claim ID
+                                                    if (checkaddclaim.Checked == true)
+                                                    {
+                                                        var files = new DirectoryInfo(txtbgaudio.Text).GetFiles();
+                                                        int index = new Random().Next(0, files.Length);
+                                                        string mp3bg = txtbgaudio.Text + @"\" + files[index].Name;
+                                                        string audiobg = Application.StartupPath + @"\Temp\bg.mp3";
+                                                        try
+                                                        {
+                                                            File.Delete(audiobg);
+                                                        }
+                                                        catch { }
+                                                        System.IO.File.Copy(mp3bg, audiobg, true);
+                                                        string pathvidsin= txtfoldervideo.Text + @"\1.mp4";
+                                                        string pathvidsout = txtfoldervideo.Text + @"\1out.mp4";
+                                                        System.IO.File.Copy(_path, pathvidsin, true);
+                                                        try
+                                                        {
+                                                            File.Delete(_path);
+                                                        }
+                                                        catch { }
+                                                        RunFFMPEG ffrunaddclaim = new RunFFMPEG();
+                                                        string addclaim = string.Format(@"-i {0} -i {1} -filter_complex ""[0:a][1:a]amerge,pan=stereo|c0<c0+c2|c1<c1+c3[out]"" -map 1:v -map ""[out]"" -c:v copy -shortest {2}", audiobg, pathvidsin,pathvidsout);
+                                                        ffrunaddclaim.RunCommand(addclaim, false);
+                                                        System.IO.File.Copy(pathvidsout, _path, true);
+                                                    }
+                                                    else
+                                                    {
+                                                        string pathvidsin = txtfoldervideo.Text + @"\1.mp4";
+                                                        System.IO.File.Copy(_path, pathvidsin, true);
+                                                        _path = pathvidsin;
+                                                    }
+                                                    #endregion
+
                                                     Proshow gettime = new Proshow();
                                                     double time = 0;
                                                     time =(double) gettime.getDuration(_path).Result;
                                                     if (time != 0)
                                                     {
                                                         #region // thực hiện upload lên youtube
-                                                        try
-                                                        {
-                                                            if (radiochome.Checked == true)
+                                                        //try
+                                                        //{
+                                                            if (checkdefaultchome.Checked == true)
                                                             {
-                                                                string profile_add = "Profile";
-                                                                string profile_new = "Profile\\" + mail.ToString();
-                                                                ChromePerformanceLoggingPreferences perfLogPrefs = new ChromePerformanceLoggingPreferences();
-                                                                perfLogPrefs.AddTracingCategories(new string[] { "devtools.timeline" });
                                                                 ChromeOptions options = new ChromeOptions();
-                                                                if (checkcreateprofire.Checked == true)
-                                                                {
-                                                                    if (!Directory.Exists(profile_add)) { Directory.CreateDirectory(profile_add); }
-                                                                    options.AddArgument("user-data-dir=" + Application.StartupPath + "\\" + profile_new);
-                                                                }
-                                                                options.AddArguments("--disable-notifications");
-                                                                options.AddArguments("--incognito");
-                                                                options.PerformanceLoggingPreferences = perfLogPrefs;
-                                                                options.SetLoggingPreference(LogType.Driver, LogLevel.All);
-                                                                options.SetLoggingPreference("performance", LogLevel.All);
-                                                                options.AddAdditionalCapability(CapabilityType.EnableProfiling, true, true);
-                                                                PropretiesCollection.driver = new ChromeDriver(options);
+                                                                options.AddArguments("user-data-dir=C:/Users/" + Environment.GetEnvironmentVariable("UserName") + "/AppData/Local/Google/Chrome/User Data");
+                                                                options.AddArguments("--start-maximized");
+                                                                options.AddArgument("--disable-blink-features=AutomationControlled");
+                                                                ChromeDriverService service = ChromeDriverService.CreateDefaultService();
+                                                                service.HideCommandPromptWindow = false;
+                                                                PropretiesCollection.driver = new ChromeDriver(service, options);
+                                                                PropretiesCollection.driver.Navigate().GoToUrl("https://www.youtube.com/upload?redirect_to_classic=true");
+
+                                                            }
+                                                           else  if (radiochome.Checked == true)
+                                                            {                                                               
+                                                               
+                                                                    string profile_add = "Profile";
+                                                                    string profile_new = "Profile\\" + mail.ToString();
+                                                                    ChromePerformanceLoggingPreferences perfLogPrefs = new ChromePerformanceLoggingPreferences();
+                                                                    perfLogPrefs.AddTracingCategories(new string[] { "devtools.timeline" });
+                                                                    ChromeOptions options = new ChromeOptions();
+                                                                    if (checkcreateprofire.Checked == true)
+                                                                    {
+                                                                        if (!Directory.Exists(profile_add)) { Directory.CreateDirectory(profile_add); }
+                                                                        options.AddArgument("user-data-dir=" + Application.StartupPath + "\\" + profile_new);
+                                                                    }
+                                                                    options.AddArguments("--disable-notifications");
+                                                                    options.AddArguments("--incognito");
+                                                                    options.AddArgument("--disable-blink-features=AutomationControlled");
+                                                                    options.PerformanceLoggingPreferences = perfLogPrefs;
+                                                                    options.SetLoggingPreference(LogType.Driver, LogLevel.All);
+                                                                    options.SetLoggingPreference("performance", LogLevel.All);
+                                                                    options.AddAdditionalCapability(CapabilityType.EnableProfiling, true, true);
+                                                                    PropretiesCollection.driver = new ChromeDriver(options);
+                                                                   PropretiesCollection.driver.Navigate().GoToUrl("https://www.youtube.com/upload?redirect_to_classic=true");
+
+
                                                             }
                                                             else if (radiofirefox.Checked == true)
                                                             {
@@ -3693,56 +4014,137 @@ namespace UpLoadNews
                                                                 optionsfire.SetPreference("network.proxy.socks_port", 9150);
                                                                 //optionsfire.SetPreference("webdriver.firefox.profile", "default");
                                                                 PropretiesCollection.driver = new FirefoxDriver(optionsfire);
+                                                               PropretiesCollection.driver.Navigate().GoToUrl("https://www.youtube.com/upload?redirect_to_classic=true");
                                                             }
-
-
-                                                            PropretiesCollection.driver.Navigate().GoToUrl("https://www.youtube.com/upload?redirect_to_classic=true");
+                                                            else { }
+                                                            /*PropretiesCollection.driver.Navigate().GoToUrl("https://www.youtube.com/upload?redirect_to_classic=true")*/;
                                                             UploadYoutube ytb = new UploadYoutube();
-                                                            ytb.LoginAnDanh(mail, pass, mailkhoiphuc, _path).Wait();
-                                                            #region desc
-                                                            string _desc = "";
-                                                            string mota = tieude + "\r\n" + themmota + "\r\n";
-                                                            if (mota.Length > 200) { _desc = chuanHoa(mota.Substring(0, 200)); }
-                                                            else { _desc = chuanHoa(mota); }
-                                                            #endregion
-                                                            #region // title
-                                                            string _title = tieude;
+                                                            if (checkdefaultchome.Checked == true)
+                                                            {
+                                                                #region desc
+                                                                string _desc = "";
+                                                                string mota = tieude + "\r\n" + themmota + "\r\n";
+                                                                if (mota.Length > 200) { _desc = chuanHoa(mota.Substring(0, 200)); }
+                                                                else { _desc = chuanHoa(mota); }
+                                                                #endregion
+                                                                #region // title
+                                                                string _title = tieude;
 
-                                                            if (_title.Length > 100)
-                                                            {
-                                                                _title = (_title.Substring(0, 100));
-                                                            }
-                                                            if (bottieude != "")
-                                                            {
-                                                                _title = _title.Replace(bottieude, "");
-                                                            }
-                                                            if (themtieude != "")
-                                                            {
-                                                                _title = _title + "|" + themtieude;
-                                                            }
-                                                            if (_title == "")
-                                                            {
-                                                                _title = tieude;
-                                                            }
-                                                            string _tag = tieude;
-                                                            if (themtag != "")
-                                                            {
-                                                                _tag = _tag + "," + themtag;
-                                                            }
+                                                                if (_title.Length > 100)
+                                                                {
+                                                                    _title = (_title.Substring(0, 100));
+                                                                }
+                                                                if (bottieude != "")
+                                                                {
+                                                                    _title = _title.Replace(bottieude, "");
+                                                                }
+                                                                if (themtieude != "")
+                                                                {
+                                                                    _title = _title + "|" + themtieude;
+                                                                }
+                                                                if (_title == "")
+                                                                {
+                                                                    _title = tieude;
+                                                                }
+                                                                string _tag = tieude;
+                                                                if (themtag != "")
+                                                                {
+                                                                    _tag = _tag + "," + themtag;
+                                                                }
                                                             #endregion
-                                                            ytb.Upload(_title, _desc, _tag, "", 0).Wait();
+
+                                                            #region // upload chome
+                                                            try
+                                                            {
+                                                                int bkt = 0;
+                                                                if (checksetmotizeion.Checked == true)
+                                                                {
+                                                                    bkt = 1;
+                                                                }
+                                                                bool m_private = false;
+                                                                if (checkprivate.Checked == true)
+                                                                {
+                                                                    m_private = true;
+                                                                }
+                                                                ytb.UploadFroFileBeta(_path, _title, _desc.Replace("<", "").Replace(">", ""), _tag, "", bkt, m_private).Wait();
+                                                            }
+                                                            catch { }
+
+
+                                                                    #endregion
+                                                            }
+                                                            else if(checkdefaultchome.Checked == false)
+                                                            {
+                                                                ytb.LoginAnDanh(mail, pass, mailkhoiphuc, _path).Wait();
+                                                                #region desc
+                                                                string _desc = "";
+                                                                string mota = tieude + "\r\n" + themmota + "\r\n";
+                                                                if (mota.Length > 200) { _desc = chuanHoa(mota.Substring(0, 200)); }
+                                                                else { _desc = chuanHoa(mota); }
+                                                                #endregion
+                                                                #region // title
+                                                                string _title = tieude;
+
+                                                                if (_title.Length > 100)
+                                                                {
+                                                                    _title = (_title.Substring(0, 100));
+                                                                }
+                                                                if (bottieude != "")
+                                                                {
+                                                                    _title = _title.Replace(bottieude, "");
+                                                                }
+                                                                if (themtieude != "")
+                                                                {
+                                                                    _title = _title + "|" + themtieude;
+                                                                }
+                                                                if (_title == "")
+                                                                {
+                                                                    _title = tieude;
+                                                                }
+                                                                string _tag = tieude;
+                                                                if (themtag != "")
+                                                                {
+                                                                    _tag = _tag + "," + themtag;
+                                                                }
+                                                                #endregion
+
+                                                                if (raduploadchomebeta.Checked == true)
+                                                                {
+                                                                    #region // upload chome
+
+                                                                  
+                                                                        int bkt = 0;
+                                                                        if (checksetmotizeion.Checked == true)
+                                                                        {
+                                                                            bkt = 1;
+                                                                        }
+                                                                        bool m_private = false;
+                                                                        if (checkprivate.Checked == true)
+                                                                        {
+                                                                            m_private = true;
+                                                                        }
+                                                                        ytb.UploadFroFileBeta(_path, _title, _desc.Replace("<", "").Replace(">", ""), _tag, "", bkt, m_private).Wait();
+                                                                   
+
+
+                                                                    #endregion
+                                                                }
+                                                                else
+                                                                {
+                                                                    ytb.Upload(_title, _desc, _tag, "", 0).Wait();
+                                                                }
+                                                            }
                                                             #region // thực hiện xác nhận đã reup
                                                             daWS_FakeAuto xacnhan1 = new daWS_FakeAuto();
                                                             xacnhan1.UpdateDaReup(idvideo);
                                                             #endregion
-                                                        }
-                                                        catch { ChomeClose().Wait(); }
+                                                        //}
+                                                        //catch {
+                                                         ChomeClose().Wait();
+                                                       //}
                                                         #endregion
                                                     }
-                                                    #region // thực hiện xác nhận đã reup
-                                                    daWS_FakeAuto xacnhan = new daWS_FakeAuto();
-                                                    xacnhan.UpdateDaReup(idvideo);
-                                                    #endregion
+                                                
 
                                                     #region // thuc hien xoa fordel luu tru video
                                                     XoaFileMp4(txtfoldervideo.Text);
@@ -4105,6 +4507,7 @@ namespace UpLoadNews
         private static extern bool MoveWindow(IntPtr hwnd, int x, int y, int cx, int cy, bool repaint);
         private const int GWL_STYLE = (-16);
         private const int WS_VISIBLE = 0x10000000;
+
 
         private void buttontaoemulator_Click(object sender, EventArgs e)
         {
@@ -4554,8 +4957,130 @@ namespace UpLoadNews
             #endregion
         }
 
+        private void btnrunemulator_Click(object sender, EventArgs e)
+        {
+            string pathldplay = txtpathldplayer.Text;
+            if(pathldplay!="")
+            {
+                FormEmulator run = new FormEmulator(pathldplay,m_IDTaiKhoan);
+                run.Show();
+            }
+            else
+            {
+                MessageBox.Show("Lỗi phải có pathLDPlayer","Lỗi",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return;
+            }
+        }
+
         #endregion
 
+        #region // create facebook
+        private void btncreateFB_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        #endregion
+
+        private void cmblaguageling_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("NgonNgu", typeof(string));
+            dt.Columns.Add("Voice", typeof(string));
+          
+            dt.Rows.Add("Arabic","Tarik");
+            dt.Rows.Add("Basque", "Miren");
+            dt.Rows.Add("Catalan", "Jordi");
+            dt.Rows.Add("Catalan", "Montserrat");
+            dt.Rows.Add("Cantonese(Hong Kong)", "Sin-Ji");
+            dt.Rows.Add("Czech", "Iveta");
+            dt.Rows.Add("Czech", "Zuzana");
+            dt.Rows.Add("Danish", "Magnus");
+            dt.Rows.Add("Danish", "Sara");
+            dt.Rows.Add("Dutch (Netherlands)", "Claire");
+            dt.Rows.Add("Dutch (Netherlands)", "Xander");
+            dt.Rows.Add("Dutch (Belgium)", "Ellen");
+            dt.Rows.Add("English (Australian)", "Karen");
+            dt.Rows.Add("English (Australian)", "Lee");
+            dt.Rows.Add("English (Irish)", "Moira");
+            dt.Rows.Add("English (British)", "Daniel");
+            dt.Rows.Add("English (British)", "Kate");
+            dt.Rows.Add("English (British)", "Oliver");
+            dt.Rows.Add("English (British)", "Serena");           
+            dt.Rows.Add("English (Indian)", "Veena");
+            dt.Rows.Add("English (Scottisch)", "Fiona");
+            dt.Rows.Add("English (American)", "Allison");
+            dt.Rows.Add("English (American)", "Ava");
+            dt.Rows.Add("English (American)", "Samantha");
+            dt.Rows.Add("English (American)", "Susan");
+            dt.Rows.Add("English (American)", "Tom");
+            dt.Rows.Add("English (South African)", "Tessa");
+            dt.Rows.Add("Finnish", "Satu");
+            dt.Rows.Add("French (Canadian)", "Amelie");
+            dt.Rows.Add("French (Canadian)", "Chantal");
+            dt.Rows.Add("French (Canadian)", "Nicolas");
+            dt.Rows.Add("French", "Audrey");
+            dt.Rows.Add("French", "Aurelie");
+            dt.Rows.Add("French", "Thomas");
+            dt.Rows.Add("German", "Anna");
+            dt.Rows.Add("German", "Markus");
+            dt.Rows.Add("German", "Petra");
+            dt.Rows.Add("German", "Yannick");
+            dt.Rows.Add("Galician", "Carmela");
+            dt.Rows.Add("Greek", "Melina");
+            dt.Rows.Add("Greek", "Nikos");
+            dt.Rows.Add("Hebrew", "Carmit");
+            dt.Rows.Add("Hindi", "Lekha");
+            dt.Rows.Add("Hungarian", "Mariska");
+            dt.Rows.Add("Indonesian", "Damayanti");
+            dt.Rows.Add("Italian", "Alice");
+            dt.Rows.Add("Italian", "Federica");
+            dt.Rows.Add("Italian", "Luca");
+            dt.Rows.Add("Italian", "Paola");
+            dt.Rows.Add("Japanese", "Kyoko");
+            dt.Rows.Add("Japanese", "Otoya");
+            dt.Rows.Add("Korean", "Sora");
+            dt.Rows.Add("Mandarin (China)", "Tian-Tian");
+            dt.Rows.Add("Mandarin (Taiwan)", "Mei-Jia");
+            dt.Rows.Add("Norwegian", "Henrik");
+            dt.Rows.Add("Norwegian", "Nora");
+            dt.Rows.Add("Polish", "Ewa");
+            dt.Rows.Add("Polish", "Zosia");
+            dt.Rows.Add("Portuguese (Brazilian)", "Felipe");
+            dt.Rows.Add("Portuguese (Brazilian)", "Luciana");
+            dt.Rows.Add("Portuguese", "Catarina");
+            dt.Rows.Add("Portuguese", "Joana");
+            dt.Rows.Add("Romanian", "Ioana");
+            dt.Rows.Add("Russian", "Katya");
+            dt.Rows.Add("Russian", "Milena");
+            dt.Rows.Add("Russian", "Yuri");
+            dt.Rows.Add("Slovak", "Laura");
+            dt.Rows.Add("Spanish (Argentine)", "Diego");
+            dt.Rows.Add("Spanish (Colombian)", "Carlos");
+            dt.Rows.Add("Spanish (Colombian)", "Soledad");
+            dt.Rows.Add("Spanish", "Jorge");
+            dt.Rows.Add("Spanish", "Monica");
+            dt.Rows.Add("Spanish (Mexican)", "Angelica");
+            dt.Rows.Add("Spanish (Mexican)", "Juan");
+            dt.Rows.Add("Spanish (Mexican)", "Paulina");
+            dt.Rows.Add("Swedish", "Alva");
+            dt.Rows.Add("Swedish", "Klara");
+            dt.Rows.Add("Swedish", "Oskar");
+            dt.Rows.Add("Thai", "Kanya");
+            dt.Rows.Add("Turkish", "Cem");
+            dt.Rows.Add("Turkish", "Yelda");
+            dt.Rows.Add("Valencian", "Empar");
+
+            DataRow[] rows = dt.Select("NgonNgu='" + cmblaguageling.Text + "' ");
+            DataTable table = new DataTable();
+            table.Columns.Add("Voice", typeof(string));
+            foreach (DataRow row in rows)
+            {
+                table.Rows.Add(row["Voice"].ToString());
+            }
+            cmbvoiceling.DataSource = table;
+            cmbvoiceling.DisplayMember = "Voice";
+            cmbvoiceling.ValueMember = "Voice";
+        }
     }
 }

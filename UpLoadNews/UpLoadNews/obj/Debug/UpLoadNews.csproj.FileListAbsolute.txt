@@ -343,12 +343,8 @@ D:\GITHUB\UpLoadNews\UpLoadNews\UpLoadNews\bin\Debug\Google.Apis.pdb
 D:\GITHUB\UpLoadNews\UpLoadNews\UpLoadNews\bin\Debug\Google.Apis.xml
 D:\GITHUB\UpLoadNews\UpLoadNews\UpLoadNews\bin\Debug\Google.Apis.Auth.pdb
 D:\GITHUB\UpLoadNews\UpLoadNews\UpLoadNews\bin\Debug\Google.Apis.Auth.xml
-D:\GITHUB\UpLoadNews\UpLoadNews\UpLoadNews\bin\Debug\Google.Apis.Auth.PlatformServices.pdb
-D:\GITHUB\UpLoadNews\UpLoadNews\UpLoadNews\bin\Debug\Google.Apis.Auth.PlatformServices.xml
 D:\GITHUB\UpLoadNews\UpLoadNews\UpLoadNews\bin\Debug\Google.Apis.Core.pdb
 D:\GITHUB\UpLoadNews\UpLoadNews\UpLoadNews\bin\Debug\Google.Apis.Core.xml
-D:\GITHUB\UpLoadNews\UpLoadNews\UpLoadNews\bin\Debug\Google.Apis.PlatformServices.pdb
-D:\GITHUB\UpLoadNews\UpLoadNews\UpLoadNews\bin\Debug\Google.Apis.PlatformServices.xml
 D:\GITHUB\UpLoadNews\UpLoadNews\UpLoadNews\bin\Debug\Google.Apis.YouTube.v3.pdb
 D:\GITHUB\UpLoadNews\UpLoadNews\UpLoadNews\bin\Debug\Google.Apis.YouTube.v3.xml
 D:\GITHUB\UpLoadNews\UpLoadNews\UpLoadNews\bin\Debug\log4net.xml
@@ -379,3 +375,11 @@ D:\GITHUB\UpLoadNews\UpLoadNews\UpLoadNews\obj\Debug\UpLoadNews.Properties.Resou
 D:\GITHUB\UpLoadNews\UpLoadNews\UpLoadNews\obj\Debug\UpLoadNews.WebAutomation.resources
 D:\GITHUB\UpLoadNews\UpLoadNews\UpLoadNews\obj\Debug\UpLoadNews.WebAutomationV2.resources
 D:\GITHUB\UpLoadNews\UpLoadNews\UpLoadNews\obj\Debug\UpLoadNews.csproj.GenerateResource.Cache
+D:\GITHUB\UpLoadNews\UpLoadNews\UpLoadNews\obj\Debug\UpLoadNews.FormEmulator.resources
+D:\GITHUB\UpLoadNews\UpLoadNews\UpLoadNews\bin\Debug\LtGt.dll
+D:\GITHUB\UpLoadNews\UpLoadNews\UpLoadNews\bin\Debug\Sprache.dll
+D:\GITHUB\UpLoadNews\UpLoadNews\UpLoadNews\bin\Debug\YoutubeExplode.dll
+D:\GITHUB\UpLoadNews\UpLoadNews\UpLoadNews\bin\Debug\LtGt.xml
+D:\GITHUB\UpLoadNews\UpLoadNews\UpLoadNews\bin\Debug\Sprache.xml
+D:\GITHUB\UpLoadNews\UpLoadNews\UpLoadNews\bin\Debug\YoutubeExplode.xml
+D:\GITHUB\UpLoadNews\UpLoadNews\UpLoadNews\obj\Debug\UpLoadNews.UC_Emulator.resources

@@ -1,0 +1,39 @@
+Here's an attempt to gather links for voices and TTS (Text To Speech) - I'll add more as I find them - if anyone wants to add something then just reply to this thread and I will update this post.
+
+Whilst I have sorted them into rough groups, some companies offer multiple services and products so it's worth checking them all out.
+
+It's worth noting that a lot of the old companies bought each other up and Nuance has bought a lot of them too. I add Nuance in other because I find their site a headache to navigate.
+
+
+TTS API/Cloud Services - Web based services that create the sound on-line.
+
+   iSpeech - http://www.ispeech.org
+   Voice RSS - http://www.voicerss.org test nua
+   Vocalware - https://www.vocalware.com
+   Cereproc - https://www.cereproc.com/en/products/cloud  // phai test
+   Speech Technologies Group - http://www.speechtechnologygroup.com/
+   Acapela - http://www.acapela-vaas.com/
+   Ivona - http://www.ivona.com/en/saas/api/
+   Neospeech - http://www.neospeech.com/voice-cloud.aspx
+
+Client based TTS - Voices you can install on your PC or mobile device.
+
+   Cereproc - Windows SAPI - https://www.cereproc.com/en/storesapi
+   AT & T Natural Voices - http://www2.research.att.com/~ttsweb/tts/demo.php
+   Ivona - http://www.ivona.com/en/for-you/
+   Neospeech - http://www.neospeech.com/
+
+Other Voice Links
+
+   Nuance - http://www.nuance.com/for-business/text-to-speech/vocalizer/index.htm
+
+Custom TTS Voices
+
+   Acapela Group - http://www.acapela-group.com/voices/custom-voice-creation/
+
+Open Source TTS Voices
+
+   Festival - http://www.cstr.ed.ac.uk/projects/festival/
+   Mary Text To Speech - http://mary.dfki.de/
+   eSpeak - http://espeak.sourceforge.net/
+   Fextvox - http://festvox.org/

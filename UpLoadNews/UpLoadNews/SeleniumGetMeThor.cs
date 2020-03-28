@@ -21,6 +21,10 @@ namespace UpLoadNews
         {
             return element.GetAttribute("innerHTML");
         }
+        public static string GetTextClass(IWebElement element)
+        {
+            return element.GetAttribute("class");
+        }
         public static string GetTextLink(IWebElement element)
         {
             return element.GetAttribute("src");
