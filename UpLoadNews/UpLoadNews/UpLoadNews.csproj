@@ -322,6 +322,7 @@
     <Compile Include="UploadYoutube.cs" />
     <Compile Include="SeleniumGetMeThor.cs" />
     <Compile Include="SeleniumSetMeThor.cs" />
+    <Compile Include="UploadYoutubeLogin.cs" />
     <Compile Include="WebAutomation.cs">
       <SubType>Form</SubType>
     </Compile>

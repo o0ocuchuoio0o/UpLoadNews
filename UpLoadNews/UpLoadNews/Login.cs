@@ -310,9 +310,19 @@ namespace UpLoadNews
         }
         private void button1_Click_2(object sender, EventArgs e)
         {
-            //string text = File.ReadAllText(@"C:\ChangZhi\LDPlayer\vms\config\leidian1.config");
-            //DataTable dt = new DataTable();
-            //dt = DerializeDataTable(text);
+            ChromeOptions options = new ChromeOptions();
+            options.AddArguments("user-data-dir=C:/Users/" + Environment.GetEnvironmentVariable("UserName") + "/AppData/Local/Google/Chrome/User Data");
+            options.AddArguments("--start-maximized");
+            options.AddArgument("--disable-blink-features=AutomationControlled");
+            ChromeDriverService service = ChromeDriverService.CreateDefaultService();
+            service.HideCommandPromptWindow = false;
+            PropretiesCollection.driver = new ChromeDriver(service, options);
+            PropretiesCollection.driver.Navigate().GoToUrl("https://www.youtube.com/upload?redirect_to_classic=true");
+            UploadYoutube ytb = new UploadYoutube();
+            int bkt = 0;           
+            bool m_private = false;
+            string thumnail = "";
+            ytb.UploadFroFileBeta(@"D:\A_FILE\_VideoUp.mp4", "test","", "", thumnail, bkt, m_private).Wait();
 
 
         }

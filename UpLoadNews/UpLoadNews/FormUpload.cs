@@ -2257,11 +2257,11 @@ namespace UpLoadNews
                                                                 //    downloadFileV2_Ex(url, _voice).Wait();
                                                                 //    _voiceaudio = _voice;
                                                                 //}
-                                                                else if (radiovoicewideo.Checked == true)
-                                                                {
-                                                                    downloadFileV2_Ex(url, _voice).Wait();
-                                                                    _voiceaudio = _voice;
-                                                                }
+                                                                //else if (radiovoicewideo.Checked == true)
+                                                                //{
+                                                                //    downloadFileV2_Ex(url, _voice).Wait();
+                                                                //    _voiceaudio = _voice;
+                                                                //}
 
                                                                 else if (radiovoicesestek.Checked == true)
                                                                 {
@@ -2556,11 +2556,11 @@ namespace UpLoadNews
                                             #region // title
                                             string _title = r["TieuDe"].ToString();
 
-                                            if (title.Length > 89)
+                                            if (_title.Length > 98)
                                             {
-                                                _title = (title.Trim().Substring(0, 89));
+                                                _title = (_title.Trim().Substring(0, 98));
                                             }
-                                            else { _title = title.Trim(); }
+                                            else { _title = _title.Trim(); }
 
                                             #endregion
                                             #region desc
@@ -2740,7 +2740,7 @@ namespace UpLoadNews
                                                             bool m_private = false;
                                                             if(checkprivate.Checked==true)
                                                             { m_private = true; }
-                                                            ytb.UploadFroFileBeta(_path, title, _desc.Replace("<", "").Replace(">", ""), _tag, thumnail, bkt, m_private).Wait();
+                                                            ytb.UploadFroFileBeta(_path, _title, _desc.Replace("<", "").Replace(">", ""), _tag, thumnail, bkt, m_private).Wait();
                                                         }
                                                         catch { }
                                                    
@@ -4030,9 +4030,9 @@ namespace UpLoadNews
                                                                 #region // title
                                                                 string _title = tieude;
 
-                                                                if (_title.Length > 100)
+                                                                if (_title.Length > 98)
                                                                 {
-                                                                    _title = (_title.Substring(0, 100));
+                                                                    _title = (_title.Substring(0, 98));
                                                                 }
                                                                 if (bottieude != "")
                                                                 {
@@ -4051,7 +4051,7 @@ namespace UpLoadNews
                                                                 {
                                                                     _tag = _tag + "," + themtag;
                                                                 }
-                                                            #endregion
+                                                                #endregion
 
                                                             #region // upload chome
                                                             try
