@@ -322,7 +322,9 @@ namespace UpLoadNews
             int bkt = 0;           
             bool m_private = false;
             string thumnail = "";
-            ytb.UploadFroFileBeta(@"D:\A_FILE\_VideoUp.mp4", "test","", "", thumnail, bkt, m_private).Wait();
+            bool m_bkt = false;
+         
+            ytb.UploadFroFileBeta(@"D:\A_FILE\_VideoUp.mp4", "test","", "", thumnail, bkt, m_private,m_bkt).Wait();
 
 
         }

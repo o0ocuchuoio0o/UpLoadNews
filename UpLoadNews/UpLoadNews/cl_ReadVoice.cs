@@ -1387,7 +1387,7 @@ namespace UpLoadNews
         public string getURLMp3_Wideo(string _urlvoicecu,  string voice,string text)
         {
             string ex = _urlvoicecu;
-            SeleniumSetMeThor.SelectDropDown(m_chonngonnguwideo, voice);
+            SeleniumSetMeThor.SelectDropDownVaules(m_chonngonnguwideo, voice);
             m_textwideo.Clear();
             m_textwideo.SendKeys(text);
             Thread.Sleep(1000);

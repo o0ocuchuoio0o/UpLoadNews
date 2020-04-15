@@ -2214,15 +2214,9 @@ namespace UpLoadNews
                                                                 }
                                                                 else if (radispeech.Checked == true)
                                                                 {
-                                                                    downloadFileV2(url, _voicetemp).Wait();
+                                                                    downloadFileV2_Ex(url, _voice).Wait();
                                                                     Thread.Sleep(2000);
-                                                                    RunFFMPEG fftangmam = new RunFFMPEG();
-                                                                    string voicexulytamam = txtfoldervideo.Text + @"\" + folder + @"\" + k.ToString() + @"\" + biendemslide.ToString() + "voicexuly.wav";
-                                                                    string tangam = string.Format(@"-i {0} -filter:a loudnorm {1}", _voicetemp, voicexulytamam);
-                                                                    fftangmam.RunCommandLoad(tangam, _AtriHidde).Wait();
-
-                                                                    _voiceaudio = voicexulytamam;
-                                                                    //_voiceaudio = _voicetemp;
+                                                                    _voiceaudio = _voice;
                                                                 }
                                                                 else if (radvoiceibm.Checked == true)
                                                                 {
@@ -2336,16 +2330,19 @@ namespace UpLoadNews
                                                 catch { }
 
                                                 #region // lay time
-                                                string pathvoice = txtfoldervideo.Text + @"\" + folder + @"\" + k.ToString();
-                                                string namevoice = "voicexuly" + biendemslide.ToString() + ".mp3";
-                                                string namevoicewav= "voicexuly" + biendemslide.ToString() + ".wav";
-                                                if (hamkiemtratontaifile(pathvoice,namevoice)==false)
-                                                {
-                                                    //if (hamkiemtratontaifile(pathvoice, namevoicewav) == false)
-                                                    //{
-                                                        voicexuly = _voiceaudio;
-                                                   // }
-                                                }
+                                                //string pathvoice = txtfoldervideo.Text + @"\" + folder + @"\" + k.ToString();
+                                                //string namevoice = "voicexuly" + biendemslide.ToString() + ".mp3";
+                                                //string namevoicewav= "voicexuly" + biendemslide.ToString() + ".wav";
+                                                //if (hamkiemtratontaifile(pathvoice,namevoice)==false)
+                                                //{
+                                                  
+                                                //        voicexuly = _voiceaudio;
+                                                  
+                                                //}
+                                                //else if(hamkiemtratontaifile(pathvoice, namevoicewav) == false)
+                                                //{
+                                                //        voicexuly = _voiceaudio;
+                                                //}
                                                 Proshow _timefile = new Proshow();
                                                 int times = 0;
                                                 try
@@ -2740,7 +2737,10 @@ namespace UpLoadNews
                                                             bool m_private = false;
                                                             if(checkprivate.Checked==true)
                                                             { m_private = true; }
-                                                            ytb.UploadFroFileBeta(_path, _title, _desc.Replace("<", "").Replace(">", ""), _tag, thumnail, bkt, m_private).Wait();
+                                                            bool m_bkt = false;
+                                                            if (checkmotizeion.Checked == true)
+                                                            { m_bkt = true; }
+                                                        ytb.UploadFroFileBeta(_path, _title, _desc.Replace("<", "").Replace(">", ""), _tag, thumnail, bkt, m_private, m_bkt).Wait();
                                                         }
                                                         catch { }
                                                    
@@ -4066,7 +4066,10 @@ namespace UpLoadNews
                                                                 {
                                                                     m_private = true;
                                                                 }
-                                                                ytb.UploadFroFileBeta(_path, _title, _desc.Replace("<", "").Replace(">", ""), _tag, "", bkt, m_private).Wait();
+                                                                bool m_bkt = false;
+                                                                if (checkmotizeion.Checked == true)
+                                                                { m_bkt = true; }
+                                                                ytb.UploadFroFileBeta(_path, _title, _desc.Replace("<", "").Replace(">", ""), _tag, "", bkt, m_private,m_bkt).Wait();
                                                             }
                                                             catch { }
 
@@ -4123,7 +4126,10 @@ namespace UpLoadNews
                                                                         {
                                                                             m_private = true;
                                                                         }
-                                                                        ytb.UploadFroFileBeta(_path, _title, _desc.Replace("<", "").Replace(">", ""), _tag, "", bkt, m_private).Wait();
+                                                                        bool m_bkt = false;
+                                                                        if (checkmotizeion.Checked == true)
+                                                                        { m_bkt = true; }
+                                                                        ytb.UploadFroFileBeta(_path, _title, _desc.Replace("<", "").Replace(">", ""), _tag, "", bkt, m_private,m_bkt).Wait();
                                                                    
 
 
