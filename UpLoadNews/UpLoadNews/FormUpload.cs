@@ -194,6 +194,18 @@ namespace UpLoadNews
             catch { }
             try
             {
+                if (ConfigurationManager.AppSettings["ListvideobgA"].ToString() == "")
+                {
+                    txtfloderlistvideobg.Text = "";
+                }
+                else
+                {
+                    txtfloderlistvideobg.Text = ConfigurationManager.AppSettings["ListvideobgA"].ToString();
+                }
+            }
+            catch { }
+            try
+            {
                 if (ConfigurationManager.AppSettings["TorPath"].ToString() == "")
                 {
                     txtpathtor.Text = "";
@@ -1253,7 +1265,26 @@ namespace UpLoadNews
             var binImg = http.Get(url).ToMemoryStream().ToArray();
             File.WriteAllBytes(path, binImg);
         }
-
+        private async Task downloadFileV2_Ex2(string url, string path)
+        {
+            try
+            {
+                System.Net.ServicePointManager.SecurityProtocol =
+                SecurityProtocolType.Tls12 |
+                SecurityProtocolType.Tls11 |
+                SecurityProtocolType.Tls;
+                xNet.HttpRequest http = new xNet.HttpRequest();
+                http.ConnectTimeout = 99999999;
+                http.KeepAliveTimeout = 99999999;
+                http.ReadWriteTimeout = 99999999;
+                var binImg = http.Get(url).ToMemoryStream().ToArray();
+                File.WriteAllBytes(path, binImg);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
         private async Task ChomeClose()
         {
             try
@@ -1745,12 +1776,15 @@ namespace UpLoadNews
                                         if (checkrendervoiceoffline.Checked == true)
                                         {
                                             #region // xử lý voice offline
+                                            ChromePerformanceLoggingPreferences perfLogPrefs = new ChromePerformanceLoggingPreferences();
+                                            perfLogPrefs.AddTracingCategories(new string[] { "devtools.timeline" });
                                             ChromeOptions options = new ChromeOptions();
-                                            options.AddArgument("--disable-blink-features=AutomationControlled");
-                                            ChromeDriverService service = ChromeDriverService.CreateDefaultService();
-                                            service.HideCommandPromptWindow = true;
-                                            // options.AddArgument("headless");
-                                            PropretiesCollection.driver = new ChromeDriver(service,options);                                          
+                                            options.PerformanceLoggingPreferences = perfLogPrefs;
+                                            options.SetLoggingPreference(LogType.Driver, LogLevel.All);
+                                            options.SetLoggingPreference("performance", LogLevel.All);
+                                            options.AddAdditionalCapability(CapabilityType.EnableProfiling, true, true);
+                                            PropretiesCollection.driver = new ChromeDriver(options);
+
                                             if (radvoicedefault.Checked == true)
                                             {
                                                 PropretiesCollection.driver.Navigate().GoToUrl("https://www.vocalware.com/index/demo");
@@ -1821,6 +1855,11 @@ namespace UpLoadNews
                                             {
                                                 PropretiesCollection.driver.Navigate().GoToUrl("https://www.sestek.com/text-to-speech/tts-demo/");
                                             }
+                                            else if (radiovoicettscool.Checked == true)
+                                            {
+                                                // PropretiesCollection.driver.Navigate().GoToUrl("https://tts.cool/");
+                                                PropretiesCollection.driver.Navigate().GoToUrl("https://lazypy.ro/tts/");
+                                            }
                                             int count = listslide.Rows.Count;
                                             if (count > 0 && radvoice2.Checked == true)
                                             {
@@ -1840,6 +1879,17 @@ namespace UpLoadNews
                                                 {
                                                     read.checklager();
                                                 }
+                                            }
+                                            if (count > 0 && radiovoicettscool.Checked == true)
+                                            {
+                                                DataRow row1 = listslide.Rows[0];
+                                                string ngonngu2 = row1["NgonNguSelenium"].ToString();
+                                                string mcvoice = row1["MCVoiceSelenium"].ToString();
+                                                cl_ReadVoice read = new cl_ReadVoice();
+                                                read.select_Service(cmbservicettscool.Text);
+                                                read.select_Sex(cmbsexttscool.Text);
+                                                read.selectV2_TTSCool(ngonngu2);
+
                                             }
                                             if (count > 0 && radiovoicereallusion.Checked == true)
                                             {
@@ -2060,6 +2110,21 @@ namespace UpLoadNews
 
 
                                                             }
+                                                            else if (radiovoicettscool.Checked == true)
+                                                            {
+                                                                if (noidung.Length >= 200)
+                                                                {
+                                                                    url = read.getURL_TTSCool(_urlvoicecu, noidung.Trim().Substring(0, 199));
+                                                                    _urlvoicecu = url;
+                                                                }
+                                                                else
+                                                                {
+                                                                    url = read.getURL_TTSCool(_urlvoicecu, noidung.Trim());
+                                                                    _urlvoicecu = url;
+                                                                }
+
+
+                                                            }
                                                             else if (radiovoicereallusion.Checked == true)
                                                             {
                                                                 if (noidung.Length >= 200)
@@ -2245,7 +2310,18 @@ namespace UpLoadNews
                                                                         downloadFileV2_Ex(url, _voice).Wait();
                                                                         _voiceaudio = _voice;
                                                                     }
-                                                               // }
+                                                                else if (radiovoicettscool.Checked == true)
+                                                                {
+                                                                    if (cmbservicettscool.Text!= "Polly")
+                                                                    {
+                                                                        downloadFileV2_Ex2(url, _voice).Wait();
+                                                                    }
+                                                                    else {
+                                                                        downloadFileV2_Ex(url, _voice).Wait();
+                                                                    }                                                           
+                                                                    _voiceaudio = _voice;
+                                                                }
+                                                                // }
                                                                 //else if (radiovoicecereproc.Checked == true)
                                                                 //{
                                                                 //    downloadFileV2_Ex(url, _voice).Wait();
@@ -2411,6 +2487,20 @@ namespace UpLoadNews
                                         System.IO.File.Copy(mp3bg, audiobg, true);
 
                                         #endregion
+                                        #region // lay file bgvideo
+                                        
+                                        var filesvideo = new DirectoryInfo(txtfloderlistvideobg.Text).GetFiles();
+                                        int indexvideo = new Random().Next(0, filesvideo.Length);
+                                        string mp4bg = txtfloderlistvideobg.Text + @"\" + filesvideo[indexvideo].Name;
+                                        string videobg = Application.StartupPath + @"\TempVideo\bg.mp4";
+                                        try
+                                        {
+                                            File.Delete(videobg);
+                                        }
+                                        catch { }
+                                        System.IO.File.Copy(mp4bg, videobg, true);
+
+                                        #endregion
 
                                         #region //duyệt lại bảng các ảnh không có sẽ thay bằng thumnail
                                         DataTable slidepsproshow = new DataTable();
@@ -2444,10 +2534,22 @@ namespace UpLoadNews
                                             proshowserver creatvideo = new proshowserver();
                                             Proshow _timefileintro = new Proshow();
                                             Proshow _timefileouttro = new Proshow();
-                                            string filePsh = creatvideo._CreatePSH(k.ToString(),
-                                                tbintro.Text,((int)_timefileintro.getDuration(tbintro.Text).Result* 1000).ToString(),
+                                            string filePsh;
+                                            if (checkvideobg.Checked==true)
+                                            {
+                                                filePsh = creatvideo._CreatePSH(k.ToString(),
+                                                tbintro.Text, ((int)_timefileintro.getDuration(tbintro.Text).Result * 1000).ToString(),
                                                 tbouttro.Text, ((int)_timefileouttro.getDuration(tbouttro.Text).Result * 1000).ToString(),
-                                                txtfoldervideo.Text + @"\" + folder, audiobg, slidepsproshow);
+                                                txtfoldervideo.Text + @"\" + folder, audiobg, slidepsproshow, videobg);
+                                            }
+                                            else
+                                            {
+                                                filePsh = creatvideo._CreatePSH(k.ToString(),
+                                                tbintro.Text, ((int)_timefileintro.getDuration(tbintro.Text).Result * 1000).ToString(),
+                                                tbouttro.Text, ((int)_timefileouttro.getDuration(tbouttro.Text).Result * 1000).ToString(),
+                                                txtfoldervideo.Text + @"\" + folder, audiobg, slidepsproshow,"");
+                                            }
+                                            
                                             if (filePsh != null && filePsh != "")
                                             {
                                                 Proshow creatvideojoin = new Proshow();
@@ -2740,7 +2842,7 @@ namespace UpLoadNews
                                                             bool m_bkt = false;
                                                             if (checkmotizeion.Checked == true)
                                                             { m_bkt = true; }
-                                                        ytb.UploadFroFileBeta(_path, _title, _desc.Replace("<", "").Replace(">", ""), _tag, thumnail, bkt, m_private, m_bkt).Wait();
+                                                        ytb.UploadFroFileBeta(_path, _title, _desc.Replace("<", "").Replace(">", ""), _tag, thumnail, bkt, m_private, m_bkt,int.Parse(txttimechoupload.Value.ToString())).Wait();
                                                         }
                                                         catch { }
                                                    
@@ -4069,7 +4171,7 @@ namespace UpLoadNews
                                                                 bool m_bkt = false;
                                                                 if (checkmotizeion.Checked == true)
                                                                 { m_bkt = true; }
-                                                                ytb.UploadFroFileBeta(_path, _title, _desc.Replace("<", "").Replace(">", ""), _tag, "", bkt, m_private,m_bkt).Wait();
+                                                                ytb.UploadFroFileBeta(_path, _title, _desc.Replace("<", "").Replace(">", ""), _tag, "", bkt, m_private,m_bkt, int.Parse(txttimechoupload.Value.ToString())).Wait();
                                                             }
                                                             catch { }
 
@@ -4082,7 +4184,7 @@ namespace UpLoadNews
                                                                 #region desc
                                                                 string _desc = "";
                                                                 string mota = tieude + "\r\n" + themmota + "\r\n";
-                                                                if (mota.Length > 200) { _desc = chuanHoa(mota.Substring(0, 200)); }
+                                                                if (mota.Length > 1000) { _desc = chuanHoa(mota.Substring(0, 1000)); }
                                                                 else { _desc = chuanHoa(mota); }
                                                                 #endregion
                                                                 #region // title
@@ -4129,7 +4231,7 @@ namespace UpLoadNews
                                                                         bool m_bkt = false;
                                                                         if (checkmotizeion.Checked == true)
                                                                         { m_bkt = true; }
-                                                                        ytb.UploadFroFileBeta(_path, _title, _desc.Replace("<", "").Replace(">", ""), _tag, "", bkt, m_private,m_bkt).Wait();
+                                                                        ytb.UploadFroFileBeta(_path, _title, _desc.Replace("<", "").Replace(">", ""), _tag, "", bkt, m_private,m_bkt, int.Parse(txttimechoupload.Value.ToString())).Wait();
                                                                    
 
 
@@ -5087,6 +5189,24 @@ namespace UpLoadNews
             cmbvoiceling.DataSource = table;
             cmbvoiceling.DisplayMember = "Voice";
             cmbvoiceling.ValueMember = "Voice";
+        }
+
+        private void btnfloderlistvideobg_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fl = new FolderBrowserDialog();
+            fl.ShowNewFolderButton = true;
+            if (fl.ShowDialog() == DialogResult.OK)
+            {
+                txtfloderlistvideobg.Text = fl.SelectedPath;
+                ExeConfigurationFileMap exmap = new ExeConfigurationFileMap();
+                exmap.ExeConfigFilename = @"UpLoadNews.exe.config";
+                //Configuration cf = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                Configuration cf = ConfigurationManager.OpenMappedExeConfiguration(exmap, ConfigurationUserLevel.None);
+                cf.AppSettings.Settings.Remove("ListvideobgA");
+                cf.AppSettings.Settings.Add("ListvideobgA", txtfloderlistvideobg.Text);
+                cf.Save(ConfigurationSaveMode.Modified);
+                ConfigurationManager.RefreshSection("appSettings");
+            }
         }
     }
 }

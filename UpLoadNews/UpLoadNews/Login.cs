@@ -324,7 +324,7 @@ namespace UpLoadNews
             string thumnail = "";
             bool m_bkt = false;
          
-            ytb.UploadFroFileBeta(@"D:\A_FILE\_VideoUp.mp4", "test","", "", thumnail, bkt, m_private,m_bkt).Wait();
+          //  ytb.UploadFroFileBeta(@"D:\A_FILE\_VideoUp.mp4", "test","", "", thumnail, bkt, m_private,m_bkt, int.Parse(txttimechoupload.Value.ToString())).Wait();
 
 
         }

@@ -17,7 +17,7 @@ namespace UpLoadNews
             return local.Replace("\\", "/")  ;
         }
 
-        public string _CreatePSH(string id,string pathintro,string timeintro,string pathouttro,string timeouttro,string localFoder,string musicbg, DataTable tableimage)
+        public string _CreatePSH(string id,string pathintro,string timeintro,string pathouttro,string timeouttro,string localFoder,string musicbg, DataTable tableimage,string videobg)
         {  
             string _psh = "";
             if (tableimage.Rows.Count > 0)
@@ -47,14 +47,14 @@ namespace UpLoadNews
                 }
                 foreach (DataRow r in tableimage.Rows)
                 {
-                    //if (r["PathMC"].ToString() != "")
-                    //{
-                    //    slide = daWS_FakeAuto._Slidemc(i.ToString(), getLocalInProshow(r["PathMC"].ToString()), getLocalInProshow(r["PathSub"].ToString()), r["PathImage"].ToString(), r["TimeSlide"].ToString(), r["PathVoice"].ToString(), r["TimeVoice"].ToString());
-                    //}
-                    //else
-                    //{
+                    if (videobg != "")
+                    {
+                        slide = daWS_FakeAuto._SlideVideoBG(i.ToString(), getLocalInProshow(r["PathSub"].ToString()), r["PathImage"].ToString(), r["TimeSlide"].ToString(), r["PathVoice"].ToString(), r["TimeVoice"].ToString(), videobg);
+                    }
+                    else
+                    {
                         slide = daWS_FakeAuto._Slide(i.ToString(), getLocalInProshow(r["PathSub"].ToString()), r["PathImage"].ToString(), r["TimeSlide"].ToString(), r["PathVoice"].ToString(), r["TimeVoice"].ToString());
-                   // }
+                    }
                     tran = daWS_FakeAuto._TranSlide(i.ToString());
                     groupslide = groupslide + "\n" + slide + "\n" + tran;
                     i = i + 1;

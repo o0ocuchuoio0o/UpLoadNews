@@ -92,6 +92,8 @@ namespace DaoUploadNews.WS_FakeAuto {
         
         private System.Threading.SendOrPostCallback _SildeOperationCompleted;
         
+        private System.Threading.SendOrPostCallback _SildeVideoBGOperationCompleted;
+        
         private System.Threading.SendOrPostCallback _SildeMCOperationCompleted;
         
         private System.Threading.SendOrPostCallback _TranSlideOperationCompleted;
@@ -278,6 +280,9 @@ namespace DaoUploadNews.WS_FakeAuto {
         
         /// <remarks/>
         public event _SildeCompletedEventHandler _SildeCompleted;
+        
+        /// <remarks/>
+        public event _SildeVideoBGCompletedEventHandler _SildeVideoBGCompleted;
         
         /// <remarks/>
         public event _SildeMCCompletedEventHandler _SildeMCCompleted;
@@ -1274,6 +1279,47 @@ namespace DaoUploadNews.WS_FakeAuto {
             if ((this._SildeCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this._SildeCompleted(this, new _SildeCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/_SildeVideoBG", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string _SildeVideoBG(string cell, string PathSub, string PathImage, string TimeSlide, string PathVoice, string TimeVoice, string PathVideoBG) {
+            object[] results = this.Invoke("_SildeVideoBG", new object[] {
+                        cell,
+                        PathSub,
+                        PathImage,
+                        TimeSlide,
+                        PathVoice,
+                        TimeVoice,
+                        PathVideoBG});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void _SildeVideoBGAsync(string cell, string PathSub, string PathImage, string TimeSlide, string PathVoice, string TimeVoice, string PathVideoBG) {
+            this._SildeVideoBGAsync(cell, PathSub, PathImage, TimeSlide, PathVoice, TimeVoice, PathVideoBG, null);
+        }
+        
+        /// <remarks/>
+        public void _SildeVideoBGAsync(string cell, string PathSub, string PathImage, string TimeSlide, string PathVoice, string TimeVoice, string PathVideoBG, object userState) {
+            if ((this._SildeVideoBGOperationCompleted == null)) {
+                this._SildeVideoBGOperationCompleted = new System.Threading.SendOrPostCallback(this.On_SildeVideoBGOperationCompleted);
+            }
+            this.InvokeAsync("_SildeVideoBG", new object[] {
+                        cell,
+                        PathSub,
+                        PathImage,
+                        TimeSlide,
+                        PathVoice,
+                        TimeVoice,
+                        PathVideoBG}, this._SildeVideoBGOperationCompleted, userState);
+        }
+        
+        private void On_SildeVideoBGOperationCompleted(object arg) {
+            if ((this._SildeVideoBGCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this._SildeVideoBGCompleted(this, new _SildeVideoBGCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -2814,6 +2860,32 @@ namespace DaoUploadNews.WS_FakeAuto {
         private object[] results;
         
         internal _SildeCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void _SildeVideoBGCompletedEventHandler(object sender, _SildeVideoBGCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class _SildeVideoBGCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal _SildeVideoBGCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

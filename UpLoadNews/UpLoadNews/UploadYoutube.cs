@@ -361,8 +361,10 @@ namespace UpLoadNews
 
         [FindsBy(How = How.XPath, Using = "/html/body/ytcp-uploads-dialog/paper-dialog/div/div[1]/ytcp-animatable/ytcp-stepper/div/button[2]/div[1]/span")]
         public IWebElement clickmanhinhketthuc;   // dung cai nay de quay lai voi truong hop chua bat kiem tien  
-      
-        [FindsBy(How = How.XPath, Using = "/html/body/ytcp-uploads-dialog/paper-dialog/div/ytcp-animatable[1]/ytcp-uploads-video-elements/div[3]/ytcp-button/div")]
+        [FindsBy(How = How.XPath, Using = "/html/body/ytcp-uploads-dialog/paper-dialog/div/div[1]/ytcp-animatable/ytcp-stepper-v2/div/div[2]/button/div[2]/iron-icon[1]")]
+        public IWebElement clickmanhinhketthuc2;
+
+        [FindsBy(How = How.XPath, Using = "/html/body/ytcp-uploads-dialog/paper-dialog/div/ytcp-animatable[1]/ytcp-uploads-video-elements/div[3]/ytcp-button[2]/div")]
         public IWebElement themmanhinhketthuc;  
         [FindsBy(How = How.XPath, Using = "/html/body/ytve-endscreen-modal/ytve-modal-host/ytcp-dialog/paper-dialog/div[2]/div/ytve-editor/div[1]/div/ytve-endscreen-editor-options-panel/div[2]/div/ytve-endscreen-template-picker/div/div/div/div[1]/div[1]")]
         public IWebElement addmanhinhketthuc;
@@ -383,11 +385,20 @@ namespace UpLoadNews
 
         [FindsBy(How = How.XPath, Using = "/html/body/ytcp-uploads-dialog/paper-dialog/div/div[1]/ytcp-animatable/ytcp-stepper/div/button[3]/div[1]/span")]
         public IWebElement buoc3;
+        [FindsBy(How = How.XPath, Using = "/html/body/ytcp-uploads-dialog/paper-dialog/div/div[1]/ytcp-animatable/ytcp-stepper-v2/div/div[3]/button/div[2]/iron-icon[1]")]
+        public IWebElement buoc3_v2;
 
         [FindsBy(How = How.XPath, Using = "/html/body/ytcp-uploads-dialog/paper-dialog/div/div[1]/ytcp-animatable/ytcp-stepper/div/button[4]/div[1]/span")]
         public IWebElement buoc4;
+
         [FindsBy(How = How.XPath, Using = "/html/body/ytcp-uploads-dialog/paper-dialog/div/ytcp-animatable[1]/ytcp-uploads-review/div[2]/div[1]/ytcp-video-visibility-select-v2/div[1]/paper-radio-group/paper-radio-button[1]/div[1]/div[1]")]
         public IWebElement clickpublich;
+
+        [FindsBy(How = How.XPath, Using = " /html/body/ytcp-uploads-prechecks-warning-dialog/ytcp-confirmation-dialog/ytcp-dialog/paper-dialog/div[3]/div/ytcp-button[1]/div")]
+        public IWebElement clickchonpub;
+
+        [FindsBy(How = How.XPath, Using = "/html/body/ytcp-uploads-dialog/paper-dialog/div/ytcp-animatable[1]/ytcp-uploads-review/div[2]/div[1]/ytcp-video-visibility-select/div[1]/paper-radio-group/paper-radio-button[3]/div[1]/div[1]")]
+        public IWebElement clickpublichv2;
         
 
         [FindsBy(How = How.XPath, Using = "/html/body/ytcp-uploads-dialog/paper-dialog/div/ytcp-animatable[2]/div/div[2]/ytcp-button[3]/div")]
@@ -438,7 +449,7 @@ namespace UpLoadNews
         #endregion
 
 
-        public async Task UploadFroFileBeta(string path, string tieude, string mota, string tag, string paththumnail, int batkiemtien,bool m_private,bool m_checkmotizeion)
+        public async Task UploadFroFileBeta(string path, string tieude, string mota, string tag, string paththumnail, int batkiemtien,bool m_private,bool m_checkmotizeion,int timechoupload)
         {
 
             clickupload.Click();
@@ -456,7 +467,7 @@ namespace UpLoadNews
                 System.Windows.Forms.SendKeys.SendWait("{ENTER}");
             }
            // clickupload.SendKeys(path);
-            System.Threading.Thread.Sleep(9000);
+            System.Threading.Thread.Sleep(30000);
             txttieudebeta.Clear();
             txttieudebeta.SendKeys(tieude);
             //IJavaScriptExecutor js = (IJavaScriptExecutor)PropretiesCollection.driver;
@@ -464,7 +475,7 @@ namespace UpLoadNews
             System.Threading.Thread.Sleep(2000);
             txtmotabeta.Clear();
             txtmotabeta.SendKeys(mota);
-            System.Threading.Thread.Sleep(4000);
+            System.Threading.Thread.Sleep(5000);
            
           
             try
@@ -504,7 +515,7 @@ namespace UpLoadNews
             }
             catch { }
 
-            System.Threading.Thread.Sleep(50000);
+            System.Threading.Thread.Sleep(timechoupload);
             if (m_checkmotizeion == false)
             {
                 int kiemtrabkt = 0;
@@ -533,6 +544,7 @@ namespace UpLoadNews
                                 try
                                 {
                                     themmanhinhketthuc.Click();
+                                    System.Threading.Thread.Sleep(10000);
                                     xuly = 1;
                                 }
                                 catch
@@ -544,13 +556,13 @@ namespace UpLoadNews
                                     //}
                                     //catch
                                     //{
-                                    xuly = 0;
+                                    goto case 0;
                                     //}
                                 }
 
                                 if (xuly == 1)
                                 {
-                                    System.Threading.Thread.Sleep(10000);
+                                  
                                     try
                                     {
                                         addmanhinhketthuc.Click();
@@ -569,17 +581,27 @@ namespace UpLoadNews
                                     }
                                     System.Threading.Thread.Sleep(3000);
                                     buoc4.Click();
-                                    System.Threading.Thread.Sleep(2000);
+                                    System.Threading.Thread.Sleep(7000);
                                     if (m_private == true)
                                     {
 
                                     }
                                     else
                                     {
-                                        clickpublich.Click();
+                                        try
+                                        {
+                                            clickpublichv2.Click();
+                                        }
+                                        catch { }
                                     }
                                     System.Threading.Thread.Sleep(2000);
                                     xuatban.Click();
+                                    System.Threading.Thread.Sleep(2000);
+                                    try
+                                    {
+                                        clickchonpub.Click();
+                                    }
+                                    catch { }
                                     System.Threading.Thread.Sleep(2000);
                                 }
                                 //else if(xuly==2)
@@ -600,7 +622,7 @@ namespace UpLoadNews
                                 //    xuatban.Click();
                                 //    System.Threading.Thread.Sleep(2000);
                                 //}
-                                else if (xuly == 0)
+                                else
                                 {
                                     goto case 0;
                                 }
@@ -615,7 +637,13 @@ namespace UpLoadNews
                 else
                 {
                     #region // trường hợp không có bước bật kiếm tiền
-                    clickmanhinhketthuc.Click();
+                    try
+                    {
+                        clickmanhinhketthuc.Click();
+                    }
+                    catch { }
+                    try { clickmanhinhketthuc2.Click(); }
+                    catch { }
                     System.Threading.Thread.Sleep(2000);
                     int kiemtra = 0;
                     switch (kiemtra)
@@ -651,20 +679,27 @@ namespace UpLoadNews
                                     System.Threading.Thread.Sleep(5000);
                                     try
                                     {
-                                        luumanhinhketthuc.Click();
+                                            luumanhinhketthuc.Click();
+                                      
                                     }
                                     catch
                                     {
 
                                     }
                                     System.Threading.Thread.Sleep(3000);
-                                    buoc3.Click();
+                                    try
+                                    {
+                                        buoc3.Click();
+                                    }
+                                    catch { }
+                                    try { buoc3_v2.Click(); }
+                                    catch { }
                                     System.Threading.Thread.Sleep(3000);
                                     xuatban.Click();
                                     System.Threading.Thread.Sleep(2000);
                                 }
 
-                                else if (xuly == 0)
+                                else 
                                 {
                                     goto case 0;
                                 }
@@ -694,8 +729,8 @@ namespace UpLoadNews
                 checkbkt.Click();
                 System.Threading.Thread.Sleep(2000);
                 buoc3bkt.Click();
-                int kiemtra = 0;
-                switch (kiemtra)
+                int kiemtradulieu = 0;
+                switch (kiemtradulieu)
                 {
                     case 0:             // label case 1
                         System.Threading.Thread.Sleep(15000);
@@ -708,16 +743,6 @@ namespace UpLoadNews
                             try
                             {
                                 themmanhinhketthuc.Click();
-                                xuly = 1;
-                            }
-                            catch
-                            {
-                                xuly = 0;
-                                
-                            }
-
-                            if (xuly == 1)
-                            {
                                 System.Threading.Thread.Sleep(10000);
                                 try
                                 {
@@ -733,25 +758,49 @@ namespace UpLoadNews
                                 {
                                 }
                                 System.Threading.Thread.Sleep(3000);
-                                buoc4bkt.Click();
-                                System.Threading.Thread.Sleep(2000);
-                                if (m_private == true)
+                                xuly = 1;
+                                if (xuly == 1)
                                 {
+                                   
+                                    buoc4bkt.Click();
+                                    System.Threading.Thread.Sleep(7000);
+                                    if (m_private == true)
+                                    {
 
+                                    }
+                                    else
+                                    {
+                                        //try
+                                        //{
+
+                                        clickpublichv2.Click();
+                                        //}
+                                        //catch { }
+                                    }
+                                    System.Threading.Thread.Sleep(5000);
+                                    xuatban.Click();
+                                   
+                                    System.Threading.Thread.Sleep(2000);
+                                    try
+                                    {
+                                        clickchonpub.Click();
+                                    }
+                                    catch { }
+                                    System.Threading.Thread.Sleep(2000);
                                 }
                                 else
                                 {
-                                    clickpublich.Click();
+                                    goto case 0;
                                 }
-                                System.Threading.Thread.Sleep(2000);
-                                xuatban.Click();
-                                System.Threading.Thread.Sleep(2000);
                             }
-                           
-                            else if (xuly == 0)
+                            catch
                             {
                                 goto case 0;
                             }
+
+                            
+                           
+                          
                         }
                         catch { goto case 0; }
                         break;

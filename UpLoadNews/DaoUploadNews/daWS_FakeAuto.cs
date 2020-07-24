@@ -225,6 +225,13 @@ namespace DaoUploadNews
             ex = ds._Silde(i, pathsub, pathimage, timeslide, pathvoice, timevoice);
             return ex;
         }
+        public static string _SlideVideoBG(string i, string pathsub, string pathimage, string timeslide, string pathvoice, string timevoice,string pathvideobg)
+        {
+            string ex = "";
+            WS_FakeAuto.WS_FakeAuto ds = new WS_FakeAuto.WS_FakeAuto();
+            ex = ds._SildeVideoBG(i, pathsub, pathimage, timeslide, pathvoice, timevoice, pathvideobg);
+            return ex;
+        }
         public static string _Slidemc(string i,string pathmc, string pathsub, string pathimage, string timeslide, string pathvoice, string timevoice)
         {
             string ex = "";

@@ -19,6 +19,44 @@ namespace UpLoadNews
         {
             PageFactory.InitElements(PropretiesCollection.driver, this);
         }
+
+
+        #region // get tag       
+        [FindsBy(How = How.CssSelector, Using = "pre[style='word-wrap: break-word; white-space: pre-wrap;']")]
+        public IWebElement listtag;
+        public static String chuanHoa(String _string)
+        {
+            return System.Text.RegularExpressions.Regex.Replace(_string, "\\s+", " ");
+        }
+        private string m_Tag;
+        public string Tag
+        {
+            get
+            {
+                return m_Tag;
+            }
+
+            set
+            {
+                m_Tag = value;
+            }
+        }
+
+        public async Task _tag()
+        {
+
+            System.Threading.Thread.Sleep(3000);
+            string _listtag = "";
+            try
+            {
+
+                _listtag = chuanHoa(SeleniumGetMeThor.GetText2(listtag)).Replace("[ \"", "#").Replace("\" ]", "").Replace("\", \"", ",#");
+
+            }
+            catch { }
+            m_Tag = _listtag;
+        }
+        #endregion
         #region // readspeak 1
         [FindsBy(How = How.Id, Using = "ttsLanguage")]
         public IWebElement m_chonngonngu;
@@ -195,6 +233,13 @@ namespace UpLoadNews
         public IWebElement m_ngonnguItalian;
         [FindsBy(How = How.XPath, Using = "//*[@id='nekr_pop_content1']/form[1]/div[1]/div[2]/div[1]/dl[1]/dd[1]/div[1]/ul[1]/li[15]/a[1]")]
         public IWebElement m_ngonnguEuropeanFrench;
+        #region // mc voice EuropeanFrench
+        [FindsBy(How = How.XPath, Using = "/html/body/div/div[2]/div/form/div/div[2]/div/dl[2]/dd/ul/li/span/a")]
+        public IWebElement m_mcJolie;
+        [FindsBy(How = How.XPath, Using = "/html/body/div/div[2]/div/form/div/div[2]/div/dl[2]/dd/ul/li[2]/span/a")]
+        public IWebElement m_mcLouis;   
+
+        #endregion
         [FindsBy(How = How.XPath, Using = "//*[@id='nekr_pop_content1']/form[1]/div[1]/div[2]/div[1]/dl[1]/dd[1]/div[1]/ul[1]/li[16]/a[1]")]
         public IWebElement m_ngonnguEuropeanPortuguese;
         [FindsBy(How = How.XPath, Using = "//*[@id='nekr_pop_content1']/form[1]/div[1]/div[2]/div[1]/dl[1]/dd[1]/div[1]/ul[1]/li[17]/a[1]")]
@@ -367,6 +412,16 @@ namespace UpLoadNews
             else if (ngonngu == "French")
             {
                 m_ngonnguEuropeanFrench.Click();
+                #region // click mc voice
+                if (mcvoice == "Jolie")
+                {
+                    m_mcJolie.Click();
+                }
+                if (mcvoice == "Olivier")
+                {
+                    m_mcLouis.Click();
+                }
+                #endregion
             }
             else if (ngonngu == "Italian")
             {
@@ -1543,44 +1598,221 @@ namespace UpLoadNews
         #endregion
 
 
+        #region // lấy voice ở trang https://tts.cool/
 
-
-        #region // get tag       
-        [FindsBy(How = How.CssSelector, Using = "pre[style='word-wrap: break-word; white-space: pre-wrap;']")]
-        public IWebElement listtag;
-        public static String chuanHoa(String _string)
+        #region // lựa chọn service lấy
+        
+        [FindsBy(How = How.XPath, Using = "/html/body/section/div/div[2]/div[1]/ul/li[3]/a")]
+        public IWebElement m_Polly;
+        [FindsBy(How = How.XPath, Using = "/html/body/section/div/div[2]/div[1]/ul/li[4]/a")]
+        public IWebElement m_CereProc;
+        [FindsBy(How = How.XPath, Using = "/html/body/section/div/div[2]/div[1]/ul/li[5]/a")]
+        public IWebElement m_IBMWatson;
+        [FindsBy(How = How.XPath, Using = "/html/body/section/div/div[2]/div[1]/ul/li[6]/a")]
+        public IWebElement m_Acapela;
+        [FindsBy(How = How.XPath, Using = "/html/body/section/div/div[2]/div[1]/ul/li[7]/a")]
+        public IWebElement m_Oddcast;
+        [FindsBy(How = How.XPath, Using = "/html/body/section/div/div[2]/div[1]/ul/li[8]/a")]
+        public IWebElement m_ReadSpeaker;
+        [FindsBy(How = How.XPath, Using = "/html/body/section/div/div[2]/div[1]/ul/li[9]/a")]
+        public IWebElement m_GoogleTranslate;
+        [FindsBy(How = How.XPath, Using = "/html/body/section/div/div[2]/div[1]/ul/li[6]/a")]
+        public IWebElement m_iSpeech;
+        public void select_Service(string ten)
         {
-            return System.Text.RegularExpressions.Regex.Replace(_string, "\\s+", " ");
-        }
-        private string m_Tag;
-        public string Tag
-        {
-            get
+            
+            if (ten == "Polly")
             {
-                return m_Tag;
+                m_Polly.Click();
             }
-
-            set
+            else if (ten == "CereProc")
             {
-                m_Tag = value;
+                m_CereProc.Click();
             }
+            if (ten == "IBMWatson")
+            {
+                m_IBMWatson.Click();
+            }
+            if (ten == "Acapela")
+            {
+                m_Acapela.Click();
+            }
+            if (ten == "Oddcast")
+            {
+                m_Oddcast.Click();
+            }
+            if (ten == "ReadSpeaker")
+            {
+                m_ReadSpeaker.Click();
+            }
+            if (ten == "GoogleTranslate")
+            {
+                m_GoogleTranslate.Click();
+            }
+            if (ten == "iSpeech")
+            {
+                m_iSpeech.Click();
+            }
+            Thread.Sleep(2000);
         }
 
-        public async Task _tag()
+        #endregion
+        #region // lựa chọn giới tính
+        [FindsBy(How = How.XPath, Using = "/html/body/section/div/div[2]/div[2]/ul/li[3]/a")]
+        public IWebElement m_Male;
+        [FindsBy(How = How.XPath, Using = "/html/body/section/div/div[2]/div[2]/ul/li[4]/a")]
+        public IWebElement m_Female;
+        public void select_Sex(string sex)
         {
+            
 
-            System.Threading.Thread.Sleep(3000);
-            string _listtag = "";
+            if (sex == "Male")
+            {
+                m_Male.Click();
+            }
+            else if (sex == "Female")
+            {
+                m_Female.Click();
+            }           
+            Thread.Sleep(2000);
+        }
+
+        #endregion
+        #region // lựa chọn ngôn ngữ
+        [FindsBy(How = How.Id, Using = "toggleLangs")]
+        public IWebElement m_showngonngu;
+
+        [FindsBy(How = How.XPath, Using = "/html/body/section/div/div[2]/div[3]/button[12]")]
+        public IWebElement m_englist_tts;
+        [FindsBy(How = How.XPath, Using = "/html/body/section/div/div[2]/div[3]/button[35]")]
+        public IWebElement m_Korean_tts;
+        [FindsBy(How = How.XPath, Using = "/html/body/section/div/div[2]/div[3]/button[7]")]
+        public IWebElement m_Chinese_tts;
+        [FindsBy(How = How.XPath, Using = "/html/body/section/div/div[2]/div[3]/button[32]")]
+        public IWebElement m_Japanese_tts;
+        [FindsBy(How = How.XPath, Using = "/html/body/section/div/div[2]/div[3]/button[24]")]
+        public IWebElement m_German_tts;
+        [FindsBy(How = How.XPath, Using = "/html/body/section/div/div[2]/div[3]/button[48]")]
+        public IWebElement m_Spanish_tts;
+        [FindsBy(How = How.XPath, Using = "/html/body/section/div/div[2]/div[3]/button[53]")]
+        public IWebElement m_Thai_tts;
+        [FindsBy(How = How.XPath, Using = "/html/body/section/div/div[2]/div[3]/button[45]")]
+        public IWebElement m_Russian_tts;
+        [FindsBy(How = How.XPath, Using = "/html/body/section/div/div[2]/div[3]/button[20]")]
+        public IWebElement m_French_tts;
+        [FindsBy(How = How.XPath, Using = "/html/body/section/div/div[2]/div[3]/button[31]")]
+        public IWebElement m_Italian_tts;
+        #region // chọn voice
+        [FindsBy(How = How.XPath, Using = "//button[@class='button button-voice is-light is-rounded']")]
+        public IWebElement btnvoice;
+        #endregion
+        public void selectV2_TTSCool(string ngonngu)
+        {
+            m_showngonngu.Click();
+            Thread.Sleep(2000);          
+            if (ngonngu == "English")
+            {
+                m_englist_tts.Click();
+            }
+            else if (ngonngu == "Korean")
+            {
+                m_Korean_tts.Click();               
+            }
+            else if (ngonngu == "Chinese")
+            {
+                m_Chinese_tts.Click();              
+            }
+            else if (ngonngu == "Japanese")
+            {
+                m_Japanese_tts.Click();           
+            }
+            else if (ngonngu == "German")
+            {
+                m_German_tts.Click();
+            }
+            else if (ngonngu == "Spanish")
+            {
+                m_Spanish_tts.Click();               
+            }
+            else if (ngonngu == "Thai")
+            {
+                m_Thai_tts.Click();
+            }
+            else if (ngonngu == "Russian")
+            {
+                m_Russian_tts.Click();
+            }
+            else if (ngonngu == "French")
+            {
+                m_French_tts.Click();
+            }
+            else if (ngonngu == "Italian")
+            {
+                m_Italian_tts.Click();
+            }
+            Thread.Sleep(1000);
+            btnvoice.Click();
+        }
+
+        #endregion
+
+      
+        [FindsBy(How = How.Id, Using = "text")]
+        public IWebElement txt_ttscool;
+        [FindsBy(How = How.Id, Using = "playbutton")]
+        public IWebElement btnSayIt;
+        [FindsBy(How = How.XPath, Using = "//audio")]
+        public IWebElement link_ttscool;
+
+        public string getURL_TTSCool(string _urlvoicecu, string text)
+        {
+            string ex = _urlvoicecu;
             try
             {
-              
-                _listtag = chuanHoa(SeleniumGetMeThor.GetText2(listtag)).Replace("[ \"", "#").Replace("\" ]", "").Replace("\", \"", ",#");             
+
+                txt_ttscool.Clear();
+                txt_ttscool.SendKeys(text);
+                btnSayIt.Click();
+                Thread.Sleep(3000);
+                int kiemtra = 0;
+                switch (kiemtra)
+                {
+                    case 0:             // label case 1
+                        System.Threading.Thread.Sleep(3000);
+                        goto case 1;
+                        break;
+                    case 1:
+                        try
+                        {
+                            ex = SeleniumGetMeThor.GetTextLink(link_ttscool);
+                            Thread.Sleep(4000);
+                            if (ex != _urlvoicecu)
+                            {
+                                return ex;
+                            }
+                            else
+                            {
+                                goto case 0;
+                            }
+                        }
+                        catch { goto case 0; }
+                        break;
+
+                }
+
+                return ex;
+            }
+            catch
+            {
 
             }
-            catch { }
-            m_Tag=_listtag;
+            return ex;
         }
+
         #endregion
+
+
+
 
     }
 
