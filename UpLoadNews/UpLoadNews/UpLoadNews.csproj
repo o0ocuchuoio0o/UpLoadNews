@@ -67,6 +67,10 @@
       <HintPath>..\packages\BouncyCastle.1.7.0\lib\Net40-Client\BouncyCastle.Crypto.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Facebook, Version=6.0.10.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
+      <HintPath>..\packages\Facebook.7.0.6\lib\net45\Facebook.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Geckofx-Core, Version=45.0.22.0, Culture=neutral, PublicKeyToken=3209ac31600d1857, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\Geckofx-Core.dll</HintPath>
@@ -235,6 +239,7 @@
     <Compile Include="Cl_Tag.cs" />
     <Compile Include="CoreDriver.cs" />
     <Compile Include="CreateVideoNotEffects.cs" />
+    <Compile Include="daReup.cs" />
     <Compile Include="Devices.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

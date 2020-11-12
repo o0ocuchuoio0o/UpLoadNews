@@ -56,7 +56,7 @@
             this.txttextchannel.Name = "txttextchannel";
             this.txttextchannel.Size = new System.Drawing.Size(765, 20);
             this.txttextchannel.TabIndex = 311;
-            this.txttextchannel.Text = "AIzaSyAdOMIHglQ9RG5-UKNNbMuQqHISPP0BaXA";
+            this.txttextchannel.Text = "AIzaSyCEz6I2fcRJXeDxx0fnKEWI9TBcLdpRZfo";
             // 
             // btngetlist
             // 

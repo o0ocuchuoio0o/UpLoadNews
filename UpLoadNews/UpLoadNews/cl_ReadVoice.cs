@@ -234,11 +234,11 @@ namespace UpLoadNews
         [FindsBy(How = How.XPath, Using = "//*[@id='nekr_pop_content1']/form[1]/div[1]/div[2]/div[1]/dl[1]/dd[1]/div[1]/ul[1]/li[15]/a[1]")]
         public IWebElement m_ngonnguEuropeanFrench;
         #region // mc voice EuropeanFrench
-        [FindsBy(How = How.XPath, Using = "/html/body/div/div[2]/div/form/div/div[2]/div/dl[2]/dd/ul/li/span/a")]
+        [FindsBy(How = How.XPath, Using = "/html/body/div[1]/div[2]/div[1]/form/div/div[2]/div[1]/dl[2]/dd/ul/li[1]/span/a")]
         public IWebElement m_mcJolie;
-        [FindsBy(How = How.XPath, Using = "/html/body/div/div[2]/div/form/div/div[2]/div/dl[2]/dd/ul/li[2]/span/a")]
+        [FindsBy(How = How.XPath, Using = "/html/body/div[1]/div[2]/div[1]/form/div/div[2]/div[1]/dl[2]/dd/ul/li[2]/span/a")]
         public IWebElement m_mcLouis;   
-
+        
         #endregion
         [FindsBy(How = How.XPath, Using = "//*[@id='nekr_pop_content1']/form[1]/div[1]/div[2]/div[1]/dl[1]/dd[1]/div[1]/ul[1]/li[16]/a[1]")]
         public IWebElement m_ngonnguEuropeanPortuguese;
@@ -635,6 +635,16 @@ namespace UpLoadNews
             else if (ngonngu == "French")
             {
                 m_ngonnguEuropeanFrench.Click();
+                #region // click mc voice
+                if (mcvoice == "Jolie")
+                {
+                    m_mcJolie.Click();
+                }
+                if (mcvoice == "Olivier")
+                {
+                    m_mcLouis.Click();
+                }
+                #endregion
             }
             else if (ngonngu == "Italian")
             {

@@ -383,3 +383,5 @@ D:\GITHUB\UpLoadNews\UpLoadNews\UpLoadNews\obj\Debug\UpLoadNews.WebAutomation.re
 D:\GITHUB\UpLoadNews\UpLoadNews\UpLoadNews\obj\Debug\UpLoadNews.WebAutomationV2.resources
 D:\GITHUB\UpLoadNews\UpLoadNews\UpLoadNews\obj\Debug\UpLoadNews.csproj.GenerateResource.Cache
 D:\GITHUB\UpLoadNews\UpLoadNews\UpLoadNews\obj\Debug\UpLoadNews.pdb
+D:\GITHUB\UpLoadNews\UpLoadNews\UpLoadNews\bin\Debug\Facebook.dll
+D:\GITHUB\UpLoadNews\UpLoadNews\UpLoadNews\bin\Debug\Facebook.xml

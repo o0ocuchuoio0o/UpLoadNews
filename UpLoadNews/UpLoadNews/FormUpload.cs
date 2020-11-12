@@ -1713,6 +1713,8 @@ namespace UpLoadNews
                             {
                                 string thumnail = "";
                                 string title = r["TieuDe"].ToString().Trim();
+                                string tokenfb = r["TokenFB"].ToString().Trim();
+                                string uidpage = r["uidpage"].ToString().Trim();
                                 // string link = r["LinkBaiViet"].ToString();
                                 k = int.Parse(r["ID"].ToString());
                                 #region // update trang thai dang render
@@ -1776,14 +1778,24 @@ namespace UpLoadNews
                                         if (checkrendervoiceoffline.Checked == true)
                                         {
                                             #region // xử lý voice offline
-                                            ChromePerformanceLoggingPreferences perfLogPrefs = new ChromePerformanceLoggingPreferences();
-                                            perfLogPrefs.AddTracingCategories(new string[] { "devtools.timeline" });
+                                            //ChromePerformanceLoggingPreferences perfLogPrefs = new ChromePerformanceLoggingPreferences();
+                                            //perfLogPrefs.AddTracingCategories(new string[] { "devtools.timeline" });
+                                            //ChromeOptions options = new ChromeOptions();
+                                            //options.PerformanceLoggingPreferences = perfLogPrefs;
+                                            //options.SetLoggingPreference(LogType.Driver, LogLevel.All);
+                                            //options.SetLoggingPreference("performance", LogLevel.All);
+                                            //options.AddAdditionalCapability(CapabilityType.EnableProfiling, true, true);
+                                            //PropretiesCollection.driver = new ChromeDriver(options);
+
                                             ChromeOptions options = new ChromeOptions();
-                                            options.PerformanceLoggingPreferences = perfLogPrefs;
-                                            options.SetLoggingPreference(LogType.Driver, LogLevel.All);
-                                            options.SetLoggingPreference("performance", LogLevel.All);
-                                            options.AddAdditionalCapability(CapabilityType.EnableProfiling, true, true);
-                                            PropretiesCollection.driver = new ChromeDriver(options);
+                                            options.AddArguments("user-data-dir=C:/Users/" + Environment.GetEnvironmentVariable("UserName") + "/AppData/Local/Google/Chrome/User Data");
+                                            options.AddArguments("--start-maximized");
+                                            options.AddArgument("--disable-blink-features=AutomationControlled");
+                                            ChromeDriverService service = ChromeDriverService.CreateDefaultService();
+                                            service.HideCommandPromptWindow = false;
+                                            PropretiesCollection.driver = new ChromeDriver(service, options);
+                                       
+
 
                                             if (radvoicedefault.Checked == true)
                                             {
@@ -2829,8 +2841,9 @@ namespace UpLoadNews
                                                             ChromeDriverService service = ChromeDriverService.CreateDefaultService();
                                                             service.HideCommandPromptWindow = false;
                                                             PropretiesCollection.driver = new ChromeDriver(service, options);
-                                                            PropretiesCollection.driver.Navigate().GoToUrl("https://www.youtube.com/upload?redirect_to_classic=true");
-                                                            UploadYoutube ytb = new UploadYoutube();
+                                                        //  PropretiesCollection.driver.Navigate().GoToUrl("https://www.youtube.com/upload?redirect_to_classic=true");
+                                                        PropretiesCollection.driver.Navigate().GoToUrl("https://studio.youtube.com/");
+                                                        UploadYoutube ytb = new UploadYoutube();
                                                             int bkt = 0;
                                                             if (checksetmotizeion.Checked == true)
                                                             {
@@ -2882,7 +2895,7 @@ namespace UpLoadNews
                                         log.UpdateBaiVietDaRender(k);
                                     }
                                     #region // upload facebook
-                                    if(checkuploadfb.Checked==true)
+                                    if(checkfbupload.Checked==true)
                                     {
                                         #region // title
                                         string _title = r["TieuDe"].ToString();
@@ -2904,15 +2917,8 @@ namespace UpLoadNews
                                         string _path = fileFromComputer;                                        
                                         try
                                         {
-                                            ChromeOptions options = new ChromeOptions();
-                                            options.AddArguments("user-data-dir=C:/Users/" + Environment.GetEnvironmentVariable("UserName") + "/AppData/Local/Google/Chrome/User Data");
-                                            options.AddArguments("--start-maximized");
-                                            ChromeDriverService service = ChromeDriverService.CreateDefaultService();
-                                            service.HideCommandPromptWindow = false;
-                                            PropretiesCollection.driver = new ChromeDriver(service, options);
-                                            PropretiesCollection.driver.Navigate().GoToUrl(txtlinkpage.Text);
-                                            UploadFacebook fb = new UploadFacebook();
-                                            fb.Upload(_path, title, _desc.Replace("<", "").Replace(">", ""), "", thumnail).Wait();
+                                            daReup fb = new daReup();
+                                            fb.UpLoadVideoLocal(tokenfb, "_VideoUp.mp4",_path, _title, _desc,uidpage, Path.GetFileName(thumnail), thumnail);
                                         }
                                         catch { }
 
@@ -3416,6 +3422,7 @@ namespace UpLoadNews
             }
             catch { }
         }
+
 
         private void btngetlistvideo_Click(object sender, EventArgs e)
         {

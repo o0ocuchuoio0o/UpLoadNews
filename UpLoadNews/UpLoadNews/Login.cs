@@ -317,12 +317,8 @@ namespace UpLoadNews
             ChromeDriverService service = ChromeDriverService.CreateDefaultService();
             service.HideCommandPromptWindow = false;
             PropretiesCollection.driver = new ChromeDriver(service, options);
-            PropretiesCollection.driver.Navigate().GoToUrl("https://www.youtube.com/upload?redirect_to_classic=true");
-            UploadYoutube ytb = new UploadYoutube();
-            int bkt = 0;           
-            bool m_private = false;
-            string thumnail = "";
-            bool m_bkt = false;
+            PropretiesCollection.driver.Navigate().GoToUrl("http://www.voiceware.co.kr/kor/product/product1.php");
+           
          
           //  ytb.UploadFroFileBeta(@"D:\A_FILE\_VideoUp.mp4", "test","", "", thumnail, bkt, m_private,m_bkt, int.Parse(txttimechoupload.Value.ToString())).Wait();
 

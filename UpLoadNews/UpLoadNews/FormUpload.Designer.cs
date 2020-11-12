@@ -337,6 +337,7 @@
             this.timerchayview = new System.Windows.Forms.Timer(this.components);
             this.bgwreupfolder = new System.ComponentModel.BackgroundWorker();
             this.bgwsub = new System.ComponentModel.BackgroundWorker();
+            this.checkfbupload = new System.Windows.Forms.CheckBox();
             this.groupBox3.SuspendLayout();
             this.tabControl3.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -1760,6 +1761,8 @@
             // 
             // tabPage6
             // 
+            this.tabPage6.AutoScroll = true;
+            this.tabPage6.Controls.Add(this.checkfbupload);
             this.tabPage6.Controls.Add(this.label50);
             this.tabPage6.Controls.Add(this.txttimechoupload);
             this.tabPage6.Controls.Add(this.checkmotizeion);
@@ -1840,7 +1843,7 @@
             this.groupBox13.Controls.Add(this.checkuploaddailymotion);
             this.groupBox13.Controls.Add(this.label18);
             this.groupBox13.Controls.Add(this.textlinkchanneldailymotion);
-            this.groupBox13.Location = new System.Drawing.Point(78, 338);
+            this.groupBox13.Location = new System.Drawing.Point(78, 372);
             this.groupBox13.Name = "groupBox13";
             this.groupBox13.Size = new System.Drawing.Size(392, 111);
             this.groupBox13.TabIndex = 356;
@@ -1919,7 +1922,7 @@
             this.groupBox12.Controls.Add(this.checkuploadfb);
             this.groupBox12.Controls.Add(this.label17);
             this.groupBox12.Controls.Add(this.txtlinkpage);
-            this.groupBox12.Location = new System.Drawing.Point(78, 249);
+            this.groupBox12.Location = new System.Drawing.Point(78, 283);
             this.groupBox12.Name = "groupBox12";
             this.groupBox12.Size = new System.Drawing.Size(392, 82);
             this.groupBox12.TabIndex = 355;
@@ -4112,6 +4115,21 @@
             this.bgwsub.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwsub_DoWork);
             this.bgwsub.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwsub_RunWorkerCompleted);
             // 
+            // checkfbupload
+            // 
+            this.checkfbupload.AutoSize = true;
+            this.checkfbupload.Checked = true;
+            this.checkfbupload.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkfbupload.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkfbupload.ForeColor = System.Drawing.Color.Blue;
+            this.checkfbupload.Location = new System.Drawing.Point(78, 259);
+            this.checkfbupload.Name = "checkfbupload";
+            this.checkfbupload.Size = new System.Drawing.Size(140, 18);
+            this.checkfbupload.TabIndex = 361;
+            this.checkfbupload.Text = "Upload page facebook";
+            this.checkfbupload.UseCompatibleTextRendering = true;
+            this.checkfbupload.UseVisualStyleBackColor = true;
+            // 
             // FormUpload
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4511,5 +4529,6 @@
         private System.Windows.Forms.TextBox txtfloderlistvideobg;
         private System.Windows.Forms.Button btnfloderlistvideobg;
         private System.Windows.Forms.CheckBox checkvideobg;
+        private System.Windows.Forms.CheckBox checkfbupload;
     }
 }
